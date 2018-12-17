@@ -1,0 +1,72 @@
+@import '../../style/iconfont.wxss';
+
+page{
+height: 100%;
+background: #F2F2F2;
+}
+
+.img_box{
+  width: 100%;
+  height: 840rpx;
+  display: flex;
+  align-items: center;
+}
+.img_box image{
+  width: 100%;
+  height: 100%;
+}
+.adress{
+  width: 90%;
+  border-color: transparent;
+   background: linear-gradient(45deg,#f25953 6.25%,#fbfaf5 6.25%,#fbfaf5 12.5%,#5590d6 12.5%,#5590d6 18.75%,#fbfaf5 18.75%,#fbfaf5 25%,#f25953 25%,#f25953 31.25%,#fbfaf5 31.25%,#fbfaf5 37.5%,#5590d6 37.5%,#5590d6 43.75%,#fbfaf5 43.75%,#fbfaf5 50%,#f25953 50%,#f25953 56.25%,#fbfaf5 56.25%,#fbfaf5 62.5%,#5590d6 62.5%,#5590d6 68.75%,#fbfaf5 68.75%,#fbfaf5 75%,#f25953 75%,#f25953 81.25%,#fbfaf5 81.25%,#fbfaf5 87.5%,#5590d6 87.5%,#5590d6 93.75%,#fbfaf5 93.75%,#fbfaf5 100%);
+ padding-bottom: 10rpx;
+ margin: 0 auto;
+ border-radius: 20rpx;
+ overflow: hidden;
+ margin-top: 36rpx;
+}
+.adress_box{
+  width: 100%;
+  height: 100%;
+  background: white;
+  overflow: hidden;
+   box-sizing: border-box;
+  font-size: 36rpx;
+  padding: 0rpx 36rpx 0rpx;
+  line-height: 36rpx;
+  position: relative;
+}
+.add_adress{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: white;
+  text-align: center;
+  left:0px;
+  color: #979797;
+}
+.add_adress>view{
+  margin-bottom:10rpx
+}
+.adress_box>view{
+  text-overflow:ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  margin: 22rpx 0px 22rpx;
+}
+.shop_btn{
+  width: 90%;
+  margin: 36rpx auto;
+  color:white;
+  background: linear-gradient(to right,#FE5445,#FD2220);
+}
+.shop_btn_hover{
+  background: #BC0D0D;
+}
+.adress_box_tit{
+   font-weight: bold;
+} 
+.adress_update{
+  color: #437FBB;
+}

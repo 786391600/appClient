@@ -1,0 +1,20 @@
+<nav title='{{commodity_body}}'></nav>
+<view class='img_box'>
+  <!-- <image src='http://img.hb.aicdn.com/f64cfef57956ed7b47b305c9d090f9357018ce61ec2bd-Atuxgj_fw658'>
+  </image> -->
+  <image src='{{commodity_img}}'></image>
+</view>
+<view class='adress'>
+  <view class='adress_box'>
+    <view class='add_adress' bindtap='chooseAddress' wx-if='{{addressShow}}'>
+    <view><i class='iconfont jiahao'></i></view>
+    <view>添加地址</view>
+    </view>
+    <view class='adress_box_tit'>{{adress_tit}}</view> 
+    <view class='adress_box_con'>{{adress_con}}</view>
+    <view class='adress_update' bindtap='chooseAddress'>修改收货地址</view>
+  </view>
+</view>
+<button class='shop_btn' hover-class='shop_btn_hover' bindtap='commodityPay'>
+   点击抢购
+</button>

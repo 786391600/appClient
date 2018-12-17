@@ -1,0 +1,7 @@
+<!--pages/Testpage/Paysuccess/Paysuccess.wxml-->
+ <nav isBack='{{true}}'></nav>
+  <view class='success_box'>
+  <icon type='success' size='60'></icon>
+  <view id="success">支付成功</view>
+  <button id="complete" open-type="share">发给朋友一起领</button>
+  </view> 

@@ -1,0 +1,8 @@
+<view>
+  <view class='nav bg-white' style='height:{{navH}}px'>
+    <view class='nav-title'>
+      {{title}}
+      <view bindtap='navBack' class='nav-back' wx-if='{{isBack}}'>返回</view> 
+    </view>
+  </view>
+</view>
