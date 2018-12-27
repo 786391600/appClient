@@ -70,3 +70,44 @@ background: #F2F2F2;
 .adress_update{
   color: #437FBB;
 }
+.com_list_btn{
+  position: fixed;
+  width: 100rpx;
+  height: 100rpx;
+  left: 30rpx;
+  bottom: 20rpx;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 78rpx;
+  color: blue;
+  animation: backgroundColor 1s infinite;
+  font-size: 50rpx;
+}
+.com_list_bottom{
+  position: absolute;
+  bottom: 0rpx;
+  font-size: 24rpx;
+  width: 100%;
+  text-align: center;
+  color: white;
+  background: red;
+  border-radius: 6rpx;
+  padding: 2rpx;
+  line-height: 26rpx;
+}
+
+@keyframes backgroundColor
+{
+0% {
+  background:red;
+  color: yellow;
+}
+50% {
+  background:yellow;
+  color: #01FFFD;
+  }
+ 100%{
+   background: #01FFFD;
+   color: red;
+ } 
+}
