@@ -18,7 +18,7 @@
 <button class='shop_btn' hover-class='shop_btn_hover' bindtap='commodityPay' loading='{{loading}}'>
    点击抢购
 </button>
-<view class='com_list_btn'>
+<view class='com_list_btn' bindtap='moreCommodity'>
    <i class='iconfont shangping'></i>
    <view class='com_list_bottom'>
      更多商品

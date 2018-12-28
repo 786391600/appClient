@@ -1,3 +1,4 @@
+@import '../../../style/iconfont.wxss';
 .nav{
   width: 100%;
   overflow: hidden;
@@ -20,7 +21,7 @@
   font-size:36rpx;
   letter-spacing:2px;
   box-sizing: border-box;
-  padding-left: 20%;
+  padding-left: 80rpx;
 }
 .nav .back{
   width: 22px;
@@ -43,8 +44,12 @@
   overflow: hidden;
 }
 .nav-back{
-  background: red;
   position: absolute;
   left: 0;
   top: 0;
+  padding: 0rpx 30rpx 0rpx;
+  font-size: 40rpx;
+}
+.nav-back-hover{
+  background:rgba(158, 149, 149, 0.575);
 }

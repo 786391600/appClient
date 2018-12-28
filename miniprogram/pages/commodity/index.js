@@ -222,10 +222,10 @@ Page({
   },
   commodityPay () {
     var that = this;
-    // wx.navigateTo({
-    //   url: '/pages/paySuccess/index?id=' + that.data.commodity_id
-    // })
-    // return false;
+    wx.navigateTo({
+      url: '/pages/paySuccess/index?id=' + that.data.commodity_id
+    })
+    return false;
      if (!wx.getStorageSync('address')) {
        wx.showToast({
          title: '请添加地址',
@@ -260,5 +260,10 @@ Page({
   },
   imageOnload (e) {
     this.setData({loading:false})
+  },
+  moreCommodity (){
+    wx.navigateTo({
+      url: '/pages/commodityList/index'
+    })
   }
 })
