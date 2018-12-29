@@ -10,6 +10,8 @@ background: #F2F2F2;
   height: 840rpx;
   display: flex;
   align-items: center;
+  background: red;
+  object-fit: contain;
 }
 .img_box image{
   width: 100%;
