@@ -46,9 +46,9 @@
       <text class='nickName'>{{userInfo.nickName}}</text>
     </view>
   </view>
-  <view class='Fabulous' wx:if="{{activityState.QRState==1&&activityState.Someone==1}}" bindtap='praiseClick'>点击助力</view>
+  <view class='thumbs-up' wx:if="{{activityState.QRState==1&&activityState.Someone==1}}" bindtap='praiseClick'><i class='iconfont dianzan zhuli1'></i><view>点击助力</view></view>
   <!-- <view class='Fabulous' bindtap='praiseClick'>点击助力（删除）</view> -->
-  <view class='Fabulous' wx:if="{{activityState.QRState==4&&activityState.Someone==1}}">已点赞</view>
+  <view class='thumbs-up' wx:if="{{activityState.QRState==4&&activityState.Someone==1}}"><i class='iconfont dianzan zhuli'></i><view>助力成功</view></view>
   <view class='Fabulous' wx:if="{{activityState.Someone==1&&(activityState.QRState==2||activityState.QRState==3)}}">已集满</view>
   <view class='Fabulous' wx:if="{{activityState.Someone==2&&activityState.QRState==3}}">已领取</view>
   <!-- <button class='button' wx:if="{{activityState.QRState==1}}" open-type="share">{{activityState.Someone==1?'我也要领取':'邀请好友点赞'}}</button> -->

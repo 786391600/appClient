@@ -1,4 +1,5 @@
 /* pages/Testpage/ActivityOne/index.wxss */
+@import '../../style/iconfont.wxss';
 .Act-image{
   width: 100%;
   height: 708rpx;
@@ -92,6 +93,23 @@
   background: linear-gradient(to right, #ff5d4f , #ff2022);
   color: #fff;
   line-height: 100rpx;
+}
+.thumbs-up{
+  width: 200rpx;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  text-align: center;
+  overflow: hidden;
+}
+.zhuli{
+  font-size: 150rpx;
+  /* color:  #ff5d4f; */
+  color: #ffc300;
+}
+.zhuli1{
+  font-size: 150rpx;
+  color:  #ff5d4f;
+  /* color: #ffc300; */
 }
 .list{
   width: 600rpx;
