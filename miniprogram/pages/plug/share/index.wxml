@@ -1,0 +1,8 @@
+<view class='share' style='height:{{windowHeight}}px'>
+  <button bindtap='share'>
+    分享给朋友   
+  </button>
+  <button>
+    生成分享图片
+  </button>
+</view>

@@ -1,0 +1,253 @@
+/* pages/Testpage/ActivityOne/index.wxss */
+.Act-image{
+  width: 100%;
+  height: 708rpx;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.button{
+  width: 540rpx;
+  height: 92rpx;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 40rpx;
+  border-radius: 10rpx;
+  background: linear-gradient(to right, #ff5d4f , #ff2022);
+  color: #fff;
+  line-height: 92rpx;
+}
+.Act-Telephone{
+  width: 70%;
+  height: 100rpx;
+  border: 1rpx solid #ff5d4f;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 30rpx;
+  border-radius: 10rpx;
+}
+.Act-Button{
+  width: 70%;
+  height: 100rpx;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 30rpx;
+  border-radius: 10rpx;
+  background-color: #ddded9;
+  color: #fff;
+  line-height: 100rpx;
+}
+.activity-title{
+  padding: 15rpx 0 15rpx;
+  text-align: center
+}
+.activity-price {
+  text-align: left;
+  font-size: 50rpx;
+  background: rgba(255,69,0,0.6);
+  color: white;
+  padding: 15rpx 30% 15rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.activity-date{
+  font-size: 25rpx;
+  height: 100%;
+}
+.activity-date view{
+  height: 50%;
+  display: flex;
+  align-content: center;
+}
+.price-box{
+  margin-top: 30rpx;
+}
+.Button-active{
+  background: linear-gradient(to right, #ff5d4f , #ff2022);
+}
+.Activityrules{
+  width: 100%;
+  text-align: center;
+  margin-top: 30rpx;
+}
+.ContentRules{
+  color:#5c5c5c;
+  font-size: 32rpx;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  text-align: center
+}
+.Fabulous{
+  width: 70%;
+  height: 100rpx;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 30rpx;
+  border-radius: 10rpx;
+  background: linear-gradient(to right, #ff5d4f , #ff2022);
+  color: #fff;
+  line-height: 100rpx;
+}
+.list{
+  width: 600rpx;
+  margin: 0 auto;
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  overflow: hidden;
+  border-radius: 10rpx;
+  background: #f0f0f0
+}
+.list-header{
+  height: 100rpx;
+  line-height: 100rpx;
+  background: linear-gradient(to right, #ff5d4f , #ff2022);
+  text-align: center;
+  width: 100%;
+  color: #fff;
+}
+.list-footer{
+  width: 100%;
+  overflow-x:hidden;
+  overflow-y: auto;
+  background:linear-gradient(to right, #f9fafa , #faf9f9);
+}
+.List-contents{
+  width: 100%;
+  height: 100rpx;
+  float: left;
+  border-bottom:1rpx #ddded9 solid; 
+}
+.contents-key{
+  line-height: 100rpx;
+  margin-left: 20rpx;
+  float: left;
+}
+.contents-image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: rgb(126, 213, 240);
+  margin-top:10rpx;
+  margin-left: 30rpx; 
+  float: left;
+  overflow: hidden;
+}
+.contents-image image{
+  width: 100%;
+  height: 100%;
+}
+.contents-name{
+  margin-left: 50rpx;
+  float: left;
+  line-height: 100rpx;
+}
+.contents-tip{
+  color: #ccc;
+  text-align: center;
+}
+.Statistics{
+  height: 42rpx;
+  font-size: 26rpx;
+  text-align: center;
+  background: linear-gradient(to right, #ff5d4f , #ff2022);
+  color: #fff;
+  line-height: 42rpx;
+}
+.address{
+  width: 600rpx;
+  margin: 0 auto; 
+  margin-top: 30rpx;
+  text-align: center;
+  line-height: 28rpx;
+}
+.address>view{
+  margin-bottom: 20rpx;
+}
+.address-title{
+  color: orange;
+  font-size: 30rpx;
+}
+.address-tip-title{
+  font-weight: 500;
+  font-size: 32rpx;
+}
+.continer{
+  width: 100%;
+  text-align: center
+}
+.user-image{
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+.nickName{
+  width:100%;
+  display: block;
+}
+
+.card{
+  width: 635rpx;
+  height: 167rpx;
+  background: #E3AD4D;
+  border-radius: 15rpx;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  margin: 15rpx auto 15rpx;
+}
+.card-left{
+  height: 100%;
+  width: 194rpx;
+  border-right: 2rpx dashed white;
+  position: relative;
+  line-height: 167rpx;
+  text-align: center;
+  font-size: 52rpx;
+  color: white;
+}
+.card-right{
+  height: 100%;
+  width: 439rpx;
+  position: relative;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 25rpx;
+  box-sizing: border-box;
+  justify-content: space-around;
+}
+.card-info{
+  display:flex;
+  flex-direction:column;
+  font-size: 28rpx;
+}
+.duihuan{
+  font-size: 60rpx;
+}
+.card-left:before{
+  content: '';
+  position: absolute;
+  width: 16rpx;
+  height: 16rpx;
+  background: white;
+  border-radius: 50%;
+  right: -8rpx;
+  top:-8rpx;
+}
+.card-left:after{
+  content: '';
+  position: absolute;
+  width: 16rpx;
+  height: 16rpx;
+  background: white;
+  border-radius: 50%;
+  right: -8rpx;
+  bottom:-8rpx;
+}
+

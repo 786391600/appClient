@@ -1,4 +1,4 @@
-<nav title='{{commodity_body}}'></nav>
+<!-- <nav title='{{commodity_body}}'></nav> -->
 <view class='img_box'>
   <!-- <image src='http://img.hb.aicdn.com/f64cfef57956ed7b47b305c9d090f9357018ce61ec2bd-Atuxgj_fw658'>
   </image> -->
@@ -24,3 +24,7 @@
      更多商品
    </view>
 </view>
+<view class='com_order' bindtap='toOrder'>
+   我的订单
+</view>
+<button open-type="contact" class='customer' session-from='{{commodity_body}}'><i class='iconfont kefu'></i></button>

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "nav": "../plug/nav/index"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#f3f3f3"
+}

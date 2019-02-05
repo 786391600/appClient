@@ -12,7 +12,11 @@ App({
     wx.getSystemInfo({
       success: res => {
         //导航高度
+        this.globalData.windowWidth = res.windowWidth;
+        this.globalData.windowHeight = res.windowHeight;
         this.globalData.navHeight = res.statusBarHeight + 46;
+        console.log(res)
+        console.log('iiiiiinnnnnnnnfffffffoooooo-------')
       }, fail(err) {
         console.log(err);
       }

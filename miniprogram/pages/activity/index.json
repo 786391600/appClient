@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "userAuth": "../plug/userAuth/index",
+    "loading": "../plug/loading/index"
+  }
+}

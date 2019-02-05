@@ -1,0 +1,148 @@
+<!--pages/Testpage/ActivityOne/index.wxml-->
+<loading wx-if='{{loading}}'></loading>
+<userAuth class='userAuth' wx:if="{{userAuth}}" bind:setInfoSuccess='setInfoSuccess'></userAuth>
+<view id='ActivityOne' wx:if="{{activityState.ActState==1}}">
+  <view class='Act-image' style='background-image:url({{activity.imgUrl}})'>
+    <!-- <image src='{{activity.imgUrl}}'></image> -->
+  </view>
+  <form bindsubmit='formSubmit' wx:if="{{activityState.QRState==1}}">
+    <input class='Act-Telephone' placeholder='请输入手机号' type='number' name="phone" maxlength="11" bindinput="inputPhoneNum"></input>
+    <button class="Act-Button {{ActTelephone==true?'Button-active':''}}" form-type="submit">免费领取</button>
+  </form>
+  <!-- <view class='button' wx:if="{{activityState.QRState==2 && activityState.Someone==2}}" bindtap='toQRcode'>出示扫码</view> -->
+  <view class='card' bindtap='toQRcode' wx:if="{{activityState.QRState==2 && activityState.Someone==2}}">
+    <view class='card-left'>
+      兑换券
+    </view>
+    <view class='card-right'>
+      <view class='card-info'>
+        <text>截止日期：{{activity.date}}</text>
+        <text>领取地址：{{activity.merchants.address}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='address' wx:if="{{activityState.QRState==2}}">
+    <view class='address-title'>
+      您已参与成功,请到指定商家领取
+    </view>
+    <!-- <view class='address-tip-title'>领取地址</view>
+    <view class='address-tip-con'>{{activity.merchants.address}}</view> -->
+  </view>
+  <button class='button' wx:if="{{activityState.QRState==2||activityState.QRState==3}}" open-type="share">分享给朋友一起领取</button>
+  <view class='Fabulous' wx:if="{{activityState.Someone==2&&activityState.QRState==3}}">已领取</view>
+  <view class='button' wx:if="{{activityState.QRState==0}}">活动已结束</view>
+  <view class='Activityrules'>- 活动规则 -</view>
+  <view class='ContentRules'>
+    <text>{{activity.describe}}</text>
+  </view>
+</view>
+<view id='ActivityTow' wx:if="{{activityState.ActState==2}}">
+  <view class='Act-image' style='background-image:url({{activity.imgUrl}})'>
+
+  </view>
+  <view>
+    <view class='continer' wx:if='{{showUserInfo}}'>
+      <image src='{{userInfo.avatarUrl}}' class='user-image'></image>
+      <text class='nickName'>{{userInfo.nickName}}</text>
+    </view>
+  </view>
+  <view class='Fabulous' wx:if="{{activityState.QRState==1&&activityState.Someone==1}}" bindtap='praiseClick'>点击助力</view>
+  <!-- <view class='Fabulous' bindtap='praiseClick'>点击助力（删除）</view> -->
+  <view class='Fabulous' wx:if="{{activityState.QRState==4&&activityState.Someone==1}}">已点赞</view>
+  <view class='Fabulous' wx:if="{{activityState.Someone==1&&(activityState.QRState==2||activityState.QRState==3)}}">已集满</view>
+  <view class='Fabulous' wx:if="{{activityState.Someone==2&&activityState.QRState==3}}">已领取</view>
+  <!-- <button class='button' wx:if="{{activityState.QRState==1}}" open-type="share">{{activityState.Someone==1?'我也要领取':'邀请好友点赞'}}</button> -->
+  <!-- <button class='button' wx:if="{{activityState.QRState==1&&activityState.Someone==1}}" bindtap='getMyException'>我也要领取</button> -->
+  <button class='button' wx:if="{{activityState.Someone==1}}" bindtap='getMyException'>我也要领取</button>
+  <button class='button' wx:if="{{activityState.Someone==2&&activityState.QRState==1}}" open-type="share">邀请好友助力</button>
+  <!-- <view class='button' wx:if="{{activityState.QRState==2 &&  activityState.Someone==2}}" bindtap='toQRcode'>出示扫码</view> -->
+  <view class='card' bindtap='toQRcode' wx:if="{{activityState.QRState==2 && activityState.Someone==2}}">
+    <view class='card-left'>
+      兑换券
+    </view>
+    <view class='card-right'>
+      <view class='card-info'>
+        <text>截止日期：{{activity.date}}</text>
+        <text>领取地址：{{activity.merchants.address}}</text>
+      </view>
+    </view>
+  </view>  
+  <view class='address' wx:if="{{activityState.QRState==2}}">
+    <view class='address-title'>
+      您已参与成功,请到指定商家领取
+    </view>
+    <!-- <view>领取地址</view>
+    <view>{{activity.merchants.address}}</view> -->
+  </view>
+  <view class='button' wx:if="{{activityState.QRState==0}}">活动已结束</view>
+  <view class='list'>
+    <view class='list-header'>帮助点赞的朋友</view>
+    <view class='list-footer'>
+      <view class='List-contents' wx:if='{{userLikeInfo.userLikeList.length<=0}}'>
+        <view class='contents-name contents-tip'>还没有朋友助力,快去邀请吧！</view>
+      </view>
+      <view class='List-contents' wx:for='{{userLikeInfo.userLikeList}}'>
+        <view class='contents-image'>
+          <image src='{{item.avatarUrl}}'></image>
+        </view>
+        <view class='contents-name'>{{item.nickName}}</view>
+      </view>
+    </view>
+    <view class='Statistics'>共有{{userLikeInfo.userLikeNum}}位好友帮忙助力~</view>
+  </view>
+  <view class='Activityrules'>- 活动规则 -</view>
+  <view class='ContentRules'>
+    <text>{{activity.describe}}</text>
+  </view>
+</view>
+<view id='ActivityOne' wx:if="{{activityState.ActState==3}}">
+  <view class='Act-image' style='background-image:url({{activity.imgUrl}})'>
+  </view>
+  <form bindsubmit='formSubmit' wx:if="{{activityState.QRState==1}}">
+    <view class='price-box'>
+      <view class='activity-title'>{{activity.title}}</view>
+      <view class='activity-price'>
+        <view>¥{{activity.conditions.type3price}}</view>
+        <view class='activity-date'>
+          <view>
+            活动截止日期
+          </view>
+          <view>
+            {{activity.date}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <button class="Act-Button Button-active" bindtap='marketingPay'>支付抢购</button>
+  </form>
+  <!-- <view class='button' wx:if="{{activityState.QRState==2 && activityState.Someone==2}}" bindtap='toQRcode'>出示扫码</view> -->
+  <view class='card' bindtap='toQRcode' wx:if="{{activityState.QRState==2 && activityState.Someone==2}}">
+    <view class='card-left'>
+      兑换券
+    </view>
+    <view class='card-right'>
+      <view class='card-info'>
+        <text>截止日期：{{activity.date}}</text>
+        <text>领取地址：{{activity.merchants.address}}</text>
+      </view>
+    </view>
+   </view> 
+  <view class='address' wx:if="{{activityState.QRState==2}}">
+    <view class='address-title'>
+      您已参与成功,请到指定商家领取
+    </view>
+    <!-- <view>领取地址</view>
+    <view>{{activity.merchants.address}}</view> -->
+  </view>
+  <button class='button' wx:if="{{activityState.QRState==2||activityState.QRState==3}}" open-type="share">分享给朋友一起领取</button>
+  <view class='Fabulous' wx:if="{{activityState.Someone==2&&activityState.QRState==3}}">已领取</view>
+  <view class='button' wx:if="{{activityState.QRState==0}}">活动已结束</view>
+  <view class='Activityrules'>- 活动规则 -</view>
+  <view class='ContentRules'>
+    <text>{{activity.describe}}</text>
+  </view>
+</view>
+<view class='share'>
+  <button open-type="share">邀请微信好友</button>
+  <button bindtap='getShareImg'>生成分享图</button>
+</view>

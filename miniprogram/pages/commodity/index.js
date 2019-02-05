@@ -12,9 +12,13 @@ Page({
     commodity_body: '',
     loading: true
   },
-  onLoad: function() {
+  onLoad: function (options) {
     var that = this;
-    this.getCommodity()
+    if(options.clickId){
+      that.getCommodity({id: options.clickId})
+    } else {
+      that.getCommodity()
+    }
     this.getAddress().then((res)=>{
       that.setData({
         adress_tit: res.userName + ' ' + res.telNumber,
@@ -211,21 +215,28 @@ Page({
      })
    })  
   },
-  getCommodity () {
+  getCommodity (obj) {
     var that = this;
+    var query = {}
+    if (obj && obj.id){
+      query.id = obj.id
+    }
     until.request({
       action: 'app.commodity.getCommodity',
-      data: {}
+      data: query
     }).then(function (e) {
-      that.setData({ commodity_img: e.data.data.imgUrl, commodity_id: e.data.data.id, commodity_body: e.data.data.name, commodity_price: e.data.data.price})
+      that.setCommodity(e.data.data)
     })
   },
   commodityPay () {
     var that = this;
-    wx.navigateTo({
-      url: '/pages/paySuccess/index?id=' + that.data.commodity_id
-    })
-    return false;
+    // app.globalData.shareData = {
+    //   imageUrl: that.data.commodity_img
+    // }
+    // wx.navigateTo({
+    //   url: '/pages/paySuccess/index?id=' + that.data.commodity_id + '&title=' + this.data.commodity_body
+    // })
+    // return false;
      if (!wx.getStorageSync('address')) {
        wx.showToast({
          title: '请添加地址',
@@ -248,10 +259,14 @@ Page({
        body: that.data.commodity_body,
        fee: that.data.commodity_price,
        commodityId: that.data.commodity_id,
-       address: wx.getStorageSync('address')
+       address: wx.getStorageSync('address'),
+       type: 'commodity'
      }).then((res)=>{
+       app.globalData.shareData = {
+         imageUrl: that.data.commodity_img
+       }
        wx.navigateTo({
-         url: '/pages/paySuccess/index?id='+that.data.commodity_id
+         url: '/pages/paySuccess/index?id='+that.data.commodity_id+'&title='+this.data.commodity_body
        })
        console.log(res, 'pay test')
      }).catch((res) => {
@@ -264,6 +279,14 @@ Page({
   moreCommodity (){
     wx.navigateTo({
       url: '/pages/commodityList/index'
+    })
+  },
+  setCommodity(data){
+    this.setData({ commodity_img: data.imgUrl, commodity_id: data.id, commodity_body: data.name, commodity_price: data.price })
+  },
+  toOrder () {
+    wx.navigateTo({
+      url: '/pages/order/index'
     })
   }
 })

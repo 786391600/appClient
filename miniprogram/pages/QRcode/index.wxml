@@ -1,0 +1,11 @@
+<view id='QRcode'>
+  <view>
+    <view class='address'>出示二维码领取</view>
+    <view class='QRcode-image'>
+      <image src='{{qrUrl}}'></image>
+    </view>
+    <view class='address1'>兑换地址</view>
+    <view class='address'>{{address}}</view>
+    <view class='Technical-support'>吕梁惠乐购技术支持</view>
+  </view>
+</view>

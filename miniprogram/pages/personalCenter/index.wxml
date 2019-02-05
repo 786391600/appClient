@@ -1,0 +1,53 @@
+<userAuth class='userAuth' wx:if="{{userAuth}}" bind:setInfoSuccess='setInfoSuccess'></userAuth>
+<nav title='个人中心'></nav>
+<view class='nav' style='height:{{navHeight}}px'>
+
+</view>
+<view class='centerBox' style='height:{{winHeight - navHeight}}px;overflow:hidden;'>
+  <view class='userInfo'>
+    <view class='userInfo-box'>
+      <image src='{{userInfo.avatarUrl}}'></image>
+      <text>{{userInfo.nickName}}</text>
+    </view>  
+  </view>
+  <view class='userInfo-list'>
+      <view class='activity-box'>
+        <view class='card-title'>
+          兑换券
+        </view>
+        <view class='card-box'>
+          <view class='card' bindtap='toQRcode' wx:for='{{activityList}}' data-details='{{item}}'>
+            <view class='card-left'>
+              待领取
+            </view>
+            <view class='card-right'>
+              <view class='card-info'>
+                <text>{{item.activity.title}}</text>
+                <text>截止日期：{{item.activity.date}}</text>
+              </view>
+              <i class='iconfont duihuan'></i>
+            </view>
+          </view>
+          <view class='more-card'>
+            查看更多
+          </view>
+        </view>
+      </view>
+      <view class='center-more'>
+        <view class='center-more-box'>
+        <view class='center-more-btn'>
+          <i class='iconfont dhq'></i>
+          <text>兑换券</text>
+        </view>
+        <view class='center-more-btn'>
+          <i class='iconfont dingdan'></i>
+         <text>我的订单</text>
+        </view>
+        <view class='center-more-btn'>
+          <i class='iconfont phone'></i>
+          <text>联系我们</text> 
+        </view>
+      </view>
+      </view>
+  </view>
+</view>

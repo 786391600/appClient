@@ -1,22 +1,21 @@
-// pages/Testpage/Paysuccess/Paysuccess.js
-
-var app = getApp()
+// pages/Testpage/QRcode/index.js
+const app = getApp()
+const until = require('../../until/index.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    commodityId: ''
+    qrUrl: "",
+    address: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    this.data.commodityId = options.id;
-    this.data.title = options.title;
+    this.getQrImage(options)
   },
 
   /**
@@ -65,12 +64,28 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-   var that = this;
-   console.log(app.globalData)
-    return {
-      title: that.data.title,
-      imageUrl: app.globalData.shareData.imageUrl,
-      path: "/pages/commodity/index?clickId="+that.data.commodityId
+
+  },
+  getQrImage: function(options){
+    var partakeId = '';
+    var address = '';
+    if (options && options.partakeId){
+      partakeId = options.partakeId
+      address = options.address
+    } else {
+      return false;
     }
+    var that = this;
+    let query = {
+      action: 'until',
+      data: {
+        name: 'getQrImage',
+        str: partakeId
+      }
+    }
+    until.getQrImage(query).then((e)=>{
+      console.log(e)
+      that.setData({qrUrl: e.data, address: address})
+    })
   }
 })

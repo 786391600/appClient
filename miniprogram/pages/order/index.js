@@ -1,22 +1,22 @@
-// pages/Testpage/Paysuccess/Paysuccess.js
-
-var app = getApp()
+// pages/Testpage/OrderNumber/OrderNumber.js
+const app = getApp()
+const until = require('../../until/index.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    commodityId: ''
+    navHeight: '0',
+    orderList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    this.data.commodityId = options.id;
-    this.data.title = options.title;
+    this.setData({ navHeight: app.globalData.navHeight })
+    this.getOrderList()
   },
 
   /**
@@ -65,12 +65,24 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-   var that = this;
-   console.log(app.globalData)
-    return {
-      title: that.data.title,
-      imageUrl: app.globalData.shareData.imageUrl,
-      path: "/pages/commodity/index?clickId="+that.data.commodityId
-    }
+
+  },
+  getOrderList: function() {
+    var limit = 10;
+    var skip = 0;
+    var that = this;
+    until.request({
+      action: 'app.commodity.getOrderList',
+      data: {
+        limit: limit,
+        skip: skip
+      }
+    }).then(function (e) {
+      if(e.data.success){
+        console.log(e.data.data)
+        var orderList = that.data.orderList.concat(e.data.data)
+        that.setData({ orderList: orderList})
+      }
+    })
   }
 })

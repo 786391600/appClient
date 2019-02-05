@@ -1,0 +1,57 @@
+<!--pages/Testpage/HomePage/index.wxml-->
+<!-- <view id='search'></view> -->
+<nav title='吕梁惠乐购' isBack='{{false}}'></nav>
+<view id='header' style='top:{{navHeight}}px'>
+  <view class="hewder-name {{active==1?'active':''}}" data-active='1' bindtap='changestate'>活动</view>
+  <view class="hewder-name {{active==2?'active':''}}" data-active='2' bindtap='changestate'>商品</view>
+</view>
+<view wx:if="{{active==1}}" class='context' style='margin-top:{{navHeight+10}}px'>
+  <view class='banner-time'>{{newDate}}</view>
+  <view class='Underline'></view>
+  <view class='context-banner'>
+    <view class='Recommend'>推荐福利</view>
+    <view class='banner-title'>
+      <view>{{activityList[0].title}}</view>
+      <view class='date'>截至日期：{{activityList[0].date}}</view>
+    </view>
+    <view class='banner-image' bindtap='getActivityInfo' data-details = '{{activityList[0]}}' style='background-image:url({{activityList[0].imgUrl}});'>
+      <!-- <image src='{{activityList[0].imgUrl}}'></image> -->
+    </view>
+    <view class='tip'>
+       {{activityList[0].merchants.name}}
+    </view>
+  </view>
+  <view class='activity' wx:for='{{activityList}}' bindtap='getActivityInfo' data-details='{{item}}' wx-if='{{index > 0}}'>
+    <view class='activity-image' style='background-image:url({{item.imgUrl}});'></view>
+    <view class='activity-title'>
+      <view>{{item.title}}</view>
+      <view class='date'>截至日期：{{item.date}}</view>
+    </view>
+     <view class='tip'>
+       {{item.merchants.name}}
+     </view>
+  </view>
+</view>
+<view wx:if="{{active==2}}">
+  <view id='commodity'>
+    <view class='commodity-Recommend'>
+      <view class='Recommend-image'>
+        <image src='{{commodityList[0].imgUrl}}'></image>
+      </view>
+      <view class='Recommend-Price'>￥{{commodityList[0].price}} 包邮</view>
+      <view class='Recommend-title'>{{commodityList[0].name}}</view>
+      <view class='Recommend-button'  bindtap='getCommodityInfo' data-details='{{commodityList[0]}}'>抢购</view>
+    </view>
+    <view class='Singlecommodity'>
+      <view class='Singlecommodity-con' wx:for='{{commodityList}}' wx-if='{{index > 0}}' data-details='{{item}}'>
+        <view class='Singlecommodity-image'><image src='{{item.imgUrl}}'></image></view>
+        <view class='Singlecommodity-title'>{{item.name}}</view>
+        <view class='Singlecommodity-Price'>￥{{item.price}} 包邮</view>
+        <view class='Singlecommodity-button' bindtap='getCommodityInfo' data-details='{{item}}'>抢购</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='loding-tip'>
+  {{lodingTip}}
+</view>

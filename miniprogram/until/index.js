@@ -68,13 +68,21 @@ exports.request = function(data){
                 data: data,
                 method: 'POST',
                 success:function(e){
-                  resolve(e)
+                  if (!e.data.success&&e.data.err){
+                    exports.showToast('服务异常', 'error')
+                  } else {
+                    resolve(e)
+                  }
                 }
               })
             })
           }else{
             console.log(e)
-            resolve(e)
+            if (!e.data.success && e.data.err) {
+              exports.showToast('服务异常', 'error')
+            } else {
+              resolve(e)
+            }
           }
         },
         fail: function (e) {
@@ -122,4 +130,81 @@ exports.pay = function(obj){
      })
    })
  }) 
+}
+exports.confirmUser = function(obj){
+  return new Promise((resolve, reject) =>{
+    exports.request({
+      action: 'app.user.confirmUser',
+      data: obj
+    }).then(function (e) {
+      resolve(e)
+    })
+  })
+}
+exports.getUserInfo = function(query){
+  var query = query || {}
+  exports.request({
+    action: 'app.user.getUserInfo',
+    data: query
+  }).then(function (e) {
+    console.log(e)
+  })
+}
+
+exports.setUserInfo = function (obj) {
+  return new Promise((resolve, reject) => {
+    exports.request({
+      action: 'app.user.setUserInfo',
+      data: obj
+    }).then(function (e) {
+      resolve(e)
+    })
+  })
+}
+
+exports.getUserAuth = function() {
+  return new Promise((resolve, reject)=>{
+    wx.getSetting({
+      success(res) {
+        if (res.authSetting['scope.userInfo']) {
+          // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          wx.getUserInfo({
+            success (res) {
+              exports.confirmUser({ userInfo: res.userInfo }).then(function (e) {
+                wx.setStorageSync('userInfo', e.data.data)
+                resolve({ auth: true, userInfo: res })
+              })
+            }
+          })
+        } else {
+           resolve({auth: false})
+        }
+      }
+    })
+  })
+}
+exports.getQrImage = function (data){
+  return new Promise((resolve, reject)=>{
+    wx.request({
+      url: config.serverUrl,
+      data: data,
+      method: 'POST',
+      success: function (e) {
+       resolve(e) 
+      },
+      fail: function (e) {
+        reject(e)
+      }
+    })
+  })
+}
+
+exports.showToast = function(title, type){
+  var image = type ? '/style/image/' + type + '.png':'';
+  console.log(image)
+  wx.showToast({
+    title: title,
+    image: image,
+    duration: 2000
+  })
 }

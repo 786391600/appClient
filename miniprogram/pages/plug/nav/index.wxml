@@ -1,5 +1,5 @@
 <view>
-  <view class='nav bg-white' style='height:{{navH}}px'>
+  <view class='nav bg-white' style='height:{{navH}}px' >
     <view class='nav-title'>
       {{title}}
       <view bindtap='navBack' hover-class='nav-back-hover' class='nav-back' wx-if='{{isBack}}'><i class='iconfont fanhui'></i></view> 

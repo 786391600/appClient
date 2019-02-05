@@ -1,0 +1,14 @@
+<view class='userAuth' style='height:{{windowHeight}}px'>
+  <view class='userAuth-tip'>
+    <text>
+     欢迎你来到
+    我们的小程序 
+    </text>
+    <button
+    open-type="getUserInfo"
+    bindgetuserinfo="bindGetUserInfo"
+  >
+      微信授权
+    </button>
+  </view>
+</view>

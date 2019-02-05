@@ -1,0 +1,19 @@
+<nav title='返回' isBack='{{true}}'></nav>
+<view id='OderNumber-box' style='padding-top:{{navHeight}}px'>
+  <view class='OderNumber-box' wx:for='{{orderList}}'>
+    <view class='OderNumber-top'>
+      <view class='OderNumber-left'>订单编号 {{item.out_trade_no}}</view>
+      <view class='OderNumber-right active' wx:if="{{item.payState}}">支付成功</view>
+      <view class='OderNumber-right' wx:else>支付失败</view>
+    </view>
+    <view class='OderNumber-bottom'>
+      <view class='oderBottom-left'>
+        <image class='oderLeft-image' src='{{item.list_doc[0].imgUrl}}'></image>
+      </view>
+      <view class='oderBottom-right'>
+        <view class='oderBottom-name'>{{item.body}}</view>
+        <view class='oderBottom-content'>{{item.body}}</view>
+      </view>
+    </view>
+  </view>
+</view>
