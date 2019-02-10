@@ -146,3 +146,4 @@
   <button open-type="share">邀请微信好友</button>
   <button bindtap='getShareImg'>生成分享图</button>
 </view>
+<view class='HomePage' bindtap='GoHome'>更多福利</view>
