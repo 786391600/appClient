@@ -346,5 +346,11 @@ Page({
     }).catch((res) => {
       console.log(res, 'pay faile')
     })
+  },
+  GoHome:function () {
+    var that = this;
+    wx.switchTab({
+      url: '/pages/home/index'
+    })
   }
 })
