@@ -12,10 +12,9 @@
 #ActivityOne {
   margin-bottom: 130rpx;
 }
-#ActivityTow{
-margin-bottom: 130rpx;
+#ActivityTow {
+  margin-bottom: 130rpx;
 }
-
 .button {
   width: 540rpx;
   height: 92rpx;
@@ -342,7 +341,7 @@ margin-bottom: 130rpx;
   overflow: hidden;
 }
 
-.iconH{
+.iconH {
   margin-top: 10rpx;
 }
 
