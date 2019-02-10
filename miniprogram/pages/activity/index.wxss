@@ -7,7 +7,9 @@
   background-repeat: no-repeat;
   background-position: center;
 }
-
+#ActivityOne{
+  margin-bottom: 130rpx;
+}
 .button{
   width: 540rpx;
   height: 92rpx;
@@ -269,3 +271,16 @@
   bottom:-8rpx;
 }
 
+.share{
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 20rpx;
+  width: 100%;
+}
+.share button{
+  border-radius: 50rpx;
+  background: linear-gradient(to right, #ff5d4f , #ff2022);
+  color: #ffffff;
+  width: 40%;
+}
