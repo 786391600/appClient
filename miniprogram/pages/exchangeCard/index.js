@@ -7,12 +7,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active: 0,
     winHeight: "",//窗口高度,
     navHeight: 0,
     activityList: [],
-    userInfo: {},
-    authShow: false
+    authShow: false,
+    page: 1
   },
 
   /**
@@ -21,9 +20,6 @@ Page({
   onLoad: function(options) {
     var that = this;
     that.setData({ navHeight: app.globalData.navHeight, winHeight: app.globalData.windowHeight}) 
-    that.getExchangeCard().then((list)=>{
-      that.setData({activityList:list})
-    })
   },
 
   /**
@@ -37,19 +33,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    var that = this;
-    if (!that.data.authShow) {
-      until.getUserAuth().then((e) => {
-        if (!e.auth) {
-          that.setData({ userAuth: true })
-          return
-        } else {
-          var userInfo = wx.getStorageSync('userInfo');
-          that.data.authShow = true;
-          that.setData({ userInfo: userInfo })
-        }
-      })
-    }
+    this.onPullDownRefresh()
   },
 
   /**
@@ -65,19 +49,20 @@ Page({
   onUnload: function() {
 
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
   /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    var that = this;
+    this.data.page++;
+    that.getExchangeCard().then((list) => {
+      if (list.length > 0){
+        var list = that.data.activityList.concat(list);
+        that.setData({activityList: list})  
+      } else {
+        that.data.page--;
+      }
+    })
   },
 
   /**
@@ -111,7 +96,6 @@ Page({
     //this.loadProduct2();//重新加载产品信息
     wx.hideNavigationBarLoading(); //隐藏导航条加载动画。
     wx.stopPullDownRefresh(); //停止当前页面下拉刷新。
-    console.log("关闭");
     wx.setNavigationBarTitle({
       title: ''
     }) //动态设置当前页面的标题。
@@ -134,8 +118,9 @@ Page({
   },
   getExchangeCard: function (query) {
     var query = query || {};
+    query.limit = 10;
+    query.skip = (this.data.page -1)*query.limit;
     return new Promise((resolve, reject) => {
-      console.log(query)
       until.request({
         action: 'app.personalCenter.getExchangeCard',
         data: query
@@ -156,6 +141,7 @@ Page({
   onPullDownRefresh: function () {
     var that = this;
     wx.showNavigationBarLoading(); //在当前页面显示导航条加载动画。
+    that.data.page = 1;
     that.getExchangeCard().then((list) => {
       that.setData({ activityList: list })
       wx.stopPullDownRefresh()
@@ -163,15 +149,5 @@ Page({
   },
   setInfoSuccess(e) {
     this.setData({ userAuth: false, userInfo: e.detail})
-  },
-  getMoreCard(){
-    wx.navigateTo({
-      url: "/pages/exchangeCard/index"
-    })
-  },
-  toOrder() {
-    wx.navigateTo({
-      url: '/pages/order/index'
-    })
   }
 })

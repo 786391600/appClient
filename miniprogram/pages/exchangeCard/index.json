@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "nav": "../plug/nav/index",
+    "userAuth": "../plug/userAuth/index"
+  },
+  "enablePullDownRefresh": true,
+  "backgroundColor": "#f3f3f3"
+}

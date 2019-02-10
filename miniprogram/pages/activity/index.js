@@ -247,7 +247,9 @@ Page({
       var newNum = that.data.userLikeInfo.userLikeList.unshift(myInfo)
       that.data.userLikeInfo.userLikeNum = newNum;
       until.showToast('助力成功！');
-      that.setData({userLikeInfo:that.data.userLikeInfo})
+      var state = that.data.activityState;
+      state.QRState = 4;
+      that.setData({ userLikeInfo: that.data.userLikeInfo, activityState: state})
     })
   },
   getMyException () {

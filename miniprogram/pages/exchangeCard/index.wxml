@@ -1,0 +1,23 @@
+<nav title='兑换券' isBack='{{true}}'></nav>
+<view class='nav' style='height:{{navHeight}}px'>
+
+</view>
+<view class='activity-box'>
+  <view class='card-title'>
+    兑换券
+  </view>
+  <view class='card-box'>
+    <view class='card' bindtap='toQRcode' wx:for='{{activityList}}' data-details='{{item}}'>
+      <view class='card-left'>
+        待领取
+      </view>
+      <view class='card-right'>
+        <view class='card-info'>
+          <text>{{item.activity.title}}</text>
+          <text>截止日期：{{item.activity.date}}</text>
+        </view>
+        <i class='iconfont duihuan'></i>
+      </view>
+    </view>
+  </view>
+</view>
