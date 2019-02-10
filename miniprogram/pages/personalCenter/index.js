@@ -173,5 +173,11 @@ Page({
     wx.navigateTo({
       url: '/pages/order/index'
     })
+  },
+  GoHome: function () {
+    var that = this;
+    wx.switchTab({
+      url: '/pages/home/index'
+    })
   }
 })

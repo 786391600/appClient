@@ -81,5 +81,13 @@ page{
   width: 100%;
 }
 .More{
- text-align: center; 
+ text-align: center;
+ padding: 100rpx 0;
+}
+.More view{
+  color: #D9D9D9;
+}
+.More i{
+  font-size: 100rpx;
+  color: #D9D9D9;
 }

@@ -149,5 +149,11 @@ Page({
   },
   setInfoSuccess(e) {
     this.setData({ userAuth: false, userInfo: e.detail})
+  },
+  GoHome: function () {
+    var that = this;
+    wx.switchTab({
+      url: '/pages/home/index'
+    })
   }
 })
