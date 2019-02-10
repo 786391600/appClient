@@ -234,6 +234,10 @@ page{
   padding: 30rpx 0 30rpx;
   width: 100%;
 }
+.more-card{
+  text-align: center;
+  text-decoration: underline;
+}
 .userInfo{
   height: 25%;
   padding: 0 16rpx 0;

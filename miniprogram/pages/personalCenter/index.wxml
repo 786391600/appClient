@@ -28,18 +28,18 @@
               <i class='iconfont duihuan'></i>
             </view>
           </view>
-          <view class='more-card'>
+          <view class='more-card' bindtap='getMoreCard'>
             查看更多
           </view>
         </view>
       </view>
       <view class='center-more'>
         <view class='center-more-box'>
-        <view class='center-more-btn'>
+        <view class='center-more-btn' bindtap='getMoreCard'>
           <i class='iconfont dhq'></i>
           <text>兑换券</text>
         </view>
-        <view class='center-more-btn'>
+        <view class='center-more-btn' bindtap='toOrder'>
           <i class='iconfont dingdan'></i>
          <text>我的订单</text>
         </view>
