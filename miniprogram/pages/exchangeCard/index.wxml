@@ -6,7 +6,7 @@
   <view class='card-title'>
     兑换券
   </view>
-  <view class='card-box'>
+  <view class='card-box' wx:if="{{activityList.length==0}}">
     <view class='card' bindtap='toQRcode' wx:for='{{activityList}}' data-details='{{item}}'>
       <view class='card-left'>
         待领取
@@ -20,4 +20,5 @@
       </view>
     </view>
   </view>
+  <view class='More' wx:else>领取更多兑换券</view>
 </view>

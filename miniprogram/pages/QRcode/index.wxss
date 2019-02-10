@@ -22,7 +22,6 @@
 .QRcode-image image{
   width: 350rpx;
   height: 350rpx;
-  background: #666
 }
 .address1{
   font-size:35rpx;

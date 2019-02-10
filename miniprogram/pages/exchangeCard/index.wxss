@@ -80,4 +80,6 @@ page{
   padding: 30rpx 0 30rpx;
   width: 100%;
 }
-
+.More{
+ text-align: center; 
+}
