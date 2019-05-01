@@ -1,6 +1,7 @@
 {
   "cloud": true,
   "pages": [
+    "pages/ticket/index",
     "pages/home/index",
     "pages/getShareImg/index",
     "pages/activity/index",
@@ -18,10 +19,10 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "吕梁惠乐购",
     "navigationBarTextStyle": "black",
-    "navigationStyle": "custom"
+    "?navigationStyle": "custom"
   },
   "tabBar": {
-    "selectedColor": "#D5554C",
+    "selectedColor": "#06B0EE",
     "color": "#666",
     "borderStyle": "black",
     "backgroundColor": "#fff",
@@ -32,6 +33,12 @@
         "iconPath": "images/icon/home.png",
         "selectedIconPath": "images/icon/home1.png"
 
+      },
+      {
+        "pagePath": "pages/ticket/index",
+        "text": "预定",
+        "iconPath": "images/ticket/ticket.png",
+        "selectedIconPath": "images/ticket/ticket-select.png"
       },
       {
         "pagePath": "pages/personalCenter/index",

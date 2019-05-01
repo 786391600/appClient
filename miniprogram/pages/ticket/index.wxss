@@ -1,0 +1,61 @@
+@import '../../style/ticket/iconfont.wxss';
+page{
+  background-color: #EFF2F7;
+  padding: 10rpx;
+  box-sizing: border-box;
+}
+.ticket-box {
+  background: white;
+  padding: 19rpx;
+  box-sizing: border-box;
+  border-radius: 10rpx;
+}
+.ticket-top {
+  display: flex;
+  flex-direction: row;
+}
+.ticket-top-left-input {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1rpx dashed #EFEFEF;
+  align-items: center;
+}
+.ticket-top-left-input i {
+  font-size: 50rpx;
+}
+.ticket-top-left-input .ticket1 {
+  color: #FCDC6D;
+}
+.ticket-top-left-input .ticket2 {
+  color: #80D3F3;
+}
+.ticket-top-left-input view{
+  padding: 30rpx;
+  box-sizing: border-box;
+  color: #33383E;
+  font-weight: bold;
+}
+.ticket-top-left {
+  width: 72%;
+}
+.ticket-top-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28%;
+}
+.ticket-btn {
+  margin-top: 19rpx;
+}
+.ticket-btn button {
+  background: #FED349;
+  color: #825119;
+}
+.ticket-top-right .trans-btn {
+  transform: rotate(90deg);
+  border: 3rpx solid #EBEBEB;
+  background-color: #F5F5F5;
+  border-radius: 50%;
+  color: #B9B9B9;
+  padding: 20rpx;
+}
