@@ -6,12 +6,12 @@
     "pages/getShareImg/index",
     "pages/activity/index",
     "pages/QRcode/index",
-     "pages/commodity/index",
-     "pages/commodityList/index",
-     "pages/paySuccess/index",
-     "pages/order/index",
-     "pages/personalCenter/index",
-     "pages/exchangeCard/index"
+    "pages/commodity/index",
+    "pages/commodityList/index",
+    "pages/paySuccess/index",
+    "pages/order/index",
+    "pages/personalCenter/index",
+    "pages/exchangeCard/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -32,7 +32,6 @@
         "text": "首页",
         "iconPath": "images/icon/home.png",
         "selectedIconPath": "images/icon/home1.png"
-
       },
       {
         "pagePath": "pages/ticket/index",
@@ -47,5 +46,6 @@
         "selectedIconPath": "images/icon/my1.png"
       }
     ]
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }

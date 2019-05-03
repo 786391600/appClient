@@ -4,15 +4,15 @@
        <view class='ticket-top-left'>
           <view class='ticket-top-left-input'>
             <i class='iconfont ticket2'></i>
-            <view>太原理工</view>
+            <view>{{startAddress}}</view>
           </view>
           <view class='ticket-top-left-input'>
             <i class='iconfont ticket1'></i>
-            <view>乡宁</view>
+            <view>{{endAddress}}</view>
           </view>
        </view>
        <view class='ticket-top-right'>
-        <view class='trans-btn'>
+        <view class='trans-btn' bindtap='exchangeAddress'>
           <i class='iconfont ticket3'></i>
         </view>
        </view> 
