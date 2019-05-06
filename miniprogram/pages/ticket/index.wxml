@@ -22,3 +22,23 @@
      </view>
    </view>
 </view>
+<view class='HistoricalRecord' wx:if="{{HistoricalRecord.length>0}}">
+    <i class='del iconfont ticket5'></i>
+    <view class='Histori-title'>
+      <text class='HistoricalRecord-title'>历史记录</text>
+    </view>
+    <view class='Histori-content' wx:for="{{HistoricalRecord}}">
+      <view>{{item.star}}<i class='iconfont ticket4'></i>{{item.end}}</view>
+    </view>
+</view>
+<view class='HistoricalRecord'>
+  <view class='Histori-title'>
+      <text class='HistoricalRecord-title2'>推荐路线</text>
+  </view>
+  <view class='eg2-box'>
+    <view class='eg2'>
+      <view class='circle1'></view>
+      <view class='Recommend-content'>太原理工-乡宁(4月29 19：10)</view>
+    </view>
+  </view>
+</view>

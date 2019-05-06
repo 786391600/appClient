@@ -1,8 +1,8 @@
 {
   "cloud": true,
   "pages": [
-    "pages/calendar/index",
     "pages/ticket/index",
+    "pages/calendar/index",
     "pages/home/index",
     "pages/getShareImg/index",
     "pages/activity/index",

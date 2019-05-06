@@ -8,9 +8,9 @@ Page({
    */
   data: {
     startAddress: '',
-    endAddress: ''
+    endAddress: '',
+    HistoricalRecord: [{ star: '太原理工', end: '乡宁' }]
   },
-
   /**
    * 生命周期函数--监听页面加载
    */

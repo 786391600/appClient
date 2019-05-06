@@ -1,4 +1,7 @@
 @import '../../style/ticket/iconfont.wxss';
+.ticket4{
+  font-size: 40rpx;
+}
 page{
   background-color: #EFF2F7;
   padding: 10rpx;
@@ -59,3 +62,114 @@ page{
   color: #B9B9B9;
   padding: 20rpx;
 }
+.HistoricalRecord{
+  padding: 16rpx 30rpx;
+  background: #ffffff;
+  margin-top: 30rpx;
+  border-radius:10rpx;
+  position: relative;
+}
+.del{
+  position: absolute;
+  right: 15rpx;
+  top: 15rpx;
+  color: #c1bfcc;
+  font-size: 50rpx;
+}
+.Histori-title {
+  text-align: center;
+  height: 50rpx;
+  margin-top: 10rpx;
+}
+
+.HistoricalRecord-title {
+  display: table;
+  width: 100%;
+  line-height: 50rpx;
+  white-space: nowrap;
+  border-spacing: 2rem 0;
+  font-size: 35rpx;
+  color: #bad4f5
+}
+.HistoricalRecord-title::before, .HistoricalRecord-title::after {
+  display: table-cell;
+  content: "";
+  width: 50%;
+  background: linear-gradient(#bad4f5, #bad4f5) repeat-x center;
+  background-size: 0.1rem 0.1rem;
+}
+.HistoricalRecord-title2 {
+  display: table;
+  width: 100%;
+  line-height: 50rpx;
+  white-space: nowrap;
+  border-spacing: 2rem 0;
+  font-size: 35rpx;
+  color: #eddd86
+}
+.HistoricalRecord-title2::before, .HistoricalRecord-title2::after {
+  display: table-cell;
+  content: "";
+  width: 50%;
+  background: linear-gradient(#eddd86, #eddd86) repeat-x center;
+  background-size: 0.1rem 0.1rem;
+}
+.recommend-title {
+  display: table;
+  width: 100%;
+  line-height: 50rpx;
+  white-space: nowrap;
+  border-spacing: 2rem 0;
+  font-size: 35rpx;
+  color: #fde58d
+}
+.recommend-title::before, .recommend-title::after {
+  display: table-cell;
+  content: "";
+  width: 50%;
+  background: linear-gradient(#ffe991, #ffe991) repeat-x center;
+  background-size: 0.1rem 0.1rem;
+}
+.Histori-content{
+  padding-left:60rpx;
+  overflow: hidden;
+}
+.Histori-content view{
+  font-size: 30rpx;
+  margin-top: 10rpx;
+  width: 50%;
+  float: left;
+}
+.eg2-box{
+  width: 100%;
+  padding: 10rpx 5rpx 5rpx 5rpx;
+  background: #f8e183;
+  border-radius: 10rpx;
+}
+.eg2{
+  width: 100%;
+  height: 67rpx;
+  background: #fcf9ce;
+  position: relative;
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+}
+.circle1 {
+        position: absolute;
+        z-index: 5;
+        top: -6rpx;
+        left: 0;
+        transform-origin: center left;
+        transform: rotate(0deg);
+        width: 100%;
+        height: 9px;
+        background-image: radial-gradient(circle, #fcf9ce, #fcf9ce 4px, transparent 0px, transparent 2px, transparent 22px, transparent);
+        background-size: 10px 10px;
+        background-repeat: repeat-x;
+    }
+    .Recommend-content{
+      margin-left: 20rpx;
+      font-size: 28rpx;
+      line-height: 67rpx;
+      color: #8c3d2e;
+    }
