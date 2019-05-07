@@ -145,6 +145,8 @@ page{
   padding: 10rpx 5rpx 5rpx 5rpx;
   background: #f8e183;
   border-radius: 10rpx;
+  margin-bottom: 20rpx;
+  margin-top: 10rpx;
 }
 .eg2{
   width: 100%;
@@ -172,4 +174,12 @@ page{
       font-size: 28rpx;
       line-height: 67rpx;
       color: #8c3d2e;
+    }
+    .Recommend-monery{
+      position: absolute;
+      right: 15rpx;
+      top: 0;
+      line-height: 67rpx;
+      font-size: 28rpx;
+      color: #be0005;
     }

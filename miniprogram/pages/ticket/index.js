@@ -9,20 +9,22 @@ Page({
   data: {
     startAddress: '',
     endAddress: '',
-    HistoricalRecord: [{ star: '太原理工', end: '乡宁' }]
+    HistoricalRecord: [],
+    RecommendedRoute: [{ star: '太原理工', end: '乡宁', time: '四月29日 19：10', monery: '30' }, { star: '太原理工', end: '乡宁', time: '四月29日 19：10', monery: '30' }, { star: '太原理工', end: '乡宁', time: '四月29日 19：10', monery: '30' }, { star: '太原理工', end: '乡宁', time: '四月29日 19：10', monery: '30' }, { star: '太原理工', end: '乡宁', time: '四月29日 19：10', monery: '30' }, { star: '太原理工', end: '乡宁', time: '四月29日 19：10', monery: '30' }, { star: '太原理工', end: '乡宁', time: '四月29日 19：10', monery: '30' }]
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
     this.getTicketInfo()
+    this.getHistorical()
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-
+    
   },
 
   /**
@@ -95,5 +97,43 @@ Page({
     this.changetime();
     this.data.activityPage.page1 = 1;
     this.setActivityList({ page: 1, type: 'down' });
+  },
+  /** 
+  * 获取历史记录数据
+ */
+  getHistorical: function () {
+    const value = wx.getStorageSync('Historical')
+    if(value){
+      this.setData({
+        HistoricalRecord: value
+      })
+    }else{
+      wx.setStorageSync('Historical', [])
+    }
+  },
+  // 查询
+  serch:function() {
+    const value = wx.getStorageSync('Historical')
+    if (value.some(this.checkAdult)==false){
+      value.unshift({ star: this.data.startAddress, end: this.data.endAddress })
+      if (value.length > 4) {
+        value.pop()
+      }
+      wx.setStorageSync('Historical', value)
+      this.setData({
+        HistoricalRecord: value
+      })
+    }
+  },
+  //查重
+  checkAdult:function(data) {
+    return data.star === this.data.startAddress && data.end===this.data.endAddress
+  },
+  //删除历史记录
+  DelHistory:function() {
+    wx.setStorageSync('Historical', [])
+    this.setData({
+      HistoricalRecord: []
+    })
   }
 })
