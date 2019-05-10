@@ -28,7 +28,7 @@
       <text class='HistoricalRecord-title'>历史记录</text>
     </view>
     <view class='Histori-content'>
-      <view wx:for="{{HistoricalRecord}}">{{item.star}}<i class='iconfont ticket4'></i>{{item.end}}</view>
+      <view wx:for="{{HistoricalRecord}}" bindtap='HistoricalQuery' data-star="{{item.star}}" data-end="{{item.end}}">{{item.star}}<i class='iconfont ticket4'></i>{{item.end}}</view>
     </view>
 </view>
 <view class='HistoricalRecord'>

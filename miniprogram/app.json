@@ -1,6 +1,7 @@
 {
   "cloud": true,
   "pages": [
+    "pages/VehicleList/index",
     "pages/ticket/index",
     "pages/calendar/index",
     "pages/home/index",

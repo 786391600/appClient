@@ -1,0 +1,31 @@
+<!--miniprogram/pages/VehicleList/index.wxml-->
+<view id='PageTurning'>
+  <view>{{'<'}} 前一天</view>
+  <view>5月9号(今天)</view>
+  <view>后一天 {{'>'}}</view>
+</view>
+<view id='ListBackground'>
+  <view class='TitleAddress'>太原理工 - 乡宁</view>
+  <view class='ContentAddress' wx:for="{{RidingScheme}}">
+    <view class='ContentBox'>
+      <view class='BoxTitle'>
+        <view>{{item.LicensePlate}}</view>
+        <view>￥{{item.Price}}元</view>
+      </view>
+      <view class='BoxContent'>
+        <view class='context-box'>
+          <view class='cont-backg' wx:for="{{item.Route}}">
+            <view style="background:{{item.Throughout>0?'#ffdc73':'#03a9f4'}}">{{item.Throughout>0?'上':'下'}}</view>
+            <view>{{item.time}} {{item.content}}</view>
+            <view>{{item.Throughout>0?'始发':'终点'}}</view>
+          </view>
+        </view>
+        <view class='distance'>
+          <view>约{{item.distance}}公里</view>
+          <view>余票{{item.Surplus}}</view>
+        </view>
+      </view>
+      <view class='provider'>服务提供商：{{item.provider}}</view>
+    </view>
+  </view>
+</view>

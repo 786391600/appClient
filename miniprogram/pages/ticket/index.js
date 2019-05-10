@@ -124,6 +124,9 @@ Page({
         HistoricalRecord: value
       })
     }
+    wx.navigateTo({
+      url: '../calendar/index?star=' + this.data.startAddress + '&end=' + this.data.endAddress
+    })
   },
   //查重
   checkAdult:function(data) {
@@ -134,6 +137,13 @@ Page({
     wx.setStorageSync('Historical', [])
     this.setData({
       HistoricalRecord: []
+    })
+  },
+  //历史查询
+  HistoricalQuery:function (e){
+    console.log(e.currentTarget.dataset)
+    wx.navigateTo({
+      url: '../calendar/index?star=' + e.currentTarget.dataset.star + '&end=' + e.currentTarget.dataset.end
     })
   }
 })

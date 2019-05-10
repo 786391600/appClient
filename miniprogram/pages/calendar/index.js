@@ -5,12 +5,17 @@ Page({
     cruPDataList: [],
     weeklist: ['日', '一', '二', '三', '四', '五', '六'],
     itemIndex: 10,   //当前年份的数组下标    这个值和年份的前后一致的值相等，要注意就是年份访问时一当前年为切割点，前后年份范围的数值相等比较好计算，当然看需求而定啦。
+    MonthlyTicket:[1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1]
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var that = this;
+    that.setData({
+      star:options.star,
+      end:options.end
+    })
     var cur_year = new Date().getFullYear();
     var cur_month = new Date().getMonth();
     that.setData({
@@ -92,7 +97,7 @@ Page({
     this.setData({
       dataTime: year + "-" + tmonth + "-01"
     });
-    wx.setNavigationBarTitle({ title: year + "年" + tmonth + "月" })
+    wx.setNavigationBarTitle({ title: this.data.star+'-'+this.data.end+' '+year + "年" + tmonth + "月" })
   },
 
   //选择月
@@ -158,5 +163,10 @@ Page({
         itemIndex: idx
       });
     }
+  },
+  //选择日期
+  SelectionDate:function (e){
+    console.log(this.data.star,this.data.end)
+    console.log(this.data.cur_year, this.data.cur_month + 1, e.currentTarget.dataset.time)
   }
 })

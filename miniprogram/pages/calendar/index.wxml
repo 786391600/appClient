@@ -29,8 +29,9 @@
                         <text>{{item}}</text>
                   </view>
                   <block  wx:for="{{currentMonthDaysList}}">
-                        <view class="day">
+                        <view class="day" data-time="{{item}}" bindtap="SelectionDate">
                               <text>{{item}}</text>
+                              <view style="background:{{MonthlyTicket[index]>0?'#03a9f4':'#aaaaaa'}}">{{MonthlyTicket[index]>0?"票":"无"}}</view>
                         </view>
                   </block>
                   <view class="day nm" wx:for="{{nextMonthDaysList}}" data-handle="next" bindtap="handleMonth">
