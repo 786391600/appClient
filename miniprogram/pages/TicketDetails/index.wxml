@@ -1,0 +1,17 @@
+<view id='background'>
+  <view class='Ticket'>
+    <i class='iconfont bashi'></i>
+    <view class='kilometre'>约90公里</view>
+    <view class='kilometre1'>余票充足</view>
+    <view class='Price'>30元</view>
+  </view>
+  <view class='Operator'>
+    <text class='OperatorIcon'>商</text>
+    <view class='OperatorTitle'>旗舰线路</view>
+    <view class='OperatorIphone'><text>020-22512141</text><i class='iconfont dianhua'></i></view>
+  </view>
+  <view class='Notice'><text class='OperatorIcon1'>?</text><view class='NoticeContent'>购票须知</view></view>
+  <view id="bottom">
+    <view class='PurchaseButton'>35元购买</view>
+  </view>
+</view>
