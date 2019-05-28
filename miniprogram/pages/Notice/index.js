@@ -1,22 +1,11 @@
-// miniprogram/pages/VehicleList/index.js
+// miniprogram/pages/Notice/index.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    RidingScheme: [
-      { LicensePlate: 'GS1740', Price: 30, Route: [
-        { Throughout: 1, time: '17:40', content: '小北地铁站B出口' },
-        { Throughout: 0, time: '17:50', content: '小北地铁站A出口' },
-      ], distance: 90, Surplus: '充足', provider: '意点科技'
-      }, {
-        LicensePlate: 'GS1740', Price: 30, Route: [
-          { Throughout: 1, time: '17:40', content: '小北地铁站B出口' },
-          { Throughout: 0, time: '17:50', content: '小北地铁站A出口' },
-        ], distance: 90, Surplus: '充足', provider: '意点科技'
-      }
-      ]
+
   },
 
   /**
@@ -73,11 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  // 跳转车次详情
-  goTicketDetails:function () {
-    wx.navigateTo({
-      url: '../TicketDetails/index'
-    })
   }
 })

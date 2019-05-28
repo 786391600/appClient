@@ -62,5 +62,22 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  // 跳转订单支付页面
+  goOrderPayment:function (){
+    wx.navigateTo({
+      url: '../OrderPayment/index'
+    })
+  },
+  // 跳转购票须知页面
+  goNotice: function () {
+    wx.navigateTo({
+      url: '../Notice/index'
+    })
+  },
+  CallPhone:function (e){
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.dataset.phone
+    })
   }
 })

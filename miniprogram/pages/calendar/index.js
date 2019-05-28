@@ -168,5 +168,8 @@ Page({
   SelectionDate:function (e){
     console.log(this.data.star,this.data.end)
     console.log(this.data.cur_year, this.data.cur_month + 1, e.currentTarget.dataset.time)
+    wx.navigateTo({
+      url: '../VehicleList/index'
+    })
   }
 })

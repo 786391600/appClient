@@ -6,7 +6,7 @@
 </view>
 <view id='ListBackground'>
   <view class='TitleAddress'>太原理工 - 乡宁</view>
-  <view class='ContentAddress' wx:for="{{RidingScheme}}">
+  <view class='ContentAddress' wx:for="{{RidingScheme}}" bindtap='goTicketDetails'>
     <view class='ContentBox'>
       <view class='BoxTitle'>
         <view>{{item.LicensePlate}}</view>

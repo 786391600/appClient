@@ -1,9 +1,8 @@
 {
   "cloud": true,
   "pages": [
-    "pages/TicketDetails/index",
-    "pages/VehicleList/index",
     "pages/ticket/index",
+    "pages/TicketDetails/index",
     "pages/calendar/index",
     "pages/home/index",
     "pages/getShareImg/index",
@@ -14,7 +13,11 @@
     "pages/paySuccess/index",
     "pages/order/index",
     "pages/personalCenter/index",
-    "pages/exchangeCard/index"
+    "pages/exchangeCard/index",
+    "pages/OrderPayment/index",
+    "pages/OrderList/index",
+    "pages/VehicleList/index",
+    "pages/Notice/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -47,6 +50,12 @@
         "text": "我的",
         "iconPath": "images/icon/my.png",
         "selectedIconPath": "images/icon/my1.png"
+      },
+      {
+        "pagePath": "pages/OrderList/index",
+        "text": "乘车订单",
+        "iconPath": "images/ticket/ticket.png",
+        "selectedIconPath": "images/ticket/ticket-select.png"
       }
     ]
   },

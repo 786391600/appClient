@@ -1,0 +1,13 @@
+<view id='ListBackground'>
+  <view class="TicketBackground">
+    <view class='TrainNumber'>GS1707</view>
+    <view class="distance">
+      <view>太原理工</view>
+      <i class='iconfont ticket4'></i>
+      <view>乡宁</view>
+    </view>
+    <view class="DepartureTime"><view>发车时间:</view><view>2019年5月27日 15：55</view></view>
+    <view class='place'><view>发车地点:</view><view>太原理工太原理工太原理工太原理工太原理工</view></view>
+    <view class='provider'><view><view>服务提供商:</view><view>旗舰路线旗舰路线旗舰路线旗舰路线</view></view><view class='Toticket' bindtap='GoPopup'>退票</view></view>
+  </view>
+</view>
