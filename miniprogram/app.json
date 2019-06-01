@@ -1,6 +1,7 @@
 {
   "cloud": true,
   "pages": [
+    "pages/OrderPayment/index",
     "pages/ticket/index",
     "pages/TicketDetails/index",
     "pages/calendar/index",
@@ -14,7 +15,6 @@
     "pages/order/index",
     "pages/personalCenter/index",
     "pages/exchangeCard/index",
-    "pages/OrderPayment/index",
     "pages/OrderList/index",
     "pages/VehicleList/index",
     "pages/Notice/index"
