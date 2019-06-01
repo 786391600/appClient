@@ -1,1 +1,99 @@
 /* miniprogram/pages/OrderPayment/index.wxss */
+@import '../../style/ticket/iconfont.wxss';
+page{
+  background: #eeeeee;
+}
+.icon{
+  text-align: center;
+}
+.ticket4{
+  font-size: 80rpx;
+  color: #ffcc3c;
+  line-height: 100%;
+}
+#time{
+  display: flex;
+  justify-content: space-between;
+  padding: 28rpx 20rpx;
+}
+#time view:nth-child(1){
+  color: #76777c;
+  font-size: 30rpx;
+}
+#time view:nth-child(2){
+  color: #f4511e;
+  font-size: 30rpx;
+}
+#Start{
+  background: #ffffff;
+  padding: 24rpx 20rpx;
+}
+.Start{
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+}
+.end{
+    width: 35%;
+    text-align: center;
+}
+#Title{
+  padding: 22rpx;
+  color: #77787d;
+  font-size: 30rpx;
+}
+.AddTo{
+  text-align: center;
+  padding: 32rpx 0;
+  background:#ffffff;
+  font-size: 28rpx;
+  color: #00aaf5;
+}
+.Contacts{
+  display: flex;
+  justify-content: space-between;
+  padding: 22rpx 32rpx;
+  background: #ffffff;
+  border-bottom: 1rpx solid #ededed;
+  font-size: 30rpx;
+}
+.PhoneNumber{
+  display: flex;
+  justify-content: space-between;
+  padding: 22rpx 32rpx;
+  background: #ffffff;
+  font-size: 30rpx;
+}
+.Submission{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 94rpx;
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Submission button{
+  width: 248rpx;
+  padding: 0;
+  margin: 0;
+  border-radius:0rpx;
+  background: #ffcd40;
+  color: #6f3e08;
+}
+.payment{
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+}
+.payment view:nth-child(1){
+  margin-left: 20rpx;
+  color: #6f7076;
+  font-size: 30rpx;
+}
+.payment view:nth-child(2){
+  margin-left: 20rpx;
+  color: #f44f1c;
+  font-size: 30rpx;
+}
