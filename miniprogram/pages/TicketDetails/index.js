@@ -1,4 +1,5 @@
 // miniprogram/pages/TicketDetails/index.js
+const until = require('../../until/index.js')
 Page({
 
   /**
@@ -78,6 +79,31 @@ Page({
   CallPhone:function (e){
     wx.makePhoneCall({
       phoneNumber: e.currentTarget.dataset.phone
+    })
+  },
+  payTest: function(){
+    until.pay({
+      body: '购买车票',
+      fee: 0.2,
+      type: 'test'
+    }).then((res) => {
+      console.log(res)
+    }).catch((res) => {
+      console.log(res, 'pay faile')
+    })
+  },
+  refund: function(){
+    until.request({
+      action: 'app.until.refund',
+      data: { "out_trade_no": "20190526233859385"}
+    }).then(function (e) {
+      if (e.data.success) {
+       console.log(e)
+       console.log('uuuuuuuuuu')
+      } else {
+        console.log(e)
+        until.showToast(e.data.message, 'error');
+      }
     })
   }
 })

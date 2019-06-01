@@ -11,8 +11,8 @@
     <view class='OperatorIphone'><text bindtap='CallPhone' data-phone='020-22512141'>020-22512141</text><i class='iconfont dianhua'></i></view>
   </view>
   <view class='Notice' bindtap='goNotice'><text class='OperatorIcon1'>?</text><view class='NoticeContent'>购票须知</view></view>
-  
   <view id="bottom">
     <view class='PurchaseButton' bindtap='goOrderPayment'>35元购买</view>
+    <view class='PurchaseButton' bindtap='refund'>退票</view>
   </view>
 </view>

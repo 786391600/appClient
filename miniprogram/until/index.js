@@ -112,9 +112,11 @@ exports.loginRequest = function (data) {
 exports.pay = function(obj){
  return new Promise((resolve,reject)=>{
    exports.request({
-     action: 'app.until.pay',
+     action: 'app.until.bookingPay',
      data: obj
    }).then(function (e) {
+     console.log(e)
+     console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
      wx.requestPayment({
        timeStamp: e.data.data.timeStamp,
        nonceStr: e.data.data.nonceStr,

@@ -1,10 +1,10 @@
 {
   "cloud": true,
   "pages": [
-    "pages/ticket/index",
-    "pages/TicketDetails/index",
-    "pages/calendar/index",
     "pages/home/index",
+    "pages/TicketDetails/index",
+    "pages/ticket/index",
+    "pages/calendar/index",
     "pages/getShareImg/index",
     "pages/activity/index",
     "pages/QRcode/index",
