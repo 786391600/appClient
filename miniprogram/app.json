@@ -1,6 +1,7 @@
 {
   "cloud": true,
   "pages": [
+    "pages/selectCity/index",
     "pages/home/index",
     "pages/OrderPayment/index",
     "pages/TicketDetails/index",
