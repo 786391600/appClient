@@ -2,11 +2,11 @@
    <view class='ticket-search'>
      <view class='ticket-top'>
        <view class='ticket-top-left'>
-          <view class='ticket-top-left-input'>
+          <view class='ticket-top-left-input' bindtap='GoStar' data-address='star'>
             <i class='iconfont ticket2'></i>
             <view>{{startAddress}}</view>
           </view>
-          <view class='ticket-top-left-input'>
+          <view class='ticket-top-left-input' bindtap='GoStar' data-address='end'>
             <i class='iconfont ticket1'></i>
             <view>{{endAddress}}</view>
           </view>

@@ -7,8 +7,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    startAddress: '',
-    endAddress: '',
+    startAddress: '请选择',
+    endAddress: '请选择',
     HistoricalRecord: [],
     RecommendedRoute: [{ star: '太原理工', end: '乡宁', time: '四月29日 19：10', monery: '30' }, { star: '太原理工', end: '乡宁', time: '四月29日 19：10', monery: '30' }, { star: '太原理工', end: '乡宁', time: '四月29日 19：10', monery: '30' }, { star: '太原理工', end: '乡宁', time: '四月29日 19：10', monery: '30' }, { star: '太原理工', end: '乡宁', time: '四月29日 19：10', monery: '30' }, { star: '太原理工', end: '乡宁', time: '四月29日 19：10', monery: '30' }, { star: '太原理工', end: '乡宁', time: '四月29日 19：10', monery: '30' }]
   },
@@ -16,7 +16,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    this.getTicketInfo()
+    console.log(options)
+    this.getTicketInfo(options)
     this.getHistorical()
   },
 
@@ -87,8 +88,12 @@ Page({
   /** 
    * 获取首页数据
   */
-  getTicketInfo: function() {
-    this.setData({startAddress: '太原理工', endAddress: '乡宁'})
+  getTicketInfo: function (options) {
+    if (options.newIdena == "star") {
+      this.setData({ startAddress: options.data, endAddress: options.data3})
+    } else if (options.newIdena == "end") {
+      this.setData({ startAddress: options.data2,endAddress: options.data })
+    }
   },
   //下拉刷新
   onPullDownRefresh: function() {
@@ -144,6 +149,12 @@ Page({
     console.log(e.currentTarget.dataset)
     wx.navigateTo({
       url: '../calendar/index?star=' + e.currentTarget.dataset.star + '&end=' + e.currentTarget.dataset.end
+    })
+  },
+  //选择起止点
+  GoStar:function (e){
+    wx.navigateTo({
+      url: '../selectCity/index?newIdena=' + e.currentTarget.dataset.address + '&star=' + this.data.startAddress + '&end=' + this.data.endAddress
     })
   }
 })
