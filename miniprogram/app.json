@@ -3,7 +3,6 @@
   "pages": [
     "pages/ticket/index",
     "pages/selectCity/index",
-    "pages/home/index",
     "pages/OrderPayment/index",
     "pages/TicketDetails/index",
     "pages/calendar/index",
@@ -35,22 +34,10 @@
     "backgroundColor": "#fff",
     "list": [
       {
-        "pagePath": "pages/home/index",
-        "text": "首页",
-        "iconPath": "images/icon/home.png",
-        "selectedIconPath": "images/icon/home1.png"
-      },
-      {
         "pagePath": "pages/ticket/index",
         "text": "预定",
         "iconPath": "images/ticket/ticket.png",
         "selectedIconPath": "images/ticket/ticket-select.png"
-      },
-      {
-        "pagePath": "pages/personalCenter/index",
-        "text": "我的",
-        "iconPath": "images/icon/my.png",
-        "selectedIconPath": "images/icon/my1.png"
       },
       {
         "pagePath": "pages/OrderList/index",
