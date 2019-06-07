@@ -1,1 +1,64 @@
-ÏçÄşĞÂÁãÊÛ
+{
+  "cloud": true,
+  "pages": [
+     "pages/home/index",
+    "pages/selectCity/index",
+    "pages/OrderPayment/index",
+    "pages/TicketDetails/index",
+    "pages/ticket/index",
+    "pages/calendar/index",
+    "pages/getShareImg/index",
+    "pages/activity/index",
+    "pages/QRcode/index",
+    "pages/commodity/index",
+    "pages/commodityList/index",
+    "pages/paySuccess/index",
+    "pages/order/index",
+    "pages/personalCenter/index",
+    "pages/exchangeCard/index",
+    "pages/OrderList/index",
+    "pages/VehicleList/index",
+    "pages/Notice/index"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "å•æ¢æƒ ä¹è´­",
+    "navigationBarTextStyle": "black",
+    "?navigationStyle": "custom"
+  },
+  "tabBar": {
+    "selectedColor": "#06B0EE",
+    "color": "#666",
+    "borderStyle": "black",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "text": "é¦–é¡µ",
+        "iconPath": "images/icon/home.png",
+        "selectedIconPath": "images/icon/home1.png"
+      },
+      {
+        "pagePath": "pages/ticket/index",
+        "text": "é¢„å®š",
+        "iconPath": "images/ticket/ticket.png",
+        "selectedIconPath": "images/ticket/ticket-select.png"
+      },
+      {
+        "pagePath": "pages/personalCenter/index",
+        "text": "æˆ‘çš„",
+        "iconPath": "images/icon/my.png",
+        "selectedIconPath": "images/icon/my1.png"
+      },
+      {
+        "pagePath": "pages/OrderList/index",
+        "text": "ä¹˜è½¦è®¢å•",
+        "iconPath": "images/ticket/ticket.png",
+        "selectedIconPath": "images/ticket/ticket-select.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}
