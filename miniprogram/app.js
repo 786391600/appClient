@@ -15,8 +15,7 @@ App({
         this.globalData.windowWidth = res.windowWidth;
         this.globalData.windowHeight = res.windowHeight;
         this.globalData.navHeight = res.statusBarHeight + 46;
-        console.log(res)
-        console.log('iiiiiinnnnnnnnfffffffoooooo-------')
+        console.log('设备信息：', res)
       }, fail(err) {
         console.log(err);
       }

@@ -32,7 +32,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.getLineManage({})
   },
 
   /**
@@ -155,6 +155,20 @@ Page({
   GoStar:function (e){
     wx.navigateTo({
       url: '../selectCity/index?newIdena=' + e.currentTarget.dataset.address + '&star=' + this.data.startAddress + '&end=' + this.data.endAddress
+    })
+  },
+  getLineManage: function(query) {
+    return new Promise((resolve, reject) => {
+      until.request({
+        action: 'app.line.getLineManage',
+        data: query
+      }).then(function (e) {
+        if (e.data.success) {
+          resolve(e)
+        } else {
+          until.showToast(e.data.message, 'error');
+        }
+      })
     })
   }
 })
