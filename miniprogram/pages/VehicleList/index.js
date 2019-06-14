@@ -1,4 +1,5 @@
 // miniprogram/pages/VehicleList/index.js
+const until = require('../../until/index.js')
 Page({
 
   /**
@@ -23,7 +24,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    this.setData({
+      star: options.star,
+      end: options.end
+    })
+    this.getLineManage({ start: options.star, departureTime: "2019-06-12" })
   },
 
   /**
@@ -78,6 +84,26 @@ Page({
   goTicketDetails:function () {
     wx.navigateTo({
       url: '../TicketDetails/index'
+    })
+  },
+  // 获取数据
+  getLineManage: function (query) {
+    let that = this
+    return new Promise((resolve, reject) => {
+      until.request({
+        action: 'app.line.getLineManage',
+        data: query
+      }).then(function (e) {
+        if (e.data.success) {
+          resolve(e)
+          let getdata = e.data.data
+          that.setData({
+            RecommendedRoute: getdata
+          })
+        } else {
+          until.showToast(e.data.message, 'error');
+        }
+      })
     })
   }
 })

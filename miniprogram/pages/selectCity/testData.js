@@ -1138,7 +1138,10 @@ let city = [
   }, {
     title: "T",
     item: [
-
+      {
+        "name": "太原理工",
+        "key": "T"
+      },
       {
         "name": "天津",
         "key": "T"
@@ -1264,7 +1267,10 @@ let city = [
   }, {
     title: "X",
     item: [
-
+      {
+        "name": "乡宁",
+        "key": "X"
+      },
       {
         "name": "厦门",
         "key": "X"

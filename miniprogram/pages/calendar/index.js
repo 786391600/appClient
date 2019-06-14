@@ -1,11 +1,13 @@
-
+const until = require('../../until/index.js')
 Page({
   data: {
     cruDataList: [],
     cruPDataList: [],
     weeklist: ['日', '一', '二', '三', '四', '五', '六'],
     itemIndex: 10,   //当前年份的数组下标    这个值和年份的前后一致的值相等，要注意就是年份访问时一当前年为切割点，前后年份范围的数值相等比较好计算，当然看需求而定啦。
-    MonthlyTicket:[1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1]
+    MonthlyTicket:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    star:'',
+    end:''
   },
   /**
    * 生命周期函数--监听页面加载
@@ -28,8 +30,10 @@ Page({
       cur_year,
       cur_month,
     });
-
+    console.log(cur_year + "-" + (cur_month + 1 > 9 ? cur_month + 1 : '0' + (cur_month + 1)))
+    this.getLineManage({ start: options.star, end: options.end,departureTime: { $regex: cur_year + "-" + (cur_month + 1 > 9 ? cur_month + 1 : '0' + (cur_month + 1)) } })
   },
+ 
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
@@ -138,7 +142,7 @@ Page({
         idx = index - 1;
         newMonth = 11;
       }
-
+      this.getLineManage({ start: this.data.star, end: this.data.end,departureTime: { $regex: newYear + "-" + (newMonth + 1 > 9 ? newMonth + 1 : '0' + (newMonth + 1)) } })
       this.calendar(newYear, newMonth);
       this.setData({
         cur_year: newYear,
@@ -155,7 +159,7 @@ Page({
         idx = index + 1;
         newMonth = 0;
       }
-
+      this.getLineManage({ start: this.data.star, end: this.data.end, departureTime: { $regex: newYear + "-" + (newMonth + 1 > 9 ? newMonth + 1 : '0' + (newMonth + 1)) } })
       this.calendar(newYear, newMonth);
       this.setData({
         cur_year: newYear,
@@ -168,8 +172,44 @@ Page({
   SelectionDate:function (e){
     console.log(this.data.star,this.data.end)
     console.log(this.data.cur_year, this.data.cur_month + 1, e.currentTarget.dataset.time)
+    let date=''
+    if (this.data.cur_month + 1>9){
+      date = this.data.cur_year + '-' + (this.data.cur_month + 1) + '-' + e.currentTarget.dataset.time
+    }else{
+      date = this.data.cur_year + '-0' + (this.data.cur_month + 1) + '-' + e.currentTarget.dataset.time
+    }
     wx.navigateTo({
-      url: '../VehicleList/index'
+      url: '../VehicleList/index?star=' + this.data.star + '&end=' + this.data.end + '&date=' + date
     })
+  },
+  //请求接口
+  getLineManage: function (query) {
+    let that = this
+    return new Promise((resolve, reject) => {
+      until.request({
+        action: 'app.line.getLineManage',
+        data: query
+      }).then(function (e) {
+        if (e.data.success) {
+          resolve(e)
+          console.log(e)
+          let getdata = that.ticketStatistics(e.data.data)
+          that.setData({
+            MonthlyTicket: getdata
+          })
+        } else {
+          until.showToast(e.data.message, 'error');
+        }
+      })
+    })
+  },
+  //处理每日车票及数量
+  ticketStatistics:function(data){
+    let newMonthlyTicket = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    data.map((data,index)=>{
+      console.log(data.departureTime.split("-")[2].split(" ")[0])
+      newMonthlyTicket[data.departureTime.split("-")[2].split(" ")[0] - 1] = newMonthlyTicket[data.departureTime.split("-")[2].split(" ")[0] - 1]+1
+    })
+    return newMonthlyTicket
   }
 })

@@ -23,7 +23,7 @@
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "吕梁惠乐购",
+    "navigationBarTitleText": "吕梁巴士",
     "navigationBarTextStyle": "black",
     "?navigationStyle": "custom"
   },
@@ -36,8 +36,8 @@
       {
         "pagePath": "pages/ticket/index",
         "text": "预定",
-        "iconPath": "images/ticket/ticket.png",
-        "selectedIconPath": "images/ticket/ticket-select.png"
+        "iconPath": "images/ticket/Reserve.png",
+        "selectedIconPath": "images/ticket/Reserve-select.png"
       },
       {
         "pagePath": "pages/OrderList/index",

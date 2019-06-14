@@ -10,7 +10,7 @@ Page({
     startAddress: '请选择',
     endAddress: '请选择',
     HistoricalRecord: [],
-    RecommendedRoute: [{ star: '太原理工', end: '乡宁', time: '四月29日 19：10', monery: '30' }, { star: '太原理工', end: '乡宁', time: '四月29日 19：10', monery: '30' }, { star: '太原理工', end: '乡宁', time: '四月29日 19：10', monery: '30' }, { star: '太原理工', end: '乡宁', time: '四月29日 19：10', monery: '30' }, { star: '太原理工', end: '乡宁', time: '四月29日 19：10', monery: '30' }, { star: '太原理工', end: '乡宁', time: '四月29日 19：10', monery: '30' }, { star: '太原理工', end: '乡宁', time: '四月29日 19：10', monery: '30' }]
+    RecommendedRoute: []
   },
   /**
    * 生命周期函数--监听页面加载
@@ -25,14 +25,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
-    
+    this.getLineManage({start: this.data.startAddress, departureTime:{$regex:"2019-06"}})
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    this.getLineManage({})
+
   },
 
   /**
@@ -81,6 +81,7 @@ Page({
       a = c
       c = b
       this.setData({startAddress: a, endAddress: c})
+      this.getLineManage({ start: a })
     } else {
       return 
     }
@@ -119,19 +120,33 @@ Page({
   // 查询
   serch:function() {
     const value = wx.getStorageSync('Historical')
-    if (value.some(this.checkAdult)==false){
-      value.unshift({ star: this.data.startAddress, end: this.data.endAddress })
-      if (value.length > 4) {
-        value.pop()
+    console.log(value)
+    if (this.data.startAddress == "请选择" || this.data.endAddress=="请选择"){
+      wx.showModal({
+        title: '提示',
+        content: '请选择起止点',
+        showCancel:false,
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定', res)
+          }
+        }
+      })
+    }else{
+      if (value.some(this.checkAdult) == false) {
+        value.unshift({ star: this.data.startAddress, end: this.data.endAddress })
+        if (value.length > 4) {
+          value.pop()
+        }
+        wx.setStorageSync('Historical', value)
+        this.setData({
+          HistoricalRecord: value
+        })
       }
-      wx.setStorageSync('Historical', value)
-      this.setData({
-        HistoricalRecord: value
+      wx.navigateTo({
+        url: '../calendar/index?star=' + this.data.startAddress + '&end=' + this.data.endAddress
       })
     }
-    wx.navigateTo({
-      url: '../calendar/index?star=' + this.data.startAddress + '&end=' + this.data.endAddress
-    })
   },
   //查重
   checkAdult:function(data) {
@@ -158,6 +173,7 @@ Page({
     })
   },
   getLineManage: function(query) {
+    let that=this
     return new Promise((resolve, reject) => {
       until.request({
         action: 'app.line.getLineManage',
@@ -165,6 +181,11 @@ Page({
       }).then(function (e) {
         if (e.data.success) {
           resolve(e)
+          console.log(e.data.data)
+          let getdata = e.data.data
+          that.setData({
+            RecommendedRoute:getdata
+          })
         } else {
           until.showToast(e.data.message, 'error');
         }

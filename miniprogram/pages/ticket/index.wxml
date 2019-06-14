@@ -31,15 +31,15 @@
       <view wx:for="{{HistoricalRecord}}" bindtap='HistoricalQuery' data-star="{{item.star}}" data-end="{{item.end}}">{{item.star}}<i class='iconfont ticket4'></i>{{item.end}}</view>
     </view>
 </view>
-<view class='HistoricalRecord'>
+<view class='HistoricalRecord' wx:if="{{RecommendedRoute.length>0}}">
   <view class='Histori-title'>
       <text class='HistoricalRecord-title2'>推荐路线</text>
   </view>
   <view class='eg2-box' wx:for="{{RecommendedRoute}}">
     <view class='eg2'>
       <view class='circle1'></view>
-      <view class='Recommend-content'>{{item.star}}-{{item.end}}({{item.time}})</view>
-      <view class='Recommend-monery'>￥{{item.monery}}</view>
+      <view class='Recommend-content'>{{item.start}}-{{item.end}}({{item.departureTime}})</view>
+      <view class='Recommend-monery'>￥{{item.price}}</view>
     </view>
   </view>
 </view>
