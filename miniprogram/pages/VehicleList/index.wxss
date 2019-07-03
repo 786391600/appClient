@@ -1,4 +1,7 @@
 /* miniprogram/pages/VehicleList/index.wxss */
+page {
+  background: #eeeeee;
+}
 #PageTurning{
   position: fixed;
   top: 0;
@@ -16,8 +19,7 @@
   color: #03a9f4
 }
 #ListBackground{
-  background: #eeeeee;
-  padding: 90rpx 0;
+  padding:0  0 90rpx;
 }
 .TitleAddress{
   text-align: center;
@@ -46,7 +48,7 @@
   font-weight: bold;
 }
 .BoxContent{
-  padding: 28rpx 0rpx 28rpx 40rpx;
+  padding: 0rpx 0rpx 28rpx 40rpx;
   display: flex;
   justify-content: space-between;
 }
@@ -87,13 +89,10 @@
 }
 .distance{
   width: 30%;
+  display: flex;
+  align-items: center;
 }
 .distance view:nth-child(1){
-  font-size: 24rpx;
-  text-align: center;
-  color: #818181;
-}
-.distance view:nth-child(2){
   float: left;
   font-size: 26rpx;
   color: #03a9f4;

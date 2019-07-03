@@ -115,23 +115,32 @@ exports.pay = function(obj){
      action: 'app.until.bookingPay',
      data: obj
    }).then(function (e) {
-     console.log(e)
-     console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
-     wx.requestPayment({
-       timeStamp: e.data.data.timeStamp,
-       nonceStr: e.data.data.nonceStr,
-       package: e.data.data.package,
-       signType: e.data.data.signType,
-       paySign: e.data.data.paySign,
-       success(res) {
-         resolve({data:e, successData: res})
-       },
-       fail(res) {
-         reject(res)
+     if (e.data.success) {
+       let out_trade_no = e.data.data.out_trade_no;
+       wx.requestPayment({
+         timeStamp: e.data.data.timeStamp,
+         nonceStr: e.data.data.nonceStr,
+         package: e.data.data.package,
+         signType: e.data.data.signType,
+         paySign: e.data.data.paySign,
+         success(res) {
+           resolve({ data: e, successData: res })
+         },
+         fail(res) {
+           let err = res || {}
+           err.out_trade_no = out_trade_no
+           reject(err)
+         }
+       })
+     } else {
+       if (e.data.data.notEnough) {
+         reject({notEnough: true})
+       } else {
+         reject(err)
        }
-     })
+     }
    })
- }) 
+ })  
 }
 exports.confirmUser = function(obj){
   return new Promise((resolve, reject) =>{

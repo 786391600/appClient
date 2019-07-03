@@ -24,7 +24,7 @@
             <view class="flex week-list">
                   <view class="week-itm" wx:for="{{weeklist}}">{{item}}</view>
             </view>
-            <view class="flex days-list">
+            <view class="flex days-list" bindtouchmove="touchMove" bindtouchstart="touchStart" bindtouchend="touchEnd">
                   <view class="day lm" wx:for="{{lastMonthDaysList}}" data-handle="prev" bindtap="handleMonth">
                         <text>{{item}}</text>
                   </view>

@@ -57,6 +57,11 @@ page{
   border-bottom: 1rpx solid #ededed;
   font-size: 30rpx;
 }
+.submit p{
+  font-size: 30rpx;
+  color: red;
+  padding: 10rpx;
+}
 .PhoneNumber{
   display: flex;
   justify-content: space-between;
@@ -96,4 +101,27 @@ page{
   margin-left: 20rpx;
   color: #f44f1c;
   font-size: 30rpx;
+}
+.riderList{
+  display: flex;
+  flex-direction: row;
+  padding: 26rpx;
+   align-items:center;
+   background: white;
+   border-bottom: 2rpx solid #EEEEEE;
+   box-sizing: border-box;
+   font-size: 28rpx;
+}
+.riderList-left {
+  width: 80%;
+}
+.riderList-right {
+  width: 20%;
+  display: flex;
+  flex-direction: row;
+   justify-content: space-between;
+   color: #B8BECE;
+}
+.riderList-right-price{
+  color: #F34710;
 }

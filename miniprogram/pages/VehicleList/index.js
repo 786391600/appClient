@@ -17,19 +17,23 @@ Page({
           { Throughout: 0, time: '17:50', content: '小北地铁站A出口' },
         ], distance: 90, Surplus: '充足', provider: '意点科技'
       }
-      ]
+      ],
+      lineList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    this.setData({
-      star: options.star,
-      end: options.end
+    this.getLineManage({ start: options.star, end: options.end, departureTime: { $regex: options.date } }).then((e) => {
+      let getdata = e.data.data
+      this.setData({
+        lineList: getdata,
+        start: options.star,
+        end: options.end,
+        date: options.date
+      })
     })
-    this.getLineManage({ start: options.star, departureTime: "2019-06-12" })
   },
 
   /**
@@ -81,9 +85,12 @@ Page({
 
   },
   // 跳转车次详情
-  goTicketDetails:function () {
+  goTicketDetails:function (e) {
+    let data = JSON.stringify(e.currentTarget.dataset.detail)
+    console.log(data)
+    console.log('到达详情')
     wx.navigateTo({
-      url: '../TicketDetails/index'
+      url: '../OrderPayment/index?detail=' + data
     })
   },
   // 获取数据
@@ -96,10 +103,6 @@ Page({
       }).then(function (e) {
         if (e.data.success) {
           resolve(e)
-          let getdata = e.data.data
-          that.setData({
-            RecommendedRoute: getdata
-          })
         } else {
           until.showToast(e.data.message, 'error');
         }

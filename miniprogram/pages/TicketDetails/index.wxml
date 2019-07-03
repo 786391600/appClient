@@ -13,6 +13,5 @@
   <view class='Notice' bindtap='goNotice'><text class='OperatorIcon1'>?</text><view class='NoticeContent'>购票须知</view></view>
   <view id="bottom">
     <view class='PurchaseButton' bindtap='goOrderPayment'>35元购买</view>
-    <view class='PurchaseButton' bindtap='refund'>退票</view>
   </view>
 </view>

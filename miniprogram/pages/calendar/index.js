@@ -129,7 +129,12 @@ Page({
 
   //操作月
   handleMonth: function (e) {
-    const handle = e.currentTarget.dataset.handle;
+    let handle = '';
+    if (e.currentTarget && e.currentTarget.dataset) {
+      handle = e.currentTarget.dataset.handle
+    } else {
+      handle = e
+    }
     const cur_year = this.data.cur_year;
     const cur_month = this.data.cur_month;
     const index = this.data.itemIndex;
@@ -185,6 +190,9 @@ Page({
   //请求接口
   getLineManage: function (query) {
     let that = this
+    wx.showLoading({
+      title: '车票加载中...'
+    })
     return new Promise((resolve, reject) => {
       until.request({
         action: 'app.line.getLineManage',
@@ -200,6 +208,7 @@ Page({
         } else {
           until.showToast(e.data.message, 'error');
         }
+        wx.hideLoading()
       })
     })
   },
@@ -211,5 +220,19 @@ Page({
       newMonthlyTicket[data.departureTime.split("-")[2].split(" ")[0] - 1] = newMonthlyTicket[data.departureTime.split("-")[2].split(" ")[0] - 1]+1
     })
     return newMonthlyTicket
+  },
+  touchStart (e) {
+    this.data.pageStartX = e.touches[0].pageX
+  },
+  touchEnd (e) {
+    let endTouchX = e.changedTouches[0].pageX;
+    let startTouchX = this.data.pageStartX;
+    let changeX = endTouchX - startTouchX
+    console.log(changeX)
+    if (changeX > 100) {
+      this.handleMonth('prev')
+    } else if (changeX < -100) {
+      this.handleMonth('next')
+    }
   }
 })

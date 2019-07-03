@@ -15,8 +15,15 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    this.data.commodityId = options.id;
-    this.data.title = options.title;
+    // this.data.commodityId = options.id;
+    // this.data.title = options.title;
+    let type = ''
+    if (options.type === 'success') {
+      type = 'success'
+    } else {
+      type = 'fail'
+    }
+    this.setData({ type: type})
   },
 
   /**
@@ -71,6 +78,24 @@ Page({
       title: that.data.title,
       imageUrl: app.globalData.shareData.imageUrl,
       path: "/pages/commodity/index?clickId="+that.data.commodityId
+    }
+  },
+  paySuccess () {
+    wx.reLaunch({
+      url: '/pages/OrderList/index'
+    })
+  },
+  payFail (e) {
+    console.log(e)
+    let type = e.currentTarget.dataset.type
+    if (type === 'reload') {
+      wx.navigateBack({
+        url: '/pages/OrderPayment/index'
+      })
+    } else {
+      wx.reLaunch({
+        url: '/pages/ticket/index'
+      })
     }
   }
 })

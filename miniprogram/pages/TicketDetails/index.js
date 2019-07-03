@@ -95,7 +95,7 @@ Page({
   refund: function(){
     until.request({
       action: 'app.until.refund',
-      data: { "out_trade_no": "20190526233859385"}
+      data: { "out_trade_no": "20190622111116197"}
     }).then(function (e) {
       if (e.data.success) {
        console.log(e)

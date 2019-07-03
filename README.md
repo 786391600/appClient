@@ -62,3 +62,6 @@
   },
   "sitemapLocation": "sitemap.json"
 }
+
+
+TicketDetails/index // 订票确认页 选择途经站

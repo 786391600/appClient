@@ -1,13 +1,35 @@
 <view id='ListBackground'>
-  <view class="TicketBackground">
-    <view class='TrainNumber'>GS1707</view>
+  <view class="TicketBackground"wx:for="{{order}}" catchtap='toOrderDetail' data-orderInfo='{{item}}'>
     <view class="distance">
-      <view>太原理工</view>
+      <view>{{item.line_info[0].start}}</view>
       <i class='iconfont ticket4'></i>
-      <view>乡宁</view>
+      <view>{{item.line_info[0].end}}</view>
     </view>
-    <view class="DepartureTime"><view>发车时间:</view><view>2019年5月27日 15：55</view></view>
-    <view class='place'><view>发车地点:</view><view>太原理工太原理工太原理工太原理工太原理工</view></view>
-    <view class='provider'><view><view>服务提供商:</view><view>旗舰路线旗舰路线旗舰路线旗舰路线</view></view><view class='Toticket' bindtap='GoPopup'>退票</view></view>
+    <view class='DepartureTime'><view>订票人:</view><view>{{item.name}}</view></view>
+    <view class="place"><view>发车时间:</view><view>{{item.line_info[0].departureTime}}</view></view>
+    <view class='place'><view>发车地点:</view><view wx:if='{{item.line_info[0].departurePlace}}'>{{item.line_info[0].departurePlace}}</view><view wx:else>随后通知</view></view>
+    <view class='provider'><view catchtap='toContacts' data-phone='{{item.line_info[0].contacts_phone}}'><view>联系人:</view><view>{{item.line_info[0].contacts_name}}(点击拨打)</view></view>
+    <view class='Toticket' catchtap='GoPopup' wx:if = '{{!item.refound}}' data-info='{{item}}' data-index = '{{index}}'>退票</view>
+    <view class='Torefound' wx:else>已退票</view>
+    </view>
+    <view class='provider' wx:if='{{item.line_info[0].remark}}'>
+      <view><view>备注信息:</view><view>{{item.line_info[0].remark}}</view></view>
+    </view>
   </view>
+</view>
+<view class='default-box' wx:if="{{order.length <= 0}}">
+   <view class='default-center'>
+     <view class='icon'><i class='iconfont bashi'></i></view>
+     <view>您还没有乘车订单</view>
+     <view>
+       <p>1.选择车次</p>
+     </view>
+     <view>
+       <p>2.支付票款</p>
+     </view>
+     <view>
+      <p>3.乘车出行</p>
+     </view>
+     <button bindtap='toTicket'>去购票</button>
+   </view>
 </view>

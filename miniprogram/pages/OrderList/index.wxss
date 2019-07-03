@@ -7,13 +7,13 @@ page {
   font-size: 50rpx;
 }
 #ListBackground{
-  padding: 90rpx 0;
+  padding: 0 0 90rpx;
   display: flex;
   justify-content:center;
   flex-wrap:wrap;
 }
 .TicketBackground{
-  width: 100%;
+  width: 95%;
   background: #ffffff;
   margin-top: 20rpx;
   border-radius: 10rpx;
@@ -38,12 +38,14 @@ page {
 }
 .provider{
   margin: 30rpx 0;
-  padding-left:10rpx; 
+  padding-left:60rpx; 
   font-size: 30rpx;
   border-top: 1rpx #eeeeee solid;
   padding-top: 20rpx;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
 }
 .provider view:nth-child(1){
   width: 70%;
@@ -77,10 +79,55 @@ page {
   width: 160rpx;
   height: 58rpx;
   font-size: 30rpx;
-  color: #ffffff;
-  background: #d03835;
+  background: #FFD148;
+  color:#784A00;
   border-radius: 10rpx;
   line-height: 58rpx;
   text-align: center;
   margin-right: 30rpx;
+}
+.Torefound{
+  width: 160rpx;
+  height: 58rpx;
+  font-size: 30rpx;
+  color: #ffffff;
+  background: #ccc;
+  border-radius: 10rpx;
+  line-height: 58rpx;
+  text-align: center;
+  margin-right: 30rpx;
+}
+.default-box {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #eeeeee;
+  left: 0px;
+  top: 0px;
+  display: flex;
+  align-items: center;
+}
+.default-center {
+  margin: 0 auto;
+  text-align: center;
+}
+.default-center button {
+  background: #FFD148;
+  color:#784A00;
+  border: 0;
+  width: 300rpx;
+  padding: 0;
+  line-height: 80rpx;
+  height: 80rpx;
+  font-size: 32rpx;
+  border-radius: 50rpx;
+}
+.default-center view{
+  color: #ABABAB;
+  margin-bottom: 30rpx;
+}
+.default-center .icon {
+  color: #FFD148;
+  font-size: 100rpx;
+  margin-bottom: 10rpx;
 }

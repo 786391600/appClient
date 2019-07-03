@@ -1,11 +1,12 @@
 // miniprogram/pages/OrderList/index.js
+const until = require('../../until/index.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    order: []
   },
 
   /**
@@ -26,7 +27,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log('uuuuuuuuuuuuu')
+    this.getOrderList()
   },
 
   /**
@@ -63,18 +65,83 @@ Page({
   onShareAppMessage: function () {
 
   },
-  GoPopup:function (){
-    console.log("111")
+  GoPopup:function (item){
+    let that = this
+    let orderInfo = item.target.dataset.info
+    let orderIndex = item.target.dataset.index
     wx.showModal({
-      title: '提示',
-      content: '确认要退票',
+      title: '退款提示',
+      content: '退款将会扣除违约费用，确认退票？',
       success: function (res) {
         if (res.confirm) {
-          console.log('用户点击确定')
+          that.refound(orderInfo, orderIndex)
         } else if (res.cancel) {
           console.log('用户点击取消')
         }
       }
+    })
+  },
+  getOrderList () {
+    let that = this
+      until.request({
+        action: 'app.line.getOrderList',
+        data: {}
+      }).then(function (e) {
+        if (e.data.success) {
+          console.log(e.data.data)
+          let getdata = e.data.data
+          that.setData({
+            order: getdata
+          })
+        } else {
+          until.showToast(e.data.message, 'error');
+        }
+      })
+  },
+  refound (orderInfo, index) {
+    let that = this
+    let out_trade_no = orderInfo.out_trade_no
+    wx.showLoading({
+      title: '退款中...',
+    })
+    until.request({
+      action: 'app.until.refund',
+      data: { "out_trade_no": out_trade_no }
+    }).then(function (e) {
+      if (e.data.success) {
+       let refoundInfo = e.data.data.xml
+        if (refoundInfo.result_code[0] === 'SUCCESS') {
+          let data = that.data.order
+          data[index]['refound'] = true
+          that.setData({order: data})
+          wx.showModal({
+            title: '退款成功',
+            content: '具体到账以微信到账为准。'
+          })
+        }
+      } else {
+        until.showToast(e.data.message, 'error');
+      }
+      wx.hideLoading()
+    })
+  },
+  toTicket () {
+    wx.switchTab({
+      url: '/pages/ticket/index',
+    })
+  },
+  toContacts (e) {
+    let phone = e.currentTarget.dataset.phone
+    if (phone) {
+      wx.makePhoneCall({
+        phoneNumber: phone //仅为示例，并非真实的电话号码
+      })
+    }
+  },
+  toOrderDetail (e) {
+    let orderInfo = JSON.stringify(e.currentTarget.dataset.orderinfo)
+    wx.navigateTo({
+      url: '/pages/OrderDetail/index?orderInfo=' + orderInfo,
     })
   }
 })

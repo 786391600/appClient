@@ -1,0 +1,54 @@
+<view class='rider-title'>我的乘客列表</view>
+<view id='rider-list'>
+  <view class='rider' wx:for ='{{riderList}}'>
+    <view class='rider-list-top'>
+       <view class='rider-list-top-l'>
+          <checkbox class='rider-checkbox' bindtap='checkboxClick' data-index='{{index}}' checked = '{{item.select}}'/>
+       </view>
+       <view class='rider-list-top-r'>
+         <view class='rider-list-top-r-t'>
+           {{item.name}}
+         </view>
+         <view class='rider-list-top-r-b'>
+           身份证：{{item.idCard}}
+         </view>
+       </view>
+    </view>
+    <view class='rider-list-bottom'>
+      <view class='rider-list-bottom-l'></view>
+      <view class='rider-list-bottom-r'>
+        <view class='rider-list-bottom-r-l'><span wx:if='{{!item.isDefault}}' bindtap='setDefaultRider' data-id='{{item.id}}' data-index='{{index}}'>设置为默认</span><span class='rider-list-bottom-r-l-default' wx:else>默认</span></view>
+        <view class='rider-list-bottom-r-r'>
+           <span bindtap='editRider'  data-rider = '{{item}}'>编辑</span><span  data-rider = '{{item}}'  data-index = '{{index}}' bindtap='removeRider'><i class='iconfont ticket5'></i>删除</span>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class='rider-add' bindtap='addNewRider'>
+    +新增乘车人
+  </view>
+</view>
+<view class='addDefine'>
+  <button bindtap='getSaveSelect'>确定</button>
+</view>
+<view class='rider-shade' wx:if = '{{showShade}}'>
+  <view class='rider-shade-top'>
+    
+  </view>
+  <view class='rider-shade-ipt'>
+    <view class='Contacts'>
+      <view>姓名</view>
+      <input name="name" placeholder="请填写真实姓名" placeholder-style='text-align:right' bindinput = 'bindNameInput' value='{{updateData.name}}'/>
+    </view>
+    <view class='Contacts'>
+      <view>证件类型</view>
+      <view>身份证</view>
+    </view>
+    <view>
+      <view>证件号码</view>
+      <input type="idcard" placeholder="请输入证件号码" placeholder-style='text-align:right' bindinput='bindIdCardInput' value='{{updateData.idCard}}'/>
+    </view>
+  </view>
+   <button bindtap='addOrUpdateRider'>确定</button>
+   <button bindtap='cancle'>取消</button>
+</view>
