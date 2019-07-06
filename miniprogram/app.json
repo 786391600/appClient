@@ -2,24 +2,14 @@
   "cloud": true,
   "pages": [
     "pages/ticket/index",
+    "pages/OrderList/index",
     "pages/selectCity/index",
     "pages/OrderPayment/index",
     "pages/OrderDetail/index",
-     "pages/rider/index",
+    "pages/rider/index",
     "pages/TicketDetails/index",
     "pages/calendar/index",
-    "pages/getShareImg/index",
-    "pages/activity/index",
-    "pages/QRcode/index",
-    "pages/commodity/index",
-    "pages/commodityList/index",
-    "pages/paySuccess/index",
-    "pages/order/index",
-    "pages/personalCenter/index",
-    "pages/exchangeCard/index",
-    "pages/OrderList/index",
-    "pages/VehicleList/index",
-    "pages/Notice/index"
+    "pages/paySuccess/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

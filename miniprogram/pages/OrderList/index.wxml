@@ -1,5 +1,5 @@
 <view id='ListBackground'>
-  <view class="TicketBackground"wx:for="{{order}}" catchtap='toOrderDetail' data-orderInfo='{{item}}'>
+  <view class="TicketBackground"wx:for="{{order}}" catchtap='toOrderDetail' data-orderInfo='{{item}}' wx:if='{{item.line_info[0]}}'>
     <view class="distance">
       <view>{{item.line_info[0].start}}</view>
       <i class='iconfont ticket4'></i>
