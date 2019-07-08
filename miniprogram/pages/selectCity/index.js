@@ -1,6 +1,6 @@
 // pages/demo/demo.js
 let City = require('./testData.js');
-
+const until = require('../../until/index.js')
 Page({
   data: {
     city: [],
@@ -14,17 +14,24 @@ Page({
     newIdena:""
   },
   onLoad(options) {
-    console.log(options)
+    let that = this;
+    wx.showLoading({
+      title: '数据加载中...',
+    })
+    this.getCity().then((data)=>{
+      wx.hideLoading()
+      this.setData({
+        city: data,
+        newIdena: options.newIdena,
+        opt: { star: options.star, end: options.end }
+      })
+    })
     // wx.showLoading({
     //   title: '加载数据中...',
     // })
     // // 模拟服务器请求异步加载数据
     // setTimeout(()=>{
-    this.setData({
-      city: City,
-      newIdena: options.newIdena,
-      opt: { star: options.star, end: options.end}
-    })
+  
     //   wx.hideLoading()
     // },2000)
 
@@ -33,6 +40,18 @@ Page({
     console.log(e.detail)
     wx.reLaunch({
       url: '../ticket/index?newIdena=' + this.data.newIdena + '&data=' + e.detail.name + '&data2=' + this.data.opt.star + '&data3=' + this.data.opt.end
+    })
+  },
+  getCity () {
+    return new Promise((resolve, reject)=>{
+      until.request({
+        action: 'app.line.getCity',
+        data: {}
+      }).then(function (e) {
+        if (e.data.success) {
+          resolve(e.data.data)
+        }
+      })
     })
   }
 

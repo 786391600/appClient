@@ -198,6 +198,13 @@ Page({
         selectArr.push(item)
       }
     })
+    if (selectArr.length > 3) {
+      wx.showToast({
+        title: '最多选择三位乘车人',
+        icon: 'none'
+      })
+      return
+    }
     this.toOrderPayment(selectArr)
   },
   toOrderPayment (arr) {

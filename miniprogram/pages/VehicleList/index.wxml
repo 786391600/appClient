@@ -31,11 +31,11 @@
           </view>
         </view>
         <view class='distance'>
-          <view><span wx:if='{{item.num > 10}}'>余票充足</span><span wx:else>剩余{{item.num}}张票</span></view>
+          <view><span wx:if='{{item.num > 10}}'>余票充足</span><span wx:elif='{{item.num > 0}}'>剩余{{item.num}}张票</span><span wx:else>票已售光</span></view>
         </view>
       </view>
       <view class='provider' wx:if='{{item.provider}}'>服务提供商：{{item.provider}}</view>
-      <view class='provider'>上车地点：<span wx:if='{{item.BoardingLocation}}'>{{item.BoardingLocation}}</span><span wx:else>随后通知</span></view>
+      <view class='provider'>上车地点：<span wx:if='{{item.departurePlace}}'>{{item.departurePlace}}</span><span wx:else>随后通知</span></view>
     </view>
   </view>
 </view>

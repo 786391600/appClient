@@ -86,6 +86,10 @@ Page({
     if (!priceObj) {
       return
     }
+    if (this.data.beingSubmit) {
+      return
+    }
+    this.data.beingSubmit = true
     until.pay({
       body: '汽车订单',
       fee: priceObj.price,
@@ -96,10 +100,12 @@ Page({
       riderList: priceObj.riderList,
       formId: formId
     }).then((res) => {
+      this.data.beingSubmit = false
       wx.navigateTo({
         url: '/pages/paySuccess/index?type=success',
       })
     }).catch((res) => {
+      this.data.beingSubmit = false
       if (res.notEnough) {
         wx.showToast({
           title: '车票剩余不足,请查看其他线路',
@@ -114,6 +120,13 @@ Page({
     })
   },
   toRider () {
+    if (this.data.riderList.length >=3) {
+      wx.showToast({
+        title: '最多添加三位乘车人',
+        icon: 'none'
+      })
+      return
+    }
     wx.navigateTo({
       url: '/pages/rider/index'
     })

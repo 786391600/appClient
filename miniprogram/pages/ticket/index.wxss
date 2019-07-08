@@ -1,4 +1,7 @@
 @import '../../style/ticket/iconfont.wxss';
+.official-account {
+  margin-bottom: 15rpx;
+}
 .ticket4{
   font-size: 40rpx;
 }

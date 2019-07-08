@@ -74,6 +74,7 @@ Page({
       content: '退款将会扣除违约费用，确认退票？',
       success: function (res) {
         if (res.confirm) {
+          console.log(orderInfo, 'iiiiii')
           that.refound(orderInfo, orderIndex)
         } else if (res.cancel) {
           console.log('用户点击取消')
@@ -106,7 +107,7 @@ Page({
     })
     until.request({
       action: 'app.until.refund',
-      data: { "out_trade_no": out_trade_no }
+      data: {orderInfo: orderInfo}
     }).then(function (e) {
       if (e.data.success) {
        let refoundInfo = e.data.data.xml
@@ -139,6 +140,11 @@ Page({
     }
   },
   toOrderDetail (e) {
+    let refound = e.currentTarget.dataset.orderinfo.refound
+    console.log(e.currentTarget.dataset.orderinfo)
+    if (refound) {
+      return
+    }
     let orderInfo = JSON.stringify(e.currentTarget.dataset.orderinfo)
     wx.navigateTo({
       url: '/pages/OrderDetail/index?orderInfo=' + orderInfo,

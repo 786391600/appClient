@@ -1,4 +1,3 @@
 {
-  "usingComponents": {},
-    "navigationBarBackgroundColor": "#03a9f4"
+  "navigationBarTitleText": "车辆列表"
 }

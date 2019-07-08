@@ -111,7 +111,9 @@ Page({
       cur_month: chose_month,
     });
     this.calendar(this.data.cur_year, this.data.cur_month)
-
+    let newYear = this.data.cur_year
+    let newMonth = this.data.cur_month
+    this.getLineManage({ start: this.data.star, end: this.data.end, departureTime: { $regex: newYear + "-" + (newMonth + 1 > 9 ? newMonth + 1 : '0' + (newMonth + 1)) } })
   },
 
   //选择年
@@ -124,7 +126,9 @@ Page({
       cur_year: y,
     });
     this.calendar(y, this.data.cur_month);
-
+    let newYear = this.data.cur_year
+    let newMonth = this.data.cur_month
+    this.getLineManage({ start: this.data.star, end: this.data.end, departureTime: { $regex: newYear + "-" + (newMonth + 1 > 9 ? newMonth + 1 : '0' + (newMonth + 1)) } })
   },
 
   //操作月
@@ -175,6 +179,10 @@ Page({
   },
   //选择日期
   SelectionDate:function (e){
+    let haveTicket = e.currentTarget.dataset.haveticket
+    if (!haveTicket) {
+      return
+    }
     console.log(this.data.star,this.data.end)
     console.log(this.data.cur_year, this.data.cur_month + 1, e.currentTarget.dataset.time)
     let date=''

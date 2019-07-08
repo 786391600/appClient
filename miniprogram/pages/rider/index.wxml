@@ -33,7 +33,7 @@
 </view>
 <view class='rider-shade' wx:if = '{{showShade}}'>
   <view class='rider-shade-top'>
-    
+    <i class='iconfont idcard'></i>
   </view>
   <view class='rider-shade-ipt'>
     <view class='Contacts'>
@@ -49,6 +49,6 @@
       <input type="idcard" placeholder="请输入证件号码" placeholder-style='text-align:right' bindinput='bindIdCardInput' value='{{updateData.idCard}}'/>
     </view>
   </view>
-   <button bindtap='addOrUpdateRider'>确定</button>
+   <button bindtap='addOrUpdateRider' class='rider-shade-button'>确定</button>
    <button bindtap='cancle'>取消</button>
 </view>

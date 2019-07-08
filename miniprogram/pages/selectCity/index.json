@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "list-html": "/component/wx-index-list/wx-index-list"
-  }
+  },
+  "navigationBarTitleText": "地点选择"
 }

@@ -107,6 +107,10 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
 .rider-shade-top{
   height: 260rpx;
   background: #03a9f4;
+  text-align: center;
+  line-height: 260rpx;
+  color: white;
+  font-size: 200rpx;
 }
 .rider-shade-ipt > view {
   display: flex;
@@ -118,10 +122,13 @@ checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
 .rider-shade-ipt input {
   text-align: right;
 }
-.rider-shade button {
-  width: 98%;
+.rider-shade .rider-shade-button {
+  margin-top: 100rpx;
   background: #FFCD40;
   color: #471600;
+}
+.rider-shade button {
+  width: 98%;
   margin-top: 10rpx;
   font-size: 34rpx;
 }
