@@ -66,8 +66,12 @@ Page({
 
   },
   GoPopup:function (item){
-    let that = this
     let orderInfo = item.target.dataset.info
+    let departureTime = orderInfo.line_info[0].departureTime
+    let canRefound = this.getCurrentDay(departureTime)
+    console.log(canRefound)
+    return
+    let that = this
     let orderIndex = item.target.dataset.index
     wx.showModal({
       title: '退款提示',
@@ -149,5 +153,14 @@ Page({
     wx.navigateTo({
       url: '/pages/OrderDetail/index?orderInfo=' + orderInfo,
     })
+  },
+  getCurrentDay(departureTime) {
+    let date = departureTime ? new Date(departureTime) :new Date()
+    let date1 = new Date();
+    let departureMonth = date.getMonth() + 1;
+    departureMonth = (departureMonth < 10 ? "0" + departureMonth : departureMonth)
+    let departureDay = date.getDate()
+    departureDay = (departureDay < 10 ? "0" + departureDay : departureDay)
+    let departure = date.getFullYear() + '' + departureMonth + '' + departureDay
   }
 })
