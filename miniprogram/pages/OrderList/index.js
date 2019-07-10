@@ -71,10 +71,11 @@ Page({
     let canRefound = this.getCurrentDay(departureTime)
     if (canRefound) {
       wx.showToast({
-        title: '发车当天以后不能退票'
+        title: '退票时间已过，不予退票',
+        icon: 'none'
       })
+      return
     }
-    return
     let that = this
     let orderIndex = item.target.dataset.index
     wx.showModal({
@@ -160,13 +161,13 @@ Page({
   },
   getCurrentDay(departureTime) {
     let date = departureTime ? new Date(departureTime) :new Date()
-    let date1 = new Date();
+    let date1 = new Date().setHours(0,0,0,0);
     let departureMonth = date.getMonth() + 1;
     departureMonth = (departureMonth < 10 ? "0" + departureMonth : departureMonth)
     let departureDay = date.getDate()
     departureDay = (departureDay < 10 ? "0" + departureDay : departureDay)
     let departure = date.getFullYear() + '/' + departureMonth + '/' + departureDay
-    var d=new Date(Date.parse(departure))
+    var d=new Date(Date.parse(departure)).setHours(0,0,0,0)
     return date1 >= d
   }
 })
