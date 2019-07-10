@@ -69,7 +69,11 @@ Page({
     let orderInfo = item.target.dataset.info
     let departureTime = orderInfo.line_info[0].departureTime
     let canRefound = this.getCurrentDay(departureTime)
-    console.log(canRefound)
+    if (canRefound) {
+      wx.showToast({
+        title: '发车当天以后不能退票'
+      })
+    }
     return
     let that = this
     let orderIndex = item.target.dataset.index
@@ -161,6 +165,8 @@ Page({
     departureMonth = (departureMonth < 10 ? "0" + departureMonth : departureMonth)
     let departureDay = date.getDate()
     departureDay = (departureDay < 10 ? "0" + departureDay : departureDay)
-    let departure = date.getFullYear() + '' + departureMonth + '' + departureDay
+    let departure = date.getFullYear() + '/' + departureMonth + '/' + departureDay
+    var d=new Date(Date.parse(departure))
+    return date1 >= d
   }
 })
