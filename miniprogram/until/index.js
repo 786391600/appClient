@@ -115,7 +115,8 @@ exports.pay = function(obj){
      action: 'app.until.bookingPay',
      data: obj
    }).then(function (e) {
-     if (e.data.success) {
+     console.log('看看是成功还是失败')
+     if (e.data && e.data.success) {
        let out_trade_no = e.data.data.out_trade_no;
        wx.requestPayment({
          timeStamp: e.data.data.timeStamp,
@@ -133,10 +134,10 @@ exports.pay = function(obj){
          }
        })
      } else {
-       if (e.data.data.notEnough) {
+       if (e.data && e.data.data && e.data.data.notEnough) {
          reject({notEnough: true})
        } else {
-         reject(err)
+         reject({notEnough: false})
        }
      }
    })

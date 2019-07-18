@@ -1,0 +1,12 @@
+var filter = {
+  numberToFix: function (value) {
+    if (parseInt(value) === value) {
+      return value
+    } else {
+      return value.toFixed(1)
+    }
+  }
+}
+module.exports = {
+  numberToFix: filter.numberToFix
+}

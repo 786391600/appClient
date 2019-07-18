@@ -90,6 +90,9 @@ Page({
       return
     }
     this.data.beingSubmit = true
+    wx.showLoading({
+      title: '稍等片刻...',
+    })
     until.pay({
       body: '汽车订单',
       fee: priceObj.price,
@@ -100,11 +103,13 @@ Page({
       riderList: priceObj.riderList,
       formId: formId
     }).then((res) => {
+      wx.hideLoading()
       this.data.beingSubmit = false
       wx.navigateTo({
         url: '/pages/paySuccess/index?type=success',
       })
     }).catch((res) => {
+      wx.hideLoading()
       this.data.beingSubmit = false
       if (res.notEnough) {
         wx.showToast({
@@ -115,6 +120,12 @@ Page({
       } else {
         if (res.out_trade_no) {
           this.delOrder(res.out_trade_no)
+        } else {
+          wx.showToast({
+            title: '服务异常，稍后再试',
+            icon: 'none',
+            duration: 3000
+          })
         }
       }
     })
@@ -175,7 +186,7 @@ Page({
       })
       return false
     }
-    let price = this.data.riderList.length * this.data.riderDetail.price
+    let price = this.numberToFix(this.data.riderList.length * this.data.riderDetail.price)
     return {phone: data.phone, name: data.name, price: price, riderList: this.data.riderList, lineId: this.data.riderDetail.id}
   },
   delOrder(out_trade_no) {
@@ -189,5 +200,12 @@ Page({
         })
       }
     })
+  },
+  numberToFix: function (value) {
+    if (parseInt(value) === value) {
+      return value
+    } else {
+      return value.toFixed(1)
+    }
   }
 })

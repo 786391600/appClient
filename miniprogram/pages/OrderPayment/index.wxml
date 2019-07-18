@@ -1,3 +1,4 @@
+<wxs module="filter" src="./index.wxs"></wxs>
 <form bindsubmit="formSubmit" report-submit='true'>
   <view id='time'>
     <view>发车时间 {{riderDetail.departureTime}}</view>
@@ -43,7 +44,7 @@
   <view class='Submission'>
     <view class='payment'>
       <view>付款金额</view>
-      <view>￥{{riderList.length * riderDetail.price}}元</view>
+      <view>￥{{filter.numberToFix(riderList.length * riderDetail.price)}}元</view>
     </view>
     <button form-type="submit">提交订单</button>
   </view>
