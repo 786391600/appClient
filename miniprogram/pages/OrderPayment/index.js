@@ -18,6 +18,7 @@ Page({
    */
   onLoad: function (options) {
     this.initRiderData(options)
+    wx.hideShareMenu()
   },
 
   /**

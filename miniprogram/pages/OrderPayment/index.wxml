@@ -29,6 +29,7 @@
   <view class='Passenger' bindtap='toRider'>
     <view class='AddTo'>+ 添加乘车人</view>
   </view>
+  <view class='tip'>提示：个人信息涉及乘车险绑定，务必填写乘车人有效身份证一致的姓名和身份证号，如填写错误，一切后果个人承担！</view>
   <view id='Title'>联系方式</view>
   <view class='submit'>
     <view class='Contacts'>
@@ -36,7 +37,7 @@
       <input name="name" placeholder="请输入姓名" value='{{name}}'/>
     </view>
     <view class='PhoneNumber'>
-      <view>手机号码</view>
+      <view>通知手机</view>
       <input name="phone" placeholder="请输入手机号码" maxlength="11" value = '{{phone}}'/>
     </view>
     <p>务必填写正确的手机号码，接受出发通知！</p>

@@ -25,7 +25,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getLineManage({ start: options.star, end: options.end, departureTime: { $regex: options.date } }).then((e) => {
+    console.log(options, 'pppppppppppp')
+    this.getCarList({departureTime: { $regex: options.date }, fleetId: options.fleet}).then((e) => {
       let getdata = e.data.data
       this.setData({
         lineList: getdata,
@@ -94,11 +95,11 @@ Page({
     })
   },
   // 获取数据
-  getLineManage: function (query) {
+  getCarList: function (query) {
     let that = this
     return new Promise((resolve, reject) => {
       until.request({
-        action: 'app.line.getLineManage',
+        action: 'app.line.getCarList',
         data: query
       }).then(function (e) {
         if (e.data.success) {

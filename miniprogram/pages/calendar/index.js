@@ -13,6 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.hideShareMenu()
     var that = this;
     that.setData({
       star:options.star,
@@ -183,16 +184,16 @@ Page({
     if (!haveTicket) {
       return
     }
-    console.log(this.data.star,this.data.end)
-    console.log(this.data.cur_year, this.data.cur_month + 1, e.currentTarget.dataset.time)
+    let day = e.currentTarget.dataset.time < 10 ? '0' + e.currentTarget.dataset.time : e.currentTarget.dataset.time;
     let date=''
     if (this.data.cur_month + 1>9){
-      date = this.data.cur_year + '-' + (this.data.cur_month + 1) + '-' + e.currentTarget.dataset.time
+      date = this.data.cur_year + '-' + (this.data.cur_month + 1) + '-' + day
     }else{
-      date = this.data.cur_year + '-0' + (this.data.cur_month + 1) + '-' + e.currentTarget.dataset.time
+      date = this.data.cur_year + '-0' + (this.data.cur_month + 1) + '-' + day
     }
+
     wx.navigateTo({
-      url: '../VehicleList/index?star=' + this.data.star + '&end=' + this.data.end + '&date=' + date
+      url: '../VehicleList/index?star=' + this.data.star + '&end=' + this.data.end + '&date=' + date + '&fleet=' + this.data.fleetId
     })
   },
   //请求接口
@@ -208,10 +209,10 @@ Page({
       }).then(function (e) {
         if (e.data.success) {
           resolve(e)
-          console.log(e)
-          let getdata = that.ticketStatistics(e.data.data)
+          let getdata = that.ticketStatistics(e.data.data.carList)
           that.setData({
-            MonthlyTicket: getdata
+            MonthlyTicket: getdata,
+            fleetId: e.data.data.lineInfo.fleet
           })
         } else {
           until.showToast(e.data.message, 'error');

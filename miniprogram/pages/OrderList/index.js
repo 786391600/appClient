@@ -13,7 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.hideShareMenu()
   },
 
   /**
@@ -78,12 +78,12 @@ Page({
     }
     let that = this
     let orderIndex = item.target.dataset.index
+    let tip = this.CalculateThePrice(departureTime)
     wx.showModal({
       title: '退款提示',
-      content: '退款将会扣除违约费用，确认退票？',
+      content: tip,
       success: function (res) {
         if (res.confirm) {
-          console.log(orderInfo, 'iiiiii')
           that.refound(orderInfo, orderIndex)
         } else if (res.cancel) {
           console.log('用户点击取消')
@@ -150,8 +150,12 @@ Page({
   },
   toOrderDetail (e) {
     let refound = e.currentTarget.dataset.orderinfo.refound
+    let complete = e.currentTarget.dataset.orderinfo.line_info[0].complete
     console.log(e.currentTarget.dataset.orderinfo)
     if (refound) {
+      return
+    }
+    if (complete) {
       return
     }
     let orderInfo = JSON.stringify(e.currentTarget.dataset.orderinfo)
@@ -169,5 +173,25 @@ Page({
     let departure = date.getFullYear() + '/' + departureMonth + '/' + departureDay
     var d=new Date(Date.parse(departure)).setHours(0,0,0,0)
     return date1 >= d
-  }
+  },
+  CalculateThePrice(time) {
+    let departureTime = time.split(' ')[0]
+    let date = departureTime ? new Date(departureTime) : new Date()
+    let date1 = new Date();
+    let timp = (date - date1) / 1000 / 60 / 60 / 24
+    console.log(timp)
+    let gl = 0
+    if(timp < 0) {
+      gl = 0
+    } else if(0 <= timp && timp < 1) {
+      gl = '据发车不到' + Math.ceil(timp)+'天，将扣除50%手续费，确定退票？'
+    } else if (1 <= timp && timp <= 2) {
+      gl = '据发车不到' + Math.ceil(timp) +'天，将扣除30% 手续费，确定退票？'
+    } else if (2 < timp && timp <= 3 ) {
+      gl = '据发车不到' + Math.ceil(timp) +'天，将扣除15% 手续费，确定退票？'
+    } else if (timp > 3) {
+      gl = '本次将全额退款，点击确定'
+    }
+    return gl
+}
 })
