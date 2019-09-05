@@ -5,12 +5,13 @@
   <view>后一天 {{'>'}}</view>
 </view> -->
 <view id='ListBackground'>
-  <view class='TitleAddress'>{{start}} - {{end}}</view>
-  <view class='ContentAddress' wx:for="{{lineList}}" bindtap='goTicketDetails' data-detail='{{item}}'>
+  <view class='TitleAddress'>{{lineInfo.start}} - {{lineInfo.end}}</view>
+  <view class='ContentAddress' wx:for="{{carList}}" bindtap='goTicketDetails' data-detail='{{item}}'>
     <view class='ContentBox'>
       <view class='BoxTitle'>
-        <view>{{date}}</view>
-        <view>￥{{item.price}}元</view>
+        <view>{{item.departureTime
+}}</view>
+        <view>￥{{lineInfo.price}}元</view>
       </view>
       <view class='BoxContent'>
         <view class='context-box'>
@@ -20,13 +21,13 @@
             <view>{{item.Throughout>0?'始发':'终点'}}</view>
           </view> -->
           <view class='cont-backg'>
-            <view style="background:#ffdc73">上</view>
-            <view>{{item.start}}</view>
+            <view style="background:#ffdc73">起</view>
+            <view>{{lineInfo.start}}</view>
             <view>始发</view>
           </view>
           <view class='cont-backg'>
-            <view style="background:#03a9f4">下</view>
-            <view>{{item.end}}</view>
+            <view style="background:#03a9f4">终</view>
+            <view>{{lineInfo.end}}</view>
             <view>终点</view>
           </view>
         </view>

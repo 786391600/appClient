@@ -193,7 +193,7 @@ Page({
     }
 
     wx.navigateTo({
-      url: '../VehicleList/index?star=' + this.data.star + '&end=' + this.data.end + '&date=' + date + '&fleet=' + this.data.fleetId
+      url: '../VehicleList/index?star=' + this.data.star + '&end=' + this.data.end + '&date=' + date + '&lineInfo=' + JSON.stringify(this.data.lineInfo)
     })
   },
   //请求接口
@@ -212,7 +212,7 @@ Page({
           let getdata = that.ticketStatistics(e.data.data.carList)
           that.setData({
             MonthlyTicket: getdata,
-            fleetId: e.data.data.lineInfo.fleet
+            lineInfo: e.data.data.lineInfo
           })
         } else {
           until.showToast(e.data.message, 'error');

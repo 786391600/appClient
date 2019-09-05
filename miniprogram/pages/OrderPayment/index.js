@@ -75,7 +75,11 @@ Page({
     console.log(e)
     console.log('form发生了submit事件，携带数据为：', e.detail.value)
     let priceObj = this.validateSubmit(e.detail.value)
-    let formId = e.detail.formId
+    let carId = this.data.carInfo.id;
+    let fleetId = this.data.carInfo.fleetId;
+    let formId = e.detail.formId;
+    let start = this.data.lineInfo.start;
+    let end = this.data.lineInfo.end;
     wx.setStorage({
       key: 'name',
       data: priceObj.name
@@ -95,10 +99,14 @@ Page({
       title: '稍等片刻...',
     })
     until.pay({
-      body: '汽车订单',
+      body: '汽车订单:' + start + '--' + end,
       fee: priceObj.price,
       lineId: priceObj.lineId,
+      carId: carId,
+      fleetId: fleetId,
       type: 'ticket',
+      start: start,
+      end: end,
       name: priceObj.name,
       phone: priceObj.phone,
       riderList: priceObj.riderList,
@@ -150,7 +158,8 @@ Page({
     app.globalData.selectRiderList = this.data.riderList
   },
   initRiderData (options) {
-    let riderDetail = JSON.parse(options.detail);
+    let carInfo = JSON.parse(options.carInfo);
+    let lineInfo = JSON.parse(options.lineInfo)
     let that = this;
     until.request({
       action: 'app.line.getRiderList',
@@ -160,7 +169,7 @@ Page({
         app.globalData.selectRiderList = e.data.data || []
         let name = wx.getStorageSync('name') || '';
         let phone = wx.getStorageSync('phone') || ''
-        that.setData({ riderDetail: riderDetail, riderList: app.globalData.selectRiderList, name: name, phone: phone})
+        that.setData({ lineInfo: lineInfo, carInfo: carInfo, riderList: app.globalData.selectRiderList, name: name, phone: phone})
       }
     })
   },
@@ -187,8 +196,8 @@ Page({
       })
       return false
     }
-    let price = this.numberToFix(this.data.riderList.length * this.data.riderDetail.price)
-    return {phone: data.phone, name: data.name, price: price, riderList: this.data.riderList, lineId: this.data.riderDetail.id}
+    let price = this.numberToFix(this.data.riderList.length * this.data.lineInfo.price)
+    return {phone: data.phone, name: data.name, price: price, riderList: this.data.riderList, lineId: this.data.lineInfo.id}
   },
   delOrder(out_trade_no) {
     until.request({

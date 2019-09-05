@@ -25,14 +25,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options, 'pppppppppppp')
-    this.getCarList({departureTime: { $regex: options.date }, fleetId: options.fleet}).then((e) => {
+    let lineInfo = JSON.parse(options.lineInfo)
+    this.getCarList({departureTime: { $regex: options.date }, fleetId: lineInfo.fleet}).then((e) => {
       let getdata = e.data.data
       this.setData({
-        lineList: getdata,
-        start: options.star,
-        end: options.end,
-        date: options.date
+        carList: getdata,
+        lineInfo: lineInfo
       })
     })
   },
@@ -87,16 +85,18 @@ Page({
   },
   // 跳转车次详情
   goTicketDetails:function (e) {
-    let data = JSON.stringify(e.currentTarget.dataset.detail)
-    console.log(data)
-    console.log('到达详情')
+    let carInfo = JSON.stringify(e.currentTarget.dataset.detail)
+    let lineInfo = JSON.stringify(this.data.lineInfo)
     wx.navigateTo({
-      url: '../OrderPayment/index?detail=' + data
+      url: '../OrderPayment/index?carInfo=' + carInfo + '&lineInfo=' + lineInfo
     })
   },
   // 获取数据
   getCarList: function (query) {
     let that = this
+    wx.showLoading({
+      title: '车辆获取中...',
+    })
     return new Promise((resolve, reject) => {
       until.request({
         action: 'app.line.getCarList',
@@ -107,6 +107,7 @@ Page({
         } else {
           until.showToast(e.data.message, 'error');
         }
+        wx.hideLoading()
       })
     })
   }

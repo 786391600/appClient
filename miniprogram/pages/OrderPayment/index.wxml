@@ -1,14 +1,14 @@
 <wxs module="filter" src="./index.wxs"></wxs>
 <form bindsubmit="formSubmit" report-submit='true'>
   <view id='time'>
-    <view>发车时间 {{riderDetail.departureTime}}</view>
-    <view>票价:￥{{riderDetail.price}}</view>
+    <view>发车时间 {{carInfo.departureTime}}</view>
+    <view>票价:￥{{lineInfo.price}}</view>
   </view>
   <view id='Start'>
     <view class='Start'>
-      <view class='end'>{{riderDetail.start}}</view>
+      <view class='end'>{{lineInfo.start}}</view>
       <i class='iconfont ticket4'></i>
-      <view class='end'>{{riderDetail.end}}</view>
+      <view class='end'>{{lineInfo.end}}</view>
     </view>
   </view>
   <view id='Title'>选择乘客</view>
@@ -22,7 +22,7 @@
       </view>
     </view>
     <view class='riderList-right'>
-      <span class='riderList-right-price'>¥{{riderDetail.price}}</span>
+      <span class='riderList-right-price'>¥{{lineInfo.price}}</span>
       <span data-index = '{{index}}' bindtap='removeRider'>删除</span>
     </view>
   </view>
@@ -45,7 +45,7 @@
   <view class='Submission'>
     <view class='payment'>
       <view>付款金额</view>
-      <view>￥{{filter.numberToFix(riderList.length * riderDetail.price)}}元</view>
+      <view>￥{{filter.numberToFix(riderList.length * lineInfo.price)}}元</view>
     </view>
     <button form-type="submit">提交订单</button>
   </view>
