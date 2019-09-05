@@ -4,10 +4,10 @@
         {{orderInfo.line_info[0].start}}<i class='iconfont ticket4'></i>{{orderInfo.line_info[0].end}}
      </view>
      <view class='info'>
-        <view>发车日期：<span>{{orderInfo.line_info[0].departureTime}}</span></view>
+        <view>发车日期：<span>{{orderInfo.car_info[0].departureTime}}</span></view>
         <view>上车人数：<span>{{orderInfo.riderList.length}}人</span></view>
         <view>发车地点：<span wx:if='{{orderInfo.line_info[0].departurePlace}}'>{{orderInfo.line_info[0].departurePlace}}</span><span wx:else>随后通知</span></view>
-        <view>车牌号：<span wx:if='{{orderInfo.line_info[0].licensePlate}}'>{{orderInfo.line_info[0].licensePlate}}</span></view>
+        <view>车牌号：<span wx:if='{{orderInfo.car_info[0].licensePlate}}'>{{orderInfo.car_info[0].licensePlate}}</span></view>
      </view>
      <view class='rider'>
         <view wx:for='{{orderInfo.riderList}}'>
@@ -15,7 +15,7 @@
         </view>
      </view>
      <view class='phone'>
-       <button catchtap='toContacts' data-phone='{{orderInfo.line_info[0].contacts_phone}}'>随车联系人</button>
+       <button catchtap='toContacts' data-phone='{{orderInfo.car_info[0].contacts_phone}}'>随车联系人</button>
      </view>
    </view>
 </view>

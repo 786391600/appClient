@@ -87,6 +87,13 @@ Page({
   goTicketDetails:function (e) {
     let carInfo = JSON.stringify(e.currentTarget.dataset.detail)
     let lineInfo = JSON.stringify(this.data.lineInfo)
+    if (e.currentTarget.dataset.detail.num <= 0) {
+      wx.showToast({
+        title: '票已售光',
+        icon: 'none'
+      })
+      return
+    }
     wx.navigateTo({
       url: '../OrderPayment/index?carInfo=' + carInfo + '&lineInfo=' + lineInfo
     })

@@ -67,7 +67,7 @@ Page({
   },
   GoPopup:function (item){
     let orderInfo = item.target.dataset.info
-    let departureTime = orderInfo.line_info[0].departureTime
+    let departureTime = orderInfo.car_info[0].departureTime
     let canRefound = this.getCurrentDay(departureTime)
     if (canRefound) {
       wx.showToast({
@@ -93,6 +93,9 @@ Page({
   },
   getOrderList () {
     let that = this
+    wx.showLoading({
+      title: '订单获取中...',
+    })
       until.request({
         action: 'app.line.getOrderList',
         data: {}
@@ -106,6 +109,7 @@ Page({
         } else {
           until.showToast(e.data.message, 'error');
         }
+        wx.hideLoading()
       })
   },
   refound (orderInfo, index) {
@@ -119,8 +123,9 @@ Page({
       data: {orderInfo: orderInfo}
     }).then(function (e) {
       if (e.data.success) {
+        console.log()
        let refoundInfo = e.data.data.xml
-        if (refoundInfo.result_code[0] === 'SUCCESS') {
+        if (refoundInfo.result_code && refoundInfo.result_code[0] === 'SUCCESS') {
           let data = that.data.order
           data[index]['refound'] = true
           that.setData({order: data})

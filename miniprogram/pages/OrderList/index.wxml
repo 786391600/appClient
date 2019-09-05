@@ -6,15 +6,15 @@
       <view>{{item.line_info[0].end}}</view>
     </view>
     <view class='DepartureTime'><view>订票人:</view><view>{{item.name}}</view></view>
-    <view class="place"><view>发车时间:</view><view>{{item.line_info[0].departureTime}}</view></view>
+    <view class="place"><view>发车时间:</view><view>{{item.car_info[0].departureTime}}</view></view>
     <view class='place'><view>发车地点:</view><view wx:if='{{item.line_info[0].departurePlace}}'>{{item.line_info[0].departurePlace}}</view><view wx:else>随后通知</view></view>
-    <view class='provider'><view catchtap='toContacts' data-phone='{{item.line_info[0].contacts_phone}}'><view>联系人:</view><view>{{item.line_info[0].contacts_name}}(点击拨打)</view></view>
-    <view class='Toticket' catchtap='GoPopup' wx:if = '{{!item.refound && !item.line_info[0].complete}}' data-info='{{item}}' data-index = '{{index}}'>退票</view>
+    <view class='provider'><view catchtap='toContacts' data-phone='{{item.car_info[0].contacts_phone}}'><view>联系人:</view><view>{{item.car_info[0].contacts_name}}(点击拨打)</view></view>
+    <view class='Toticket' catchtap='GoPopup' wx:if = '{{!item.refound && !item.car_info[0].complete}}' data-info='{{item}}' data-index = '{{index}}'>退票</view>
     <view class='Torefound' wx:if = '{{item.refound}}'>已退票</view>
-    <view class='Traveled' wx:if = '{{item.line_info[0].complete && !item.refound}}'>已出行</view>
+    <view class='Traveled' wx:if = '{{item.car_info[0].complete && !item.refound}}'>已出行</view>
     </view>
-    <view class='provider' wx:if='{{item.line_info[0].remark}}'>
-      <view><view>备注信息:</view><view>{{item.line_info[0].remark}}</view></view>
+    <view class='provider' wx:if='{{item.car_info[0].remark}}'>
+      <view><view>备注信息:</view><view>{{item.car_info[0].remark}}</view></view>
     </view>
   </view>
 </view>

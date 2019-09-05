@@ -14,7 +14,6 @@ Page({
    */
   onLoad: function (options) {
     let orderInfo = JSON.parse(options.orderInfo)
-    console.log(orderInfo)
     this.setData({orderInfo: orderInfo})
   },
 
