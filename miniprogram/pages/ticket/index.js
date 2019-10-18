@@ -10,15 +10,21 @@ Page({
     startAddress: '请选择',
     endAddress: '请选择',
     HistoricalRecord: [],
-    RecommendedRoute: []
+    RecommendedRoute: [],
+    type: ''
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options)
     this.getTicketInfo(options)
     this.getHistorical()
+    if (app.globalData.type && app.globalData.type === 'middleSchool') {
+      wx.setNavigationBarTitle({
+        title: '中学版'
+      })
+      this.setData({type: 'middleSchool'})
+    }
   },
 
   /**
@@ -31,8 +37,8 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
-
+  onShow: function(options) {
+    
   },
 
   /**
@@ -169,7 +175,7 @@ Page({
   //选择起止点
   GoStar:function (e){
     wx.navigateTo({
-      url: '../selectCity/index?newIdena=' + e.currentTarget.dataset.address + '&star=' + this.data.startAddress + '&end=' + this.data.endAddress
+      url: '../selectCity/index?newIdena=' + e.currentTarget.dataset.address + '&star=' + this.data.startAddress + '&end=' + this.data.endAddress + '&type=' + this.data.type
     })
   },
   getLineManage: function(query) {

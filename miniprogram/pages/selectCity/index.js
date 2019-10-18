@@ -18,7 +18,7 @@ Page({
     wx.showLoading({
       title: '数据加载中...',
     })
-    this.getCity().then((data)=>{
+    this.getCity(options.type).then((data)=>{
       wx.hideLoading()
       this.setData({
         city: data,
@@ -42,11 +42,12 @@ Page({
       url: '../ticket/index?newIdena=' + this.data.newIdena + '&data=' + e.detail.name + '&data2=' + this.data.opt.star + '&data3=' + this.data.opt.end
     })
   },
-  getCity () {
+  getCity (type) {
+    let query = type ? {type: type} : {}
     return new Promise((resolve, reject)=>{
       until.request({
         action: 'app.line.getCity',
-        data: {}
+        data: query
       }).then(function (e) {
         if (e.data.success) {
           resolve(e.data.data)

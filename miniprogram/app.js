@@ -20,5 +20,10 @@ App({
         console.log(err);
       }
     })
+  },
+  onShow (options) {
+    if (options.scene === 1035 && options.query.type && options.query.type === 'middleSchool') {
+      this.globalData.type = 'middleSchool'
+    }
   }
 })

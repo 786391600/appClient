@@ -186,3 +186,11 @@ page{
       font-size: 28rpx;
       color: #be0005;
     }
+    .Edition{
+      font-size: 32rpx;
+      color: #D4D4D4;
+      margin: 30rpx 0 5rpx;
+      text-align: center;
+      font-weight: bold;
+      font-style: ；
+    }

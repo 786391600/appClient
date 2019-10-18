@@ -1,4 +1,6 @@
-<official-account class='official-account'></official-account>
+<!-- <official-account class='official-account'></official-account>
+<ad unit-id="adunit-9e0672f1fe9aede2"></ad> -->
+
 <view class='ticket-box'>
    <view class='ticket-search'>
      <view class='ticket-top'>
@@ -44,3 +46,4 @@
     </view>
   </view>
 </view>
+<view class='Edition' wx:if='{{type === "middleSchool"}}'>么么校园-中学版</view>

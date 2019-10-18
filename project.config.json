@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -44,6 +44,14 @@
 					"pathName": "pages/getShareImg/index",
 					"query": "scene=\"wangtao\"",
 					"scene": 1011
+				},
+				{
+					"id": -1,
+					"name": "模拟中学",
+					"pathName": "pages/ticket/index",
+					"query": "type=middleSchool",
+					"scene": 1035,
+					"referrerInfo": {}
 				}
 			]
 		}
