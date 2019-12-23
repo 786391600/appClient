@@ -1,0 +1,124 @@
+/* miniprogram/pages/TicketDetails/index.wxss */
+@import '../../../style/ticket/iconfont.wxss';
+
+#bottom{
+  width: 100%;
+  height: 108rpx;
+  position: fixed;
+  bottom: 0;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#background{
+  width: 100%;
+  height: 100vh;
+  background: #eeeeee;
+}
+.PurchaseButton{
+  width: 358rpx;
+  height: 84rpx;
+  background: #ffcd40;
+  border-radius: 10rpx;
+  line-height: 84rpx;
+  text-align: center;
+  color: #6a3906;
+  font-size: 32rpx;
+}
+.Ticket{
+  width: 100%;
+  height: 86rpx;
+  border-bottom: 1rpx #ececec solid;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.bashi{
+  width: 38rpx;
+  height: 38rpx;
+  background: #03a9f4;
+  color: #ffffff;
+  border-radius: 5rpx;
+  margin: 0 15rpx;
+}
+.kilometre{
+  font-size: 27rpx;
+  color: #ff9200;
+  border: 1rpx #ff9200 solid;
+  border-radius: 10rpx;
+  padding: 5rpx 10rpx;
+  margin: 0 10rpx;
+}
+.kilometre1{
+  font-size: 27rpx;
+  color: #12aff5;
+  border: 1rpx #12aff5 solid;
+  border-radius: 10rpx;
+  padding: 5rpx 10rpx;
+  margin: 0 10rpx;
+}
+.Price{
+  font-size: 36rpx;
+  color: #f44e1a;
+  position: absolute;
+  right: 22rpx;
+}
+.Operator{
+  width: 100%;
+  height: 86rpx;
+  border-bottom: 1rpx #ececec solid;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.OperatorIcon{
+  width: 40rpx;
+  height: 40rpx;
+  background: #00aaf5;
+  color: #ffffff;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 40rpx;
+  border-radius: 5rpx;
+  margin: 0 15rpx;
+}
+.OperatorTitle{
+  font-size: 32rpx;
+  margin: 0 10rpx;
+}
+.OperatorIphone{
+  font-size: 28rpx;
+  color: #00aaf5;
+  position: absolute;
+  right: 40rpx;
+}
+.dianhua{
+  margin: 0 10rpx;
+}
+.Notice{
+  width: 100%;
+  height: 86rpx;
+  border-bottom: 1rpx #ececec solid;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.OperatorIcon1{
+  width: 40rpx;
+  height: 40rpx;
+  background: #f5a623;
+  color: #ffffff;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 40rpx;
+  border-radius: 5rpx;
+  margin: 0 15rpx;
+}
+.NoticeContent{
+  font-size: 32rpx;
+  margin: 0 10rpx;
+}

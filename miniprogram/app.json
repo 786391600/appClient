@@ -1,16 +1,17 @@
 {
   "cloud": true,
   "pages": [
-    "pages/ticket/index",
-    "pages/OrderList/index",
-    "pages/selectCity/index",
-    "pages/OrderPayment/index",
-    "pages/OrderDetail/index",
-    "pages/rider/index",
-    "pages/TicketDetails/index",
-    "pages/calendar/index",
-    "pages/VehicleList/index",
-     "pages/paySuccess/index"
+    "pages/index/index",
+    "pages/job/index/index",
+    "pages/booking/index/index",
+    "pages/booking/selectCity/index",
+    "pages/booking/OrderPayment/index",
+    "pages/booking/OrderDetail/index",
+    "pages/booking/rider/index",
+    "pages/booking/TicketDetails/index",
+    "pages/booking/calendar/index",
+    "pages/booking/VehicleList/index",
+    "pages/booking/paySuccess/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -19,26 +20,6 @@
     "?navigationStyle": "custom",
     "navigationBarBackgroundColor": "#03a9f4",
     "navigationBarTextStyle": "white"
-  },
-  "tabBar": {
-    "selectedColor": "#06B0EE",
-    "color": "#666",
-    "borderStyle": "black",
-    "backgroundColor": "#fff",
-    "list": [
-      {
-        "pagePath": "pages/ticket/index",
-        "text": "预定",
-        "iconPath": "images/ticket/Reserve.png",
-        "selectedIconPath": "images/ticket/Reserve-select.png"
-      },
-      {
-        "pagePath": "pages/OrderList/index",
-        "text": "乘车订单",
-        "iconPath": "images/ticket/ticket.png",
-        "selectedIconPath": "images/ticket/ticket-select.png"
-      }
-    ]
   },
   "sitemapLocation": "sitemap.json"
 }

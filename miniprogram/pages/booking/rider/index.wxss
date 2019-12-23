@@ -1,0 +1,147 @@
+/* miniprogram/pages/OrderList/index.wxss */
+@import '../../../style/ticket/iconfont.wxss';
+page {
+  background-color: #eeeeee;
+} 
+checkbox .wx-checkbox-input{
+    border-radius: 50%;/* 圆角 */
+    width: 32rpx; /* 背景的宽 */
+    height: 32rpx; /* 背景的高 */
+    border: 2rpx solid #8C8D91;
+}
+
+/* 选中后的样式 （可根据设计稿需求自己修改） */
+checkbox .wx-checkbox-input.wx-checkbox-input-checked{
+    background: #2facff;
+    border-color: #2facff;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before{
+    border-radius: 50%;
+    width:32rpx;
+    height: 32rpx;
+    line-height: 32rpx;
+    text-align: center;
+    font-size: 26rpx; /* 对勾大小 28rpx */
+    color: #fff; /* 对勾颜色 白色 */
+    background: transparent;
+    transform: translate(-50%, -50%) scale(1);
+    -webkit-transform: translate(-50%, -50%) scale(1);
+}
+.rider-title {
+  padding: 18rpx;
+  font-size: 26rpx;
+  color:#696A70;
+}
+.rider {
+  color:#8C8D91;
+  background: white;
+  font-size: 30rpx;
+  margin-bottom: 18rpx;
+}
+.rider-list-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+    border-bottom: 2rpx solid #ccc;
+}
+.rider-list-top-l {
+  width: 15%;
+  text-align: center;
+}
+.rider-list-top-r {
+  width: 85%;
+}
+.rider-list-top-r-t{
+  padding: 25rpx 0 13rpx;
+  color:black;
+}
+.rider-list-top-r-b{
+  padding: 13rpx 0 25rpx;
+}
+.rider-list-bottom {
+  display: flex;
+  flex-direction: row;
+  padding: 18rpx 0 18rpx;
+}
+.rider-list-bottom-l {
+  width: 15%;
+}
+.rider-list-bottom-r {
+  width: 85%;
+  display: flex;
+  flex-direction: row;
+}
+.rider-list-bottom-r-r {
+  display: flex;
+  flex-direction: row;
+}
+.rider-list-bottom-r span{
+  width: 50%;
+}
+.rider-list-bottom-r-l{
+  width: 60%;
+}
+.rider-list-bottom-r-l-default {
+  color: #00A8F4;
+}
+.rider-list-bottom-r-r{
+  width: 40%;
+}
+.rider-add{
+  text-align: center;
+  background: white;
+  font-size: 30rpx;
+  color: #00A8F4;
+  padding: 20rpx 0 20rpx;
+}
+.rider-shade{
+  width:100%;
+  height:100%;
+  position:fixed;
+  background-color:white;
+  z-index:9999;
+  top:0;
+  left:0; 
+}
+.rider-shade-top{
+  height: 260rpx;
+  background: #03a9f4;
+  text-align: center;
+  line-height: 260rpx;
+  color: white;
+  font-size: 200rpx;
+}
+.rider-shade-ipt > view {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 18rpx;
+  border-bottom: 2rpx solid #ECECEC;
+}
+.rider-shade-ipt input {
+  text-align: right;
+}
+.rider-shade .rider-shade-button {
+  margin-top: 100rpx;
+  background: #FFCD40;
+  color: #471600;
+}
+.rider-shade button {
+  width: 98%;
+  margin-top: 10rpx;
+  font-size: 34rpx;
+}
+.addDefine {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+.addDefine button {
+  width: 98%;
+  background: #FFCD40;
+  color: #471600;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  font-size: 34rpx;
+}

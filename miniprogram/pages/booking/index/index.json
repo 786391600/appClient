@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "component_index": "/pages/booking/ticket/index",
+    "component_orderList": "/pages/booking/OrderList/index"
+  }
+}
