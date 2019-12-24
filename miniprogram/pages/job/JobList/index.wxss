@@ -1,0 +1,21 @@
+@import '../../../style/ticket/iconfont.wxss';
+.jobList {
+  padding: 0 22rpx 0;
+  box-sizing: border-box;
+}
+.jobBox{
+  display: flex;
+  flex-direction: row;
+  height: 200rpx;
+  border-bottom: 2rpx solid #E6E6E6;
+}
+checkbox .wx-checkbox-input{
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+}
+.jobBox-left{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

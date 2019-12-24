@@ -3,6 +3,6 @@
   "navigationBarTitleText": "AIjob",
   "navigationBarBackgroundColor": "#FF7E3E",
   "usingComponents": {
-    
+    "component_index": "/pages/job/JobList/index"
   }
 }

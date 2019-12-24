@@ -1,0 +1,10 @@
+<view class="jobList">
+  <view class="jobBox">
+    <view class="jobBox-left">
+       <checkbox value="" checked="" />
+    </view>
+    <view class="jobBox-right">
+      
+    </view>
+  </view>
+</view>

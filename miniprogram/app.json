@@ -1,8 +1,8 @@
 {
   "cloud": true,
   "pages": [
-    "pages/index/index",
     "pages/job/index/index",
+    "pages/index/index",
     "pages/booking/index/index",
     "pages/booking/selectCity/index",
     "pages/booking/OrderPayment/index",
