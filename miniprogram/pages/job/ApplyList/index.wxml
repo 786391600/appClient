@@ -1,0 +1,11 @@
+<view class="ApplyList">
+  <view class="ApplyBox" catchtap='toApplyDetail'>
+    <view class="ApplyBox-top">
+       <view><span>图标</span><span>12-17 23:00</span></view><view>icon</view>
+    </view>
+    <view class="ApplyBox-bottom">
+      <view><span class='position'>职位描述职位描述职位描述</span><span class='price'>1-2万/月</span></view>
+      <view><span class='company'>公司名称</span><span class='place'>地址</span></view>
+    </view>
+  </view>
+</view>

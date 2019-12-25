@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "nav": "../plug/nav/index"
+  },
+  "backgroundColor": "#f3f3f3",
+  "navigationBarTitleText": "线路查询"
+}

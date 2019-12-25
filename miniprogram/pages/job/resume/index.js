@@ -33,10 +33,7 @@ Component({
       console.log(checkObj)
     },
     toJobDetail () {
-      console.log('ddddd')
-      wx.navigateTo({
-        url: '/pages/job/jobDetail/index'
-      })
+      
     }
   }
 })

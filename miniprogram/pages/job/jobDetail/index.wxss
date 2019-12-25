@@ -1,0 +1,78 @@
+/**index.wxss**/
+page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #EBEBEB;
+}
+.title {
+  border-top: 3rpx solid #E8E8E8;
+  background: white;
+  padding: 38rpx;
+  margin-bottom: 18rpx;
+  font-size: 32rpx;
+  color: #868686;
+}
+.title-top{
+  font-size: 35rpx;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 20rpx;
+}
+.enterprise {
+  background: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 30rpx;
+  justify-content: space-between;
+  font-size: 32rpx;
+  color: #868686;
+  margin-bottom: 18rpx;
+}
+.enterprise-box view{
+  margin: 8rpx 0 8rpx;
+}
+.enterprise-box-name{
+  font-size: 35rpx;
+  font-weight: bold;
+  color: black;
+}
+.jobDetail{
+  background: white;
+  padding: 0 60rpx 0;
+}
+.jobDetail-title{
+  padding: 50rpx 0 50rpx;
+  border-bottom: 2rpx solid #E6E6E6;
+}
+.jobDetail-info {
+  padding:0 0 25rpx;
+}
+.share{
+  width: 100%;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  border-top: 1rpx solid #D8D8D8;
+  flex-direction: row;
+  align-items: center;
+  padding: 20rpx;
+  background: white;
+  box-sizing: border-box;
+}
+.share-left{
+  width: 30%;
+  text-align: center;
+  color: #FF7E3D;
+  font-weight: bold;
+}
+.share-btn{
+  padding: 28rpx 0 28rpx;
+  width: 70%;
+  text-align: center;
+  background: #FF7E3D;
+  border: 1rpx solid #D68359;
+  border-radius: 25rpx;
+  color: white;
+}

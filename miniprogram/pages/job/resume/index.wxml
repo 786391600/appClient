@@ -1,0 +1,11 @@
+<view class="resumeBox">
+   <view class="resumeBox-info">
+     <view class="resumeBox-info-top"><span>icon</span><span>基本信息</span></view>
+     <view class="resumeBox-info-bottom">
+        <view class="name">王涛</view>
+        <view>清华大学</view>
+        <view>13934691550</view>
+        <view>男 | 25岁</view>
+     </view>
+   </view>
+</view>

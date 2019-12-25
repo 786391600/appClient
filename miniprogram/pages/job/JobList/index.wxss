@@ -2,20 +2,61 @@
 .jobList {
   padding: 0 22rpx 0;
   box-sizing: border-box;
+  background: white;
+}
+.jobTitle{
+  text-align: center;
+  padding: 20rpx 0 20rpx;
 }
 .jobBox{
   display: flex;
   flex-direction: row;
   height: 200rpx;
-  border-bottom: 2rpx solid #E6E6E6;
+  border-bottom: 1rpx solid #E6E6E6;
 }
-checkbox .wx-checkbox-input{
-  width: 40rpx;
-  height: 40rpx;
-  border-radius: 50%;
+.jobBox:last-child{
+  border-bottom: 0;
 }
 .jobBox-left{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 15%;
+  text-align: center;
+}
+.jobBox-right{
+  display: flex;
+  flex-direction: column;
+  /* width: 85%; */
+  width: 100%;
+  justify-content: center;
+}
+.jobBox-right > view {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10rpx 0 10rpx;
+  align-items: center;
+}
+.jobBox-right .position{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 36rpx;
+  width: 70%;
+}
+.jobBox-right .price{
+  color: #EF8700;
+  font-size: 32rpx;
+}
+.jobBox-right .company{
+  font-size: 32rpx;
+  color: #777777;
+}
+.jobBox-right .place{
+  font-size: 32rpx;
+  color: #777777;
+}
+.jobBox-right > view span{
+  align-items: center;
 }

@@ -1,10 +1,32 @@
 <view class="jobList">
-  <view class="jobBox">
-    <view class="jobBox-left">
-       <checkbox value="" checked="" />
+  <view class="jobTitle">————为您推荐好职位————</view>
+  <checkbox-group bindchange='checkboxChange'>
+    <view class="jobBox" catchtap='toJobDetail'>
+      <!-- <view class="jobBox-left">
+        <checkbox value="" checked=""/>  
+      </view> -->
+      <view class="jobBox-right">
+        <view><span class='position'>职位描述职位描述职位描述</span><span class='price'>4千-5千/月</span></view>
+        <view><span class='company'>公司名称</span><span class='place'>地点描述</span></view>
+      </view>
     </view>
-    <view class="jobBox-right">
-      
+    <view class="jobBox" catchtap='toJobDetail'>
+      <!-- <view class="jobBox-left">
+        <checkbox value="" checked=""/>  
+      </view> -->
+      <view class="jobBox-right">
+        <view><span class='position'>职位描述职位描述职位描述</span><span class='price'>4千-5千/月</span></view>
+        <view><span class='company'>公司名称</span><span class='place'>地点描述</span></view>
+      </view>
     </view>
-  </view>
+    <view class="jobBox" catchtap='toJobDetail'>
+      <!-- <view class="jobBox-left">
+        <checkbox value="" checked=""/>  
+      </view> -->
+      <view class="jobBox-right">
+        <view><span class='position'>职位描述职位描述职位描述</span><span class='price'>4千-5千/月</span></view>
+        <view><span class='company'>公司名称</span><span class='place'>地点描述</span></view>
+      </view>
+    </view>
+  </checkbox-group>  
 </view>
