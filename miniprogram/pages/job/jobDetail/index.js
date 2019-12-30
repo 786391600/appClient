@@ -1,37 +1,50 @@
 let app = getApp()
-
+const until = require('../../../until/index.js')
 Page({
   data: {
-    currentTab: 0,
-    items: [
-      {
-        "iconPath": "./img/index2.png",
-        "selectedIconPath": "./img/index1.png",
-        "text": "首页"
-      },
-      {
-        "iconPath": "./img/car2.png",
-        "selectedIconPath": "./img/car1.png",
-        "text": "申请记录"
-      },
-      {
-        "iconPath": "./img/my2.png",
-        "selectedIconPath": "./img/my1.png",
-        "text": "我的简历"
-      }
-    ]
+    jobData: {}
   },
-  swichNav: function (e) {
-    let that = this;
-    if (this.data.currentTab === e.target.dataset.current) {
-      return false;
+  onLoad: function (option) {
+    if (option.jobData) {
+      this.getUserResume()
+      this.setData({jobData: JSON.parse(option.jobData)})
+    }
+  },
+  jobApplication () {
+    if (this.data.resume) {
+      let that = this
+      wx.showLoading({
+        title: '职位申请中...',
+      })
+      until.request({
+        action: 'app.job.jobApplication',
+        data: {}
+      }).then(function (e) {
+        if (e.data.success) {
+
+        } else {
+          until.showToast(e.data.message, 'error');
+        }
+        wx.hideLoading()
+      })
     } else {
-      that.setData({
-        currentTab: e.target.dataset.current
+      wx.navigateTo({
+        url: '/pages/job/resumeEdit/index'
       })
     }
   },
-  onLoad: function (option) {
-     
+  getUserResume () {
+    let that = this
+    until.request({
+      action: 'app.job.getResumeInfo',
+      data: {}
+    }).then(function (e) {
+      if (e.data.success) {
+        that.setData({ resume: e.data.data })
+      } else {
+        until.showToast(e.data.message, 'error');
+      }
+      wx.hideLoading()
+    })
   }
 })

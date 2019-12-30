@@ -1,31 +1,13 @@
 <view class="jobList">
   <view class="jobTitle">————为您推荐好职位————</view>
   <checkbox-group bindchange='checkboxChange'>
-    <view class="jobBox" catchtap='toJobDetail'>
+    <view class="jobBox" catchtap='toJobDetail' wx:for='{{jobList}}' data-item = '{{item}}'>
       <!-- <view class="jobBox-left">
         <checkbox value="" checked=""/>  
       </view> -->
       <view class="jobBox-right">
-        <view><span class='position'>职位描述职位描述职位描述</span><span class='price'>4千-5千/月</span></view>
-        <view><span class='company'>公司名称</span><span class='place'>地点描述</span></view>
-      </view>
-    </view>
-    <view class="jobBox" catchtap='toJobDetail'>
-      <!-- <view class="jobBox-left">
-        <checkbox value="" checked=""/>  
-      </view> -->
-      <view class="jobBox-right">
-        <view><span class='position'>职位描述职位描述职位描述</span><span class='price'>4千-5千/月</span></view>
-        <view><span class='company'>公司名称</span><span class='place'>地点描述</span></view>
-      </view>
-    </view>
-    <view class="jobBox" catchtap='toJobDetail'>
-      <!-- <view class="jobBox-left">
-        <checkbox value="" checked=""/>  
-      </view> -->
-      <view class="jobBox-right">
-        <view><span class='position'>职位描述职位描述职位描述</span><span class='price'>4千-5千/月</span></view>
-        <view><span class='company'>公司名称</span><span class='place'>地点描述</span></view>
+        <view><span class='position'>{{item.recruit_name}}</span><span class='price'>{{item.recruit_wages ? item.recruit_wages : '代理面谈'}}</span></view>
+        <view><span class='company'>{{item.enterprise_info[0].enterprise_name}}</span><span class='place'>{{item.enterprise_info[0].enterprise_place}}</span></view>
       </view>
     </view>
   </checkbox-group>  

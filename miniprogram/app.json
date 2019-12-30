@@ -12,7 +12,8 @@
     "pages/booking/calendar/index",
     "pages/booking/VehicleList/index",
     "pages/booking/paySuccess/index",
-    "pages/job/jobDetail/index"
+    "pages/job/jobDetail/index",
+    "pages/job/resumeEdit/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
