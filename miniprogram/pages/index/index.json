@@ -1,1 +1,6 @@
-{}
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "component_article": "/pages/common/getArticle/index"
+  }
+}

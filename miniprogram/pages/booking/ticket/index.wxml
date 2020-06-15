@@ -1,5 +1,6 @@
 <!-- <official-account class='official-account'></official-account>
 <ad unit-id="adunit-9e0672f1fe9aede2"></ad> -->
+<component_article type='booking'></component_article>
 <view class="ticket-page">
   <view class='ticket-box'>
     <view class='ticket-search'>

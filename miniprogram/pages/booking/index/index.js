@@ -24,9 +24,7 @@ Page({
     if (this.data.currentTab === e.target.dataset.current) {
       return false;
     } else {
-      that.setData({
-        currentTab: e.target.dataset.current
-      })
+      that.setCurrentTab(e.target.dataset.current)
     }
   },
   onLoad: function (option) {
@@ -35,7 +33,16 @@ Page({
         searchData : option
       }})
     } else if (option.relation === 'orderList') {
-      this.setData({ currentTab : 1})
+      this.setCurrentTab(1)
     }
+  },
+  setCurrentTab: function (tab) {
+    let that = this;
+    this.setData({
+      currentTab: tab
+    })
+    wx.setNavigationBarTitle({
+      title: that.data.items[tab]['text']
+    })
   }
 })

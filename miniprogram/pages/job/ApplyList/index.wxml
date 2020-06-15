@@ -1,11 +1,16 @@
+<wxs module="filter" src="../../../until/filter.wxs"></wxs>
 <view class="ApplyList">
-  <view class="ApplyBox" catchtap='toApplyDetail'>
+  <view class="ApplyBox" catchtap='toJobDetail' data-jobObj = '{{item}}' wx:for='{{applyList}}'>
     <view class="ApplyBox-top">
-       <view><span>图标</span><span>12-17 23:00</span></view><view>icon</view>
+       <view><span><i class='iconfont fajian'></i></span><span>{{filter.getDate(item.timestamp, false)}}</span></view><view><i class='iconfont xiangyou'></i></view>
     </view>
     <view class="ApplyBox-bottom">
-      <view><span class='position'>职位描述职位描述职位描述</span><span class='price'>1-2万/月</span></view>
-      <view><span class='company'>公司名称</span><span class='place'>地址</span></view>
+      <view><span class='position'>{{item.job_info[0].recruit_name}}</span><span class='price'>{{item.job_info[0].recruit_wages?item.job_info[0].recruit_wages + '/月':'代理面谈'}}</span></view>
+      <!-- <view><span class='company'>公司名称</span><span class='place'>地址</span></view> -->
     </view>
+  </view>
+  <view wx:if='{{applyList.length === 0}}' class='tip'>
+   <view><i class='iconfont kongjianli'></i></view>
+   <view>您还没有申请记录</view>
   </view>
 </view>

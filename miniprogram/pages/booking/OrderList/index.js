@@ -102,7 +102,6 @@ Component({
         data: { orderInfo: orderInfo }
       }).then(function (e) {
         if (e.data.success) {
-          console.log()
           let refoundInfo = e.data.data.xml
           if (refoundInfo.result_code && refoundInfo.result_code[0] === 'SUCCESS') {
             let data = that.data.order
@@ -123,7 +122,7 @@ Component({
       // wx.switchTab({
       //   url: '/pages/booking/ticket/index',
       // })
-
+      
     },
     toContacts(e) {
       let phone = e.currentTarget.dataset.phone

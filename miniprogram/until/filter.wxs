@@ -1,0 +1,24 @@
+var filter = {
+  getDate: function (num, type) {
+    var dd = getDate(num);
+    var y = dd.getFullYear();
+    var m = dd.getMonth() + 1;
+    var d = dd.getDate();
+    var h = dd.getHours();
+    var i = dd.getMinutes();
+    var s = dd.getSeconds();
+    m = m < 10 ? '0' + m : m;
+    d = d < 10 ? '0' + d : d;
+    h = h < 10 ? '0' + h : h;
+    i = i < 10 ? '0' + i : i;
+    s = s < 10 ? '0' + s : s;
+    if (type) {
+      return y + '-' + m + '-' + d + ' ' + h + ':' + i + ':' + s
+    } else {
+      return y + '-' + m + '-' + d
+    }
+  }
+}
+module.exports = {
+  getDate: filter.getDate
+}

@@ -1,28 +1,33 @@
-<view class="title">
-  <view class="title-top">{{jobData.recruit_name}}</view>
-  <view>招聘：{{jobData.recruit_num}}人</view>
-</view>
-<view class="enterprise">
-  <view class="enterprise-left">
-    icon  
+<view class="jobDetail-box">
+  <view class="title">
+    <view class="title-top">{{jobData.recruit_name}}</view>
+    <view>招聘：{{jobData.recruit_num}}人</view>
   </view>
-  <view class="enterprise-box">
-    <view class="enterprise-box-name">{{jobData.enterprise_info[0].enterprise_name}}</view>
-    <view>查看企业详情</view>
+  <view class="enterprise">
+    <view class="enterprise-left">
+    <i class="iconfont school"></i> 
+    </view>
+    <view class="enterprise-box">
+      <view class="enterprise-box-name">{{jobData.enterprise_info[0].enterprise_name}}</view>
+      <view>查看企业详情</view>
+    </view>
+    <view class="enterprise-right">
+    <i class='iconfont xiangyou'></i>  
+    </view>
   </view>
-  <view class="enterprise-right">
-    icon
+  <view class="jobDetail">
+    <view class="jobDetail-title">
+      <span><i class='iconfont xiangqing'></i></span><span>职位详情</span>
+    </view>
+    <view class="jobDetail-info">
+      <text>
+        {{jobData.recruit_info}}
+      </text>
+    </view>
   </view>
-</view>
-<view class="jobDetail">
-  <view class="jobDetail-title">
-    <span>icon</span><span>职位详情</span>
-  </view>
-  <view class="jobDetail-info">
-    {{jobData.recruit_info}}
-  </view>
+  <button class="saveImg" bindtap="getShareImage" plain="{{true}}">保存转发图片</button>
 </view>
 <view class="share">
-  <view class="share-left">分享</view>
+  <button open-type="share">分享</button>
   <view class="share-btn" bindtap="jobApplication">申请该职位</view>
 </view>

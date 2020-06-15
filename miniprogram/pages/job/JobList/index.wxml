@@ -1,4 +1,5 @@
-<view class="jobList">
+<component_article type='job'></component_article>
+<view class="jobList"  wx:if='{{jobList.length > 0}}'>
   <view class="jobTitle">————为您推荐好职位————</view>
   <checkbox-group bindchange='checkboxChange'>
     <view class="jobBox" catchtap='toJobDetail' wx:for='{{jobList}}' data-item = '{{item}}'>
@@ -10,5 +11,9 @@
         <view><span class='company'>{{item.enterprise_info[0].enterprise_name}}</span><span class='place'>{{item.enterprise_info[0].enterprise_place}}</span></view>
       </view>
     </view>
-  </checkbox-group>  
+  </checkbox-group>
 </view>
+<view wx:else class='tip'>
+   <view><i class='iconfont kongjianli'></i></view>
+   <view>还未发布职位</view>
+  </view>

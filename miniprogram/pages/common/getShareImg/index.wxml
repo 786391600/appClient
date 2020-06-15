@@ -1,0 +1,22 @@
+<view class='canvasPreviewBox'>
+  <image src='{{previewUrl}}' style='width:{{canvasW/4}}px;height:{{canvasH/4}}px;'></image>
+</view>
+<view class='canvasBox' style='width:{{canvasW}}px;height:{{canvasH}}px;'>
+   <canvas canvas-id="shareCanvas" style='width:{{canvasW}}px;height:{{canvasH}}px;' class='can' ></canvas>
+</view>
+<view class='operation'>
+  <button bindtap='downloadImage'>保存到相册</button>
+</view>
+<view class='userAuth' style='height:{{windowHeight}}px;' wx:if='{{userAuth}}'>
+  <view class='userAuth-tip'>
+    <text>
+     保存图片需要相册授权
+    </text>
+    <button
+    open-type="openSetting"
+    bindopensetting='handleSetting'
+  >
+      点击授权
+    </button>
+  </view>
+</view>

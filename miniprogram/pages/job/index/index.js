@@ -2,7 +2,7 @@ let app = getApp()
 
 Page({
   data: {
-    currentTab: 0,
+    currentTab: null,
     items: [
       {
         "iconPath": "./img/index2.png",
@@ -26,12 +26,23 @@ Page({
     if (this.data.currentTab === e.target.dataset.current) {
       return false;
     } else {
-      that.setData({
-        currentTab: e.target.dataset.current
-      })
+      that.setCurrentTab(e.target.dataset.current)
     }
   },
   onLoad: function (option) {
-     
+    let currentTab = 0
+    if (option && option.currentTab) {
+       currentTab = option.currentTab
+    }
+    this.setCurrentTab(currentTab)
+  },
+  setCurrentTab: function(tab){
+    let that = this;
+    this.setData({
+      currentTab: tab
+    })
+    wx.setNavigationBarTitle({
+      title: that.data.items[tab]['text']
+    })
   }
 })

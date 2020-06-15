@@ -3,10 +3,12 @@ const app = getApp()
 const until = require('../../../until/index.js')
 Component({
   properties: {
-    searchData: {
-      type: Object,
+    currentState: {
+      type: Boolean,
       observer: function (newObj, oldObj) {
-        this.getTicketInfo(newObj)
+        if(newObj) {
+          this.getApplyList()
+        }
       }
     }
   },
@@ -14,11 +16,7 @@ Component({
    * 页面的初始数据
    */
   data: {
-    startAddress: '请选择',
-    endAddress: '请选择',
-    HistoricalRecord: [],
-    RecommendedRoute: [],
-    type: ''
+    applyList: []
   },
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
@@ -29,11 +27,33 @@ Component({
     detached: function () { },
   },
   methods: {
-    checkboxChange (checkObj) {
-      console.log(checkObj)
+    toJobDetail (obj) {
+      console.log(obj, 'lll')
+      let jobId = obj.currentTarget.dataset.jobobj.jobId
+      wx.navigateTo({
+        url: '/pages/job/jobDetail/index?jobId=' + jobId
+      })
     },
-    toJobDetail () {
-      
+    getApplyList () {
+      let query = {}
+      let that = this
+      wx.showLoading({
+        title: '记录获取中...',
+      })
+      until.request({
+        action: 'app.job.getJobApplication',
+        data: query
+      }).then(function (e) {
+        if (e.data.success) {
+          let getdata = e.data.data
+          that.setData({
+            applyList: getdata
+          })
+        } else {
+          until.showToast(e.data.message, 'error');
+        }
+        wx.hideLoading()
+      })
     }
   }
 })

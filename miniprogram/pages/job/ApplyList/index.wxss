@@ -6,6 +6,7 @@
 .ApplyBox{
   background: white;
   border-radius: 20rpx;
+  margin-bottom: 25rpx;
 }
 .ApplyBox-top{
   display: flex;
@@ -42,4 +43,12 @@
   white-space: nowrap;
   font-size: 36rpx;
   width: 70%;
+}
+.tip{
+  color: #919191;
+  text-align: center;
+  margin: 350rpx auto 0;
+}
+.tip .iconfont{
+  font-size: 100rpx;
 }

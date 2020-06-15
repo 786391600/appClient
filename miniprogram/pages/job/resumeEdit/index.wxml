@@ -1,22 +1,23 @@
+<view wx:if="{{source === 'jobDetail'}}" class="title-tip">请先完善个人信息</view>
 <form bindsubmit="formSubmit" bindreset="formReset">
   <view class="section section_gap">
      <view class="section__title">姓名</view>
-     <input class="weui-input" name='name' placeholder="请填写姓名"/>
+     <input class="weui-input" name='name' placeholder="请填写姓名" value="{{resumeData? resumeData.name : ''}}"/>
   </view>
   <view class="section section_gap">
      <view class="section__title">性别</view>
      <radio-group name='sex'>
-      <label><radio value="male"/>男</label>
-      <label><radio value="female"/>女</label>
+      <label><radio value="male" checked="{{ resumeData.sex === 'male'}}"/>男</label>
+      <label><radio value="female" checked="{{ resumeData.sex === 'female'}}"/>女</label>
     </radio-group>
   </view>
   <view class="section section_gap">
      <view class="section__title">学校</view>
-     <input class="weui-input" name='school' placeholder="请填写学校名称"/>
+     <input class="weui-input" name='school' placeholder="请填写学校名称" value="{{resumeData? resumeData.school : ''}}"/>
   </view>
   <view class="section section_gap">
      <view class="section__title">手机</view>
-     <input class="weui-input" name = 'phone' placeholder="请填写手机"/>
+     <input class="weui-input" name = 'phone' placeholder="请填写手机" value="{{resumeData? resumeData.phone : ''}}"/>
   </view>
   <view class="btn-area">
     <button formType="submit">保存</button>

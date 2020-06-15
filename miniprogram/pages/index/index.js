@@ -3,7 +3,7 @@ const app = getApp()
 const until = require('../../until/index.js')
 Page({
   data: {
-    
+    showJob: false
   },
   toTicket () {
     wx.reLaunch({
@@ -14,5 +14,11 @@ Page({
     wx.reLaunch({
       url: '/pages/job/index/index'
     })
+  },
+  imageLoad (ev) {
+    this.setData({showImage: true})
+  },
+  showJob (isShow) {
+    this.setData({showJob: isShow})
   }
 })

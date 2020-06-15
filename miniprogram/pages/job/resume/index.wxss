@@ -22,3 +22,25 @@
   font-size: 38rpx;
   color: black;
 }
+.tip {
+  text-align: center;
+  color: #919191;
+  margin: 350rpx auto 0;
+}
+.tip .iconfont {
+  font-size: 100rpx;
+}
+.tip button{
+  width: 60%;
+  height: 90rpx;
+  background: #FF783B;
+  border-radius: 15rpx;
+  color: white;
+  font-size: 42rpx;
+  line-height: 80rpx;
+  margin-top: 25rpx;
+}
+.iconfont{
+  color: #FF783B;
+  margin-right: 15rpx;
+}

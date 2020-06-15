@@ -1,4 +1,4 @@
-/**index.wxss**/
+@import '../../../style/ticket/iconfont.wxss';
 page {
   display: flex;
   flex-direction: column;
@@ -46,6 +46,18 @@ page {
   padding: 50rpx 0 50rpx;
   border-bottom: 2rpx solid #E6E6E6;
 }
+.jobDetail-box .saveImg{
+  height: 92rpx;
+  width: 100%;
+  color:#FF7E3D;
+  line-height: 92rpx;
+  border: 2rpx solid #FF7E3D;
+  background-color: white;
+}
+.jobDetail-title .iconfont{
+  color: #FF7E3D;
+  margin-right: 15rpx;
+}
 .jobDetail-info {
   padding:0 0 25rpx;
 }
@@ -67,6 +79,16 @@ page {
   color: #FF7E3D;
   font-weight: bold;
 }
+.share button{
+  color: #FF7E3D;
+  border: 0;
+}
+/* .share button:after {
+  border: none;
+  background-color: #fff;
+  border-radius: 0;
+  color: #FF7E3D;
+} */
 .share-btn{
   padding: 28rpx 0 28rpx;
   width: 70%;
@@ -75,4 +97,11 @@ page {
   border: 1rpx solid #D68359;
   border-radius: 25rpx;
   color: white;
+}
+.jobDetail-box{
+  padding-bottom: 200rpx;
+}
+.enterprise-left .iconfont{
+  font-size: 100rpx;
+  color: #FF7E3D;
 }

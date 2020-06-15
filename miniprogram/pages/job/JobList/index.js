@@ -3,10 +3,12 @@ const app = getApp()
 const until = require('../../../until/index.js')
 Component({
   properties: {
-    searchData: {
-      type: Object,
+    currentState: {
+      type: Boolean,
       observer: function (newObj, oldObj) {
-        this.getTicketInfo(newObj)
+        if (newObj) {
+          this.getJobList()
+        }
       }
     }
   },
@@ -19,7 +21,7 @@ Component({
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
     attached: function () {
-      this.getJobList()
+      
     },
     moved: function () { },
     detached: function () { },

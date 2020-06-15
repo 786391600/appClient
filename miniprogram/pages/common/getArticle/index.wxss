@@ -1,45 +1,3 @@
-/**index.wxss**/
-@import '../../style/ticket/iconfont.wxss';
-page {
-  background: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-.box{
-  width:80%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: -20rpx auto 0;
-  background: white;
-  box-shadow: 0 0 10rpx #ccc;
-  border-radius: 20rpx;
-  overflow: hidden;
-  flex-wrap: wrap;
-  margin-bottom: 30rpx;
-}
-.box .btn{
-  padding: 70rpx;
-  box-sizing: border-box;
-  width: 50%;
-  font-size: 40rpx;
-  text-align: center;
-}
-.box i{
-  font-size: 80rpx;
-}
-.job{
-   background: linear-gradient(to right,  #FE6426, #FCFD9E);
-   -webkit-background-clip: text;
-   color: transparent;
-}
-.ticket{
-  background: linear-gradient(to right,  #225FF9, #85E0DE);
-   -webkit-background-clip: text;
-   color: transparent;
-} 
 .default-box{
   display: flex;
   width: 100%;
@@ -185,4 +143,3 @@ page {
   40% { color:#03a9f4; }
   70%,100% { color:#f2f2f2; }
 }
-

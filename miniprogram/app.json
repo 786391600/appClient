@@ -13,12 +13,14 @@
     "pages/booking/VehicleList/index",
     "pages/booking/paySuccess/index",
     "pages/job/jobDetail/index",
-    "pages/job/resumeEdit/index"
+    "pages/job/resumeEdit/index",
+    "pages/common/getShareImg/index",
+    "pages/common/getWebView/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
-    "navigationBarTitleText": "么么校园",
+    "navigationBarTitleText": "么么车票",
     "?navigationStyle": "custom",
     "navigationBarBackgroundColor": "#03a9f4",
     "navigationBarTextStyle": "white"

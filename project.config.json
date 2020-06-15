@@ -15,11 +15,12 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"useCompilerModule": false
 	},
-	"appid": "wx111e203db4b54d05",
+	"appid": "wx14b3135d0f6f5212",
 	"projectname": "%E4%B9%A1%E5%AE%81%E6%96%B0%E9%9B%B6%E5%94%AE",
-	"libVersion": "2.9.4",
+	"libVersion": "2.10.0",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"compileType": "miniprogram",
@@ -37,6 +38,10 @@
 			"list": []
 		},
 		"game": {
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
 			"list": []
 		},
 		"miniprogram": {
@@ -62,6 +67,13 @@
 					"query": "type=middleSchool",
 					"scene": 1035,
 					"referrerInfo": {}
+				},
+				{
+					"id": 3,
+					"name": "招工详情扫码",
+					"pathName": "pages/job/jobDetail/index",
+					"query": "scene=1577959969012",
+					"scene": 1012
 				}
 			]
 		}

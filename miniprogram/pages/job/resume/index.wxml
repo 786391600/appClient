@@ -1,11 +1,20 @@
 <view class="resumeBox">
-   <view class="resumeBox-info">
-     <view class="resumeBox-info-top"><span>icon</span><span>基本信息</span></view>
-     <view class="resumeBox-info-bottom">
-        <view class="name">王涛</view>
-        <view>清华大学</view>
-        <view>13934691550</view>
-        <view>男 | 25岁</view>
+   <view class="resumeBox-info" wx:if='{{resume}}'>
+     <view class="resumeBox-info-top"><i class='iconfont jianli'></i><span>基本信息</span></view>
+     <view class="resumeBox-info-bottom" bindtap="updateResume">
+        <view class="name"><i class='iconfont xinming'></i>{{resume.name}}</view>
+        <view><i class='iconfont school'></i>{{resume.school}}</view>
+        <view><i class='iconfont icon-phone'></i>{{resume.phone}}</view>
+        <view><i class='iconfont xinbie'></i>{{resume.sex === 'male' ? '男' : '女'}}</view>
+     </view>
+   </view>
+   <view class="tip" wx:else>
+     <view class="tip-resume">
+       <view><i class='iconfont kongjianli'></i></view>
+       <view>请你完善简历</view>
+     </view>
+     <view>
+       <button bindtap="updateResume">点击完善</button>
      </view>
    </view>
 </view>

@@ -3,6 +3,7 @@
   padding: 0 22rpx 0;
   box-sizing: border-box;
   background: white;
+  margin-bottom: 150rpx;
 }
 .jobTitle{
   text-align: center;
@@ -59,4 +60,12 @@
 }
 .jobBox-right > view span{
   align-items: center;
+}
+.tip{
+  color: #919191;
+  text-align: center;
+  margin: 350rpx auto 0;
+}
+.tip .iconfont{
+  font-size: 100rpx;
 }
