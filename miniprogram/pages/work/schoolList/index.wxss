@@ -1,0 +1,41 @@
+@import '../../../style/ticket/iconfont.wxss';
+page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #EBEBEB;
+  font-size: 32rpx;
+}
+
+.current-school {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 38rpx 28rpx 38rpx;
+  background: white;
+  border-bottom: 1rpx solid #DFDFDF;
+  margin-bottom: 28rpx;
+}
+.current-school .name-text{
+  font-size: 24rpx;
+  color: #ABABAB;
+}
+.current-school .iconfont {
+  color: #F59951;
+}
+.school-name{
+  display: flex;
+  align-items: center;
+}
+.school-list {
+  padding: 0 28rpx 0;
+  background: white;
+}
+.school-list .school-box {
+  padding: 38rpx 0rpx 38rpx;
+  border-bottom: 1rpx solid #DFDFDF;
+}
+
+.school-list .school-box:nth-last-child(1) {
+  border-bottom: 0;
+}

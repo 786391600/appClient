@@ -1,0 +1,11 @@
+{ 
+  "backgroundTextStyle": "light",
+  "navigationBarTitleText": "么么速达",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "component_index": "/pages/work/JobList/index",
+    "component_apply": "/pages/work/ApplyList/index",
+    "component_resume": "/pages/work/resume/index"
+  }
+}

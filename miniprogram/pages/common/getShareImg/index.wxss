@@ -1,6 +1,5 @@
 .can{
   margin: 0 auto;
- // background: #D5554C;
 }
 .canvasBox{
   display: flex;

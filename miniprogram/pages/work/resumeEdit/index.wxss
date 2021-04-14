@@ -1,0 +1,57 @@
+/**index.wxss**/
+page {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #EBEBEB;
+}
+.title-tip{
+  text-align: center;
+}
+input {
+  direction: rtl;
+}
+.section_gap{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 32rpx;
+  box-sizing: border-box;
+  background: white;
+  border-bottom: 2rpx solid #E6E6E6;
+}
+
+radio .wx-radio-input{
+    border-radius: 50%;/* 圆角 */
+    width: 50rpx; /* 背景的宽 */
+    height: 50rpx; /* 背景的高 */
+    margin-right: 15rpx;
+}
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+radio .wx-radio-input.wx-radio-input-checked{
+  border: 1rpx solid #FF783B;
+  background: #FF783B;
+}
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+radio .wx-radio-input.wx-radio-input-checked::before{
+  border-radius: 50%;/* 圆角 */
+  width: 40rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+  height: 40rpx;/* 选中后对勾大小，不要超过背景的尺寸 */
+  line-height: 40rpx;
+  text-align: center;
+  font-size:30rpx; /* 对勾大小 30rpx */
+  color:#fff; /* 对勾颜色 白色 */
+  background: transparent;
+  transform:translate(-50%, -50%) scale(1);
+  -webkit-transform:translate(-50%, -50%) scale(1);
+}
+.btn-area button{
+  width: 60%;
+  height: 90rpx;
+  background: #FF783B;
+  border-radius: 15rpx;
+  color: white;
+  font-size: 42rpx;
+  line-height: 80rpx;
+  margin-top: 25rpx;
+}

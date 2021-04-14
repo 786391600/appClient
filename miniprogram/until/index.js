@@ -143,6 +143,34 @@ exports.pay = function(obj){
    })
  })  
 }
+
+exports.workPay = function(obj){
+  return new Promise((resolve,reject)=>{
+    exports.request({
+      action: 'app.until.workPay',
+      data: obj
+    }).then(function (e) {
+      if (e.data && e.data.success) {
+        let out_trade_no = e.data.data.out_trade_no;
+        wx.requestPayment({
+          timeStamp: e.data.data.timeStamp,
+          nonceStr: e.data.data.nonceStr,
+          package: e.data.data.package,
+          signType: e.data.data.signType,
+          paySign: e.data.data.paySign,
+          success(res) {
+            resolve({ data: e, successData: res })
+          },
+          fail(res) {
+            let err = res || {}
+            err.out_trade_no = out_trade_no
+            reject(err)
+          }
+        })
+      }
+    })
+  })  
+ }
 exports.confirmUser = function(obj){
   return new Promise((resolve, reject) =>{
     exports.request({

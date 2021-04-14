@@ -1,0 +1,8 @@
+<view class="current-school">
+   <view class="school-name"><view class="current-school-name">{{schoolData.name}}</view><view class="name-text">-当前高校</view></view><view><i class="iconfont icon-zuobiao"></i></view>
+</view>
+<view class="school-list">
+  <view class="school-box" wx:for="{{schoolList}}" bindtap="selectSchool" data-current='{{item}}'>
+    {{item.name}}
+  </view>
+</view>

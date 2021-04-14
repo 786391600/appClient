@@ -13,7 +13,7 @@ page{
   object-fit: contain;
 }
 .img_box image{
-  width: 100%;e
+  width: 100%;
   height: 100%;
 }
 .adress{

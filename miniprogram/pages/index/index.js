@@ -15,6 +15,11 @@ Page({
       url: '/pages/job/index/index'
     })
   },
+  toWork () {
+    wx.reLaunch({
+      url: '/pages/work/index/index'
+    })
+  },
   imageLoad (ev) {
     this.setData({showImage: true})
   },

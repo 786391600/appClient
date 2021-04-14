@@ -1,0 +1,21 @@
+<view class="section">
+  <view class="section__title">高校名称</view>
+  <span class="section-input"><input data-key="name" disabled value='{{form.schoolName}}' class="weui-input"  maxlength="10" bindinput="bindKeyInput" placeholder="填写姓名" style="text-align: right"/></span>
+</view>
+<view class="section">
+  <view class="section__title">姓名</view>
+  <span class="section-input"><input data-key="name" value='{{form.name}}' class="weui-input"  maxlength="10" bindinput="bindKeyInput" placeholder="填写姓名" style="text-align: right"/></span>
+</view>
+<view class="section">
+  <view class="section__title">手机号</view>
+  <span class="section-input"><input data-key="phone" value='{{form.phone}}' type="number" class="weui-input"  maxlength="11" bindinput="bindKeyInput" placeholder="填写号码" style="text-align: right"/></span>
+</view>
+<view class="section">
+  <view class="section__title">详细地址</view>
+  <span class="section-input"><input data-key="address" value='{{form.address}}' class="weui-input"  maxlength="10" bindinput="bindKeyInput" placeholder="例：xx栋xx-xx" style="text-align: right"/></span>
+</view>
+
+<view class="oprate">
+  <button type="primary" bindtap="saveClick" disabled="{{savedisabled}}">保存</button>
+  <button type="primary" class="delete" wx:if="{{!isAdd}}" bindtap="deleteAddress">删除</button>
+</view>

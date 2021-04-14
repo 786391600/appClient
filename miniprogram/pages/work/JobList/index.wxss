@@ -1,0 +1,63 @@
+@import '../../../style/ticket/iconfont.wxss';
+page{
+  background: #EBEBEB;
+}
+.work-box{
+  display: flex;
+  box-sizing: border-box;
+  padding: 24rpx;
+  border-radius: 10rpx;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.work-box .box{
+  display: flex;
+  align-items: center;
+  width: 50%;
+  box-sizing: border-box;
+  background:white;
+  padding: 48rpx 0rpx 48rpx;
+}
+.work-box .box:nth-of-type(odd) {
+  border-right: 1rpx solid #EBEBEB;
+  border-bottom: 1rpx solid #EBEBEB;
+}
+.work-box .box:nth-of-type(even) {
+  border-bottom: 1rpx solid #EBEBEB;
+}
+.work-box .box:nth-child(1) {
+  border-top-left-radius: 15rpx;
+}
+.work-box .box:nth-child(2) {
+  border-top-right-radius: 15rpx;
+}
+.work-box .box:nth-last-child(1) {
+  border-bottom-right-radius: 15rpx;
+}
+.work-box .box:nth-last-child(2) {
+  border-bottom-left-radius: 15rpx;
+}
+.box .box-icon{
+  padding: 0 42rpx 0;
+}
+.box .box-icon .iconfont{
+  font-size: 66rpx;
+}
+.box .box-text{
+  display: flex;
+  flex-direction: column;
+}
+.box .box-text-tit{
+  font-size: 34rpx;
+}
+.box .box-text-con{
+  font-size: 24rpx;
+  color: #9B9B9B;
+}
+.school-name{
+  text-align: center;
+  padding: 38rpx 0 38rpx;
+  color: #666666;
+  background: white;
+  font-size: 32rpx;
+}

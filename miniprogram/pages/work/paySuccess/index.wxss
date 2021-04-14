@@ -1,0 +1,31 @@
+/* pages/Testpage/Paysuccess/Paysuccess.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  overflow: hidden
+}
+#success{
+  text-align: center;
+  margin-top:10rpx; 
+  font-size: 50rpx;
+}
+#complete{
+  width: 600rpx;
+  height: 90rpx;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 90rpx;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-top: 120rpx;
+  background: #FFCD40;
+  color: #471600;
+}
+.success_box{
+  text-align: center;
+  margin-top: 250rpx;
+}

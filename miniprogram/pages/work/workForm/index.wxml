@@ -1,0 +1,58 @@
+<view class="page-section">
+    <view class="page-section-title">请输入帮取信息</view>
+    <view class="textarea-wrp">
+      <textarea auto-focus="true" style="height: 100rpx;padding:15rpx 15rpx 15rpx;" placeholder="{{placeholder}}"/>
+    </view>
+</view>
+<view class="adress" bindtap="toAdressList">
+  <view class="adress-box">
+    <view class="adress-left">
+      <i class="iconfont icon-zuobiao1"></i>
+      <view class="adress-text">
+        <view class="adress-tit">收货地址</view>
+        <view class="adress-con">{{address?address.schoolName + '-' + address.address:'请填写详细地址'}}</view>
+      </view>
+    </view>
+    <i class="iconfont icon-you"></i>
+  </view>
+  <view class="used">
+    <view class="used-text">常用</view>
+  </view>
+</view>
+<view class="section">
+  <view class="section__title">物品重量</view>
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">
+      <span class="picker-text">小于{{array[index]}}</span><i class="iconfont icon-you"></i>
+    </view>
+  </picker>
+</view>
+<view class="section">
+  <view class="section__title">预约时间</view>
+  <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+    <view class="picker">
+      <span class="picker-text">{{multiArray[0][multiIndex[0]]}}<span wx:if="{{multiArray[1][multiIndex[1]]}}">，{{multiArray[1][multiIndex[1]]}}:{{multiArray[2][multiIndex[2]]}}</span></span><i class="iconfont icon-you"></i>
+    </view>
+  </picker>
+</view>
+<view class="section">
+  <view class="section__title">物品价格</view>
+  <span class="section-input"><input class="weui-input"  maxlength="10" bindinput="bindKeyInput" placeholder="填写物品价格" style="text-align: right"/><span>元</span></span>
+</view>
+
+<view class="pay-box">
+  <view class="pay-text">
+    费用
+  </view>
+  <view class="pay-con">
+    <view class="pay-money">
+      ¥2.00
+    </view>
+    <view class="pay-submit" bindtap="payForm">
+      去下单
+    </view>
+  </view>
+</view>
+
+
+

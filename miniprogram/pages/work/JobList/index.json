@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "component_article": "/pages/common/getArticle/index"
+  },
+  "backgroundColor": "#ffffff",
+  "navigationBarTitleText": "线路查询"
+}

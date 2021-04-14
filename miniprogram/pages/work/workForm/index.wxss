@@ -1,0 +1,127 @@
+@import '../../../style/ticket/iconfont.wxss';
+page{
+  background: #EBEBEB;
+}
+.section{
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+  color: #333333;
+  padding: 30rpx;
+  box-sizing: border-box;
+  align-items: center;
+  border-bottom: 1rpx solid #EBEBEB;
+  background: white;
+}
+.section .picker{
+  display: flex;
+  align-items: center;
+}
+.section .picker .iconfont{
+  color: #899AA4;
+  font-size: 28rpx;
+}
+.section-input{
+  display:flex;
+  align-items: center;
+}
+.page-section{
+  padding: 30rpx;
+  background: white;
+  margin-bottom: 25rpx;
+}
+.page-section .page-section-title{
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.adress{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28rpx;
+  box-sizing: border-box;
+  background: white;
+  margin-bottom: 25rpx;
+}
+
+
+.adress .adress-box{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 85%;
+  padding-right: 15rpx;
+}
+.adress-left{
+  display: flex;
+  align-items: center;
+}
+.adress-left .iconfont{
+  font-size: 52rpx;
+  color: #F37B1D;
+}
+.adress .adress-text{
+  padding: 0 28rpx 0;
+  box-sizing: border-box;
+}
+.adress .used{
+  width: 15%;
+}
+.adress-tit{
+  font-size: 32rpx;
+  padding: 5rpx 0 5rpx;
+}
+.adress-con{
+  font-size: 24rpx;
+  color: #C1C1C1;
+  padding: 5rpx 0 5rpx;
+}
+.adress .icon-you{
+  color: #899AA4;
+  font-size: 28rpx;
+}
+.used{
+  display: flex;
+  justify-content: flex-end;
+  border-left: 2rpx solid #E2E2E2;
+}
+.used-text{
+  background: #FDE6D2;
+  color: #F48934;
+  font-size: 24rpx;
+  padding: 10rpx;
+}
+
+.pay-box{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  height: 98rpx;
+  display: flex;
+  font-size: 28rpx;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  padding: 0 30rpx 0;
+}
+.pay-con{
+  display: flex;
+  height: 100%;
+  align-items: center;
+  color: #F37B1D;
+}
+.pay-text{
+  color: #AFAFAF;
+}
+.pay-money{
+  padding: 0 30rpx 0;
+}
+.pay-submit{
+  width: 230rpx;
+  height: 100%;
+  background: #F37B1D;
+  color: white;
+  text-align: center;
+  line-height: 98rpx;
+}

@@ -1,0 +1,98 @@
+@import '../../../style/ticket/iconfont.wxss';
+.ApplyList {
+  padding: 40rpx;
+  box-sizing: border-box;
+}
+.ApplyBox{
+  background: white;
+  border-radius: 20rpx;
+  margin-bottom: 25rpx;
+}
+.ApplyBox-top{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.ApplyBox-top{
+  padding: 20rpx 38rpx 20rpx;
+  border-bottom: 2rpx solid #E8E8E8;
+}
+.ApplyBox-bottom{
+  padding: 20rpx 38rpx 20rpx;
+}
+.ApplyBox-bottom > view{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10rpx 0 10rpx;
+}
+.ApplyBox-bottom .price {
+  color: #EF8700;
+  font-size: 32rpx;
+}
+.ApplyBox-bottom .company{
+  font-size: 32rpx;
+}
+.ApplyBox-bottom .place{
+  font-size: 32rpx;
+  color: #777777;
+}
+.position{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 36rpx;
+  width: 70%;
+}
+.tip{
+  color: #919191;
+  text-align: center;
+  margin: 350rpx auto 0;
+}
+.tip .iconfont{
+  font-size: 100rpx;
+}
+
+
+/**index.wxss**/
+.tab-h{
+  height: 29px;
+  width: 100%;
+  line-height: 51rpx;
+  background: white;
+  font-size: 16px;
+  white-space: nowrap;
+  z-index: 999;
+}
+ 
+.swiper_tab_view{
+  width: 100%;
+  text-align: left;
+  line-height: 80rpx;
+}
+ 
+.swiper-tab-list {
+  font-size: 30rpx;
+  display: inline-block;
+  width: 50%;
+  color: #777;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 6rpx 0 6rpx;
+}
+ 
+.on {
+  color: #F37B1D;
+  border-bottom: 5rpx solid #F37B1D;
+}
+ 
+.swiper-box {
+  display: block;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+ 
+.swiper-box view {
+  text-align: center;
+}

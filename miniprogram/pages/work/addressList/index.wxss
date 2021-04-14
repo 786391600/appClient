@@ -1,0 +1,51 @@
+@import '../../../style/ticket/iconfont.wxss';
+page{
+  background: #EBEBEB;
+}
+.address-box{
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx;
+}
+.info-title{
+  font-size: 34rpx;
+  margin-bottom: 10rpx;
+}
+.info-con{
+  font-size: 28rpx;
+  color: #AAAAAA;
+}
+.address-edit{
+  font-size: 40rpx;
+  color: #333333;
+}
+
+.add-btn{
+  position:fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: white;
+  background: #F37B1D;
+  text-align: center;
+  padding: 40rpx 0 40rpx;
+}
+.empty{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #8A8A8A;
+}
+.empty .iconfont{
+  font-size: 52rpx;
+}
