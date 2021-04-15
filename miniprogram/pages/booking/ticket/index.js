@@ -58,6 +58,12 @@ Component({
     //历史查询
     HistoricalQuery: function (e) {
       console.log(e.currentTarget.dataset)
+      wx.requestSubscribeMessage({
+        tmplIds: ['sRP9Y3eQiha6Vp9Ix2lhvDRppUMFyw6IO0A7xZuUJSg'],
+        success(res) {
+          console.log('iiiiiiiiiiii')
+        }
+      })
       wx.navigateTo({
         url: '../calendar/index?star=' + e.currentTarget.dataset.star + '&end=' + e.currentTarget.dataset.end
       })
@@ -113,6 +119,12 @@ Component({
           }
         })
       } else {
+        wx.requestSubscribeMessage({
+          tmplIds: ['sRP9Y3eQiha6Vp9Ix2lhvDRppUMFyw6IO0A7xZuUJSg'],
+          success(res) {
+            console.log('iiiiiiiiiiii')
+          }
+        })
         if (this.checkAdult(value) == false) {
           value.unshift({ star: this.data.startAddress, end: this.data.endAddress })
           if (value.length > 4) {

@@ -17,7 +17,7 @@
         </view>
         <view class='ticket-top-right'>
         <view class='trans-btn' bindtap='exchangeAddress'>
-          <i class='iconfont ticket3'></i>
+          <i class='iconfont icon-qiehuan-'></i>
         </view>
         </view> 
       </view>
@@ -32,7 +32,7 @@
       <text class='HistoricalRecord-title'>历史记录</text>
     </view>
     <view class='Histori-content'>
-      <view wx:for="{{HistoricalRecord}}" bindtap='HistoricalQuery' data-star="{{item.star}}" data-end="{{item.end}}">{{item.star}}<i class='iconfont ticket4'></i>{{item.end}}</view>
+      <view wx:for="{{HistoricalRecord}}" bindtap='HistoricalQuery' data-star="{{item.star}}" data-end="{{item.end}}">{{item.star}}<i class='iconfont icon-icon_jipiaodancheng'></i>{{item.end}}</view>
     </view>
   </view>
   <view class='HistoricalRecord' wx:if="{{RecommendedRoute.length>0}}">
