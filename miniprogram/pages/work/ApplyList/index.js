@@ -25,7 +25,17 @@ Component({
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
     attached: function () {
-      console.log(app, 'iiiiiiiiiiiiiii')
+      // 设置当前rpx
+      // wx.getSystemInfo({
+      //   success: function (res) {
+      //     let clientHeight = res.windowHeight;
+      //     let clientWidth = res.windowWidth;
+      //     let changeHeight = 750 / clientWidth;
+      //     let height = clientHeight * changeHeight;
+      //     that.setData({
+      //       height: height
+      //     });
+      // }})
       this.setData({
         winWidth: app.globalData.windowWidth,
         winHeight: app.globalData.windowHeight
