@@ -1,29 +1,23 @@
 <wxs module="filter" src="../../../until/filter.wxs"></wxs>
-<!-- <view class="ApplyList">
-  <view class="ApplyBox" catchtap='toJobDetail' data-jobObj = '{{item}}' wx:for='{{applyList}}'>
-    <view class="ApplyBox-top">
-       <view><span><i class='iconfont fajian'></i></span><span>{{filter.getDate(item.timestamp, false)}}</span></view><view><i class='iconfont xiangyou'></i></view>
-    </view>
-    <view class="ApplyBox-bottom">
-      <view><span class='position'>{{item.job_info[0].recruit_name}}</span><span class='price'>{{item.job_info[0].recruit_wages?item.job_info[0].recruit_wages + '/月':'代理面谈'}}</span></view>
-    </view>
-  </view>
-  <view wx:if='{{applyList.length === 0}}' class='tip'>
-   <view><i class='iconfont kongjianli'></i></view>
-   <view>暂时没有任务</view>
-  </view>
-</view> -->
+<view class="box">
+  <view class="box-head" style="background: yellow">
+    <scroll-view scroll-x='true' scroll-left="{{scrollleft}}" class='tab-h' refresher-enabled='true'>
+      <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">新任务</view>
 
-<view class="swiper_tab_view">
- <scroll-view scroll-x='true' scroll-left="{{scrollleft}}" class='tab-h' refresher-enabled='true'>
- <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0"
-     bindtap="swichNav">新任务</view> 
- 
-    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" 
-    bindtap="swichNav">待完成</view>
+      <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">待完成</view>
     </scroll-view>
+  </view>
+  <scroll-view scroll-y='true' refresher-enabled='{{true}}' class="box-scroll">
+    <view class="order-card">
+      <view class="title">
+        <view class="fee"><span class="fee-title">订单价格：</span><span class="num">12.0</span><span>元</span></view>
+      </view>
+      <view class="content">
+         123456
+      </view>
+      <view class="oprate">
+         <button>抢单</button>
+      </view>
+    </view>
+  </scroll-view>
 </view>
- 
-<scroll-view scroll-y='true' refresher-enabled='{{true}}' style="height:{{winHeight - 31}}px;background: red;">
-  fdafjkldajflkaj
-</scroll-view>

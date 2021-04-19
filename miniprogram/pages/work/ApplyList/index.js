@@ -7,7 +7,7 @@ Component({
       type: Boolean,
       observer: function (newObj, oldObj) {
         if(newObj) {
-          this.getApplyList()
+          this.getWorkList()
         }
       }
     }
@@ -25,20 +25,8 @@ Component({
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
     attached: function () {
-      // 设置当前rpx
-      // wx.getSystemInfo({
-      //   success: function (res) {
-      //     let clientHeight = res.windowHeight;
-      //     let clientWidth = res.windowWidth;
-      //     let changeHeight = 750 / clientWidth;
-      //     let height = clientHeight * changeHeight;
-      //     that.setData({
-      //       height: height
-      //     });
-      // }})
       this.setData({
-        winWidth: app.globalData.windowWidth,
-        winHeight: app.globalData.windowHeight
+        winHeight: app.globalData.windowHeight * app.globalData.changeWidth
       })
     },
     moved: function () { },
@@ -57,14 +45,14 @@ Component({
         url: '/pages/job/jobDetail/index?jobId=' + jobId
       })
     },
-    getApplyList () {
+    getWorkList () {
       let query = {}
       let that = this
       wx.showLoading({
         title: '记录获取中...',
       })
       until.request({
-        action: 'app.job.getJobApplication',
+        action: 'app.crowd.getWorkList',
         data: query
       }).then(function (e) {
         if (e.data.success) {

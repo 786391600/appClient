@@ -9,12 +9,28 @@ App({
       })
     }
     this.globalData = {}
+    // wx.getSystemInfo({
+      //   success: function (res) {
+      //     let clientHeight = res.windowHeight;
+      //     let clientWidth = res.windowWidth;
+      //     let changeHeight = 750 / clientWidth;
+      //     let height = clientHeight * changeHeight;
+      //     that.setData({
+      //       height: height
+      //     });
+      // }})
     wx.getSystemInfo({
       success: res => {
         //导航高度
-        this.globalData.windowWidth = res.windowWidth;
-        this.globalData.windowHeight = res.windowHeight;
+        let clientHeight = res.windowHeight;
+        let clientWidth = res.windowWidth
+        let changeWidth = 750 / clientWidth
+
+        this.globalData.windowWidth = clientWidth;
+        this.globalData.windowHeight = clientHeight;
+        this.globalData.changeWidth = changeWidth;
         this.globalData.navHeight = res.statusBarHeight + 46;
+        console.log('当前高度' + res.windowHeight / changeWidth + 'rpx')
         console.log('设备信息：', res)
       }, fail(err) {
         console.log(err);

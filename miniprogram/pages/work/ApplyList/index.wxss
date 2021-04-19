@@ -1,76 +1,23 @@
 @import '../../../style/ticket/iconfont.wxss';
-.ApplyList {
-  padding: 40rpx;
-  box-sizing: border-box;
-}
-.ApplyBox{
-  background: white;
-  border-radius: 20rpx;
-  margin-bottom: 25rpx;
-}
-.ApplyBox-top{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.ApplyBox-top{
-  padding: 20rpx 38rpx 20rpx;
-  border-bottom: 2rpx solid #E8E8E8;
-}
-.ApplyBox-bottom{
-  padding: 20rpx 38rpx 20rpx;
-}
-.ApplyBox-bottom > view{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 10rpx 0 10rpx;
-}
-.ApplyBox-bottom .price {
-  color: #EF8700;
-  font-size: 32rpx;
-}
-.ApplyBox-bottom .company{
-  font-size: 32rpx;
-}
-.ApplyBox-bottom .place{
-  font-size: 32rpx;
-  color: #777777;
-}
-.position{
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-size: 36rpx;
-  width: 70%;
-}
-.tip{
-  color: #919191;
-  text-align: center;
-  margin: 350rpx auto 0;
-}
-.tip .iconfont{
-  font-size: 100rpx;
-}
 
 
 /**index.wxss**/
-.tab-h{
-  height: 29px;
+.tab-h {
   width: 100%;
-  line-height: 51rpx;
   background: white;
   font-size: 16px;
   white-space: nowrap;
   z-index: 999;
+  height: 100%;
 }
- 
-.swiper_tab_view{
+
+.swiper_tab_view {
   width: 100%;
   text-align: left;
-  line-height: 80rpx;
+  height: 70rpx;
+  background: yellow;
 }
- 
+
 .swiper-tab-list {
   font-size: 30rpx;
   display: inline-block;
@@ -78,21 +25,92 @@
   color: #777;
   box-sizing: border-box;
   text-align: center;
-  padding: 6rpx 0 6rpx;
+  height: calc(100% - 5rpx);
+  box-sizing: border-box;
 }
- 
+
 .on {
   color: #F37B1D;
   border-bottom: 5rpx solid #F37B1D;
+  box-sizing: border-box;
 }
- 
+
 .swiper-box {
   display: block;
   height: 100%;
   width: 100%;
   overflow: hidden;
 }
- 
-.swiper-box view {
-  text-align: center;
+
+
+.box {
+  display: flex;
+
+  flex-direction: column;
+
+  height: 100vh;
+
+  overflow: hidden;
+  padding-bottom: 121rpx;
+  box-sizing: border-box;
+  background: #F8F8F8;
 }
+
+.box-head {
+  flex-shrink: 0;
+
+  height: 70rpx;
+
+}
+
+.box-scroll {
+  flex: 1;
+  box-sizing: border-box;
+  height: 1px;
+  padding: 13rpx;
+}
+
+.order-card {
+  width: 100%;
+  background: #FFF;
+  border-radius: 10rpx;
+  border: 1rpx solid #F4F4F4;
+}
+.order-card .oprate{
+  padding: 22rpx;
+  box-sizing: border-box;
+}
+.oprate button {
+  height: 86rpx;
+  line-height: 86rpx;
+  background: #FECB2E;
+  color: #333333;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+.oprate .button-hover {
+  height: 86rpx;
+  line-height: 86rpx;
+  background: red;
+  color: #333333;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+.box-scroll .title{
+  padding: 35rpx 26rpx 35rpx;
+  display: flex;
+  justify-content: flex-end;
+}
+.box-scroll .fee-title{
+  color: #FE7701;
+}
+.box-scroll .fee .num{
+  font-size: 34rpx;
+  font-weight: 700;
+}
+.box-scroll .fee {
+  color: #F40000;
+  font-size: 22rpx;
+}
+
