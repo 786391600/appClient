@@ -1,7 +1,7 @@
 <view class="page-section">
     <view class="page-section-title">请输入帮取信息</view>
     <view class="textarea-wrp">
-      <textarea auto-focus="true" style="height: 100rpx;padding:15rpx 15rpx 15rpx;" placeholder="{{placeholder}}"/>
+      <textarea auto-focus="true" maxlength='300' style="height: 100rpx;padding:15rpx 15rpx 15rpx;" placeholder="{{placeholder}}" value="{{form.taskContent}}" bindinput='valueChange' data-formkey="taskContent"/>
     </view>
 </view>
 <view class="adress" bindtap="toAdressList">
@@ -10,7 +10,7 @@
       <i class="iconfont icon-zuobiao1"></i>
       <view class="adress-text">
         <view class="adress-tit">收货地址</view>
-        <view class="adress-con">{{address?address.schoolName + '-' + address.address:'请填写详细地址'}}</view>
+        <view class="adress-con">{{form.address?form.address.schoolName + '-' + form.address.address:'请填写详细地址'}}</view>
       </view>
     </view>
     <i class="iconfont icon-you"></i>
@@ -29,7 +29,7 @@
 </view>
 <view class="section">
   <view class="section__title">预约时间</view>
-  <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+  <picker mode="multiSelector" bindchange="workTimeChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
     <view class="picker">
       <span class="picker-text">{{multiArray[0][multiIndex[0]]}}<span wx:if="{{multiArray[1][multiIndex[1]]}}">，{{multiArray[1][multiIndex[1]]}}:{{multiArray[2][multiIndex[2]]}}</span></span><i class="iconfont icon-you"></i>
     </view>
@@ -37,7 +37,7 @@
 </view>
 <view class="section">
   <view class="section__title">物品价格</view>
-  <span class="section-input"><input class="weui-input"  maxlength="10" bindinput="bindKeyInput" placeholder="填写物品价格" style="text-align: right"/><span>元</span></span>
+  <span class="section-input"><input data-formkey="apFee" class="weui-input"  maxlength="10" bindinput="valueChange" placeholder="填写物品价格" style="text-align: right"/><span>元</span></span>
 </view>
 
 <view class="pay-box">

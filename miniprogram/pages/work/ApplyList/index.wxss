@@ -67,7 +67,9 @@
   flex: 1;
   box-sizing: border-box;
   height: 1px;
-  padding: 13rpx;
+}
+.box-scroll-card{
+  padding: 23rpx;
 }
 
 .order-card {
@@ -75,11 +77,14 @@
   background: #FFF;
   border-radius: 10rpx;
   border: 1rpx solid #F4F4F4;
+  margin-bottom: 13rpx;
 }
-.order-card .oprate{
+
+.order-card .oprate {
   padding: 22rpx;
   box-sizing: border-box;
 }
+
 .oprate button {
   height: 86rpx;
   line-height: 86rpx;
@@ -97,20 +102,73 @@
   font-size: 36rpx;
   font-weight: 600;
 }
-.box-scroll .title{
+
+.box-scroll .title {
   padding: 35rpx 26rpx 35rpx;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
 }
-.box-scroll .fee-title{
+.box-scroll .time {
+  font-size: 26rpx;
+}
+.box-scroll .time .time-con {
+  color: #FE7904;
+}
+.box-scroll .time .iconfont {
+  margin-right: 15rpx;
+}
+
+.box-scroll .fee-title {
   color: #FE7701;
 }
-.box-scroll .fee .num{
-  font-size: 34rpx;
-  font-weight: 700;
+
+.box-scroll .fee .num {
+  font-size: 38rpx;
+  font-weight: bold;
 }
+
 .box-scroll .fee {
   color: #F40000;
   font-size: 22rpx;
 }
 
+.content {
+  display: flex;
+  flex-direction: row;
+}
+.content-right{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #3B3B3B;
+}
+.work-info {
+  font-size: 34rpx;
+  margin-bottom: 38rpx;
+}
+.work-address {
+  font-size: 42rpx;
+  font-weight: 600;
+}
+.content-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 35rpx 0;
+}
+.content-left .iconfont{
+  font-size: 50rpx;
+}
+.content-left .work-line{
+  flex: 1;
+  width: 2rpx;
+  background: #DCDCDC;
+}
+.content-left .icon-jilu{
+  color: #2F7EFF;
+}
+.content-left .icon-zuobiao1{
+  color: #FE7700;
+}
