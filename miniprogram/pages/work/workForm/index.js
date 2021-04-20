@@ -94,8 +94,12 @@ Page({
     })
   },
   toAdressList: function() {
+    console.log('oooooooooooooo')
     wx.navigateTo({
-      url: '/pages/work/addressList/index'
+      url: '/pages/work/addressList/index',
+      fail (err) {
+        console.log(err, 'uuuuuuu')
+      }
     })
   },
   initAddress () {

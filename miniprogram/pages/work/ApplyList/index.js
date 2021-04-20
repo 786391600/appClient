@@ -18,7 +18,7 @@ Component({
   data: {
     winWidth: 0,
     winHeight: 0,
-    applyList: [],
+    workList: [],
     scrollleft:0,
     currentTab: 0,
   },
@@ -58,7 +58,7 @@ Component({
         if (e.data.success) {
           let getdata = e.data.data
           that.setData({
-            applyList: getdata
+            workList: getdata
           })
         } else {
           until.showToast(e.data.message, 'error');

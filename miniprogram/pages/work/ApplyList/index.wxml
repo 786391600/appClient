@@ -8,12 +8,12 @@
     </scroll-view>
   </view>
   <scroll-view scroll-y='true' refresher-enabled='{{true}}' class="box-scroll">
-    <view class="box-scroll-card">
+    <view class="box-scroll-card" wx:for='{{workList}}'>
       <view class="order-card">
         <view class="title">
-          <view class="time"><i class="iconfont icon-shijian"></i><span>任务时间：</span><span class="time-con">立即开始</span>
+          <view class="time"><i class="iconfont icon-shijian"></i><span>任务时间：</span><span class="time-con">{{item.orderInfo.taskTime}}</span>
           </view>
-          <view class="fee"><span class="fee-title">订单价格：</span><span class="num">12.0</span><span>元</span></view>
+          <view class="fee"><span class="fee-title">订单价格：</span><span class="num">{{item.orderInfo.taskFee}}</span><span>元</span></view>
         </view>
         <view class="content">
           <view class="content-left">
@@ -22,8 +22,8 @@
             <i class="iconfont icon-zuobiao1"></i>
           </view>
           <view class="content-right">
-            <view class="work-info">购买：（共3个）香酥牛肉馅饼 X 1；香酥牛肉馅饼 X 1；香酥牛肉馅饼 X 1；香酥牛肉馅饼 X 1；香酥牛肉馅饼 X 1；</view>
-            <view class="work-address">北四环东路五号院</view>
+            <view class="work-info">{{item.orderInfo.taskContent}}</view>
+            <view class="work-address">{{item.orderInfo.address.address}}</view>
           </view>
         </view>
         <view class="oprate">
