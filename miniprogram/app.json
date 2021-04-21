@@ -1,8 +1,8 @@
 {
   "cloud": true,
   "pages": [
-    "pages/work/index/index",
     "pages/index/index",
+    "pages/work/index/index",
     "pages/work/workForm/index",
     "pages/work/schoolList/index",
     "pages/work/addressList/index",

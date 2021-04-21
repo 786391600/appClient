@@ -69,7 +69,7 @@
   height: 1px;
 }
 .box-scroll-card{
-  padding: 23rpx;
+  padding: 11rpx 23rpx 11rpx;
 }
 
 .order-card {
