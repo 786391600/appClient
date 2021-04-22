@@ -26,7 +26,7 @@ Page({
    */
   onLoad: function (options) {
     let lineInfo = JSON.parse(options.lineInfo)
-    this.getCarList({departureTime: { $regex: options.date }, fleetId: lineInfo.fleet}).then((e) => {
+    this.getCarList({departureTime: { $regex: options.date }, fleetId: lineInfo.fleet, start: lineInfo.start, end: lineInfo.end}).then((e) => {
       let getdata = e.data.data
       this.setData({
         carList: getdata,
@@ -87,7 +87,8 @@ Page({
   goTicketDetails:function (e) {
     let carInfo = JSON.stringify(e.currentTarget.dataset.detail)
     let lineInfo = JSON.stringify(this.data.lineInfo)
-    if (e.currentTarget.dataset.detail.num <= 0) {
+    console.log(e, '000000000000')
+    if (e.currentTarget.dataset.num <= 0) {
       wx.showToast({
         title: '票已售光',
         icon: 'none'

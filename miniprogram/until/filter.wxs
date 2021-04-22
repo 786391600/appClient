@@ -17,8 +17,22 @@ var filter = {
     } else {
       return y + '-' + m + '-' + d
     }
+  },
+  getNum: function (carInfo, lineInfo) {
+    var num = carInfo.num
+    var startLimit = carInfo.startLimit || []
+    var endLimit = carInfo.endLimit || []
+    var limitArr = startLimit.concat(endLimit)
+    limitArr.some(function(item){
+      if (item.name === lineInfo.start || item.name === lineInfo.end) {
+        num = item.num
+        return true
+      }
+    })
+    return num
   }
 }
 module.exports = {
-  getDate: filter.getDate
+  getDate: filter.getDate,
+  getNum: filter.getNum
 }

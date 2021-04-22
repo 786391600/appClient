@@ -4,9 +4,10 @@
   <view>{{date}}</view>
   <view>后一天 {{'>'}}</view>
 </view> -->
+<wxs module="filter" src="../../../until/filter.wxs"></wxs>
 <view id='ListBackground'>
   <view class='TitleAddress'>{{lineInfo.start}} - {{lineInfo.end}}</view>
-  <view class='ContentAddress' wx:for="{{carList}}" bindtap='goTicketDetails' data-detail='{{item}}'>
+  <view class='ContentAddress' wx:for="{{carList}}" bindtap='goTicketDetails' data-detail='{{item}}' data-num='{{filter.getNum(item, lineInfo)}}'>
     <view class='ContentBox'>
       <view class='BoxTitle'>
         <view>{{item.departureTime
@@ -32,7 +33,7 @@
           </view>
         </view>
         <view class='distance'>
-          <view><span wx:if='{{item.num > 10}}'>余票充足</span><span wx:elif='{{item.num > 0}}'>剩余{{item.num}}张票</span><span wx:else>票已售光</span></view>
+          <view><span wx:if='{{filter.getNum(item, lineInfo) > 10}}'>余票充足</span><span wx:elif='{{filter.getNum(item, lineInfo) > 0}}'>剩余{{filter.getNum(item, lineInfo)}}张票</span><span wx:else>票已售光</span></view>
         </view>
       </view>
       <view class='provider' wx:if='{{item.provider}}'>服务提供商：{{item.provider}}</view>
