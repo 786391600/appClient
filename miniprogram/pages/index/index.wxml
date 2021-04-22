@@ -2,5 +2,5 @@
 <view class="box">
   <view bindtap="toTicket" class="ticket btn"><view><i class='iconfont icon-qicheqianlian-'></i></view><view>车票预定</view></view>
   <!-- <view bindtap="toJob" class="job btn" wx:if='{{showJob}}'><view><i class='iconfont icon-jianli'></i></view><view>兼职报名</view></view> -->
-  <!-- <view bindtap="toWork" class="job btn" wx:if='{{showJob}}'><view><i class='iconfont jianli'></i></view><view>校园互助</view></view> -->
+  <view bindtap="toWork" class="job btn" wx:if='{{showJob}}'><view><i class='iconfont jianli'></i></view><view>校园互助</view></view>
 </view>

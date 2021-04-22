@@ -119,9 +119,9 @@ Component({
       })
     },
     toTicket() {
-      // wx.switchTab({
-      //   url: '/pages/booking/ticket/index',
-      // })
+      wx.switchTab({
+        url: '/pages/booking/ticket/index',
+      })
       
     },
     toContacts(e) {
