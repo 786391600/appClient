@@ -7,11 +7,15 @@
       <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">待完成</view>
     </scroll-view>
   </view>
-  <scroll-view scroll-y='true' refresher-enabled='{{true}}' class="box-scroll">
+  <scroll-view scroll-y='true' 
+  refresher-enabled='{{true}}'
+  refresher-triggered="{{triggered}}"
+  bindrefresherrefresh="onRefresh"
+  class="box-scroll">
     <view class="box-scroll-card" wx:for='{{workList}}'>
       <view class="order-card">
         <view class="title">
-          <view class="time"><i class="iconfont icon-shijian"></i><span>任务时间：</span><span class="time-con">{{item.orderInfo.taskTime}}</span>
+          <view class="time"><i class="iconfont icon-shijian"></i><span>任务时间：</span><span class="time-con">{{filter.getDateText(item.orderInfo.taskTime)}}</span>
           </view>
           <view class="fee"><span class="fee-title">订单价格：</span><span class="num">{{item.orderInfo.taskFee}}</span><span>元</span></view>
         </view>

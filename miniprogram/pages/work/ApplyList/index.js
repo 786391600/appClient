@@ -21,6 +21,7 @@ Component({
     workList: [],
     scrollleft:0,
     currentTab: 0,
+    triggered: false // 是否在刷新
   },
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
@@ -39,7 +40,6 @@ Component({
   },
   methods: {
     toJobDetail (obj) {
-      console.log(obj, 'lll')
       let jobId = obj.currentTarget.dataset.jobobj.jobId
       wx.navigateTo({
         url: '/pages/job/jobDetail/index?jobId=' + jobId
@@ -49,7 +49,7 @@ Component({
       let query = {}
       let that = this
       wx.showLoading({
-        title: '记录获取中...',
+        title: '任务获取中...',
       })
       until.request({
         action: 'app.crowd.getWorkList',
@@ -64,6 +64,10 @@ Component({
           until.showToast(e.data.message, 'error');
         }
         wx.hideLoading()
+        that._freshing = false
+        that.setData({
+          triggered: false
+        })
       })
     },
     bindChange: function (e) {
@@ -99,6 +103,12 @@ Component({
           scrollleft:0
         })
       }
+    },
+    onRefresh: function() {
+      console.log('下拉刷新')
+      if (this._freshing) return
+      this._freshing = true
+      this.getWorkList()
     }
   }
 })
