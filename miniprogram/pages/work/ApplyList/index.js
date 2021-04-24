@@ -105,10 +105,30 @@ Component({
       }
     },
     onRefresh: function() {
-      console.log('下拉刷新')
       if (this._freshing) return
       this._freshing = true
       this.getWorkList()
+    },
+    grabbingOrders: function(e) {
+      console.log(e, 'uuuuuuuuuu')
+      let orderId = e.currentTarget.dataset.orderid
+      let query = {
+        out_trade_no: orderId
+      }
+      until.request({
+        action: 'app.crowd.grabbingOrders',
+        data: query
+      }).then(function (e) {
+        if (e.data.success) {
+          let getdata = e.data.data
+          that.setData({
+            workList: getdata
+          })
+        } else {
+          until.showToast(e.data.message, 'error');
+        }
+        wx.hideLoading()
+      })
     }
   }
 })

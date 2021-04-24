@@ -17,7 +17,7 @@
         <view class="title">
           <view class="time"><i class="iconfont icon-shijian"></i><span>任务时间：</span><span class="time-con">{{filter.getDateText(item.orderInfo.taskTime)}}</span>
           </view>
-          <view class="fee"><span class="fee-title">订单价格：</span><span class="num">{{item.orderInfo.taskFee}}</span><span>元</span></view>
+          <view class="fee"><span class="fee-title">完成可得：</span><span class="num">{{item.orderInfo.taskFee}}</span><span>元</span></view>
         </view>
         <view class="content">
           <view class="content-left">
@@ -31,7 +31,7 @@
           </view>
         </view>
         <view class="oprate">
-          <button>抢单</button>
+          <button bindtap='grabbingOrders' data-orderid="{{item.out_trade_no}}">抢单</button>
         </view>
       </view>
     </view>
