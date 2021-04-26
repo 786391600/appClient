@@ -37,6 +37,9 @@ var filter = {
     } else {
       var textArr = ['今天', '明天', '后天']
       var currentDate = getDate();
+      if (time - currentDate.getTime() < 0) {
+        return '过期任务'
+      }
       var date = getDate(time);
       var textIndex = date.getDate() - currentDate.getDate()
       var tiText = '早上'
@@ -50,7 +53,6 @@ var filter = {
         tiText = '晚上'
       }
       return textArr[textIndex] + ' - ' + tiText + (hours < 10 ? '0' + hours: hours) + ':' + (minutes < 10 ? '0' + minutes: minutes)
-
     }
   }
 }

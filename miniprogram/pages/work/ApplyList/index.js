@@ -110,7 +110,6 @@ Component({
       this.getWorkList()
     },
     grabbingOrders: function(e) {
-      console.log(e, 'uuuuuuuuuu')
       let orderId = e.currentTarget.dataset.orderid
       let query = {
         out_trade_no: orderId
