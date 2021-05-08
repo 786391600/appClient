@@ -15,8 +15,40 @@ Page({
       apFee: 0, // 垫付费用
       fee: '2',
       taskFee: '',
-      address: ''
-    }
+      address: '',
+      weight: 0
+    },
+    formConfigList: [
+      {
+        type: 'textarea',
+        title: '请输入帮取信息',
+        key: 'taskContent',
+        placeholder: '请输入帮取信息，如xxx驿站，收件人xx，号码xxxxx'
+      },
+      {
+        type: 'address',
+        title: '收货地址',
+        key: 'address'
+      },
+      {
+        type: 'select',
+        title: '物品重量',
+        handle: 'bindPickerChange',
+        range: ['1公斤', '2公斤', '3公斤', '4公斤', '5公斤', '6公斤', '7公斤', '8公斤'],
+        key: 'weight',
+        content: '小于'
+      },
+      {
+        type: 'timeselect'
+      },
+      {
+        type: 'input',
+        title: '物品价格',
+        key: 'apFee',
+        placeholder: '填写物品价格',
+        content: '元'
+      }
+    ]
   },
   onLoad () {
     this.initAddress()
@@ -89,12 +121,14 @@ Page({
   },
   bindPickerChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
+    const formKey = e.currentTarget.dataset.formkey
+    let query = this.data.form;
+    query[formKey] = e.detail.value
     this.setData({
-      index: e.detail.value
+      form: query
     })
   },
   toAdressList: function() {
-    console.log('oooooooooooooo')
     wx.navigateTo({
       url: '/pages/work/addressList/index',
       fail (err) {

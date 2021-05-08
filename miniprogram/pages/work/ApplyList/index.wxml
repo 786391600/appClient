@@ -1,10 +1,10 @@
 <wxs module="filter" src="../../../until/filter.wxs"></wxs>
 <view class="box">
-  <view class="box-head" style="background: yellow">
+  <view class="box-head">
     <scroll-view scroll-x='true' scroll-left="{{scrollleft}}" class='tab-h' refresher-enabled='true'>
-      <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">新任务</view>
+      <view class="swiper-tab-list {{currentTab== 'idle' ? 'on' : ''}}" data-current="idle" bindtap="swichNav">新任务</view>
 
-      <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">待完成</view>
+      <view class="swiper-tab-list {{currentTab== 'inprogress' ? 'on' : ''}}" data-current="inprogress" bindtap="swichNav">待完成</view>
     </scroll-view>
   </view>
   <scroll-view scroll-y='true' 
@@ -31,7 +31,8 @@
           </view>
         </view>
         <view class="oprate">
-          <button bindtap='grabbingOrders' data-orderid="{{item.out_trade_no}}">抢单</button>
+          <button bindtap='grabbingOrders' wx:if="{{item.taskType === 'idle'}}" data-orderid="{{item.out_trade_no}}">抢单</button>
+          <button bindtap='grabbingOrders' wx:if="{{item.taskType === 'inprogress'}}" data-orderid="{{item.out_trade_no}}">确认完成</button>
         </view>
       </view>
     </view>

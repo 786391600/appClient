@@ -20,7 +20,7 @@ Component({
     winHeight: 0,
     workList: [],
     scrollleft:0,
-    currentTab: 0,
+    currentTab: 'idle',
     triggered: false // 是否在刷新
   },
   lifetimes: {
@@ -46,7 +46,10 @@ Component({
       })
     },
     getWorkList () {
-      let query = {}
+      let taskType = this.data.currentTab;
+      let query = {
+        taskType: taskType
+      }
       let that = this
       wx.showLoading({
         title: '任务获取中...',
@@ -87,9 +90,11 @@ Component({
       if (this.data.currentTab === e.target.dataset.current) {
         return false;
       } else {
+        const currentTabIndex = e.target.dataset.current
         that.setData({
           currentTab: e.target.dataset.current
-        })
+        });
+        this.getWorkList();
       }
     },
    
