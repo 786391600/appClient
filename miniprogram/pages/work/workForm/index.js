@@ -9,48 +9,12 @@ Page({
     multiIndex: [0, 0, 0],
     placeholder: '请输入帮取信息，如xxx驿站，收件人xx，号码xxxxx',
     address: null,
-    form: {
-      taskTime: 'now',
-      taskContent: '',
-      apFee: 0, // 垫付费用
-      fee: '2',
-      taskFee: '',
-      address: '',
-      weight: 0
-    },
-    formConfigList: [
-      {
-        type: 'textarea',
-        title: '请输入帮取信息',
-        key: 'taskContent',
-        placeholder: '请输入帮取信息，如xxx驿站，收件人xx，号码xxxxx'
-      },
-      {
-        type: 'address',
-        title: '收货地址',
-        key: 'address'
-      },
-      {
-        type: 'select',
-        title: '物品重量',
-        handle: 'bindPickerChange',
-        range: ['1公斤', '2公斤', '3公斤', '4公斤', '5公斤', '6公斤', '7公斤', '8公斤'],
-        key: 'weight',
-        content: '小于'
-      },
-      {
-        type: 'timeselect'
-      },
-      {
-        type: 'input',
-        title: '物品价格',
-        key: 'apFee',
-        placeholder: '填写物品价格',
-        content: '元'
-      }
-    ]
+    form: {},
+    formConfigList: []
   },
-  onLoad () {
+  onLoad (options) {
+    console.log(options)
+    this.initFormOptions(options.type)
     this.initAddress()
   },
   bindMultiPickerColumnChange: function (e) {
@@ -120,8 +84,10 @@ Page({
     this.setData(data);
   },
   bindPickerChange: function(e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     const formKey = e.currentTarget.dataset.formkey
+    if (formKey === 'weight') {
+      this.data.form.fee = 2 + parseInt(e.detail.value);
+    }
     let query = this.data.form;
     query[formKey] = e.detail.value
     this.setData({
@@ -149,10 +115,12 @@ Page({
     if (this.valudateForm()) {
       return
     } else {
+      const formObj = this.getQueryForm()
       until.workPay({
         body: '帮我取',
-        fee: this.data.form.fee,
-        form: this.data.form,
+        fee: formObj.fee,
+        form: formObj,
+        schoolId: formObj.schoolId,
         type: 'work'
       }).then((res) => {
         wx.requestSubscribeMessage({
@@ -196,6 +164,14 @@ Page({
     }
   },
   valudateForm () {
+    let currentSchool = globleData.currentSchool
+    if (!currentSchool.id) {
+      wx.showToast({
+        title:'校园系统异常，请联系管理员',
+        icon: 'error',
+        duration: 2000
+      })
+    }
     let flag = false
     const desObj = {
       taskTime: '预约时间',
@@ -219,5 +195,58 @@ Page({
     const fee = parseFloat(this.data.form.fee) * 1000
     const taskFee = fee - fee * 0.3
     this.data.form.taskFee = taskFee / 1000
+  },
+  initFormOptions (taskType) {
+    this.data.taskType = taskType;
+    if (taskType === '0') {
+      this.data.form = {
+        taskTime: 'now',
+        taskContent: '',
+        apFee: 0, // 垫付费用
+        fee: 2,
+        taskFee: '',
+        address: '',
+        weight: 0
+      }
+      this.setData({
+        formConfigList: [
+          {
+            type: 'textarea',
+            title: '请输入帮取信息',
+            key: 'taskContent',
+            placeholder: '请输入帮取信息，如xxx驿站，收件人xx，号码xxxxx'
+          },
+          {
+            type: 'address',
+            title: '收货地址',
+            key: 'address'
+          },
+          {
+            type: 'select',
+            title: '物品重量',
+            handle: 'bindPickerChange',
+            range: ['1公斤', '2公斤', '3公斤', '4公斤', '5公斤', '6公斤', '7公斤', '8公斤'],
+            key: 'weight',
+            content: '小于'
+          },
+          {
+            type: 'timeselect'
+          },
+          // {
+          //   type: 'input',
+          //   title: '物品价格',
+          //   key: 'apFee',
+          //   placeholder: '填写物品价格',
+          //   content: '元'
+          // }
+        ]
+      })
+    }
+  },
+  getQueryForm () {
+    const taskType = this.data.taskType;
+    const schoolId = globleData.currentSchool.id;
+    this.data.form.schoolId = schoolId;
+    return this.data.form
   }
 })

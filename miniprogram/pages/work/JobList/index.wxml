@@ -1,7 +1,7 @@
-<view class="school-name" catchtap='toSchoolSelect'>{{schoolData.name}}</view>
+<view class="school-name" catchtap='toSchoolSelect'>{{schoolData.name? schoolData.name : '请选择学校'}}</view>
 <component_article type='job'></component_article>
 <view class="work-box">
-  <view class="box" bindtap="toWorkForm">
+  <view class="box" bindtap="toWorkForm" data-taskType="0">
       <view class="box-icon">
         <i class="iconfont icon-jiasu"></i>
       </view>
@@ -10,7 +10,7 @@
         <view class="box-text-con">快递/外卖</view>
       </view>
    </view>
-   <view class="box">
+   <view class="box" bindtap="toWorkForm" data-taskType="1">
       <view class="box-icon">
         <i class="iconfont icon-dianpu"></i>
       </view>
@@ -19,7 +19,7 @@
         <view class="box-text-con">零食/日用</view>
       </view>
    </view>
-   <view class="box">
+   <view class="box" bindtap="toWorkForm" data-taskType="2">
       <view class="box-icon">
         <i class="iconfont icon-hongbao"></i>
       </view>

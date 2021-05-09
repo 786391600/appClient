@@ -1,12 +1,14 @@
 // pages/Testpage/HomePage/index.js
 const app = getApp()
 const until = require('../../../until/index.js')
+const workGlobelData = require('../globleData.js')
 Component({
   properties: {
     currentState: {
       type: Boolean,
       observer: function (newObj, oldObj) {
         if(newObj) {
+          this.initSchool()
           this.getWorkList()
         }
       }
@@ -21,7 +23,8 @@ Component({
     workList: [],
     scrollleft:0,
     currentTab: 'idle',
-    triggered: false // 是否在刷新
+    triggered: false, // 是否在刷新
+    schoolId: ''
   },
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
@@ -36,6 +39,10 @@ Component({
   pageLifetimes: {
     show: function() {
       // 页面被展示
+      if (this.data.currentState) {
+        this.initSchool()
+        this.getWorkList() 
+      }
     }
   },
   methods: {
@@ -47,8 +54,10 @@ Component({
     },
     getWorkList () {
       let taskType = this.data.currentTab;
+      let schoolId = this.data.schoolId;
       let query = {
-        taskType: taskType
+        taskType: taskType,
+        schoolId: schoolId
       }
       let that = this
       wx.showLoading({
@@ -133,6 +142,15 @@ Component({
         }
         wx.hideLoading()
       })
+    },
+    initSchool () {
+      if (workGlobelData.currentSchool && Object.keys(workGlobelData.currentSchool).length > 0) {
+        this.data.schoolId = workGlobelData.currentSchool.id;
+      } else {
+        wx.navigateTo({
+          url: '/pages/work/schoolList/index'
+        })
+      }
     }
   }
 })

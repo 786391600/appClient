@@ -92,7 +92,7 @@
   </view>
   <view class="pay-con">
     <view class="pay-money">
-      ¥2.00
+      ¥{{form.fee}}
     </view>
     <view class="pay-submit" bindtap="payForm">
       去下单

@@ -29,10 +29,9 @@ Component({
     resize: function () { },
   },
   methods: {
-    toSchoolSelect (e) {
-      let jobData = e.currentTarget.dataset.item
+    toSchoolSelect () {
       wx.navigateTo({
-        url: '/pages/work/schoolList/index?jobData=' + JSON.stringify(jobData)
+        url: '/pages/work/schoolList/index'
       })
     },
     setCurrentSchool () {
@@ -46,10 +45,15 @@ Component({
         }
       }
     },
-    toWorkForm () {
-      console.log('kkkk')
+    toWorkForm (e) {
+      const taskType = e.currentTarget.dataset.tasktype
+      console.log(taskType)
+      if (Object.keys(this.data.schoolData).length === 0) {
+        this.toSchoolSelect()
+        return
+      }
       wx.navigateTo({
-        url: '/pages/work/workForm/index'
+        url: '/pages/work/workForm/index?type=' + taskType
       })
     }
   }
