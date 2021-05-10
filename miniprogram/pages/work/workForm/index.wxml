@@ -40,7 +40,7 @@
     </view>
     <view class="section" wx:if="{{item.type === 'input'}}">
       <view class="section__title">{{item.title}}</view>
-      <span class="section-input"><input data-formkey="apFee" class="weui-input"  maxlength="10" bindinput="valueChange" placeholder="{{item.placeholder}}" style="text-align: right"/><span>{{item.content}}</span></span>
+      <span class="section-input"><input data-formkey="{{item.key}}" class="weui-input"  maxlength="10" bindinput="valueChange" placeholder="{{item.placeholder}}" style="text-align: right"/><span>{{item.content}}</span></span>
     </view>
 </view>
 

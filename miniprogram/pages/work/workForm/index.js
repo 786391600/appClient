@@ -5,7 +5,7 @@ Page({
   data: {
     array: ['1公斤', '2公斤', '3公斤', '4公斤', '5公斤', '6公斤', '7公斤', '8公斤'],
     index: 0,
-    multiArray: [['立即', '今天', '明天', '后天'], [], []],
+    multiArray: [['立即开始', '今天', '明天', '后天'], [], []],
     multiIndex: [0, 0, 0],
     placeholder: '请输入帮取信息，如xxx驿站，收件人xx，号码xxxxx',
     address: null,
@@ -154,6 +154,7 @@ Page({
     let formKey = e.target.dataset.formkey
     let currentValue = e.detail.value
     this.data.form[formKey] = currentValue
+    this.setData({form: this.data.form})
   },
   getDate() {
     const date = new Date()
@@ -239,6 +240,39 @@ Page({
           //   placeholder: '填写物品价格',
           //   content: '元'
           // }
+        ]
+      })
+    } else if (taskType === '2') {
+      this.data.form = {
+        taskTime: 'now',
+        taskContent: '',
+        fee: 0,
+        taskFee: '',
+        address: ''
+      }
+      this.setData({
+        formConfigList: [
+          {
+            type: 'textarea',
+            title: '请输入任务内容',
+            key: 'taskContent',
+            placeholder: '请输入任务信息，代买，代送，其他需求'
+          },
+          {
+            type: 'address',
+            title: '收货地址',
+            key: 'address'
+          },
+          {
+            type: 'timeselect'
+          },
+          {
+            type: 'input',
+            title: '出价',
+            key: 'fee',
+            placeholder: '填写任务出价',
+            content: '元'
+          }
         ]
       })
     }
