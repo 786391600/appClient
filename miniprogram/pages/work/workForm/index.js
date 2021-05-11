@@ -177,9 +177,11 @@ Page({
     const desObj = {
       taskTime: '预约时间',
       taskContent: '任务内容',
-      address: '任务地址'
+      address: '任务地址',
+      fee: ''
     }
     const form = this.data.form
+    console.log(form, 'iiiiiiiiiiiiiiiiiiiiiii')
     Object.keys(desObj).forEach((key) => {
       if (!form[key]) {
         flag = true
@@ -188,6 +190,20 @@ Page({
           icon: 'error',
           duration: 2000
         })
+      }
+      console.log(key, 'ooo')
+      if(key === 'fee') {
+        console.log('key------------')
+        console.log(form[key])
+        console.log(!form[key], form[key] < 2, typeof form[key])
+        if (!form[key] || form[key] < 2 || typeof form[key] !== 'number') {
+          flag = true;
+          wx.showToast({
+            title: '价格需超过两元',
+            icon: 'error',
+            duration: 2000
+          })
+        }
       }
     })
     return flag
