@@ -181,7 +181,6 @@ Page({
       fee: ''
     }
     const form = this.data.form
-    console.log(form, 'iiiiiiiiiiiiiiiiiiiiiii')
     Object.keys(desObj).forEach((key) => {
       if (!form[key]) {
         flag = true
@@ -193,10 +192,7 @@ Page({
       }
       console.log(key, 'ooo')
       if(key === 'fee') {
-        console.log('key------------')
-        console.log(form[key])
-        console.log(!form[key], form[key] < 2, typeof form[key])
-        if (!form[key] || form[key] < 2 || typeof form[key] !== 'number') {
+        if (!form[key] || form[key] < 2) {
           flag = true;
           wx.showToast({
             title: '价格需超过两元',
@@ -287,7 +283,8 @@ Page({
             title: '出价',
             key: 'fee',
             placeholder: '填写任务出价',
-            content: '元'
+            content: '元',
+            inputtype: 'number'
           }
         ]
       })
