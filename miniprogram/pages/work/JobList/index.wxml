@@ -10,7 +10,7 @@
         <view class="box-text-con">快递/外卖</view>
       </view>
    </view>
-   <view class="box" bindtap="toWorkForm" data-taskType="1">
+   <!-- <view class="box" bindtap="toWorkForm" data-taskType="1">
       <view class="box-icon">
         <i class="iconfont icon-dianpu"></i>
       </view>
@@ -18,7 +18,7 @@
         <view class="box-text-tit">帮我买</view>
         <view class="box-text-con">零食/日用</view>
       </view>
-   </view>
+   </view> -->
    <view class="box" bindtap="toWorkForm" data-taskType="2">
       <view class="box-icon">
         <i class="iconfont icon-hongbao"></i>
@@ -27,9 +27,6 @@
         <view class="box-text-tit">自定需求</view>
         <view class="box-text-con">校园帮帮团</view>
       </view>
-   </view>
-   <view class="box">
-      
    </view>
 </view>
 
