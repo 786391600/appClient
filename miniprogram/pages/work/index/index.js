@@ -17,7 +17,7 @@ Page({
       {
         "iconPath": "./img/my2.png",
         "selectedIconPath": "./img/my1.png",
-        "text": "个人信息"
+        "text": "个人中心"
       }
     ]
   },
