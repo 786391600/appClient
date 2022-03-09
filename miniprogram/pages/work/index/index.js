@@ -9,11 +9,11 @@ Page({
         "selectedIconPath": "./img/index1.png",
         "text": "下单中心"
       },
-      {
-        "iconPath": "./img/jz2.png",
-        "selectedIconPath": "./img/jz1.png",
-        "text": "接单大厅"
-      },
+      // {
+      //   "iconPath": "./img/jz2.png",
+      //   "selectedIconPath": "./img/jz1.png",
+      //   "text": "接单大厅"
+      // },
       {
         "iconPath": "./img/car2.png",
         "selectedIconPath": "./img/car1.png",

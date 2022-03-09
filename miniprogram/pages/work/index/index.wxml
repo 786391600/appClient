@@ -2,11 +2,11 @@
 <view class="page-box" hidden="{{currentTab == 0? false: true}}">
   <component_index class="component" currentState = '{{currentTab == 0}}' schoolId='{{schoolId}}' bs='{{bs}}' />
 </view>
-<view class="page-box" hidden="{{currentTab == 1? false: true}}">
+<!-- <view class="page-box" hidden="{{currentTab == 1? false: true}}">
  <component_money class="component" currentState = '{{currentTab == 1}}'/>
-</view>
-<view class="page-box" hidden="{{currentTab == 2? false: true}}">
- <component_order class="component" currentState = '{{currentTab == 2}}'/>
+</view> -->
+<view class="page-box" hidden="{{currentTab == 1? false: true}}">
+ <component_order class="component" currentState = '{{currentTab == 1}}'/>
 </view>
 <!-- <view class="page-box" hidden="{{currentTab == 1? false: true}}">
   <component_resume currentState = '{{currentTab == 1}}'/>
