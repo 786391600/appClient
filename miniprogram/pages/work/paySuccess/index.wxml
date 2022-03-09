@@ -2,12 +2,15 @@
  <!-- <nav isBack='{{true}}' title='返回'></nav> -->
   <view class='success_box' wx:if='{{type === "success"}}'>
   <icon type='success' size='60'></icon>
-  <view id="success">支付成功</view>
-  <button id="complete" bindtap='paySuccess'>查看订单</button>
+  <view id="success">{{config.successText? config.successText : '支付成功'}}</view>
+  <view class="custom-tip" bindtap="customClick"><span wx:if="{{config.tip}}">{{config.tip}}</span></view>
+  <button id="complete" bindtap='paySuccess'>查看任务详情</button>
   </view> 
   <view class='success_box' wx:else>
     <icon type='warn' size='60'></icon>
-    <view id="success">支付失败</view>
+    <view id="success">{{config.errorText? config.errorText : '支付失败'}}</view>
     <button id="complete" bindtap='payFail' data-type ='reload'>重新下单</button>
     <button id="complete" bindtap='payFail' data-type ='back'>返回首页</button>
   </view> 
+
+

@@ -1,0 +1,9 @@
+<swiper style='height:{{widHeight}}px;margin-bottom: 10px;'  indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{activeColor}}">
+  <block wx:for="{{msgList}}">
+    <swiper-item>
+      <navigator url="{{item.src}}" hover-class="navigator-hover">
+        <image src="{{item.src}}" style= 'width:100%' mode="widthFix" bindload='imageLoad'/>
+      </navigator>
+    </swiper-item>
+  </block>
+</swiper>

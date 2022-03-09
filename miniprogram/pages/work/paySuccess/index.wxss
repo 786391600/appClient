@@ -29,3 +29,28 @@ page{
   text-align: center;
   margin-top: 250rpx;
 }
+.custom-tip{
+  color: white;
+  background-color: #F66A00;
+  border-radius: 5rpx;
+  padding: 0 8rpx 0;
+  display: inline-block;
+  font-size: 34rpx;
+  margin-top: 40rpx;
+  /* animation: fade 1000ms infinite; */
+}
+
+
+@keyframes fade {
+  from {
+    opacity: 1.0;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+
+  to {
+    opacity: 1.0;
+  }
+}

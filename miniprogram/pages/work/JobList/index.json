@@ -1,6 +1,9 @@
 {
   "usingComponents": {
-    "component_article": "/pages/common/getArticle/index"
+    "component_swiper": "/pages/common/swiper/index",
+    "component_notify": "/pages/common/notify/index",
+    "component_label": "/pages/common/business-label/index",
+    "component_nav": "/component/nav/common"
   },
   "backgroundColor": "#ffffff",
   "navigationBarTitleText": "线路查询"

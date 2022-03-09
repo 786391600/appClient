@@ -1,12 +1,11 @@
 module.exports = {
   currentSchool: {},
+  addressData: {},
+  schoolData: {},
+  channelId: '',
   getAdressList() {
-    if (!this.schoolData) {
-      this.schoolData = wx.getStorageSync('schoolData')
-    }
-    if (!this.addressData) {
-      this.addressData = wx.getStorageSync('addressData') || {}
-    }
+    this.schoolData = wx.getStorageSync('schoolData')
+    this.addressData = wx.getStorageSync('addressData') || {}
     const schoolId = this.schoolData.id
     return this.addressData[schoolId] || []
   },

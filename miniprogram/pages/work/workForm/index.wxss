@@ -42,6 +42,7 @@ page{
   box-sizing: border-box;
   background: white;
   margin-bottom: 25rpx;
+  /* margin-top: 25rpx; */
 }
 
 
@@ -59,7 +60,7 @@ page{
 }
 .adress-left .iconfont{
   font-size: 52rpx;
-  color: #F37B1D;
+  color: #FCD844;
 }
 .adress .adress-text{
   padding: 0 28rpx 0;
@@ -73,7 +74,7 @@ page{
   padding: 5rpx 0 5rpx;
 }
 .adress-con{
-  font-size: 24rpx;
+  font-size: 32rpx;
   color: #C1C1C1;
   padding: 5rpx 0 5rpx;
 }
@@ -97,31 +98,83 @@ page{
   width: 100%;
   position: fixed;
   bottom: 0;
-  height: 98rpx;
+  height:130rpx;
   display: flex;
   font-size: 28rpx;
   align-items: center;
   justify-content: space-between;
   background: white;
   padding: 0 30rpx 0;
+  box-sizing: border-box;
+  z-index: 500;
 }
 .pay-con{
   display: flex;
   height: 100%;
   align-items: center;
-  color: #F37B1D;
+  color: #FCD844;
+}
+.nocost-pay-con {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  color: #FCD844;
+  width: 100%;
+  justify-content: center;
 }
 .pay-text{
   color: #AFAFAF;
 }
+.pay-text-span {
+  color: white;
+  background-color: #F66A00;
+  border-radius: 5rpx;
+  padding: 0 8rpx 0;
+  margin-right: 15rpx;
+}
 .pay-money{
   padding: 0 30rpx 0;
+  color: #F66A00;
+  font-size: 28rpx;
+}
+.pay-money > span{
+  font-size: 48rpx;
 }
 .pay-submit{
-  width: 230rpx;
-  height: 100%;
-  background: #F37B1D;
-  color: white;
-  text-align: center;
-  line-height: 98rpx;
+  height: 88rpx;
+  border-radius: 44rpx;
+  background-color: #FFCE00;
+  line-height: 88rpx;
+  padding: 0 30rpx 0;
+  color: #41262B;
+  font-size: 34rpx;
+  font-weight: 600;
+}
+.pay-submit:active{
+  background: #ecca41e3;
+}
+
+/* input 组件样式 */
+.spec-input{
+  text-align: right;
+}
+
+/* tip 组件样式 */
+.spec-tip {
+  background: #FFF;
+  padding: 30rpx;
+}
+.spec-tip-title{
+  /* font-size: 34rpx; */
+  font-weight: 700;
+  margin-bottom: 28rpx;
+}
+
+/* 图片 */
+.spec-image{
+  background: white;
+  padding: 0 30rpx 0;
+}
+.spec-box{
+  padding-bottom: 150rpx;
 }

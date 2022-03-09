@@ -171,6 +171,49 @@ exports.workPay = function(obj){
     })
   })  
  }
+
+exports.workAdd = function(obj){
+  return new Promise((resolve,reject)=>{
+    exports.request({
+      action: 'app.until.workAdd',
+      data: obj
+    }).then(function (e) {
+      if (e.data && e.data.success) {
+        resolve({ data: e, successData: 'success' })
+      } else {
+        reject({})
+      }
+    })
+  })  
+ }
+
+ exports.shopPay = function(obj){
+  return new Promise((resolve,reject)=>{
+    exports.request({
+      action: 'app.until.shopPay',
+      data: obj
+    }).then(function (e) {
+      if (e.data && e.data.success) {
+        let out_trade_no = e.data.data.out_trade_no;
+        wx.requestPayment({
+          timeStamp: e.data.data.timeStamp,
+          nonceStr: e.data.data.nonceStr,
+          package: e.data.data.package,
+          signType: e.data.data.signType,
+          paySign: e.data.data.paySign,
+          success(res) {
+            resolve({ data: e, successData: res })
+          },
+          fail(res) {
+            let err = res || {}
+            err.out_trade_no = out_trade_no
+            reject(err)
+          }
+        })
+      }
+    })
+  })  
+ }
 exports.confirmUser = function(obj){
   return new Promise((resolve, reject) =>{
     exports.request({
@@ -247,4 +290,46 @@ exports.showToast = function(title, type){
     image: image,
     duration: 2000
   })
+}
+
+
+exports.isEmptyObject = function(obj) {
+  if ((typeof obj === "object" && !(obj instanceof Array)) || ((obj instanceof Array) && obj.length <= 0)) {
+    var isEmpty = true;
+    for (var prop in obj) {
+      isEmpty = false;
+      break;
+    }
+    return isEmpty;
+  }
+  return false;
+}
+
+
+exports.filterEmptyObject = function(list) {
+  var cartList = [];
+  for (var index in list) {
+    if (!this.isEmptyObject(list[index])) {
+      cartList.push(list[index])
+    }
+  }
+  return cartList;
+}
+
+// 数字相加 精度计算
+exports.accAdd = function (arg1, arg2) {
+  var r1, r2, m;
+  try { r1 = arg1.toString().split(".")[1].length } catch (e) { r1 = 0 }
+  try { r2 = arg2.toString().split(".")[1].length } catch (e) { r2 = 0 }
+  m = Math.pow(10, Math.max(r1, r2))
+  return (arg1 * m + arg2 * m) / m
+}
+
+// 数字相乘 精度计算
+
+exports.accMul = function (arg1, arg2) {
+  var m = 0, s1 = arg1.toString(), s2 = arg2.toString();
+  try { m += s1.split(".")[1].length } catch (e) { }
+  try { m += s2.split(".")[1].length } catch (e) { }
+  return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m)
 }

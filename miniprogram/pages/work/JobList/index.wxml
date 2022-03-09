@@ -1,32 +1,80 @@
-<view class="school-name" catchtap='toSchoolSelect'>{{schoolData.name? schoolData.name : '请选择学校'}}</view>
-<component_article type='job'></component_article>
-<view class="work-box">
-  <view class="box" bindtap="toWorkForm" data-taskType="0">
-      <view class="box-icon">
-        <i class="iconfont icon-jiasu"></i>
+
+<component_nav v-title="{{schoolData.name}}" showTrans="{{true}}" bind:titleClick='toSchoolSelect'></component_nav>
+<scroll-view scroll-y='true' 
+  refresher-enabled='{{true}}'
+  refresher-triggered="{{triggered}}"
+  bindrefresherrefresh="onRefresh"
+  class="box-scroll">
+<!-- <view class="school-name" catchtap='toSchoolSelect'><i class="iconfont icon-xiaoyuan"></i>{{schoolData.name? schoolData.name : '请选择学校'}}<i class="iconfont icon-xiala"></i></view> -->
+<view class="page-box">
+  <component_swiper msgList = '{{schoolData.swiperConfig}}'></component_swiper>
+  <component_notify msgList = '{{schoolData.noticeConfig}}'></component_notify>
+  <view class="shop-box" wx:if="{{shopList.length > 0}}">
+    <view class="user-oprate">
+      <view class="oprate-box" wx:for="{{quickShopList}}" bindtap="toShop" data-shopid="{{item.id}}" wx:if="{{item.quickShop && item.icon}}">
+        <view class="icon" style="color: {{item.color? item.color: '#F8B528'}};">
+          <i class="iconfont {{item.icon? item.icon: 'icon-dianpu'}}"></i>
+        </view>
+        <view class="oprate-text">{{item.quickShop}}</view>
       </view>
-      <view class="box-text">
-        <view class="box-text-tit">帮我取</view>
-        <view class="box-text-con">快递/外卖</view>
+    </view>
+  </view>  
+  <!-- <view class="work-box">
+    <view class="box" bindtap="toWorkForm" data-taskType="0">
+        <view class="box-icon">
+          <i class="iconfont icon-jiasu" style="color: #F8B528"></i>
+        </view>
+        <view class="box-text">
+          <view class="box-text-tit">帮取送</view>
+          <view class="box-text-con">取快递/送文件</view>
+        </view>
+    </view>
+    <view class="box" bindtap="toWorkForm" data-taskType="1">
+        <view class="box-icon">
+          <i class="iconfont icon-hongbao" style="color: #FF6446"></i>
+        </view>
+        <view class="box-text">
+          <view class="box-text-tit">帮我做</view>
+          <view class="box-text-con">自定义需求</view>
+        </view>
+    </view>
+  </view> -->
+  <component_label config='{{schoolData.labelConfig}}'></component_label>
+  <!-- <view class="share" style="width: 80%; margin: 35rpx auto 0;">
+        <button class="mini-btn" bindtap="partTimeJobClick" open-type="share">分享给同学</button>
+  </view> -->
+  <view class="business-box" wx:if="{{shopList.length > 0}}">
+    <view class="business-title">校园商家</view>
+    <view class="business-item" wx:for="{{shopList}}" bindtap="toShop" data-shopid="{{item.id}}">
+      <view class="business-head" style="background-image: url({{item.headImg?item.headImg:''}});">
+        <view class="tip" wx:if="{{item.markLight}}">{{item.markLight}}</view>
+        <view class="close" wx:if="{{item.close}}">店铺休息中</view>
+        <view class="icon" wx:if="{{!item.headImg && item.icon}}" style="color: {{item.color? item.color: '#F8B528'}}">
+          <i class="iconfont {{item.icon? item.icon: 'icon-dianpu'}}"></i>
+        </view>
       </view>
-   </view>
-   <!-- <view class="box" bindtap="toWorkForm" data-taskType="1">
-      <view class="box-icon">
-        <i class="iconfont icon-dianpu"></i>
+      <view class="business-info">
+        <view class="title row">{{item.title}}</view>
+        <view class="condition row"><span>起送 ￥{{item.deliveryPrice?item.deliveryPrice:0}}</span><view class="major">校帮手专送</view></view>
+        <view class="recommend row" wx:if="item.labelList && item.labelList.length > 0">
+          <span wx:for="{{item.labelList}}" wx:for-item='label'>{{label}}</span>
+        </view>
       </view>
-      <view class="box-text">
-        <view class="box-text-tit">帮我买</view>
-        <view class="box-text-con">零食/日用</view>
-      </view>
-   </view> -->
-   <view class="box" bindtap="toWorkForm" data-taskType="2">
-      <view class="box-icon">
-        <i class="iconfont icon-hongbao"></i>
-      </view>
-      <view class="box-text">
-        <view class="box-text-tit">自定需求</view>
-        <view class="box-text-con">校园帮帮团</view>
-      </view>
-   </view>
+    </view>
+  </view>
+  <!-- <view>
+    <official-account style="width: 40%" class="official" binderror='officialBinderror'></official-account>
+  </view> -->
+  
 </view>
+</scroll-view>
+<view class="share">
+  <button class="mini-btn" bindtap="partTimeJobClick" open-type="share">
+    <i class="iconfont icon-tiaoguofenxiang"></i>
+  </button>
+  <button class="mini-btn" bindtap="concatClick">
+    <i class="iconfont icon-weixin1" style="color: #F5CD32"></i>
+  </button>
+</view>
+
 

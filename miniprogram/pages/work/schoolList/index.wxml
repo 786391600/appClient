@@ -1,6 +1,7 @@
 <view class="current-school">
    <view class="school-name"><view class="current-school-name">{{schoolData.name}}</view><view class="name-text">-当前高校</view></view><view><i class="iconfont icon-zuobiao"></i></view>
 </view>
+<button bindtap="openSetting" wx:if="{{isShowAuthBtn}}">点击授权位置信息</button>
 <view class="school-list">
   <view class="school-box" wx:for="{{schoolList}}" bindtap="selectSchool" data-current='{{item}}'>
     {{item.name}}

@@ -7,20 +7,29 @@ Page({
    * 页面的初始数据
    */
   data: {
-    commodityId: ''
+    commodityId: '',
+    config: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let config = options.config ? JSON.parse(options.config) : {};
     let type = ''
     if (options.type === 'success') {
       type = 'success'
     } else {
       type = 'fail'
     }
-    this.setData({ type: type})
+    this.setData({ type: type, config: config})
+    wx.setNavigationBarTitle({
+      title: '支付状态'
+    })
+    wx.setNavigationBarColor({
+      backgroundColor: '#FCD844',
+      frontColor: '#ffffff'
+    })
   },
 
   /**
@@ -79,7 +88,7 @@ Page({
   },
   paySuccess () {
     wx.reLaunch({
-      url: '/pages/booking/index/index?relation=orderList'
+      url: '/pages/work/index/index?currentTab=1'
     })
   },
   payFail (e) {
@@ -90,6 +99,14 @@ Page({
     } else {
       wx.reLaunch({
         url: '/pages/work/index/index'
+      })
+    }
+  },
+  customClick () {
+    if (this.data.config.tipImage) {
+      let url = this.data.config.tipImage;
+      wx.previewImage({
+        urls: [url]
       })
     }
   }

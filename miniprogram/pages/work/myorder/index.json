@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "nav": "../../plug/nav/index",
+    "component_tab": "/pages/common/tab/index",
+    "component_lia": "/pages/common/liaison/index",
+    "component_nav": "/component/nav/common"
+  },
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "我的订单",
+  "navigationBarBackgroundColor": "#FECB2E"
+}

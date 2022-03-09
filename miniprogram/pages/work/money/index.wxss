@@ -1,0 +1,20 @@
+@import '../../../style/ticket/iconfont.wxss';
+.money{
+  height: 418rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.money-title{
+  font-size: 32rpx;
+  margin-bottom: 34rpx;
+}
+.money-text{
+  font-size: 60rpx;
+  font-weight: 800;
+}
+.money-oprate{
+  width: 80%;
+  margin: 0 auto;
+}

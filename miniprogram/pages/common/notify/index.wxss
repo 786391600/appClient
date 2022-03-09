@@ -1,0 +1,89 @@
+/* 公告start */
+.notify-box {
+  display: flex;
+  align-items: center;
+  margin: 0 20rpx 0;
+  background: white;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  font-size: 24rpx;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.swiper-notice {
+  font-size: 24rpx;
+  color: white;
+  background: #FEAC08;
+  border-radius: 15rpx;
+  padding: 5rpx 8rpx 5rpx;
+  box-sizing: border-box;
+  font-weight: 600;
+}
+
+.swiper-container {
+  margin-left: 10rpx;
+  flex: 1;
+  height: 32rpx;
+}
+
+.swiper-item {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  font-size: 24rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.swiper-item .title {
+  width: 80%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.swiper-item .btn {
+  color: #FEAC08;
+  border-radius: 15rpx;
+  padding: 5rpx 8rpx 5rpx;
+  box-sizing: border-box;
+  width: 20%;
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.allitem .title {
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.allitem .btn {
+  display: none;
+}
+
+
+.animation {
+  animation: 15s wordsLoop linear infinite normal;
+}
+
+@keyframes wordsLoop {
+  0% {
+      transform: translate(0, -50%);
+      -webkit-transform: translate(0, -50%);
+  }
+  100% {
+      transform: translate(-100%, -50%);
+      -webkit-transform: translate(-50%, -50%);
+  }
+}
+
+
+/* 公告end */

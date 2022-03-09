@@ -1,101 +1,142 @@
-<view wx:for="{{formConfigList}}">
+<component_label setIndex='{{setLabelIndex}}' bind:select='labelSelect' labelList='{{labelList}}' showTip='{{showLabelTip}}'></component_label>
+<!-- <view wx:for="{{formConfigList}}">
   <view class="page-section" wx:if="{{item.type === 'textarea'}}">
     <view class="page-section-title">{{item.title}}</view>
     <view class="textarea-wrp">
-      <textarea auto-focus="true" maxlength='300' style="height: 100rpx;padding:15rpx 15rpx 15rpx;"
-        placeholder="{{item.placeholder}}" value="{{form[item.key]}}" bindinput='valueChange'
-        data-formkey="taskContent" />
-      </view>
-   </view>
-   <view class="adress" bindtap="toAdressList" wx:if="{{item.type === 'address'}}">
-      <view class="adress-box">
-        <view class="adress-left">
-          <i class="iconfont icon-zuobiao1"></i>
-          <view class="adress-text">
-            <view class="adress-tit">{{item.title}}</view>
-            <view class="adress-con">{{form.address ? form.address.schoolName + '-' + form.address.address:'请填写详细地址'}}</view>
-          </view>
+      <textarea maxlength='300' style="height: 100rpx;padding:15rpx 15rpx 15rpx;" placeholder="{{item.placeholder}}" value="{{form[item.key]}}" bindinput='valueChange' data-formkey="taskContent" />
+    </view>
+  </view>
+  <view class="adress" bindtap="toAdressList" wx:if="{{item.type === 'address'}}">
+    <view class="adress-box">
+      <view class="adress-left">
+        <i class="iconfont icon-zuobiao1"></i>
+        <view class="adress-text">
+          <view class="adress-tit">{{item.title}}</view>
+          <view class="adress-con">{{form.address ? form.address.schoolName + '-' + form.address.address:'请填写详细地址'}}</view>
         </view>
-        <i class="iconfont icon-you"></i>
       </view>
-      <view class="used">
-        <view class="used-text">常用</view>
+      <i class="iconfont icon-you"></i>
+    </view>
+    <view class="used">
+      <view class="used-text">常用</view>
+    </view>
+  </view>
+  <view class="section" wx:if="{{item.type === 'select'}}">
+    <view class="section__title">{{item.title}}</view>
+    <picker bindchange="bindPickerChange" value="{{form[item.key]}}" range="{{item.range}}" data-formkey="weight">
+      <view class="picker">
+        <span class="picker-text">{{item.content}}{{item.range[form[item.key]]}}</span><i class="iconfont icon-you"></i>
       </view>
+    </picker>
+  </view>
+  <view class="section" wx:if="{{item.type === 'timeselect'}}">
+    <view class="section__title">预约时间</view>
+    <picker mode="multiSelector" bindchange="workTimeChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+      <view class="picker">
+        <span class="picker-text">{{multiArray[0][multiIndex[0]]}}<span wx:if="{{multiArray[1][multiIndex[1]]}}">，{{multiArray[1][multiIndex[1]]}}:{{multiArray[2][multiIndex[2]]}}</span></span><i class="iconfont icon-you"></i>
+      </view>
+    </picker>
+  </view>
+  <view class="section" wx:if="{{item.type === 'input'}}">
+    <view class="section__title">{{item.title}}</view>
+    <span class="section-input"><input data-formkey="{{item.key}}" class="weui-input" maxlength="10" bindinput="valueChange" placeholder="{{item.placeholder}}" style="text-align: right" type="{{item.inputtype? item.inputtype :'text'}}" /><span>{{item.content}}</span></span>
+  </view>
+</view> -->
+
+
+<!-- <view class="section" wx:for="{{currentSpec}}">
+  <view class="section__title">{{item.label}}</view>
+  <component_number wx:if="{{item.type === 'number'}}" value="{{item.number}}" config="{{item.config}}" unit="{{item.unit}}" bind:change='numberChange' data-specIndex="{{index}}"></component_number>
+  <picker wx:else bindchange="specSelectChange" value="{{item.index}}" range-key='name' range="{{item.config}}" data-specIndex="{{index}}">
+    <view class="picker">
+      <span class="picker-text">{{item['config'][item.index]['name']}}</span><i class="iconfont icon-you"></i>
     </view>
-    <view class="section" wx:if="{{item.type === 'select'}}">
-      <view class="section__title">{{item.title}}</view>
-      <picker bindchange="bindPickerChange" value="{{form[item.key]}}" range="{{item.range}}" data-formkey="weight">
-        <view class="picker">
-          <span class="picker-text">{{item.content}}{{item.range[form[item.key]]}}</span><i class="iconfont icon-you"></i>
+  </picker>
+</view> -->
+
+
+<view wx:for="{{currentSpec}}">
+  <view class="page-section" wx:if="{{item.type === 'textarea'}}">
+    <view class="page-section-title">{{item.label}}</view>
+    <view class="textarea-wrp">
+      <textarea maxlength='300' style="height: 100rpx;padding:15rpx 15rpx 15rpx;" data-specIndex="{{index}}" placeholder="{{item.placeholder}}" value="{{item.value}}" bindinput='inputChange' data-formkey="taskContent" />
+    </view>
+  </view>
+  <view class="section" wx:if="{{item.type === 'number'}}">
+    <view class="section__title">{{item.label}}</view>
+    <component_number  value="{{item.number}}" config="{{item.config}}" unit="{{item.unit}}" bind:change='numberChange' data-specIndex="{{index}}"></component_number>
+  </view>
+  <view class="section" wx:if="{{item.type === 'input'}}">
+    <view class="section__title">{{item.label}}</view>
+    <input class="spec-input" value="{{item.value}}" bind:change='inputChange' data-specIndex="{{index}}" placeholder="{{item.placeholder || '请输入'}}"/>
+  </view>
+  <view class="adress" bindtap="toAdressList" wx:if="{{item.type === 'address'}}">
+    <view class="adress-box">
+      <view class="adress-left">
+        <i class="iconfont icon-zuobiao1"></i>
+        <view class="adress-text">
+          <view class="adress-tit">{{item.label}}</view>
+          <view class="adress-con">{{form.address ? form.address.schoolName + '-' + form.address.address:'请填写详细地址'}}</view>
         </view>
-      </picker>
+      </view>
+      <i class="iconfont icon-you"></i>
     </view>
-    <view class="section"  wx:if="{{item.type === 'timeselect'}}">
-      <view class="section__title">预约时间</view>
-      <picker mode="multiSelector" bindchange="workTimeChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
-        <view class="picker">
-          <span class="picker-text">{{multiArray[0][multiIndex[0]]}}<span wx:if="{{multiArray[1][multiIndex[1]]}}">，{{multiArray[1][multiIndex[1]]}}:{{multiArray[2][multiIndex[2]]}}</span></span><i class="iconfont icon-you"></i>
-        </view>
-      </picker>
+    <view class="used">
+      <view class="used-text">常用</view>
     </view>
-    <view class="section" wx:if="{{item.type === 'input'}}">
-      <view class="section__title">{{item.title}}</view>
-      <span class="section-input"><input data-formkey="{{item.key}}" class="weui-input"  maxlength="10" bindinput="valueChange" placeholder="{{item.placeholder}}" style="text-align: right" type="{{item.inputtype? item.inputtype :'text'}}"/><span>{{item.content}}</span></span>
-    </view>
+  </view>
+  <view class="section" wx:if="{{item.type === 'select'}}">
+    <view class="section__title">{{item.label}}</view>
+    <picker bindchange="specSelectChange" value="{{item.index}}" range-key='name' range="{{item.config}}" data-specIndex="{{index}}">
+      <view class="picker">
+        <span class="picker-text">{{item['config'][item.index]['name']}}</span><i class="iconfont icon-you"></i>
+      </view>
+    </picker>
+  </view>
+  <view class="section" wx:if="{{item.type === 'timeselect'}}">
+    <view class="section__title">{{item.title || '预约时间'}}</view>
+    <picker mode="multiSelector" bindchange="workTimeChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+      <view class="picker">
+        <span class="picker-text">{{multiArray[0][multiIndex[0]]}}<span wx:if="{{multiArray[1][multiIndex[1]]}}">，{{multiArray[1][multiIndex[1]]}}:{{multiArray[2][multiIndex[2]]}}</span></span><i class="iconfont icon-you"></i>
+      </view>
+    </picker>
+  </view>
+  <view class="spec-tip" wx:if="{{item.type === 'tip'}}">
+    <view class="spec-tip-title" wx:if="{{item.title}}">{{item.title}}</view>
+    <view class="spec-tip-content">{{item.content}}</view>
+  </view>
+  <view class="spec-image" wx:if="{{item.type === 'image'}}">
+    <image data-url="{{item.url}}" bindtap="imageClick" style= 'width:100%' mode="widthFix" src='{{item.url}}'></image>
+  </view>
 </view>
 
-<!-- <view class="page-section">
-    <view class="page-section-title">请输入帮取信息</view>
-    <view class="textarea-wrp">
-      <textarea auto-focus="true" maxlength='300' style="height: 100rpx;padding:15rpx 15rpx 15rpx;" placeholder="{{placeholder}}" value="{{form.taskContent}}" bindinput='valueChange' data-formkey="taskContent"/>
-    </view>
-</view> -->
-<!-- <view class="adress" bindtap="toAdressList">
-  <view class="adress-box">
-    <view class="adress-left">
-      <i class="iconfont icon-zuobiao1"></i>
-      <view class="adress-text">
-        <view class="adress-tit">收货地址</view>
-        <view class="adress-con">{{form.address?form.address.schoolName + '-' + form.address.address:'请填写详细地址'}}</view>
-      </view>
-    </view>
-    <i class="iconfont icon-you"></i>
-  </view>
-  <view class="used">
-    <view class="used-text">常用</view>
-  </view>
-</view> -->
-<!-- <view class="section">
-  <view class="section__title">物品重量</view>
-  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-    <view class="picker">
-      <span class="picker-text">小于{{array[index]}}</span><i class="iconfont icon-you"></i>
-    </view>
-  </picker>
-</view> -->
-<!-- <view class="section">
-  <view class="section__title">预约时间</view>
-  <picker mode="multiSelector" bindchange="workTimeChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
-    <view class="picker">
-      <span class="picker-text">{{multiArray[0][multiIndex[0]]}}<span wx:if="{{multiArray[1][multiIndex[1]]}}">，{{multiArray[1][multiIndex[1]]}}:{{multiArray[2][multiIndex[2]]}}</span></span><i class="iconfont icon-you"></i>
-    </view>
-  </picker>
-</view> -->
-<!-- <view class="section">
-  <view class="section__title">物品价格</view>
-  <span class="section-input"><input data-formkey="apFee" class="weui-input"  maxlength="10" bindinput="valueChange" placeholder="填写物品价格" style="text-align: right"/><span>元</span></span>
-</view> -->
+<view class="spec-box"></view>
 
-<view class="pay-box">
+
+
+<view class="pay-box" wx:if="{{!labelConfig.noCost}}">
   <view class="pay-text">
-    费用
+    <span class="pay-text-span" bindtap="payMoneyClick" wx:if="{{labelConfig.tip}}">{{labelConfig.tip}}</span>费用
   </view>
   <view class="pay-con">
     <view class="pay-money">
-      ¥{{form.fee}}
+      ¥<span>{{form.fee}}</span>
     </view>
     <view class="pay-submit" bindtap="payForm">
-      去下单
+      {{payStatus? '支付中...' : '下单支付'}}
+    </view>
+  </view>
+</view>
+<view class="pay-box" wx:else>
+  <view class="pay-text">
+    {{labelConfig.tip1}}<span class="pay-text-span" bindtap="payMoneyClick" wx:if="{{labelConfig.tip}}">{{labelConfig.tip}}</span>
+  </view>
+  <view class="pay-con">
+    <view class="pay-money">
+      {{labelConfig.tip2}}
+    </view>
+    <view class="pay-submit" bindtap="payForm">
+      {{payStatus? '提交中...' : (labelConfig.buttonText? labelConfig.buttonText: '立即提交')}}
     </view>
   </view>
 </view>

@@ -1,0 +1,8 @@
+
+<view class="tabcontent">
+  <block wx:for="{{tabs}}" wx:key="*this">
+    <view id="{{index}}" class="tabcell {{ activeIndex==index?'active':'' }} " bindtap="tabClick">
+      {{item}}
+    </view>
+  </block>
+</view>

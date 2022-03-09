@@ -1,0 +1,12 @@
+<view class="notify-box">
+  <text class='swiper-notice'>公告</text>
+  <swiper bindchange='swiperChange' class='swiper-container' autoplay='true' vertical='true' circular='true' interval='3000'>
+      <block wx:for='{{msgList}}' wx:for-index='idx'>
+          <navigator url='/pages/notice/notice?title={{item.url}}' open-type='navigate'>
+              <swiper-item>
+                  <view class='swiper-item' bindtap="toArticle" data-url="{{item.url}}" data-title="{{item.title}}"><view class="title">{{item.title}}</view><view class="btn">点击查看</view></view>
+              </swiper-item>
+          </navigator>
+      </block>
+  </swiper>
+</view>

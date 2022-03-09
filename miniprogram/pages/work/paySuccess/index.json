@@ -1,5 +1,5 @@
 {
-  "usingComponents": {
-    "nav": "../../plug/nav/index"
-  }
+  "navigationBarTitleText": "支付状态",
+  "navigationBarBackgroundColor": "#FCD844",
+  "navigationBarTextStyle": "white"
 }

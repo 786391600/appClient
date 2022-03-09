@@ -4,9 +4,11 @@ const workGlobelData = require('../globleData.js')
 Page({
   data: {
     schoolList: [],
-    schoolData: {}
+    schoolData: {},
+    isShowAuthBtn: false
   },
   onLoad: function (option) {
+    console.log(app.globalData, '99999999999999');
     this.getSchoolList()
   },
   getSchoolList () {
@@ -15,6 +17,13 @@ Page({
       title: '学校获取中...',
     })
     this.getLocation().then((coordinate) => {
+      if (!coordinate) {
+        wx.hideLoading();
+        that.setData({
+          isShowAuthBtn: true
+        })
+        return;
+      }
       until.request({
         action: 'app.crowd.getSchoolList',
         data: {
@@ -22,7 +31,6 @@ Page({
         }
       }).then(function (e) {
         if (e.data.success) {
-          console.log(e.data.data)
           let getdata = e.data.data
           that.setData({
             schoolList: getdata
@@ -36,11 +44,14 @@ Page({
     })
   },
   getLocation() {
-    return new Promise((resolve)=>{
+    return new Promise((resolve, reject)=>{
       wx.getLocation({
         success: (res) => {
           console.log(res, 'res')
           resolve([res.longitude, res.latitude])
+        },
+        fail(res){
+          resolve(false);
         }
       })
     })
@@ -48,6 +59,7 @@ Page({
   selectSchool (item) {
     const currentData = item.target.dataset.current
     workGlobelData.currentSchool = currentData
+    workGlobelData.schoolData = currentData
     wx.setStorage({
       key: 'schoolData',
       data: workGlobelData.currentSchool
@@ -67,5 +79,20 @@ Page({
       data: workGlobelData.currentSchool
     })
     this.setData({schoolData: workGlobelData.currentSchool})
+  },
+  openSetting () {
+    let that = this;
+    wx.openSetting({
+      withSubscriptions: true,
+      success(res){
+        console.log(res)
+        if (res.authSetting['scope.userLocation']) {
+          that.setData({
+            isShowAuthBtn: false
+          });
+          that.getSchoolList();
+        }
+      }
+    })
   }
 })

@@ -1,0 +1,11 @@
+<view class="money">
+  <view class="money-title">
+    我的资金
+  </view>
+  <view class="money-text">
+    ¥{{withdrawalAmount}}
+  </view>
+</view>
+<view class="money-oprate">
+  <button type="primary" bindtap="withdrawalClick">提现</button>
+</view>

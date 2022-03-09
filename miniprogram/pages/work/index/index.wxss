@@ -1,9 +1,17 @@
 /**index.wxss**/
 page {
-  display: flex;
-  flex-direction: column;
   height: 100%;
   background: #EBEBEB;
+}
+
+.page-box{
+  height: calc(100% - 121rpx);
+  overflow-y: scroll;
+}
+.component{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .nav-tabs {
@@ -59,7 +67,7 @@ page {
 }
 
 .active .tab-text {
-  color: #FF7E3E;
+  color: #301A00;
 }
 
 .show {

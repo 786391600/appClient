@@ -59,7 +59,7 @@ page{
 }
 .adress-left .iconfont{
   font-size: 52rpx;
-  color: #F37B1D;
+  color: #FCD844;
 }
 .adress .adress-text{
   padding: 0 28rpx 0;
@@ -99,11 +99,16 @@ page{
   margin-top: 20rpx;
 }
 
-
+button::after{
+  border: none;
+}
 .oprate button[type=primary] {
-  background: #F37B1D;
+  background: #FCD844;
   margin-bottom: 15rpx;
   font-size: 30rpx;
+  border: none;
+  color: white;
+  width: 690rpx;
 }
 
 .oprate button[class=delete] {

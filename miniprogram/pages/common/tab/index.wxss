@@ -1,0 +1,32 @@
+.tabcontent {
+  width: 100%;
+  background: #fff;
+  display: flex;
+  border-top: 1px solid #f2f5fa;
+  border-bottom: 1px solid #f2f5fa;
+  height: 80rpx;
+  width: 100%;
+}
+ 
+.tabcell {
+  width: 50%;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 30rpx;
+  position: relative;
+}
+ 
+.active {
+  font-weight: bold;
+}
+ 
+.active::after {
+  content: '';
+  width: 100rpx;
+  position: absolute;
+  height: 8rpx;
+  background: #2e7bfd;
+  left: 50%;
+  margin-left: -50rpx;
+  bottom: 0rpx;
+}

@@ -1,5 +1,10 @@
 { 
   "backgroundTextStyle": "light",
   "navigationBarTitleText": "新建任务",
-  "navigationBarBackgroundColor": "#FF7E3E"
+  "navigationBarBackgroundColor": "#FCD844",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "component_label": "/pages/common/business-label/index",
+    "component_number": "/pages/common/number/index"
+  }
 }

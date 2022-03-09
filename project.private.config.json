@@ -1,0 +1,76 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "db guide",
+          "pathName": "pages/databaseGuide/databaseGuide",
+          "query": ""
+        },
+        {
+          "id": -1,
+          "name": "扫码进入",
+          "pathName": "pages/getShareImg/index",
+          "query": "scene=\"wangtao\"",
+          "scene": 1011
+        },
+        {
+          "id": -1,
+          "name": "模拟中学",
+          "pathName": "pages/ticket/index",
+          "query": "type=middleSchool",
+          "scene": 1035,
+          "referrerInfo": {}
+        },
+        {
+          "id": 3,
+          "name": "招工详情扫码",
+          "pathName": "pages/job/jobDetail/index",
+          "query": "scene=1577959969012",
+          "scene": 1012
+        },
+        {
+          "name": "渠道测试",
+          "pathName": "pages/work/index/index",
+          "query": "schoolId=b68137a0-c4f7-11eb-a77b-abde8942b165",
+          "scene": null
+        },
+        {
+          "name": "脱单编译",
+          "pathName": "pages/memedeorder/index",
+          "query": "userId=oJ-T_0irr1zac2cWKuSmRDp-xWWM",
+          "scene": null
+        },
+        {
+          "name": "接单中心",
+          "pathName": "pages/work/ApplyList/index",
+          "query": "currentTab=1",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/work/index/index",
+          "query": "",
+          "scene": 1011
+        },
+        {
+          "name": "测试业务",
+          "pathName": "pages/work/index/index",
+          "query": "schoolId=5b0e69c0-2e2d-11ec-a4b5-0dd655785245&bs=0-1",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

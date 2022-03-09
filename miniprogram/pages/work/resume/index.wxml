@@ -1,20 +1,103 @@
+<scroll-view scroll-y='true' 
+  refresher-enabled='{{true}}'
+  refresher-triggered="{{triggered}}"
+  bindrefresherrefresh="onRefresh"
+  style="height: 100%"
+  class="box-scroll">
 <view class="resumeBox">
-   <view class="resumeBox-info" wx:if='{{resume}}'>
-     <view class="resumeBox-info-top"><i class='iconfont jianli'></i><span>基本信息</span></view>
-     <view class="resumeBox-info-bottom" bindtap="updateResume">
-        <view class="name"><i class='iconfont xinming'></i>{{resume.name}}</view>
-        <view><i class='iconfont school'></i>{{resume.school}}</view>
-        <view><i class='iconfont icon-phone'></i>{{resume.phone}}</view>
-        <view><i class='iconfont xinbie'></i>{{resume.sex === 'male' ? '男' : '女'}}</view>
+  <view class="userInfo">
+     <view class="head">
+        <i class="iconfont icon-yonghuming"></i>
      </view>
-   </view>
-   <view class="tip" wx:else>
-     <view class="tip-resume">
-       <view><i class='iconfont kongjianli'></i></view>
-       <view>请你完善简历</view>
+     <view class="user-con">
+        <view class="user-phone" ><button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"><span wx:if="{{userInfo.phone}}">号码：{{userInfo.phone}}</span><span wx:else="{{userInfo.phone}}">点击绑定</span></button></view>
+        <view class="user-state"><view wx:if="{{userInfo.allowOrderTaking}}">可接单</view><view bindtap="orderTakingTip" wx:else="{{userInfo.allowOrderTaking}}">接单未开通</view></view>
      </view>
-     <view>
-       <button bindtap="updateResume">点击完善</button>
-     </view>
-   </view>
+     <!-- <view class="user-oprate">
+        <view class="user-phone" ><button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"><span wx:if="{{userInfo.phone}}">号码：{{userInfo.phone}}</span><span wx:else="{{userInfo.phone}}">点击绑定</span></button></view>
+        <view class="user-state"><view wx:if="{{userInfo.allowOrderTaking}}">可接单</view><view bindtap="orderTakingTip" wx:else="{{userInfo.allowOrderTaking}}">接单未开通</view></view>
+     </view> -->
+  </view>
+  <view class="user-order box">
+    <view class="title">我的下单</view>
+    <view>
+      <view class="user-order-title">
+        <view class="user-order-tit-state" bindtap="toMyOrder" data-tasktype="idle">
+          <i class="iconfont icon-dengdaizhong"></i>
+          <view>等待中</view>
+        </view>
+        <view class="user-order-tit-state" bindtap="toMyOrder" data-tasktype="inprogress">
+          <i class="iconfont icon-jinhangzhong"></i>
+          <view>进行中</view>
+        </view>
+        <view class="user-order-tit-state" bindtap="toMyOrder" data-tasktype="complete">
+          <i class="iconfont icon-yiwancheng"></i>
+          <view>已完成</view>
+        </view>
+      </view>
+      <view class="user-order-preview box-scroll" wx:if="{{workList && workList.length > 0}}">
+        <view class="box-scroll-card" wx:for='{{workList}}' bindtap="toMyOrder" data-tasktype="{{item.taskType}}" wx:for-index="idx">
+            <view class="order-card" wx:if="{{item.type === 'work'}}">
+              <i class="iconfont icon-renwujincheng"></i>
+              <view class="order-card-con">
+                <view class="order-card-con-tit">
+                  <span wx:if="{{item.taskType === 'idle' }}">等待帮手接单...</span>
+                  <span wx:if="{{item.taskType === 'inprogress' }}">任务执行中</span>
+                </view>
+                <view class="order-card-con-con" style="width: 400rpx">
+                  任务内容：{{item.orderInfo.taskContent}}
+                </view>
+                <view class="order-card-con-con">
+                  地址：{{item.orderInfo.address.schoolName}}--{{item.orderInfo.address.address}}
+                </view>
+              </view>
+            </view>
+            <view class="order-card" wx:else>
+              <i class="iconfont icon-renwujincheng"></i>
+              <view class="order-card-con">
+                <view class="order-card-con-tit">
+                  <span wx:if="{{item.taskType === 'idle' }}">等待帮手接单...</span>
+                  <span wx:if="{{item.taskType === 'inprogress' }}">任务执行中</span>
+                </view>
+                <view class="order-card-con-con goods" style="width: 400rpx">
+                   <span wx:for="{{item.goods}}" wx:for-item="good">{{good.name}}✕{{good.num}}</span>
+                </view>
+                <view class="order-card-con-con">
+                  地址：{{item.address.schoolName}}--{{item.address.address}}
+                </view>
+              </view>
+            </view>
+            <view class="oprate">
+              <button wx:if="{{item.taskType === 'idle' }}" class="mini-btn" size="mini" catchtap ="workRefound" data-orderId="{{item.out_trade_no}}"  data-fee="{{item.fee}}" data-orderinfo="{{item}}" data-currentIndex="{{idx}}">{{item.refunding? '已退单': '点击退单'}}</button>
+              <button wx:if="{{item.taskType === 'inprogress' }}" class="mini-btn" size="mini" catchtap ="makePhoneCall" data-orderId="{{item.out_trade_no}}"  data-fee="{{item.fee}}" data-orderinfo="{{item}}">联系我们</button>
+            </view>
+        </view>
+        <view class="empty" wx:if="{{!workList || workList.length === 0}}">
+          <view><i class="iconfont icon-jilu"></i></view>
+          <view>暂无订单</view>
+        </view>
+      </view>
+  </view>
+  </view>
+  <view wx:if="{{userInfo.allowOrderTaking}}" class="box">
+    <view class="title">兼职中心</view>
+    <view class="user-oprate">
+      <view class="oprate-box" bindtap="toOprate" data-page="/pages/work/money/index">
+        <view class="icon" style="color: #06AD56">
+          <i class="iconfont icon-qianbao"></i>
+        </view>
+        <view>我的钱包</view>
+      </view>
+      <view class="oprate-box" bindtap="toOprate" data-page='/pages/work/ApplyList/index'>
+        <view class="icon" style="color: #0E9CE5;">
+          <i class="iconfont icon-qiangdan"></i>
+        </view>
+        <view>抢单中心</view>
+      </view>
+  </view>
+  </view>
+  <view wx:if="{{!userInfo.allowOrderTaking}}">
+    <button class="mini-btn" bindtap="partTimeJobClick">我想兼职</button>
+  </view>
 </view>
+</scroll-view>

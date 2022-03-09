@@ -1,0 +1,44 @@
+<view class="order-list">
+  <view class="title">订单列表</view>
+  <view class="list">
+    <view class="order-box" wx:for="{{orderList}}">
+      <view class="order-left">
+        <image src="{{item.img}}"></image>
+      </view>
+      <view class="order-right">
+        <view class="right-top">
+          <view class="top-title">{{item.name}}<span wx:if="{{item.spec}}">({{item.spec}})</span></view>
+          <view class="top-price">￥{{item.price}}</view>
+        </view>
+        <view class="right-bottom">
+          <view class="bottom-num">数量：{{item.num}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="bottom">小计：￥{{cart.total}}</view>
+</view>
+
+<view class="adress" bindtap="toAdressList">
+  <view class="adress-box">
+    <view class="adress-left">
+      <i class="iconfont icon-zuobiao1"></i>
+      <view class="adress-text">
+        <view class="adress-tit">配送地址</view>
+        <view class="adress-con">{{form.address ? form.address.schoolName + '-' + form.address.address:'请填写详细地址'}}
+        </view>
+      </view>
+    </view>
+    <i class="iconfont icon-you"></i>
+  </view>
+  <view class="used">
+    <view class="used-text">常用</view>
+  </view>
+</view>
+
+<view class="pay-box">
+  <view class="price">￥<span>{{cart.total}}</span></view>
+  <view class="btn" bindtap="payForm">
+    <span wx:if="{{payStatus}}">支付中...</span><span wx:else>下单支付</span>
+  </view>
+</view>

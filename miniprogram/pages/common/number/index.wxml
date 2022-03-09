@@ -1,0 +1,3 @@
+<view class="box">
+  <view class="btn" bindtap="reduce">—</view><input class="weui-input" bindblur="numberchange" type="number" placeholder="" value="{{value}}"/><view class="btn" bindtap="add">十</view><span class="unit">{{unit}}</span>
+</view>

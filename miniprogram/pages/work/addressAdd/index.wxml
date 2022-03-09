@@ -12,10 +12,10 @@
 </view>
 <view class="section">
   <view class="section__title">详细地址</view>
-  <span class="section-input"><input data-key="address" value='{{form.address}}' class="weui-input"  maxlength="10" bindinput="bindKeyInput" placeholder="例：xx栋xx-xx" style="text-align: right"/></span>
+  <span class="section-input"><input data-key="address" value='{{form.address}}' class="weui-input"  maxlength="30" bindinput="bindKeyInput" placeholder="例：xx栋xx-xx" style="text-align: right"/></span>
 </view>
 
 <view class="oprate">
-  <button type="primary" bindtap="saveClick" disabled="{{savedisabled}}">保存</button>
+  <button type="primary" bindtap="saveClick">保存</button>
   <button type="primary" class="delete" wx:if="{{!isAdd}}" bindtap="deleteAddress">删除</button>
 </view>

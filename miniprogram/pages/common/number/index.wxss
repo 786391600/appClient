@@ -1,0 +1,27 @@
+
+.box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.weui-input {
+  max-width: 100rpx;
+  text-align: center;
+}
+.btn{
+  display: flex;
+  background-color: #FCD844;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  font-weight: bold;
+}
+.unit{
+  margin: 0 10rpx 0;
+}
+.weui-input{
+  border-bottom: 1rpx solid #ccc;
+}

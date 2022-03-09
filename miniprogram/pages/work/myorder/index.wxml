@@ -1,0 +1,85 @@
+<wxs module="filter" src="../../../until/filter.wxs"></wxs>
+<component_nav v-title="{{'我的订单'}}" bind:titleClick='toSchoolSelect' showIcon='{{true}}'></component_nav>
+<component_tab tabs='{{tabs}}' activeIndex='{{activeIndex}}' bind:change="tabChange"></component_tab>
+<view class="box">
+  <scroll-view scroll-y='true' refresher-enabled='{{true}}' refresher-triggered="{{triggered}}"
+    bindrefresherrefresh="onRefresh" class="box-scroll">
+    <view class="box-scroll-card" wx:for='{{workList}}' wx:for-index="idx">
+      <view class="order-card" wx:if="{{item.type === 'work'}}">
+        <view class="title" style="padding-bottom: 0"> 订单编号：{{item.out_trade_no}}</view>
+        <view class="title">
+          <view class="time"><i class="iconfont icon-shijian"></i><span>任务时间：</span><span
+              class="time-con">{{filter.getDateText(item.orderInfo.taskTime)}}</span>
+          </view>
+          <view class="fee"><span class="fee-title">订单费用：</span><span
+              class="num">{{item.orderInfo.fee}}</span><span>元</span></view>
+        </view>
+        <view class="content">
+          <view class="content-left">
+            <i class="iconfont icon-jilu" wx:if="{{item.orderInfo.specArr}}"></i>
+            <!-- <view class="work-line" wx:if="{{item.orderInfo.specArr}}"></view> -->
+            <!-- <i class="iconfont icon-jilu" wx:if="{{item.orderInfo.taskContent}}"></i>
+            <view class="work-line" wx:if="{{item.orderInfo.taskContent}}"></view>
+            <i class="iconfont icon-zuobiao1" wx:if="{{item.orderInfo.address}}"></i> -->
+            <!-- <view class="work-line"></view> -->
+            <!-- <i class="iconfont icon-weixin" style="color: #1AAD19"></i> -->
+          </view>
+          <view class="content-right">
+            <view class="work-info" wx:if="{{item.orderInfo.specArr}}">
+              <view wx:for="{{item.orderInfo.specArr}}" class="{{index === 0? 'workInfo-tit' : 'workInfo-item'}}">
+                <span class="item-title">{{filter.getSplit(item, ':' , 0)}}</span>
+                <span class="item-info">{{filter.getSplit(item, ':' , 1)}}</span>
+              </view>
+            </view>
+            <view>
+              <component_lia></component_lia>
+            </view>
+            <!-- <view class="work-address" wx:if="{{item.orderInfo.address}}">{{item.orderInfo.address.schoolName}}-{{item.orderInfo.address.address}}</view> -->
+          </view>
+        </view>
+        <view class="oprate" >
+          <button style="margin-top: 20rpx;" wx:if="{{item.taskType === 'idle' && item.fee > 0}}" class="mini-btn" bindtap="workRefound"
+            data-orderId="{{item.out_trade_no}}" data-fee="{{item.fee}}" data-orderinfo="{{item}}" data-currentIndex="{{idx}}">{{item.refunding? '已退单': '点击退单'}}</button>
+          <!-- <button wx:if="{{item.taskType === 'inprogress'  || item.taskType === 'complete'}}" class="mini-btn"
+            bindtap="makePhoneCall" data-orderId="{{item.out_trade_no}}" data-fee="{{item.fee}}"
+            data-orderinfo="{{item}}">联系我们</button> -->
+        </view>
+      </view>
+      <view class="order-card" wx:else>
+        <view class="title" style="padding-bottom: 0"> 订单编号：{{item.out_trade_no}}</view>
+        <view class="title">
+          <view class="time"><i class="iconfont icon-shijian"></i><span>任务时间：</span><span
+              class="time-con">{{filter.getDateText('now')}}</span>
+          </view>
+          <view class="fee"><span class="fee-title">订单费用：</span><span class="num">{{item.fee}}</span><span>元</span>
+          </view>
+        </view>
+        <view class="content">
+          <view class="content-left">
+            <i class="iconfont icon-jilu"></i>
+            <view class="work-line"></view>
+            <i class="iconfont icon-zuobiao1"></i>
+          </view>
+          <view class="content-right">
+            <view class="work-info goods">
+              <span class="name"><span>{{item.body}}</span></span>
+              <span wx:for="{{item.goods}}" wx:for-item="good">{{good.name}}✕{{good.num}}</span>
+            </view>
+            <view class="work-address">{{item.address.schoolName}}-{{item.address.address}}</view>
+          </view>
+        </view>
+        <view class="oprate">
+          <button wx:if="{{item.taskType === 'idle' }}" class="mini-btn" bindtap="workRefound"
+            data-orderId="{{item.out_trade_no}}" data-fee="{{item.fee}}" data-orderinfo="{{item}}" data-currentIndex="{{idx}}">{{item.refunding? '已退单': '点击退单'}}</button>
+          <!-- <button wx:if="{{item.taskType === 'inprogress'  || item.taskType === 'complete'}}" class="mini-btn"
+            bindtap="makePhoneCall" data-orderId="{{item.out_trade_no}}" data-fee="{{item.fee}}"
+            data-orderinfo="{{item}}">联系我们</button> -->
+        </view>
+      </view>
+    </view>
+    <view class="empty" wx:if="{{!workList || workList.length === 0}}">
+      <view><i class="iconfont icon-jilu"></i></view>
+      <view>暂无数据</view>
+    </view>
+  </scroll-view>
+</view>

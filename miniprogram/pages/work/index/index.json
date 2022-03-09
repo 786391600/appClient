@@ -1,11 +1,13 @@
 { 
   "backgroundTextStyle": "light",
-  "navigationBarTitleText": "么么速达",
-  "navigationBarBackgroundColor": "#ffffff",
-  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "校帮手",
+  "navigationBarBackgroundColor": "#FCD844",
+  "navigationBarTextStyle": "white",
+  "navigationStyle": "custom",
   "usingComponents": {
     "component_index": "/pages/work/JobList/index",
-    "component_apply": "/pages/work/ApplyList/index",
-    "component_resume": "/pages/work/resume/index"
+    "component_resume": "/pages/work/resume/index",
+    "component_order": "/pages/work/myorder/index",
+    "component_money": "/pages/work/publicTaking/index"
   }
 }

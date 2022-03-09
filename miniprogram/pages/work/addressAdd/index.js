@@ -50,6 +50,13 @@ Page({
     })
   },
   saveClick () {
+    if (this.data.savedisabled) {
+      wx.showToast({
+        title: '请核对信息',
+        icon: 'none'
+      })
+      return
+    }
     let addressList = globleData.getAdressList()
     if (this.data.isAdd) {
       if (addressList.length >= 5) {
@@ -88,7 +95,6 @@ Page({
     let prevPage = pages[pages.length - 2]; //prevPage 是获取上一个页面的js里面的pages的所有信息。 -2 是上一个页面，-3是上上个页面以此类推。
     prevPage.setData(obj)
     if (isDelete) {
-      console.log(pages[pages.length - 3], 'ooooooooooooooooo')
       pages[pages.length - 3].initAddress()
     }
   }

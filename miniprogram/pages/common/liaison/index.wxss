@@ -1,0 +1,9 @@
+@import '../../../style/ticket/iconfont.wxss';
+.concatUs{
+  border-radius: 8rpx;
+  padding: 10rpx;
+  background: #FFF;
+  color: #FF7602;
+  margin-top: 15rpx;
+  border: 1rpx solid #FF7602;
+}

@@ -1,46 +1,216 @@
 @import '../../../style/ticket/iconfont.wxss';
-.resumeBox{
-  padding: 40rpx;
-}
-.resumeBox-info{
+.user-oprate{
+  width: 100%;
+  display: flex;
   background: white;
-  border-radius: 25rpx;
 }
-.resumeBox-info-top{
-  padding: 40rpx;
-  border-bottom: 2rpx solid #E6E6E6;
+.oprate-box{
+  width: 33.3333333%;
+  height: 220rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
-.resumeBox-info-bottom{
-  padding: 75rpx;
+.oprate-box .icon{
+  margin-bottom: 15rpx;
 }
-.resumeBox-info-bottom > view {
-  color: #868686;
-  font-size: 32rpx;
-  margin: 18rpx 0 18rpx;
+.oprate-box .iconfont{
+  font-size: 52rpx;
 }
-.resumeBox-info-bottom .name{
-  font-size: 38rpx;
-  color: black;
+
+.user-order{
+  background: white;
 }
-.tip {
-  text-align: center;
-  color: #919191;
-  margin: 350rpx auto 0;
+.user-order-title{
+  display: flex;
+  justify-content: center;
+  padding: 32rpx;
 }
-.tip .iconfont {
-  font-size: 100rpx;
+.user-order-tit-state{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 60rpx 0;
 }
-.tip button{
-  width: 60%;
-  height: 90rpx;
-  background: #FF783B;
-  border-radius: 15rpx;
-  color: white;
+.user-order-tit-state .iconfont{
+  font-size: 50rpx;
+  margin-bottom: 22rpx;
+  color: #FD8900;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+}
+.content-right{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #3B3B3B;
+}
+.work-info {
+  font-size: 34rpx;
+  margin-bottom: 38rpx;
+}
+.work-address {
   font-size: 42rpx;
-  line-height: 80rpx;
-  margin-top: 25rpx;
+  font-weight: 600;
 }
-.iconfont{
-  color: #FF783B;
-  margin-right: 15rpx;
+.content-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 35rpx 0;
+}
+.content-left .iconfont{
+  font-size: 50rpx;
+}
+.content-left .work-line{
+  flex: 1;
+  width: 2rpx;
+  background: #DCDCDC;
+}
+.content-left .icon-jilu{
+  color: #2F7EFF;
+}
+.content-left .icon-zuobiao1{
+  color: #FE7700;
+}
+.empty{
+  text-align: center;
+  color: #939393;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.empty .iconfont{
+  font-size: 80rpx;
+}
+
+.order-card .oprate {
+  padding: 22rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.oprate button {
+  height: 56rpx;
+  line-height: 56rpx;
+  background: #FECB2E;
+  color: #333333;
+  font-size: 26rpx;
+  font-weight: 600;
+}
+
+.oprate .button-hover {
+  height: 56rpx;
+  line-height: 56rpx;
+  background: red;
+  color: #333333;
+  font-size: 26rpx;
+  font-weight: 600;
+}
+
+.userInfo{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #FED404;
+  padding: 38rpx 0 38rpx;
+}
+.userInfo .head{
+  width: 98rpx;
+  height: 98rpx;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #F2E9EA;
+  margin: 0 28rpx 0;
+}
+.userInfo .head .iconfont{
+  font-size: 50rpx;
+  color: #FED404;
+}
+.user-con .user-con{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userInfo .user-phone {
+  font-size: 35rpx;
+  margin-bottom: 28rpx;
+}
+.userInfo .user-state{
+  display: flex;
+  flex-direction: row;
+}
+.userInfo .user-state > view {
+  background: #CBAA1C;
+  border-radius: 25rpx;
+  color: #724C00;
+  padding: 10rpx;
+}
+.user-phone > button {
+  border: 0;
+  padding: 0;
+  background-color: transparent;
+  line-height: normal;
+  outline: 0;
+}
+.user-phone > button::after{border:0}
+.user-order-preview{
+  padding: 20rpx;
+}
+.box-scroll-card{
+  display: flex;
+  justify-content: space-between;
+  background-color: #F9F9F9;
+  border-radius: 10rpx;
+  padding: 16rpx;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+.order-card{
+  display: flex;
+  align-items: center;
+}
+.order-card .iconfont{
+  margin-right: 16rpx;
+  font-size: 50rpx;
+  color: #FEA000;
+}
+.order-card-con > view{
+  margin-bottom: 15rpx;
+}
+.order-card-con-tit{
+  font-size: 26rpx;
+  font-weight: 800;
+}
+.order-card-con-con{
+  font-size: 24rpx;
+  color: #A2A4A3;
+}
+.goods{
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  padding: 32rpx;
+  border-bottom: 1rpx solid #EBECEE;
+  font-size: 26rpx;
+  color: #7F7F7F;
+  background: white;
+}
+.box{
+  width: 720rpx;
+  margin: 25rpx auto 25rpx;
+  border-radius: 15rpx;
+  overflow: hidden;
 }

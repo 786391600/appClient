@@ -1,0 +1,63 @@
+<view class="swiper">
+  <swiper class='bannerGrid' previous-margin="60rpx" next-margin="60rpx" bindchange="bannerSwiper">
+    <swiper-item class="item" wx:for="{{ bannerData }}" wx:key="{{ index }}">
+      <view class="swiper-item">
+        <view class='boxItem column'>
+          <!-- 卡牌 -->
+          <view class="flipGroup  {{ !item.isOpenFilp ? 'on':''}}" catchtap='switchFlip' data-index='{{ index }}'>
+            <view class="flipBox">
+              <!-- 正面内容 -->
+              <view class="sideWrap front">
+                <!-- 卡片 -->
+                <view class='posterGroup'>
+                  <view class='imgWrap'>
+                    <image class='img' src="{{ item.image }}" mode="aspectFill"></image>
+                    <view class='detailBox'>
+                      <view class='mSmall relative user-info'><span>关注微信公众号【么么校园服务】在公众号输入 <span style="color: red">{{item.number}}</span> 即可获得联系方式</span></view>
+                    </view>
+                  </view>
+                </view>
+                <!-- / 卡片 -->
+              </view>
+              <!-- 背面内容 -->
+              <view class="sideWrap back">
+                <!-- detail -->
+                <view class='backGroup'>
+                  <view class='name'>{{ item.name }}</view>
+                  <view class='info'><span>{{item.school}} · {{ item.major }}</span></view>
+                  <view class='info'><span>{{item.sex === 'boy' ? '男' : '女'}} · {{ item.age }}岁</span></view>
+                  <view class="user-info" wx:if="{{item.selfInfo}}">
+                    <view class="info-tit {{item.sex}}"><span>自我介绍</span></view>
+                    <view class="info-con">{{item.selfInfo}}</view>
+                  </view>
+                  <view class="user-info" wx:if="{{item.orterInfo}}">
+                    <view class="info-tit {{item.sex}}"><span>心中的TA</span></view>
+                    <view class="info-con">{{item.orterInfo}}</view>
+                  </view>
+                  <view class="user-info">
+                    <view class="info-tit {{item.sex}}"><span>照片查看</span></view>
+                    <view class="info-con">点击卡片查看</view>
+                  </view>
+                  <view class="user-info">
+                    <view class="info-tit {{item.sex}}"><span>联系方式获取</span></view>
+                    <view class="info-con">关注微信公众号【么么校园服务】在公众号输入 <span style="color: red">{{item.number}}</span> 即可获得联系方式</view>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+
+        </view>
+      </view>
+    </swiper-item>
+
+
+  </swiper>
+</view>
+
+
+<!-- 海报背景 -->
+<view class='poster'>
+  <view class='bgImg' style=" background: url({{ bannerData[bannerCurrent].image }}); background-size:cover;"></view>
+  <view class='cover'></view>
+</view>

@@ -1,12 +1,16 @@
 <view class="address-list">
-  <view class="address-box" wx:for='{{addressList}}' wx:for-index="index" data-index="{{index}}" data-address = '{{item}}' bindtap="selectAddress">
+  <view class="address-box" wx:for='{{addressList}}' wx:for-index="index" data-index="{{index}}" data-address='{{item}}'
+    bindtap="selectAddress">
     <view class="address-info">
       <view class="info-title">{{item.schoolName}} - {{item.address}}</view>
       <view class="info-con">{{item.name}} {{item.phone}}</view>
     </view>
     <view class="address-edit" catchtap="toEditOrAdd" data-index="{{index}}">
-       <i class="iconfont icon-bianji1"></i>
+      <i class="iconfont icon-bianji1"></i>
     </view>
+  </view>
+  <view class="add-btn" bindtap="toEditOrAdd">
+    +新增常用地址
   </view>
 </view>
 
@@ -15,6 +19,6 @@
   <view>暂无地址..</view>
 </view>
 
-<view class="add-btn" bindtap="toEditOrAdd">
-   新增常用地址
-</view>
+<!-- <view class="add-btn" bindtap="toEditOrAdd">
+  新增常用地址
+</view> -->

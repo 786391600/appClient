@@ -54,10 +54,21 @@ var filter = {
       }
       return textArr[textIndex] + ' - ' + tiText + (hours < 10 ? '0' + hours: hours) + ':' + (minutes < 10 ? '0' + minutes: minutes)
     }
+  },
+  toFix2: function (money) {
+    if (money.toString().indexOf(".") != -1 && money.toString().split(".")[1].length > 2) {
+      money = parseFloat(money).toFixed(2);
+    }
+    return parseFloat(money)
+  },
+  getSplit: function(text, zf, index) {
+    return text.split(zf)[index]; 
   }
 }
 module.exports = {
   getDate: filter.getDate,
   getNum: filter.getNum,
-  getDateText: filter.getDateText
+  getDateText: filter.getDateText,
+  toFix2: filter.toFix2,
+  getSplit: filter.getSplit
 }

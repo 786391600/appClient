@@ -1,0 +1,23 @@
+<view style="margin-bottom: 25rpx;" wx:if="{{labelList && labelList.length > 0}}">
+  <view class="label-box">
+    <view class="label {{activeIndex === index? 'active':''}} {{showTip? 'tip-button' : ''}}" wx:for="{{labelList}}" bindtap="labelClick" data-index="{{index}}">
+      {{item.label}}
+    </view>
+  </view>
+  <view class="tip" wx:if="{{showTip}}">请点击选择一项业务</view>
+</view>
+
+<!-- <view style="margin: 25rpx 20rpx 0;border-radius: 15rpx;overflow: hidden;display: flex;justify-content: center;" wx:if="{{config}}">
+  <view class="label-box" wx:for="{{config}}" wx:for-index='index' style="padding-right:0">
+    <view class="label" style="flex:1 0 auto" wx:for="{{item}}" bindtap="indexLabelClick" wx:for-item='labelItem' wx:for-index='idx' data-tasktype="{{index}}" data-labelindex="{{idx}}">
+      {{labelItem.label}}
+    </view>
+  </view>
+</view> -->
+<view class="labelConfigbox" wx:if="{{config}}">
+  <view class="label-box" style="padding-right:0">
+    <view class="label" style="color:{{labelItem.color}};background-color: {{labelItem.background}}"  wx:for="{{configList}}" bindtap="indexLabelClick" wx:for-item='labelItem' wx:for-index='idx' data-tasktype="{{labelItem.setType}}" data-labelindex="{{labelItem.setIndex}}">
+      {{labelItem.label}}
+    </view>
+  </view>
+</view>

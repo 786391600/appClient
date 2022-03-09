@@ -1,6 +1,6 @@
 @import '../../../style/ticket/iconfont.wxss';
 page{
-  background: #EBEBEB;
+  background: #F5F5F5;
 }
 .address-box{
   background: white;
@@ -8,6 +8,10 @@ page{
   align-items: center;
   justify-content: space-between;
   padding: 30rpx;
+  box-sizing: border-box;
+  width: 690rpx;
+  border-radius: 20rpx;
+  margin: 10rpx auto 10rpx;
 }
 .info-title{
   font-size: 34rpx;
@@ -23,14 +27,13 @@ page{
 }
 
 .add-btn{
-  position:fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
   color: white;
-  background: #F37B1D;
+  background: #FCD844;
   text-align: center;
-  padding: 40rpx 0 40rpx;
+  padding:20rpx 0 20rpx;
+  width: 690rpx;
+  border-radius: 20rpx;
+  margin: 30rpx auto 0;
 }
 .empty{
   position: fixed;
