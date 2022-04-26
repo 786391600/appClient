@@ -19,7 +19,8 @@
      schoolId: '',
      shopId: '',
      payStatus: false,
-     shopName: '校园小店'
+     shopName: '校园小店',
+     feeTotal: 0
    },
 
    /**
@@ -49,14 +50,22 @@
     })
    },
    initData (options) {
+     console.log(options)
      let orderList = JSON.parse(options.orderList);
      let cart = JSON.parse(options.cart);
+     let surcharge = JSON.parse(options.surcharge)
+     let feeTotal = cart.total;
+     surcharge.forEach((item) => {
+       feeTotal+= item.price;
+     })
      this.setData({
        orderList: orderList,
        cart: cart,
        schoolId: options.schoolId,
        shopId: options.shopId,
-       shopName: options.shopName
+       shopName: options.shopName,
+       surcharge: surcharge,
+       feeTotal: feeTotal
      })
    },
    payForm () {
@@ -75,7 +84,7 @@
     let that = this;
     until.shopPay({
       body: that.data.shopName || '校园小店',
-      fee: that.data.cart.total,
+      fee: that.data.feeTotal,
       goods: that.data.orderList,
       schoolId: that.data.schoolId,
       shopId: that.data.shopId,

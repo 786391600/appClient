@@ -16,7 +16,12 @@
       </view>
     </view>
   </view>
-  <view class="bottom">小计：￥{{cart.total}}</view>
+  <view class="surcharge">
+     <view class="surcharge-item" wx:for="{{surcharge}}">
+       <span>{{item.label}}</span><span>￥{{item.price}}</span>
+     </view>
+  </view>
+  <view class="bottom">小计：￥{{feeTotal}}</view>
 </view>
 
 <view class="adress" bindtap="toAdressList">
@@ -37,7 +42,7 @@
 </view>
 
 <view class="pay-box">
-  <view class="price">￥<span>{{cart.total}}</span></view>
+  <view class="price">￥<span>{{feeTotal}}</span></view>
   <view class="btn" bindtap="payForm">
     <span wx:if="{{payStatus}}">支付中...</span><span wx:else>下单支付</span>
   </view>

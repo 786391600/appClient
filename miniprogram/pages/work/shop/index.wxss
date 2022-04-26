@@ -218,7 +218,6 @@ page {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #fff;
   border: 2rpx solid rgba(236, 236, 236, 1);
 }
 
@@ -494,4 +493,8 @@ page {
   left: 0;
   background-color: #fff;
   z-index: 99999;
+}
+
+.text-hide1{
+  overflow: hidden;
 }

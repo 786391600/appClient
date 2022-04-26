@@ -171,3 +171,9 @@ page{
   background: #E8BC03;
 }
 
+.surcharge-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+  margin: 5rpx 0 8rpx;
+}

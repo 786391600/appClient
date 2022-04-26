@@ -278,5 +278,5 @@ page{
 }
 
 .box-scroll{
-  flex:1;
+  height: 100%;
 }

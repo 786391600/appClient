@@ -27,7 +27,8 @@
      scrollHeight: '',
      maskAllPage: true,
      schoolId: '',
-     shopId: ''
+     shopId: '',
+     surcharge: []
    },
 
    /**
@@ -89,6 +90,7 @@
         console.log(e.data)
         let shopData = e.data.data.shopData || [];
         let shopName = e.data.data.title || '校园商店';
+        let surcharge = e.data.data.surcharge || [{label: '配送费', price: 1}];
         let shop = {
           data: shopData,
           icon: e.data.data.icon || null,
@@ -102,7 +104,8 @@
           classifySeleted: shopData[0].id,
           schoolId: options.schoolId,
           shopId: options.shopId,
-          shopName: shopName
+          shopName: shopName,
+          surcharge: surcharge
         })
         wx.setNavigationBarTitle({
           title: shopName
@@ -541,8 +544,9 @@
      }
      let selectList = JSON.stringify(this.data.localList);
      let cartData = JSON.stringify(this.data.cart);
+     let surcharge = JSON.stringify(this.data.surcharge);
      wx.navigateTo({
-       url: '../sureOrder/index?orderList=' + selectList + '&cart=' + cartData + '&schoolId=' + this.data.schoolId + '&shopId=' + this.data.shopId + '&shopName=' + this.data.shopName
+       url: '../sureOrder/index?orderList=' + selectList + '&cart=' + cartData + '&schoolId=' + this.data.schoolId + '&shopId=' + this.data.shopId + '&shopName=' + this.data.shopName + '&surcharge=' + surcharge
      })
    },
    // 确认修改
