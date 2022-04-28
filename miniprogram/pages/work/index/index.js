@@ -95,15 +95,24 @@ Page({
   },
   onShareAppMessage: function (res) {
     let schoolData = wx.getStorageSync('schoolData');
-    let title = '么么校帮手'
+    let shareTitle = '校帮手'
     if (schoolData && schoolData.name) {
-      title = '校帮手-' + schoolData.name;
+      shareTitle = schoolData.name;
     }
-    console.log(schoolData.id)
+    let shareImg = 'https://v7-fs-im.7moor.com/im/2100147/2100147/20220428172541/1651137941602/1fbbb2bb39184a57a64f86d2a1a6271d/%E5%9B%BE%E6%80%AA%E5%85%BD_625aea0740528bb8e2f48fcf850b8788_73867.jpg?imagediv2/2/w/300/h/300'
+    if (schoolData.shareConfig) {
+      if (schoolData.shareConfig.img) {
+        shareImg = schoolData.shareConfig.img
+      }
+      if (schoolData.shareConfig.title) {
+        shareTitle = schoolData.shareConfig.title
+      }
+    }
+    
     return {
-      title: title,
+      title: shareTitle,
       path: '/pages/work/index/index?schoolId=' + schoolData.id,
-      imageUrl: 'http://img.beijixiong.club:8081/img/dc62939444f589a3e0de8fbbb642217b',  //用户分享出去的自定义图片大小为5:4,
+      imageUrl: shareImg,  //用户分享出去的自定义图片大小为5:4,
       success: function (res) {
      // 转发成功
           wx.showToast({

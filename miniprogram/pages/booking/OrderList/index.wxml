@@ -16,6 +16,9 @@
     <view class='provider' wx:if='{{item.car_info[0].remark}}'>
       <view><view>备注信息:</view><view>{{item.car_info[0].remark}}</view></view>
     </view>
+    <view class='provider'>
+      <view><view>备注信息:</view><view>{{item.car_info[0].remark}}</view></view>
+    </view>
   </view>
 </view>
 <view class='default-box' wx:if="{{order.length <= 0}}">

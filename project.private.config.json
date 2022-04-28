@@ -69,6 +69,12 @@
           "pathName": "pages/work/index/index",
           "query": "schoolId=5b0e69c0-2e2d-11ec-a4b5-0dd655785245&bs=0-1",
           "scene": null
+        },
+        {
+          "name": "订票模块",
+          "pathName": "pages/booking/index/index",
+          "query": "",
+          "scene": null
         }
       ]
     }
