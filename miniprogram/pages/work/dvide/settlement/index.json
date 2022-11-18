@@ -1,0 +1,7 @@
+{
+  "backgroundTextStyle": "light",
+  "navigationBarTitleText": "餐厅管理",
+  "navigationBarBackgroundColor": "#FCD844",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true
+}

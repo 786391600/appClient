@@ -1,0 +1,4 @@
+<!--pages/common/label-select/index.wxml-->
+<view class="labels-box">
+  <view bindtap="labelClick" data-currentindex="{{index}}" class="label-item {{index === activeIndex ? 'active' : ''}}" wx:for="{{labels}}" wx:for-index='index'>{{item.title}}</view>
+</view>

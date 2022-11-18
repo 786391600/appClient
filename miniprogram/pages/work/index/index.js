@@ -1,5 +1,6 @@
 let app = getApp()
 const workGlobelData = require('../globleData.js')
+const np = require('../../../until/number.js');
 Page({
   data: {
     currentTab: null,
@@ -26,7 +27,7 @@ Page({
       // }
     ],
     schoolId: '',
-    bs: '' // 初始业务
+    bs: '', // 初始业务
   },
   swichNav: function (e) {
     let that = this;

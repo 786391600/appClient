@@ -1,0 +1,26 @@
+<wxs module="filter" src="../../../../until/filter.wxs"></wxs>
+<view class="box" wx:for="{{list}}">
+<view class="state"><span class="success">{{item.out_trade_no}}</span></view>
+<view class="foods">
+  <view class="time"><span>订单日期:{{filter.dateFormat(item.timestamp)}}</span></view>
+  <view class="text" wx:for="{{item.goods}}" wx:for-item='goodsitem'>
+    <view style="margin-bottom: 10rpx;">{{goodsitem.name}} <span class="num">数量：{{goodsitem.num}}</span> <span class="price">价格：{{goodsitem.price * goodsitem.num}}</span></view>
+    <view class="text-surcharge">
+      <span class="surcharge" wx:if="{{goodsitem.surcharge && goodsitem.surcharge.length > 0}}" wx:for="{{goodsitem.surcharge}}" wx:for-item='suritem'>
+        {{suritem.title}}:{{suritem.price}}元
+      </span>
+      <span class="divide" wx:if="{{goodsitem.dividePrice}}">按份配送费：{{goodsitem.dividePrice || 0}}元</span>
+    </view>
+  </view>
+</view>
+<view class="total" wx:if="{{item.settlement}}">
+  <span>订单总收入: {{item.settlement.total}}</span>
+  <span>配送支出：{{item.settlement.totalDivide}}</span>
+  <span>提现手续费（腾讯收取）：{{item.settlement.settlementTotalSc}}</span>
+  <span class="result">结算费用: {{item.settlement.settlementTotal}}</span>
+</view>
+</view>
+<view class="no-list" wx:if="{{list.length <= 0}}">
+  暂无记录
+</view>
+<view class="show-more" bindtap="showMore" wx:if="{{showMore}}">查看更多</view>

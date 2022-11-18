@@ -142,11 +142,11 @@ Page({
     })
   },
   getAdress () {
-    wx.chooseAddress({
-      success:function(e){
-        console.log(e)
-      }
-    })
+    // wx.chooseAddress({
+    //   success:function(e){
+    //     console.log(e)
+    //   }
+    // })
   },
   pay: function () {
     // until.pay({
@@ -166,26 +166,26 @@ Page({
   },
   chooseAddress:function(){
     var that = this;
-    wx.chooseAddress({
-      success(res) {
-        if (JSON.stringify(res) === JSON.stringify(wx.getStorageSync('address'))) {
-          return
-        }
-        that.setData({
-          adress_tit: res.userName + ' ' + res.telNumber,
-          adress_con: res.provinceName + ' ' + res.cityName + ' ' + res.countyName + ' ' + res.detailInfo,
-          addressShow: false
-        })
-        until.request({
-          action: 'app.user.addAddress',
-          data: {
-            address: res
-          }
-        }).then(function (e) {
-          wx.setStorageSync('address', res)
-        })
-      }
-    })
+    // wx.chooseAddress({
+    //   success(res) {
+    //     if (JSON.stringify(res) === JSON.stringify(wx.getStorageSync('address'))) {
+    //       return
+    //     }
+    //     that.setData({
+    //       adress_tit: res.userName + ' ' + res.telNumber,
+    //       adress_con: res.provinceName + ' ' + res.cityName + ' ' + res.countyName + ' ' + res.detailInfo,
+    //       addressShow: false
+    //     })
+    //     until.request({
+    //       action: 'app.user.addAddress',
+    //       data: {
+    //         address: res
+    //       }
+    //     }).then(function (e) {
+    //       wx.setStorageSync('address', res)
+    //     })
+    //   }
+    // })
   },
   getAddress:function(){
    var that = this; 

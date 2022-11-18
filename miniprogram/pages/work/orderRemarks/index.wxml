@@ -1,0 +1,13 @@
+
+<view class="remark-box">
+  <view class="title">
+    口味备注
+  </view>
+  <view class="tap-box">
+    <view class="tab" wx:for="{{tablist}}" bindtap="setTab" data-text="{{item}}">{{item}}</view>
+  </view>
+  <form bindsubmit="bindFormSubmit">
+    <textarea bindinput='textBlur' value="{{subText}}" placeholder="如有特殊要求，请填写备注" name="textarea" maxlength='30' class="textarea"/>
+    <button form-type="submit" class="submitBtn"> 完成 </button>
+  </form>
+</view>

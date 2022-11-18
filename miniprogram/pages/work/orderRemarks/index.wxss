@@ -1,0 +1,46 @@
+@import '../../../style/ticket/iconfont.wxss';
+page{
+  background: #FFFFFF;
+}
+.remark-box{
+  border-top: 20rpx solid #F1F1F1;
+  padding: 0 25rpx 0;
+}
+.remark-box .title{
+  padding: 35rpx 0 35rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.tap-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: ;
+}
+.tab {
+  padding: 24rpx;
+  border: 1rpx solid #DFDFDF;
+  font-size: 26rpx;
+  color: #3D3D3D;
+  margin-right: 18rpx;
+  margin-bottom: 18rpx;
+}
+.textarea{
+  padding: 25rpx;
+  font-size: 24rpx;
+  background-color: #F7F7F7;
+  height: 200rpx;
+  width: 100%;
+}
+
+.submitBtn {
+  background-color: #FFD263;
+  color: #231C07;
+  font-size: 30rpx;
+  padding: 0;
+  height: 85rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 18rpx;
+}

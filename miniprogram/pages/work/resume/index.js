@@ -108,7 +108,6 @@ Component({
     },
     getOrderTime (timestamp) {
       let dateNow = new Date().getTime();
-      console.log(dateNow, 'dateNow====')
       let timeDiff = dateNow - timestamp;
       let minutes = Math.floor(timeDiff / (60 * 1000)); // 计算剩余的分钟数
       console.log(minutes);

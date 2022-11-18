@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@miniprogram-component-plus/tabs": "^1.0.0",
+    "weui-miniprogram": "^1.2.4"
+  }
+}

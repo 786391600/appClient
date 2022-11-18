@@ -165,14 +165,18 @@ Component({
       if (orderInfo.refunding) {
         return;
       }
-      let allowRefound = this.getOrderTime(orderInfo.timestamp);
-      if (!allowRefound) {
-        wx.showModal({
-          title: '退单提示',
-          content: '20分钟没有帮手接单，才可以退单哦！',
-          showCancel: false
-        })
-        return
+
+      if (!orderInfo.writeOff) {
+        // 到店核销类型随时可退
+        let allowRefound = this.getOrderTime(orderInfo.timestamp);
+        if (!allowRefound) {
+          wx.showModal({
+            title: '退单提示',
+            content: '20分钟没有帮手接单，才可以退单哦！',
+            showCancel: false
+          })
+          return
+        } 
       }
       wx.showModal({
         title: '退单提示',
@@ -214,7 +218,7 @@ Component({
     },
     makePhoneCall () {
       wx.makePhoneCall({
-        phoneNumber: '13934691550'
+        phoneNumber: '18235288215'
       })
     },
     setRfoundStatus (index, status) {
@@ -228,6 +232,21 @@ Component({
       let currentType = this.getCurrentType(activeIndex);
       this.data.currentTab = currentType;
       this.getWorkList();
+    },
+    toWriteOff (e) {
+      const str = e.target.dataset.orderid
+      const orderInfo = e.target.dataset.orderinfo
+      const address = orderInfo.address || {}
+      const shopInfo = address.shopAddressInfo || {}
+      const phone = address.phone || '';
+      const phoneSub = phone.substr(-4)
+      let businessInfo = {
+        name: orderInfo.body,
+        address: orderInfo.address
+      }
+      wx.navigateTo({
+        url: '/pages/work/QRcode/index?str=' + str + '&businessInfo=' + JSON.stringify(businessInfo)
+      })
     }
   }
 })

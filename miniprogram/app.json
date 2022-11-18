@@ -9,25 +9,21 @@
     "pages/work/schoolList/index",
     "pages/work/addressList/index",
     "pages/work/addressAdd/index",
-    "pages/work/jobDetail/index",
+    "pages/work/orderRemarks/index",
     "pages/work/myorder/index",
     "pages/work/money/index",
     "pages/work/shop/index",
     "pages/work/sureOrder/index",
-    "pages/job/index/index",
-    "pages/booking/index/index",
-    "pages/booking/selectCity/index",
-    "pages/booking/OrderPayment/index",
-    "pages/booking/OrderDetail/index",
-    "pages/booking/rider/index",
-    "pages/booking/TicketDetails/index",
-    "pages/booking/calendar/index",
-    "pages/booking/VehicleList/index",
-    "pages/booking/paySuccess/index",
-    "pages/job/jobDetail/index",
-    "pages/job/resumeEdit/index",
+    "pages/work/paySuccess/index",
     "pages/common/getShareImg/index",
-    "pages/common/getWebView/index"
+    "pages/common/getWebView/index",
+    "pages/work/business/settlement/index",
+    "pages/work/business/withdrawal/index",
+    "pages/work/business/toexamine/index",
+    "pages/work/business/settlementlist/index",
+    "pages/work/QRcode/index",
+    "pages/work/dvide/settlement/index",
+    "pages/work/dvide/settlementlist/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -42,5 +38,28 @@
     "scope.userLocation": {
       "desc": "你的位置信息将用于小程序位置接口的效果展示"
     }
-  }
+  },
+  "plugins": {
+    "materialPlugin": {
+        "version": "1.0.5",
+        "provider": "wx4d2deeab3aed6e5a"
+    }
+  },
+  "subpackages": [
+    {
+      "root": "pages/booking",
+      "name": "booking",
+      "pages": [
+        "index/index",
+        "selectCity/index",
+        "OrderPayment/index",
+        "OrderDetail/index",
+        "rider/index",
+        "TicketDetails/index",
+        "calendar/index",
+        "VehicleList/index",
+        "paySuccess/index"
+      ]
+    }
+  ]
 }

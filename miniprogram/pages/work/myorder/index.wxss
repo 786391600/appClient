@@ -96,19 +96,38 @@
   border: 1rpx solid #F4F4F4;
   margin-bottom: 13rpx;
 }
+.order-card .weightFont {
+  font-size: 50rpx;
+  font-weight: bold;
+}
 
 .order-card .oprate {
   padding: 22rpx;
   box-sizing: border-box;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .oprate button {
-  height: 86rpx;
-  line-height: 86rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 26rpx;
+  outline: none;
+  margin: 0;
+  margin-left: 20rpx;
+}
+
+.oprate .default {
+  background: white;
+  color: #595959;
+  border: 1rpx solid #595959;
+}
+
+.oprate .primary {
   background: #FECB2E;
   color: #333333;
-  font-size: 36rpx;
-  outline: none;
+  border: 2rpx solid #FECB2E;
 }
 
 .oprate button:active {
@@ -117,6 +136,10 @@
 
 .oprate button::after {
   border: none;
+}
+
+.hideWriteOff {
+  display: none;
 }
 
 .oprate .button-hover {
@@ -252,4 +275,17 @@
 }
 .empty .iconfont{
   font-size: 80rpx;
+}
+
+.remarks-box{
+  display: flex;
+  flex-direction: column;
+  margin-top: 15rpx;
+}
+/* .remarks-box .tit{
+  color: #FE7562;
+} */
+.goods .spec {
+  font-size: 26rpx;
+  color: #2F7EFF;
 }

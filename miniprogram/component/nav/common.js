@@ -58,7 +58,7 @@ Component({
       right: app.globalData.systeminfo.windowWidth - headerPosi.right // 这里不能获取 屏幕宽度，PC端打开小程序会有BUG，要获取窗口高度 - 胶囊right
     }
     let haveBack;
-    if (getCurrentPages().length != 1 || this.data.showIcon) { // 当只有一个页面时，并且是从分享页进入
+    if (getCurrentPages().length <= 1 || this.data.showIcon) { // 当只有一个页面时，并且是从分享页进入
       haveBack = false;
     } else {
       haveBack = true;
@@ -83,6 +83,9 @@ Component({
       wx.navigateBack({
         delta: 1
       });
+    },
+    goHome: function() {
+      this.triggerEvent('homeClick');
     },
     bindKeyInput:function(e){
       console.log(e.detail.value);

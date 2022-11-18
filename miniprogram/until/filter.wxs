@@ -63,6 +63,32 @@ var filter = {
   },
   getSplit: function(text, zf, index) {
     return text.split(zf)[index]; 
+  },
+  dateFormat: function(date) {
+    var date = getDate(date)
+    var seperator1 = "-";    
+    var seperator2 = ":";    
+    var month = date.getMonth() + 1;    
+    var strDate = date.getDate();    
+    if (month >= 1 && month <= 9) {        
+        month = "0" + month;    
+    }    
+    if (strDate >= 0 && strDate <= 9) {        
+        strDate = "0" + strDate;    
+    }    
+    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate + " " + date.getHours() + seperator2 + date.getMinutes()+ seperator2 + date.getSeconds();    
+    return currentdate;
+  },
+  getArraryTypeStatus: function(type, arr) {
+    if (!arr || !type) {
+      return false
+    } else {
+      return arr.indexOf(type) > -1
+    }
+  },
+  getTakeText: function (str) {
+    var strR = str
+    return strR.split(' ')[0] + ' ' +strR.split(' ')[1].split(':')[0] + ':' + strR.split(' ')[1].split(':')[1]
   }
 }
 module.exports = {
@@ -70,5 +96,8 @@ module.exports = {
   getNum: filter.getNum,
   getDateText: filter.getDateText,
   toFix2: filter.toFix2,
-  getSplit: filter.getSplit
+  getSplit: filter.getSplit,
+  dateFormat: filter.dateFormat,
+  getArraryTypeStatus: filter.getArraryTypeStatus,
+  getTakeText: filter.getTakeText
 }

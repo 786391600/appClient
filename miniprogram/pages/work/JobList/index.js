@@ -55,6 +55,9 @@ Component({
     resize: function () { },
   },
   methods: {
+    getShopList () {
+      console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhh')
+    },
     toSchoolSelect () {
       wx.navigateTo({
         url: '/pages/work/schoolList/index'
@@ -117,7 +120,7 @@ Component({
           wx.setStorageSync('schoolData', res.data.schoolInfo);
           workGlobelData.currentSchool = res.data.schoolInfo;
           that.data.schoolId = res.data.schoolInfo.id;
-          that.setData({schoolData: res.data.schoolInfo, quickShopList: res.data.quickShopList || [], shopList: res.data.shopList, triggered: false, currentSchoolId: res.data.schoolInfo.id});
+          that.setData({schoolData: res.data.schoolInfo, shopList: res.data.shopList, triggered: false, currentSchoolId: res.data.schoolInfo.id});
           if (that.data.bs) {
             let bsArr = that.data.bs.split('-');
             that.data.bs = '';

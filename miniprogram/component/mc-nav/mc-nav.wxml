@@ -1,0 +1,2 @@
+<mp-tabs wx:if="{{tabs.length > 0}}" class="mp-tabs" tab-class='tabcell' tab-underline-color='#FECB2E' swiper-class='tabswiperclass' tabs='{{tabs}}' bindtabclick='tabClick'></mp-tabs>
+  

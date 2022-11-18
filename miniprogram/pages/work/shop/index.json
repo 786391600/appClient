@@ -1,5 +1,8 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "component_nav": "/component/nav/common"
+  },
+  "navigationStyle": "custom",
   "enablePullDownRefresh": false,
   "navigationBarTitleText": "校园商店",
   "navigationBarBackgroundColor": "#FCD844"

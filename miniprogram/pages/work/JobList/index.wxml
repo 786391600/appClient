@@ -4,8 +4,11 @@
   refresher-enabled='{{true}}'
   refresher-triggered="{{triggered}}"
   bindrefresherrefresh="onRefresh"
-  class="box-scroll">
+  bindscrolltolower='getShopList'
+  style="height: calc(100% - 141rpx);"
+  >
 <!-- <view class="school-name" catchtap='toSchoolSelect'><i class="iconfont icon-xiaoyuan"></i>{{schoolData.name? schoolData.name : '请选择学校'}}<i class="iconfont icon-xiala"></i></view> -->
+
 <view class="page-box">
   <component_swiper msgList = '{{schoolData.swiperConfig}}'></component_swiper>
   <component_notify msgList = '{{schoolData.noticeConfig}}'></component_notify>
@@ -18,7 +21,10 @@
         <view class="oprate-text">{{item.quickShop}}</view>
       </view>
     </view>
-  </view>  
+  </view>
+  <!-- <view>
+    <cell contactText='联系我们' iconBorderRadius='1' url='https://work.weixin.qq.com/gm/5e12c414708734418d14f853235cdd30' />
+  </view> -->
   <!-- <view class="work-box">
     <view class="box" bindtap="toWorkForm" data-taskType="0">
         <view class="box-icon">
@@ -67,6 +73,8 @@
   </view> -->
   
 </view>
+
+
 </scroll-view>
 <view class="share">
   <button class="mini-btn" bindtap="partTimeJobClick" open-type="share">

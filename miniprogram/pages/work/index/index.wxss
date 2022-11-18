@@ -6,7 +6,7 @@ page {
 
 .page-box{
   height: calc(100% - 121rpx);
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 .component{
   height: 100%;

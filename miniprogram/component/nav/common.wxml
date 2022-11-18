@@ -6,14 +6,15 @@
       </block>
       <block wx:else>
         <view wx:if="{{!showIcon}}" class="custom_nav_icon {{!haveBack||'borderLine'}}" style="height:{{navbarBtn.height}}px;line-height:{{navbarBtn.height-2}}px; top:{{navbarBtn.top}}px; left:{{navbarBtn.right}}px; border-radius:{{navbarBtn.height/2}}px;">
+          {{haveBack}}
           <view wx:if="{{haveBack && showBack}}" class="icon-back" bindtap='_goBack'>
             <image src='./back.ico' mode='aspectFill' class='back-pre'></image>
           </view>
           <view wx:if="{{haveBack && showBack}}" class='navbar-v-line'></view>
-          <view class="icon-home" wx:if="{{showHome}}">
-            <navigator class="home_a" url="/pages/index/index" open-type="switchTab">
+          <view class="icon-home" wx:if="{{showBack && showHome}}">
+            <view class="home_a" bindtap="goHome" open-type="switchTab">
               <image src='./home.ico' mode='aspectFill' class='back-home'></image>
-            </navigator>
+            </view>
           </view>
         </view>
         <view bindtap="titleClick" class="nav_title {{showIcon? 'icon_title' : ''}}" style="height:{{cusnavH}}px; line-height:{{cusnavH}}px;">

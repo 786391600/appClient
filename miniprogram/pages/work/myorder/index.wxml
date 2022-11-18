@@ -46,10 +46,13 @@
         </view>
       </view>
       <view class="order-card" wx:else>
-        <view class="title" style="padding-bottom: 0"> 订单编号：{{item.out_trade_no}}</view>
+        <view class="title" style="padding-bottom: 0"><span>{{item.dtType === 'selflifting' ? '自取号' : '订单号'}}：<span class="{{item.dtType === 'selflifting' ? 'weightFont' : ''}}">{{item.oddId?'#' + item.oddId:item.out_trade_no}}</span></span></view>
         <view class="title">
-          <view class="time"><i class="iconfont icon-shijian"></i><span>任务时间：</span><span
+          <view class="time" wx:if="{{item.dtType !== 'selflifting'}}"><i class="iconfont icon-shijian"></i><span>任务时间：</span><span
               class="time-con">{{filter.getDateText('now')}}</span>
+          </view>
+          <view class="time" wx:if="{{item.dtType === 'selflifting'}}"><i class="iconfont icon-shijian"></i><span>自取时间：</span><span
+              class="time-con">{{filter.getTakeText(item.takefoodTime)}}</span>
           </view>
           <view class="fee"><span class="fee-title">订单费用：</span><span class="num">{{item.fee}}</span><span>元</span>
           </view>
@@ -57,23 +60,37 @@
         <view class="content">
           <view class="content-left">
             <i class="iconfont icon-jilu"></i>
-            <view class="work-line"></view>
-            <i class="iconfont icon-zuobiao1"></i>
+            <view class="work-line {{item.writeOff || item.dtType === 'selflifting' ? 'hideWriteOff' : ''}}"></view>
+            <i class="iconfont icon-zuobiao1 {{item.writeOff || item.dtType === 'selflifting' ? 'hideWriteOff' : ''}}"></i>
           </view>
           <view class="content-right">
             <view class="work-info goods">
               <span class="name"><span>{{item.body}}</span></span>
-              <span wx:for="{{item.goods}}" wx:for-item="good">{{good.name}}✕{{good.num}}</span>
+              <span wx:for="{{item.goods}}" wx:for-item="good">
+                <view>{{good.name}}✕{{good.num}}</view>
+                <view class="spec" wx:if="{{good.spec}}">{{good.spec}}</view>
+              </span>
+              <span class="remarks-box" wx:if="{{item.remarks}}">
+                <span wx:if="{{item.remarks}}"><span class="tit">备注：</span><span class="text">{{item.remarks}}</span></span>
+              </span>
             </view>
-            <view class="work-address">{{item.address.schoolName}}-{{item.address.address}}</view>
+            <view class="work-address {{item.writeOff || item.dtType === 'selflifting' ? 'hideWriteOff' : ''}}">{{item.address.schoolName}}-{{item.address.address}}</view>
           </view>
         </view>
         <view class="oprate">
-          <button wx:if="{{item.taskType === 'idle' }}" class="mini-btn" bindtap="workRefound"
+          <button wx:if="{{item.taskType === 'idle' && item.dtType !== 'selflifting' }}" class="mini-btn default" bindtap="workRefound"
             data-orderId="{{item.out_trade_no}}" data-fee="{{item.fee}}" data-orderinfo="{{item}}" data-currentIndex="{{idx}}">{{item.refunding? '已退单': '点击退单'}}</button>
           <!-- <button wx:if="{{item.taskType === 'inprogress'  || item.taskType === 'complete'}}" class="mini-btn"
             bindtap="makePhoneCall" data-orderId="{{item.out_trade_no}}" data-fee="{{item.fee}}"
             data-orderinfo="{{item}}">联系我们</button> -->
+            <!-- <button wx:if="{{item.dtType === 'selflifting'}}" class="mini-btn"
+            bindtap="makePhoneCall" data-orderId="{{item.out_trade_no}}" data-fee="{{item.fee}}"
+            data-orderinfo="{{item}}">联系商家</button> -->
+            <button wx:if="{{item.dtType === 'selflifting'}}" class="mini-btn"
+            bindtap="makePhoneCall" data-orderId="{{item.out_trade_no}}" data-fee="{{item.fee}}"
+            data-orderinfo="{{item}}">联系我们</button>
+            <button wx:if="{{item.taskType === 'idle' && item.writeOff && !item.refunding}}" class="mini-btn primary"
+            data-orderId="{{item.out_trade_no}}" data-fee="{{item.fee}}" data-orderinfo="{{item}}" data-currentIndex="{{idx}}" bindtap='toWriteOff'>去核销</button>
         </view>
       </view>
     </view>

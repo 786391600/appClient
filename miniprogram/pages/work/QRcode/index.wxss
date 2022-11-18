@@ -1,0 +1,129 @@
+/* pages/Testpage/QRcode/index.wxss */
+@import '../../../style/iconfont.wxss';
+#QRcode{
+  width: 100%;
+  height: 100vh;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(#FCD844, #FCD844);
+  position: relative;
+}
+.QRcode-image{
+  margin-top: 30rpx;
+  width: 400rpx;
+  height: 400rpx;
+  background: #ffffff;
+  margin:0 auto;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.QRcode-image image{
+  width: 350rpx;
+  height: 350rpx;
+}
+.phoneStr {
+  width: 400rpx;
+  margin: 0 auto;
+  background-color: #fff;
+  border-bottom-left-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
+  padding:0rpx 50rpx 30rpx;
+  box-sizing: border-box;
+}
+.phoneStr > view {
+  font-size: 45rpx;
+  background: #F8F8FA;
+  text-align: center;
+  padding: 20rpx 0 20rpx;
+}
+.address1{
+  font-size:35rpx;
+  width: 600rpx;
+  margin: 0 auto; 
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+  text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+}
+.address{
+  font-size:35rpx;
+  width: 600rpx;
+  margin: 0 auto; 
+  margin-top: 15rpx;
+  margin-bottom: 15rpx;
+  text-align: center;
+  color: #ffffff;
+}
+.RedeemCode{
+  font-size:50rpx;
+  width: 100%;
+  text-align: center;
+  margin-top:30rpx;
+  font-weight: bold;
+  color: rgb(62, 110, 243) 
+}
+.Technical-support{
+  color: #e2e1e1;
+  width: 600rpx;
+  position: absolute;
+  bottom: 80rpx;
+  margin: 0 auto; 
+  text-align: center;
+}
+.address-box {
+  width: 600rpx;
+  background-color: white;
+  margin: 30rpx auto 0;
+  border-radius: 15rpx;
+  padding: 45rpx 43rpx 45rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.address-box .address-info {
+  display: flex;
+  flex-direction: column;
+  flex:1
+}
+.address-box .address-info .title {
+  font-size: 28rpx;
+  font-weight: 600;
+  margin-bottom: 28rpx;
+}
+
+.address-box .address-info .con{
+  color: #505050;
+  font-size: 22rpx;
+}
+.address-phone {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.address-phone > span{
+  font-size: 26rpx;
+  color: #505050;
+}
+.address-phone > .iconfont {
+  font-size: 52rpx;
+}
+
+.showmap {
+  font-size: 22rpx;
+    color: #3893FC;
+    background-color: white;
+    border: 1rpx solid #3893FC;
+    display: inline-block;
+    padding: 5rpx 8rpx 5rpx;
+    border-radius: 8rpx;
+    box-sizing: border-box;
+    margin-left: 10rpx;
+}

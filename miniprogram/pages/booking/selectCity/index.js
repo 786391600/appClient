@@ -37,10 +37,18 @@ Page({
 
   },
   bindtap(e) {
-    console.log(e.detail)
-    wx.reLaunch({
-      url: '../index/index?newIdena=' + this.data.newIdena + '&data=' + e.detail.name + '&data2=' + this.data.opt.star + '&data3=' + this.data.opt.end + '&relation=ticket'
-    })
+    let that = this
+    // wx.reLaunch({
+    //   url: '../index/index?newIdena=' + this.data.newIdena + '&data=' + e.detail.name + '&data2=' + this.data.opt.star + '&data3=' + this.data.opt.end + '&relation=ticket'
+    // })
+    let setData = {}
+    if (that.options.newIdena === 'end') {
+      setData.data2 = e.detail.name
+    } else {
+      setData.data = e.detail.name
+    }
+    this.setAdress(setData)
+    wx.navigateBack({})
   },
   getCity (type) {
     let query = type ? {type: type} : {}
@@ -54,6 +62,20 @@ Page({
         }
       })
     })
+  },
+  setAdress (obj) {
+    console.log(obj, '------------------------')
+    let pages = getCurrentPages(); //获取当前页面pages里的所有信息。
+    let prevPage = pages[pages.length - 2]; //prevPage 是获取上一个页面的js里面的pages的所有信息。 -2 是上一个页面，-3是上上个页面以此类推。
+    let currentSearchData = prevPage.data.component_index.searchData
+    let setData = {
+      ...currentSearchData,
+      ...obj
+    }
+    prevPage.setData(
+      { component_index : {
+        searchData : setData
+      }}
+    )
   }
-
 })

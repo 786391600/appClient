@@ -1,0 +1,12 @@
+<view class="box" wx:for="{{list}}">
+<view class="state"><span class="{{item.success? 'success': 'process'}}">{{item.success? '提现成功': '审核中'}}</span><span>提现手机号:{{item.phone}}</span></view>
+<view class="content">
+  <view class="text">{{item.spec}}</view><view class="price">{{item.fee}}元</view>
+</view>
+<view class="content">
+  <view class="time">{{item.createTime}}</view><view class="balance">账户余额: {{item.balance}}元</view>
+</view>
+</view>
+<view class="no-list" wx:if="{{list.length <= 0}}">
+  暂无记录
+</view>

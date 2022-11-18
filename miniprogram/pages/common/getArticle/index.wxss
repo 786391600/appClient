@@ -12,6 +12,10 @@
   align-items: center;
   font-size: 120rpx;
 }
+.image-box {
+  width:100%;
+  transform: all 5s linear;
+}
 
 
 

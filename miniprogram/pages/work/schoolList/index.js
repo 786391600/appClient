@@ -45,15 +45,16 @@ Page({
   },
   getLocation() {
     return new Promise((resolve, reject)=>{
-      wx.getLocation({
-        success: (res) => {
-          console.log(res, 'res')
-          resolve([res.longitude, res.latitude])
-        },
-        fail(res){
-          resolve(false);
-        }
-      })
+      // wx.getLocation({
+      //   success: (res) => {
+      //     resolve([res.longitude, res.latitude])
+      //   },
+      //   fail(res){
+      //     console.log(res, '999999999999999999')
+      //     resolve(false);
+      //   }
+      // })
+      resolve(['100', '120'])
     })
   },
   selectSchool (item) {

@@ -31,7 +31,9 @@ Page({
     activeIndex: 0,
     homeTabs: ['抢单中心', '车票任务', '招工任务', '我的钱包'],
     homeIndex: '0',
-    noAuth: false
+    noAuth: false,
+    navHeight: 0,
+    tabstest: []
   },
   // lifetimes: {
   //   // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
@@ -310,6 +312,7 @@ Page({
         let resData = e.data.data;
         if (resData && resData.account) {
           that.data.schoolId = resData.account;
+          that.getBuildingList()
           that.getWorkList()
         } else {
           that.setData({
@@ -320,6 +323,95 @@ Page({
         that.setData({
           noAuth: true
         })
+      }
+      wx.hideLoading()
+    })
+  },
+  commonNavAttr (obj) {
+    let height = obj.detail.height;
+    this.setData({
+      navHeight: height
+    })
+  },
+  scrolltolower () {
+    console.log('到底啦')
+  },
+  workRefound (e) {
+    let that = this;
+    let currentIndex = e.currentTarget.dataset.currentindex;
+    let out_trade_no = e.currentTarget.dataset.orderid;
+    let fee = e.currentTarget.dataset.fee;
+    let orderInfo = e.currentTarget.dataset.orderinfo;
+
+    if (orderInfo.refunding) {
+      return;
+    }
+    wx.showModal({
+      title: '退单提示',
+      content: '请联系用户后再退单？',
+      success (res) {
+        if (res.confirm) {
+          that.setRfoundStatus(currentIndex, true);
+          until.request({
+            action: 'app.crowd.workRefound',
+            data: {
+              fee: fee,
+              out_trade_no: out_trade_no
+            }
+          }).then(function (e) {
+            if (e.data.success) {
+              wx.showModal({
+                title: '退单成功',
+                content: '退款随后到账，请联系用户查看',
+                showCancel: false
+              })
+            } else {
+              wx.showModal({
+                title: '退单失败',
+                content: e.data.message,
+                showCancel: false
+              })
+            }
+          })
+        }}
+    })
+  },
+  setRfoundStatus (index, status) {
+    this.data.workList[index].refunding = status;
+    this.setData({
+      workList: this.data.workList
+    })
+  },
+  mptabchange (e) {
+    console.log(e, 'ooooo')
+  },
+  getBuildingList () {
+    let schoolId = this.data.schoolId;
+    let query = {
+      schoolId: schoolId
+    }
+    let that = this
+    wx.showLoading({
+      title: '任务获取中...',
+    })
+    until.request({
+      action: 'app.crowd.getSchoolInfoById',
+      data: query
+    }).then(function (e) {
+      if (e.data.success) {
+        let getdata = e.data.data
+        let schoolInfo = getdata.schoolInfo || null
+        if (schoolInfo && schoolInfo.buildingConfig) {
+          schoolInfo.buildingConfig.unshift({
+            title: '全部楼栋',
+            id: 'all'
+          })
+          that.setData({
+            tabstest: schoolInfo.buildingConfig
+          })
+        }      
+      } else {
+        until.showToast(e.data.message, 'error');
       }
       wx.hideLoading()
     })

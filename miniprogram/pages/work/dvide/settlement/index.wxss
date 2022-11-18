@@ -1,0 +1,216 @@
+/* pages/Testpage/ActivityOne/index.wxss */
+@import '../../../../style/iconfont.wxss';
+
+page {
+  background: linear-gradient(to bottom, #FCD844, #F3F3F3, #F3F3F3, #F3F3F3);
+}
+
+.business-name {
+  padding: 50rpx;
+  font-size: 36rpx;
+}
+
+.withdraw-box {
+  width: 720rpx;
+  background: white;
+  border-radius: 15rpx;
+  margin: 0 auto 0;
+  padding: 35rpx 40rpx 35rpx;
+  box-sizing: border-box;
+}
+
+.withdraw-tit {
+  font-size: 28rpx;
+  color: #91918F;
+}
+
+.withdraw-tit span {
+  margin-left: 8rpx;
+  color: #FAB4B5;
+}
+
+.withdraw-price {
+  font-size: 50rpx;
+  font-weight: bold;
+  color: black;
+  margin: 30rpx 0 30rpx;
+}
+
+.withdraw-info {
+  font-size: 28rpx;
+  color: #3B5C80;
+}
+
+.withdraw-oprate {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.to-orderlist {
+  font-size: 28rpx;
+}
+
+.withdraw-btn {
+  background: #FFDC4E;
+  padding: 20rpx 60rpx 20rpx;
+  font-size: 26rpx;
+  border-radius: 10rpx;
+  background: linear-gradient(to right, #FEDB4D, #FDCB4E);
+}
+
+.bind-input {
+  margin-bottom: 30rpx;
+}
+
+.bind-box {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: #F3F3F3;
+  z-index: 100;
+  top: 0;
+  padding: 0rpx 30rpx 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.write-off-model {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #FCD844;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+}
+
+.write-off-title {
+  height: 128rpx;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 35rpx 0;
+}
+
+.write-off-title image {
+  width: 90rpx;
+  height: 90rpx;
+}
+
+.write-off-title .title-price {
+  color: #DF473E;
+}
+
+.write-off-title .title-price .num {
+  font-size: 52rpx;
+}
+
+.write-off-box-tit-box {
+  font-size: 26rpx;
+  color: #246EB9;
+}
+
+.write-off-box {
+  width: 682rpx;
+  margin: 35rpx auto 0;
+  background: white;
+  padding: 0 42rpx 0;
+  box-sizing: border-box;
+  border-top-left-radius: 15rpx;
+  border-top-right-radius: 15rpx;
+}
+
+.write-off-box-tit {
+  border-bottom: 1rpx dashed #ccc;
+  padding: 22rpx 0 22rpx;
+}
+
+.write-off-box-con {
+  max-height: 560rpx;
+  overflow-y: scroll;
+}
+
+.write-off-box-con .good-item {
+  padding: 26rpx 0 26rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.good-item-info {
+  font-size: 26rpx;
+}
+
+.write-off-box-con .good-item .good-item-num {
+  font-size: 32rpx;
+}
+
+.price {
+  color: #DF473E;
+}
+
+.oprate-btn {
+  width: 682rpx;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  border-bottom-left-radius: 15rpx;
+  border-bottom-right-radius: 15rpx;
+  margin: 0 auto 0;
+  padding: 20rpx 0 20rpx
+}
+
+.oprate-btn .btn {
+  height: 86rpx;
+  line-height: 86rpx;
+  background: #FECB2E;
+  color: #333333;
+  font-size: 36rpx;
+  outline: none;
+  width: 80%;
+}
+.business-oprate {
+  width: 720rpx;
+  margin: 20rpx auto 0;
+  background: white;
+  border-radius: 15rpx;
+  padding: 15rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+}
+.business-oprate > view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 30rpx;
+}
+
+.business-oprate > view .iconfont {
+  font-size: 70rpx;
+  margin-bottom: 10rpx;
+  color: #FCD844;
+}
+
+.phoneStr {
+  width: 400rpx;
+  margin: 0 auto;
+  background-color: #fff;
+  border-bottom-left-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
+  padding:0rpx 50rpx 30rpx;
+  box-sizing: border-box;
+}
+.phoneStr > view {
+  font-size: 45rpx;
+  background: #F8F8FA;
+  text-align: center;
+  padding: 20rpx 0 20rpx;
+}

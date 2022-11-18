@@ -2,9 +2,9 @@
 page{
   background: #F5F5F5;
 }
-/* .page-box{
-  padding-top: 80rpx;
-} */
+.page-box{
+  padding-bottom: 80rpx;
+}
 .work-box{
   display: flex;
   box-sizing: border-box;
@@ -158,6 +158,10 @@ page{
   font-size: 38rpx;
   font-weight: bold;
   margin-bottom: 20rpx;
+  /* position: sticky;
+  position: -webkit-sticky; */
+  top: 0;/*距离顶部多少吸顶*/
+  /* z-index: 1000; */
 }
 .business-head{
   width: 142rpx;
@@ -275,8 +279,4 @@ page{
 }
 .share button::after{
   border: none;
-}
-
-.box-scroll{
-  height: 100%;
 }

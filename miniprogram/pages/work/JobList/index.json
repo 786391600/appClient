@@ -3,7 +3,8 @@
     "component_swiper": "/pages/common/swiper/index",
     "component_notify": "/pages/common/notify/index",
     "component_label": "/pages/common/business-label/index",
-    "component_nav": "/component/nav/common"
+    "component_nav": "/component/nav/common",
+    "cell": "plugin://materialPlugin/cell"
   },
   "backgroundColor": "#ffffff",
   "navigationBarTitleText": "线路查询"

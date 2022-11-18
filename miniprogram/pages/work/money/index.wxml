@@ -9,3 +9,20 @@
 <view class="money-oprate">
   <button type="primary" bindtap="withdrawalClick">提现</button>
 </view>
+<view class="money-oprate" style="margin-top: 18rpx;">
+  <button type="primary" bindtap="getQrImage">认证码</button>
+</view>
+
+<!-- 遮罩层 -->
+<view wx:if="{{showQrModel}}" class='cover bg'>
+    <!-- 可在此按需求自定义遮罩 -->
+    <view style="position: relative;">
+      <view class='cover_child'>
+        <image mode="aspectFill" src="{{imgurl}}"></image>
+      </view>
+      <view class='btn-group'>
+        <view catchtap="hideCover">关闭</view>
+        <!-- <view style="color: #5A6B8F;">确认</view> -->
+      </view>
+    </view>
+</view>

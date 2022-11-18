@@ -73,6 +73,9 @@ exports.request = function(data){
                   } else {
                     resolve(e)
                   }
+                },
+                fail: function(e) {
+                  console.log(e, '请求报错~')
                 }
               })
             })
@@ -86,6 +89,7 @@ exports.request = function(data){
           }
         },
         fail: function (e) {
+          console.log(e, '请求报错')
           reject(e)
         }
       })

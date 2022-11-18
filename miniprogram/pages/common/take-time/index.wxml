@@ -1,0 +1,14 @@
+<!--pages/common/label-select/index.wxml-->
+<view class="take-box">
+  <view class="take-left">
+    <scroll-view class="scroll-Y" scroll-y='true'>
+      <view bindtap="selectDay" data-title="{{item.title}}"  data-date="{{item.date}}" wx:for="{{dayList}}" class="take-left-item {{currentDate === item.date ? 'active' : ''}}">{{item.title}}</view>
+    </scroll-view>
+  </view>
+  <view class="take-right">
+    <scroll-view class="scroll-Y" scroll-y='true'>
+      <view wx:for="{{timeList}}" class="take-right-item" data-time="{{item.time}}" data-text="{{item.text}}" bindtap="selectTime">{{item.text}}</view>
+      <view class="empty" wx:if="{{timeList.length <=0}}">暂无可选时段</view>
+    </scroll-view>
+  </view>
+</view>

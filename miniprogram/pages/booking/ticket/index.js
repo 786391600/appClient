@@ -60,9 +60,7 @@ Component({
       console.log(e.currentTarget.dataset)
       wx.requestSubscribeMessage({
         tmplIds: ['sRP9Y3eQiha6Vp9Ix2lhvDRppUMFyw6IO0A7xZuUJSg'],
-        success(res) {
-          console.log('iiiiiiiiiiii')
-        }
+        success(res) {}
       })
       wx.navigateTo({
         url: '../calendar/index?star=' + e.currentTarget.dataset.star + '&end=' + e.currentTarget.dataset.end
@@ -89,11 +87,20 @@ Component({
      * 获取首页数据
     */
     getTicketInfo: function (options) {
-      if (options.newIdena == "star") {
-        this.setData({ startAddress: options.data, endAddress: options.data3 })
-      } else if (options.newIdena == "end") {
-        this.setData({ startAddress: options.data2, endAddress: options.data })
+      console.log(options, 'ooooooooooooooooiiiiiiii')
+      // if (options.newIdena == "star") {
+      //   this.setData({ startAddress: options.data, endAddress: options.data3 })
+      // } else if (options.newIdena == "end") {
+      //   this.setData({ startAddress: options.data2, endAddress: options.data })
+      // }
+      let addressObj = {}
+      if (options.data) {
+        addressObj.startAddress = options.data
       }
+      if (options.data2) {
+        addressObj.endAddress = options.data2
+      }
+      this.setData(addressObj)
     },
     //下拉刷新
     onPullDownRefresh: function () {

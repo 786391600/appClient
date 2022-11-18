@@ -158,7 +158,7 @@ Page({
         workType: that.data.taskType
       }).then((res) => {
         wx.requestSubscribeMessage({
-          tmplIds: ['QSris88nvy4XR0ldWbXuwOFQM4yfCIdsZsxYLS1_Nos', '6xO6Gbqw-REh6vGjA8eZIueDOEgfFQx9glA3RKdr7pc'],
+          tmplIds: ['QSris88nvy4XR0ldWbXuwOFQM4yfCIdsZsxYLS1_Nos', 'yTas2pqWLsyX0gr6mjmkhzMzJecrRao3zOH3P-wt6TE'],
           success (res) {}
         })
         wx.navigateTo({

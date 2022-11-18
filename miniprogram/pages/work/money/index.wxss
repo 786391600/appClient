@@ -18,3 +18,79 @@
   width: 80%;
   margin: 0 auto;
 }
+
+
+/* 弹框 */
+
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0 20rpx;
+}
+ 
+.btn-group {
+  background: rgba(255, 255, 255, 1);
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  font-weight: bold;
+  padding: 20rpx 0;
+}
+ 
+.weui-input {
+  background-color: #f1f1f1;
+  border-radius: 10rpx;
+  width: 400rpx;
+  padding: 16rpx 16rpx;
+}
+ 
+.cover {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+ 
+.cover_child {
+  background: rgba(255, 255, 255, 1);
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 5;
+}
+.cover_child image {
+   width: 300rpx;
+   height: 300rpx;
+}
+ 
+.child-title {
+  white-space: nowrap;
+  margin-top: 60rpx;
+  height: 32rpx;
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333333;
+  line-height: 36rpx;
+  margin-bottom: 31rpx;
+}
+ 
+.cross {
+  margin-bottom: 110rpx;
+  bottom: 0rpx;
+  position: fixed;
+  width: 60rpx;
+  height: 60rpx;
+  z-index: 5;
+}

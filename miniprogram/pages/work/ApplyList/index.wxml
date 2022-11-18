@@ -1,11 +1,12 @@
 <wxs module="filter" src="../../../until/filter.wxs"></wxs>
-<component_nav v-title="{{'我的订单'}}" bind:titleClick='toSchoolSelect' showIcon='{{true}}'></component_nav>
-<view class="box" hidden="{{homeIndex !== '0'}}">
+<component_nav v-title="{{'任务中心'}}" bind:titleClick='toSchoolSelect' bind:commonNavAttr='commonNavAttr' showIcon='{{true}}'></component_nav>
+<view class="box" style="height: calc(100vh - {{tabs.length > 0 ? 80 : 0}}rpx - {{navHeight}}px - 2px);" hidden="{{homeIndex !== '0'}}">
   <view class="box-head">
     <component_tab style="width: 100%" tabs='{{tabs}}' activeIndex='{{activeIndex}}' bind:change="tabChange"></component_tab>
   </view>
-  <scroll-view scroll-y='true' refresher-enabled='{{true}}' refresher-triggered="{{triggered}}" bindrefresherrefresh="onRefresh" class="box-scroll">
-    <view class="box-scroll-card" wx:for='{{workList}}'>
+  <mp-tabs  tab-class='tabcell' tab-underline-color='#FECB2E' swiper-class='tabswiperclass' tabs='{{tabstest}}' bind:change='mptabchange'></mp-tabs>
+  <scroll-view style="height: calc(100vh-160rpx-2px);" scroll-y='true' refresher-enabled='{{true}}' refresher-triggered="{{triggered}}" bindrefresherrefresh="onRefresh" class="box-scroll" bindscrolltolower='scrolltolower'>
+    <view class="box-scroll-card" wx:for='{{workList}}' wx:for-index="idx">
       <view class="order-card" wx:if="{{item.type === 'work'}}">
         <view class="title">
           <view class="time"><i class="iconfont icon-shijian"></i><span>任务时间：</span><span class="time-con">{{filter.getDateText(item.orderInfo.taskTime)}}</span>
@@ -23,7 +24,7 @@
             <i class="iconfont icon-zuobiao1" wx:if="{{item.orderInfo.address}}"></i>
           </view>
           <view class="content-right">
-            <view class="work-address"  wx:if="{{item.orderInfo.address}}"><button size="mini" class="mini-btn" bindtap="makePhoneCall" data-phone="{{item.orderInfo.address.phone}}">联系用户</button></view>
+            <view class="work-address" wx:if="{{item.orderInfo.address}}"><button size="mini" class="mini-btn" bindtap="makePhoneCall" data-phone="{{item.orderInfo.address.phone}}">联系用户</button></view>
             <view class="work-info" wx:if="{{item.orderInfo.specArr}}">
               <span class='workInfo-tit'>任务类型</span>
               <view wx:for="{{item.orderInfo.specArr}}">{{item}}</view>
@@ -55,14 +56,21 @@
             <i class="iconfont icon-zuobiao1"></i>
           </view>
           <view class="content-right">
-            <view class="work-address"><button size="mini" class="mini-btn" bindtap="makePhoneCall" data-phone="{{item.address.phone}}">联系用户</button></view>
+            <view class="work-address"><button size="mini" class="mini-btn" bindtap="makePhoneCall" data-phone="{{item.address.phone}}">联系用户</button><button  wx:if="{{item.taskType === 'inprogress'}}" style="margin-left: 8rpx;" size="mini" class="mini-btn" catchtap ="workRefound" data-orderId="{{item.out_trade_no}}"  data-fee="{{item.fee}}" data-orderinfo="{{item}}" data-currentIndex="{{idx}}">{{item.refunding? '已退单': '点击退单'}}</button></view>
             <view class="work-info goods"><span class="name"><span>{{item.body}}</span></span>
-              <span wx:for="{{item.goods}}" wx:for-item="good">{{good.name}}✕{{good.num}}</span>
+              <span wx:for="{{item.goods}}" wx:for-item="good">
+                <view>{{good.name}}✕{{good.num}}</view>
+                <view class="spec" wx:if="{{good.spec}}">规格：{{good.spec}}</view>
+              </span>
+              <span class="remarks-box" wx:if="{{item.taskType === 'inprogress' || item.taskType === 'idle' || item.taskType === 'complete'}}">
+                <span wx:if="{{item.remarks}}"><span class="tit">备注：</span><span class="text">{{item.remarks}}</span></span>
+                <span wx:if="{{item.oddId}}"><span class="tit">单号：</span><span class="text">#{{item.oddId}}</span></span>
+              </span>
             </view>
             <view class="work-address">{{item.address.schoolName}}-{{item.address.address}}</view>
           </view>
         </view>
-        <view class="oprate">
+        <view class="oprate" wx:if="{{!item.refunding}}">
           <button bindtap='grabbingOrders' wx:if="{{item.taskType === 'idle'}}" data-orderid="{{item.out_trade_no}}" data-index='{{index}}'>抢单</button>
           <button bindtap='confirmOrder' wx:if="{{item.taskType === 'inprogress'}}" data-orderid="{{item.out_trade_no}}" data-index='{{index}}' data-orderInfo='{{item}}'>确认完成</button>
         </view>
@@ -74,20 +82,19 @@
     </view>
   </scroll-view>
 </view>
-<view class="box" hidden="{{homeIndex !== '1'}}">
+<view class="box" style="height: calc(100vh - 80rpx - {{navHeight}}px - 2px);" hidden="{{homeIndex !== '1'}}">
   <view class="empty">
     <view><i class="iconfont icon-jilu"></i></view>
     <view>暂无任务</view>
   </view>
 </view>
-<view class="box" hidden="{{homeIndex !== '2'}}">
+<view class="box" style="height: calc(100vh - 80rpx - {{navHeight}}px - 2px);" hidden="{{homeIndex !== '2'}}">
   <view class="empty">
     <view><i class="iconfont icon-jilu"></i></view>
     <view>暂无任务</view>
   </view>
 </view>
 <component_tab style="width: 100%" tabs='{{homeTabs}}' activeIndex='{{homeIndex}}' bind:change="homeTabChange"></component_tab>
-
 <view class="noAuth" wx:if="{{noAuth}}">
   无兼职权限，请联系管理员
 </view>

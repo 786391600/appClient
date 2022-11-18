@@ -64,11 +64,8 @@
 
 .box {
   display: flex;
-
   flex-direction: column;
-
-  height: calc(100vh - 90rpx);
-
+  height: calc(100vh - 200rpx);
   overflow: hidden;
   box-sizing: border-box;
   background: #F8F8F8;
@@ -236,4 +233,18 @@
   align-items: center;
   justify-content: center;
   color: #939393;
+}
+
+.remarks-box{
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  margin-top: 15rpx;
+}
+.remarks-box .tit{
+  color: #FE7562;
+}
+.goods .spec {
+  font-size: 26rpx;
+  color: #2F7EFF;
 }

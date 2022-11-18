@@ -148,3 +148,17 @@ page {
   font-size: 100rpx;
   margin-bottom: 10rpx;
 }
+.call-btn {
+  display: flex;
+  align-items: center;
+}
+.call-btn > span{
+  display: block;
+  background: #FFD148;
+  color:#784A00;
+  border-radius: 8rpx;
+  margin-left: 3rpx;
+  padding: 0 3rpx 0;
+  box-sizing: border-box;
+  border: 1rpx solid #784A00;
+}

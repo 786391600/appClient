@@ -2,7 +2,8 @@
   "usingComponents": {
     "nav": "../../plug/nav/index",
     "component_tab": "/pages/common/tab/index",
-    "component_nav": "/component/nav/common"
+    "component_nav": "/component/nav/common",
+    "mp-tabs": "/component/mc-nav/mc-nav"
   },
   "navigationBarTextStyle": "white",
   "navigationBarTitleText": "兼职中心",

@@ -1,0 +1,7 @@
+{
+  "backgroundTextStyle": "light",
+  "navigationBarTitleText": "商家中心",
+  "navigationBarBackgroundColor": "#FCD844",
+  "navigationBarTextStyle": "white",
+  "enablePullDownRefresh": true
+}

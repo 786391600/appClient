@@ -1,0 +1,23 @@
+/* pages/common/label-select/index.wxss */
+.labels-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.label-item {
+  border: 2rpx solid #E9E9E9;
+  margin-right: 15rpx;
+  padding: 5rpx 15rpx 5rpx;
+  border-radius: 8rpx;
+  background: white;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15rpx;
+  font-size: 32rpx;
+}
+.active {
+  border: 2rpx solid #FCD844;
+    background-color: white;
+    color: #FCD844;
+}

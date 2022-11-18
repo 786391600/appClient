@@ -1,8 +1,73 @@
 /* pages/sureOrder.wxss */
-page{
+page {
   background-color: #F5F5F5;
 }
-.order-list{
+
+.goodsType-select {
+  width: 690rpx;
+  border-radius: 15rpx;
+  margin: 25rpx auto 0;
+  display: flex;
+  font-size: 34rpx;
+  font-weight: 500;
+  background-color: #FEF6DF;
+  overflow: hidden;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  color: #140F0B;
+  align-items: center;
+}
+.goodsType-select-box {
+  width: 690rpx;
+  border-radius: 15rpx;
+  margin: 0rpx auto 25rpx;
+  display: flex;
+  background-color: white;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  padding: 28rpx;
+  box-sizing: border-box;
+  font-size: 38rpx;
+  font-weight: 500;
+  flex-direction: column;
+}
+.time-content {
+  display: flex;
+  align-items: center;
+}
+.goodsType-select-box .time {
+  padding: 18rpx 0 0;
+  padding-right: 18rpx;
+  box-sizing: border-box;
+}
+.goodsType-select-box .time-title {
+  color: #5E5E5E;
+  font-size: 28rpx;
+  font-weight: 300;
+}
+.goodsType-select-box .phone-box {
+  display: flex;
+  align-items: center;
+}
+.goodsType-select .active {
+  background: #fff;
+  font-size: 44rpx;
+  font-weight: 500;
+  color: #FFCE00;
+}
+.goodsType-select .active::after{
+  content: '✓';
+}
+.goodsType-select-item {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 10rpx 0 10rpx;
+  height: 100%;
+  align-items: center;
+}
+
+.order-list {
   width: 690rpx;
   background: #fff;
   border-radius: 15rpx;
@@ -10,13 +75,14 @@ page{
   padding: 0 30rpx 0;
   box-sizing: border-box;
 }
-.order-list .title{
+
+.order-list .title {
   padding: 45rpx 0 45rpx;
   font-size: 26rpx;
   box-sizing: border-box;
 }
 
-.order-list .bottom{
+.order-list .bottom {
   padding: 45rpx 0 45rpx;
   font-size: 36rpx;
   box-sizing: border-box;
@@ -24,22 +90,25 @@ page{
   text-align: right;
   border-top: 1rpx solid #EAEAEA;
 }
+
 .list {
   max-height: 400rpx;
   overflow-y: scroll;
 }
+
 .order-box {
   display: flex;
   flex-direction: row;
   margin-bottom: 35rpx;
 }
+
 .order-box image {
   width: 90rpx;
   height: 90rpx;
   border-radius: 15rpx;
 }
 
-.order-box .order-right{
+.order-box .order-right {
   display: flex;
   flex-direction: column;
   flex: 1;
@@ -48,26 +117,40 @@ page{
   color: #3A3A3A;
   justify-content: space-between;
 }
-.order-right .right-top{
+
+.order-right .right-top {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
-.right-top .top-title{
+
+.right-top .top-title {
   font-size: 30rpx;
   font-weight: 800;
 }
 
-.right-top .top-price{
+.right-top .top-price {
   font-size: 24rpx;
 }
-.right-bottom .bottom-num{
+
+.right-bottom .bottom-num {
   font-size: 22rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.bottom-num .surcharge {
+  color: #D03731;
+}
+
+.bottom-num .surcharge span {
+  margin-right: 10rpx;
 }
 
 
 
-.adress{
+.adress {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -81,7 +164,7 @@ page{
 }
 
 
-.adress .adress-box{
+.adress .adress-box {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -89,41 +172,49 @@ page{
   width: 85%;
   padding-right: 15rpx;
 }
-.adress-left{
+
+.adress-left {
   display: flex;
   align-items: center;
 }
-.adress-left .iconfont{
+
+.adress-left .iconfont {
   font-size: 52rpx;
   color: #FCD844;
 }
-.adress .adress-text{
+
+.adress .adress-text {
   padding: 0 28rpx 0;
   box-sizing: border-box;
 }
-.adress .used{
+
+.adress .used {
   width: 15%;
 }
-.adress-tit{
+
+.adress-tit {
   font-size: 32rpx;
   padding: 5rpx 0 5rpx;
 }
-.adress-con{
+
+.adress-con {
   font-size: 32rpx;
   color: #C1C1C1;
   padding: 5rpx 0 5rpx;
 }
-.adress .icon-you{
+
+.adress .icon-you {
   color: #899AA4;
   font-size: 28rpx;
 }
 
-.used{
+.used {
   display: flex;
   justify-content: flex-end;
   border-left: 2rpx solid #E2E2E2;
 }
-.used-text{
+
+.used-text {
   background: #FDE6D2;
   color: #F48934;
   font-size: 24rpx;
@@ -131,10 +222,11 @@ page{
 }
 
 /*支付操作*/
-page{
+page {
   padding-bottom: 146rpx;
 }
-.pay-box{
+
+.pay-box {
   height: 146rpx;
   position: fixed;
   bottom: 0;
@@ -143,20 +235,21 @@ page{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding:  0 30rpx 0;
+  padding: 0 30rpx 0;
   box-sizing: border-box;
 }
+
 .pay-box .price {
   color: #F66A00;
   font-size: 28rpx;
 }
 
-.pay-box .price span{
+.pay-box .price span {
   font-size: 48rpx;
   font-weight: 600;
 }
 
-.pay-box .btn{
+.pay-box .btn {
   height: 88rpx;
   border-radius: 44rpx;
   background-color: #FFCE00;
@@ -167,7 +260,7 @@ page{
   font-weight: 600;
 }
 
-.pay-box .btn:active{
+.pay-box .btn:active {
   background: #E8BC03;
 }
 
@@ -176,4 +269,79 @@ page{
   justify-content: space-between;
   font-size: 24rpx;
   margin: 5rpx 0 8rpx;
+}
+
+/* 备注 */
+.user-oprate {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28rpx 0;
+  box-sizing: border-box;
+  margin-bottom: 25rpx;
+  width: 690rpx;
+  background: #fff;
+  border-radius: 15rpx;
+  margin: 25rpx auto 0;
+  font-size: 25rpx;
+}
+
+.oprate-box {
+  padding: 36rpx 0 36rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.oprate-box .title {
+  color: #333333;
+}
+
+.oprate-box .placehold {
+  color: #9A9A9A;
+}
+
+.oprate-box .content .iconfont {
+  color: #9A9A9A;
+  font-size: 24rpx;
+}
+.content{
+  width: 60%;
+  display: flex;
+  justify-content: flex-end;
+}
+.content-remarks {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  white-space: nowrap;
+  text-align: end;
+}
+
+.good-info {
+  width: 690rpx;
+  margin: 15rpx auto;
+  border-radius: 25rpx;
+  background-color: white;
+  padding: 50rpx 42rpx 50rpx;
+  box-sizing: border-box;
+  margin-top: 25rpx;
+}
+.good-info .good-title {
+  font-size: 30rpx;
+  font-weight: 800;
+  padding-bottom: 50rpx;
+}
+.good-info .good-content{
+  font-size: 28rpx;
+  color: #505050;
+}
+/* .building-dialog {
+  opacity: 0;
+} */
+.building-dialog .weui-half-screen-dialog__ft {
+  display: none;
 }

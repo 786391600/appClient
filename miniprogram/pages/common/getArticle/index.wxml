@@ -4,6 +4,6 @@
   </view>
   <view class="loader"><span class='txt'><span>高</span><span>校</span><span>综</span><span>合</span><span>服</span><span>务</span><span>平</span><span>台</span></span></view>
 </view>
-<view hidden='{{!showImage}}' bindtap="toArticle">
-  <image style= 'width:100%' mode="widthFix" src='{{imgUrl}}' bindload="imageLoad"></image>
+<view class="image-box" bindtap="toArticle" style="{{!showImage?'height:0px;overflow:hidden': ''}}">
+  <image style="width: 100%;" mode="widthFix" src='{{imgUrl}}' bindload="imageLoad"></image>
 </view>

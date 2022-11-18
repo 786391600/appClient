@@ -1,0 +1,39 @@
+/* pages/common/label-select/index.wxss */
+.take-box{
+  display: flex;
+  max-height: 400rpx;
+}
+.take-left {
+  width: 40%;
+}
+.scroll-Y {
+  height: 400rpx;
+}
+
+.take-right-item {
+  padding: 18rpx 0 18rpx;
+  font-size: 32rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #ccc;
+}
+.take-left-item {
+  padding: 18rpx 0 18rpx;
+  font-size: 32rpx;
+  box-sizing: border-box;
+}
+.empty {
+  text-align: center;
+  color: var(--weui-FG-1)
+}
+
+.take-left .active{
+  color: #FFCE00
+}
+
+.active::after{
+  content: '✓';
+}
+
+.take-right {
+  width: 60%;
+}

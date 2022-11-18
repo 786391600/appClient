@@ -1,0 +1,66 @@
+<view class="business-name">
+  {{shop.title}}
+</view>
+<view class="withdraw-box">
+  <view class="withdraw-tit">
+    可提现余额（元）<span>每天可提现一次，最大金额200元</span>
+  </view>
+  <view class="withdraw-price">
+    ￥{{shop.capital || 0}}
+  </view>
+  <view class="withdraw-info" bindtap="toWithdrawal">提现记录</view>
+  <view class="withdraw-oprate">
+    <view class="to-orderlist" bindtap="toSettlementlist">结算明细 ></view>
+    <view class="withdraw-btn" bindtap="businessWithdrawal">提现</view>
+  </view>
+</view>
+<view class="business-oprate">
+  <view bindtap="writeOffOprate">
+    <i class="iconfont icon-saoma-06"></i>
+    <span>到店核销</span>
+  </view>
+</view>
+
+<view class="bind-box" wx:if="{{auth.showAuth}}">
+  <view class="bind-input">
+    <input class="weui-input" bindinput="setPhone" type="number" placeholder="请输入商家录入手机号"/>
+  </view>
+  <view>
+    <button type="primary" bindtap="authBusiness">校验商家</button>
+  </view>
+</view>
+
+
+<view class="write-off-model" wx:if="{{showWriteMode}}">
+  <view class="write-off-title">
+    <image mode='aspectFill' src="../../../../component/nav/icon.ico"></image>
+    <view class="title-price">
+      已支付：￥<span class="num">{{orderInfo.fee}}</span>
+    </view>
+  </view>
+  <view class="write-off-box">
+    <view class="write-off-box-tit">
+      <view class="write-off-box-tit-box">
+        付款：￥{{orderInfo.fee}}
+      </view>
+      <view class="write-off-box-tit-box">
+        编号：{{orderInfo.out_trade_no}}
+      </view>
+    </view>
+    <view class="write-off-box-con">
+      <view class="good-item" wx:for="{{orderInfo.goods}}">
+        <view class="good-item-info">
+           <view>{{item.name}}</view>
+           <view class="price">￥{{item.price}}</view>
+        </view>
+        <view class="good-item-num">
+          ×{{item.num}}
+        </view>
+      </view>
+      <view class="phoneStr"><view>{{phoneStr}}</view></view>
+    </view>
+  </view>
+  <view class="oprate-btn">
+    <button class="btn" bindtap="confirmWriteOff" data-id="{{orderInfo.out_trade_no}}" data-userid="{{orderInfo.userId}}" data-shopname="{{orderInfo.body}}">确认核销</button>
+  </view>
+</view>

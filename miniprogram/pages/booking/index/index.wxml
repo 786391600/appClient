@@ -1,5 +1,5 @@
 <!-- 组件显示 -->
-<view wx-if="{{currentTab == 0? true: false}}" class="component-box">
+<view hidden="{{currentTab == 0? false: true}}" class="component-box">
   <component_index searchData='{{component_index.searchData}}'/>
 </view>
 <view wx-if="{{currentTab == 1? true: false}}" class="component-box">
