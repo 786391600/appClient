@@ -1,0 +1,22 @@
+/* pages/work/extension/index.wxss */
+.box .tip {
+  font-size: 24rpx;
+  padding: 33rpx;
+  box-sizing: border-box;
+  border-bottom: 1rpx dashed #EE9143;
+}
+.box .share-btn {
+  height: 78rpx;
+  border-radius: 39rpx;
+  background-color: #EE9143;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+}
+.box .oprate {
+  padding: 50rpx;
+  box-sizing: border-box;
+}

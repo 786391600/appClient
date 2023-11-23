@@ -1,0 +1,15 @@
+.status-loading {
+    width: 26rpx;
+    height: 26rpx;
+    border: 3rpx solid #FF8725;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: rotate 0.75s linear infinite;
+  }
+  
+  @keyframes rotate {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  

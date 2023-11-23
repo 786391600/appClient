@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    url: 'https://mp.weixin.qq.com/s/lr4WuXPhEeVsdpt6Av76bg'
+    url: 'https://vw.usdoc.cn/?m=5&src=http://usdoc.cn/vw/%E6%96%87%E4%BB%B6%E6%A8%A1%E6%9D%BF.docx'
   },
   /**
    * 生命周期函数--监听页面加载
@@ -14,7 +14,8 @@ Page({
   onLoad: function (options) {
    if (options.url) {
      console.log(options.url, 'options.url')
-     this.setData({url: options.url})
+     let url = decodeURIComponent(options.url)
+     this.setData({url: url})
    }
   },
   getSetting (e) {

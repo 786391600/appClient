@@ -1,6 +1,6 @@
 @import '../../../style/ticket/iconfont.wxss';
 page{
-  background: #F5F5F5;
+  background: var(--var-color1);
 }
 .address-box{
   background: white;

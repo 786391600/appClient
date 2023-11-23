@@ -13,6 +13,16 @@ Component({
       type: Boolean
     }
   },
+  pageLifetimes: {
+    show: function() {
+      // 页面被展示
+      let showDefault = this.data.showDefault
+      if (showDefault) {
+        this.setData({showDefault: true})
+      }
+      this.getArticleInfo()
+    },
+  },
   /**
    * 页面的初始数据
    */
@@ -24,11 +34,11 @@ Component({
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
     attached: function () {
-      let showDefault = this.data.showDefault
-      if (showDefault) {
-        this.setData({showDefault: true})
-      }
-      this.getArticleInfo()
+      // let showDefault = this.data.showDefault
+      // if (showDefault) {
+      //   this.setData({showDefault: true})
+      // }
+      // this.getArticleInfo()
     },
     moved: function () { },
     detached: function () { },

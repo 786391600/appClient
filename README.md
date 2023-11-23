@@ -33,7 +33,9 @@
     "pages/work/business/settlementlist/index",
     "pages/work/QRcode/index",
     "pages/work/dvide/settlement/index",
-    "pages/work/dvide/settlementlist/index"
+    "pages/work/dvide/settlementlist/index",
+    "pages/job/index/index",
+    "pages/job/jobDetail/index"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -54,5 +56,30 @@
         "version": "1.0.5",
         "provider": "wx4d2deeab3aed6e5a"
     }
-  }
+  },
+  "subpackages": [
+    {
+      "root": "pages/booking",
+      "name": "booking",
+      "pages": [
+        "index/index",
+        "selectCity/index",
+        "OrderPayment/index",
+        "OrderDetail/index",
+        "rider/index",
+        "TicketDetails/index",
+        "calendar/index",
+        "VehicleList/index",
+        "paySuccess/index"
+      ]
+    },
+    {
+      "root": "pages/print",
+      "name": "print",
+      "pages": [
+        "index/index",
+        "fileUpload/fileUpload"
+      ]
+    }
+  ],
 }

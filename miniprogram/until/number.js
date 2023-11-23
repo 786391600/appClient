@@ -88,7 +88,6 @@ exports.times = times;
  * 精确加法
  */
 function plus() {
-    console.log(arguments, 'uyyyyyyyyyyyyyyyyyyyy')
     var nums = [];
     for (var _i = 0; _i < arguments.length; _i++) {
         nums[_i] = arguments[_i];

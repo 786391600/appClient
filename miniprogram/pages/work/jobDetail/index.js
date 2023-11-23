@@ -116,7 +116,8 @@ Page({
       return
     }
     qrInfo.scene = jobData.scene
-    qrInfo.page = 'pages/job/jobDetail/index'
+    // qrInfo.page = 'pages/job/jobDetail/index'
+    qrInfo.page = 'pages/booking/index/index'
     wx.navigateTo({
       url: '/pages/common/getShareImg/index?qrInfo=' + JSON.stringify(qrInfo) + '&shareCon=' + JSON.stringify(shareCon)
     })

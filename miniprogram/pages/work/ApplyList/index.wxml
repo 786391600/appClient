@@ -88,13 +88,8 @@
     <view>暂无任务</view>
   </view>
 </view>
-<view class="box" style="height: calc(100vh - 80rpx - {{navHeight}}px - 2px);" hidden="{{homeIndex !== '2'}}">
-  <view class="empty">
-    <view><i class="iconfont icon-jilu"></i></view>
-    <view>暂无任务</view>
-  </view>
-</view>
 <component_tab style="width: 100%" tabs='{{homeTabs}}' activeIndex='{{homeIndex}}' bind:change="homeTabChange"></component_tab>
 <view class="noAuth" wx:if="{{noAuth}}">
-  无兼职权限，请联系管理员
+  <view>无兼职权限，请联系管理员</view>
+  <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">用户认证</button>
 </view>

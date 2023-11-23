@@ -5,11 +5,11 @@
   <view class="time"><span>订单日期:{{filter.dateFormat(item.timestamp)}}</span></view>
   <view class="text" wx:for="{{item.goods}}" wx:for-item='goodsitem'>
     <view style="margin-bottom: 10rpx;">{{goodsitem.name}} <span class="num">数量：{{goodsitem.num}}</span> <span class="price">价格：{{goodsitem.price * goodsitem.num}}</span></view>
-    <view class="text-surcharge">
-      <span class="surcharge" wx:if="{{goodsitem.surcharge && goodsitem.surcharge.length > 0}}" wx:for="{{goodsitem.surcharge}}" wx:for-item='suritem'>
+    <view class="text-surcharge" wx:if="{{goodsitem.surcharge && goodsitem.surcharge.length > 0}}">
+      <span class="surcharge" wx:if="{{!suritem.hide}}"  wx:for="{{goodsitem.surcharge}}" wx:for-item='suritem'>
         {{suritem.title}}:{{suritem.price}}元
       </span>
-      <span class="divide" wx:if="{{goodsitem.dividePrice}}">按份配送费：{{goodsitem.dividePrice || 0}}元</span>
+      <span class="divide">按份配送费：{{goodsitem.rewardFee || 0}}元</span>
     </view>
   </view>
 </view>

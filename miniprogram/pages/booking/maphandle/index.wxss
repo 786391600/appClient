@@ -1,0 +1,97 @@
+/* pages/Testpage/MerchantLogin/index.wxss */
+@import '../../../style/ticket/iconfont.wxss';
+.refresh{
+   background: #F44200;
+   color: white;
+   margin: 0 auto 30rpx;
+}
+.carInfo{
+  position: fixed;
+  left:0;
+  right: 0;
+  bottom: 0rpx;
+  margin: 0 auto 0rpx;
+  border-radius: 10rpx;
+  width: 100%;
+  background: white;
+  height: 40vh;
+}
+#map {
+  height: calc(100% - 592rpx);
+}
+.scrollContainer{
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+  white-space: nowrap;
+  box-sizing: border-box;
+  background: white;
+  border-bottom: 1rpx solid #E7E7E7;
+  height: calc(100% - 160rpx);
+}
+
+.scrollContainer .scroll-item{
+  display: flex;
+  border-bottom: 2rpx solid #EDEDED;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32rpx 0;
+}
+
+.scroll-item .address-select {
+  width: 38rpx;
+  height: 38rpx;
+  border: 2rpx solid #ccc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28rpx;
+  color: white;
+}
+
+.scrollContainer .active .address-select {
+  background-color: #6AB4FF;
+  border-color: #6AB4FF;
+}
+
+
+
+
+.scrollContainer .address-info{
+  height: 116rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.scrollContainer .address-info .title {
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.scrollContainer .address-info .info {
+  font-size: 22rpx;
+  color: #A7A7A7;
+}
+
+
+.oprate-btn {
+  height: 160rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.oprate-btn .btn {
+  width: 684rpx;
+  height: 88rpx;
+  border-radius: 15rpx;
+  background-color: #6AB4FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  color: white;
+}

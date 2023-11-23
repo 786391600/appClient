@@ -59,7 +59,7 @@ Component({
     HistoricalQuery: function (e) {
       console.log(e.currentTarget.dataset)
       wx.requestSubscribeMessage({
-        tmplIds: ['sRP9Y3eQiha6Vp9Ix2lhvDRppUMFyw6IO0A7xZuUJSg'],
+        tmplIds: ['sRP9Y3eQiha6Vp9Ix2lhvDRppUMFyw6IO0A7xZuUJSg', 'l_NqHPehAxx2cNpVFAFVdFZypD_bdq3yvvJenUW-R1c'],
         success(res) {}
       })
       wx.navigateTo({
@@ -94,6 +94,7 @@ Component({
       //   this.setData({ startAddress: options.data2, endAddress: options.data })
       // }
       let addressObj = {}
+      console.log(options)
       if (options.data) {
         addressObj.startAddress = options.data
       }
@@ -182,6 +183,13 @@ Component({
             until.showToast(e.data.message, 'error');
           }
         })
+      })
+    },
+    concatClick () {
+      console.log('concatClick----------')
+      wx.showShareMenu({
+        withShareTicket: true,
+        menus: ['shareAppMessage', 'shareTimeline']
       })
     }
   },

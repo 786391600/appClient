@@ -13,21 +13,23 @@ Component({
       value: null,
       type: Object,
       observer(value){
-        if (Object.keys(value).length > 0) {
-          let arr = []
-          for(let key in value) {
-            for (let i = 0; i < value[key].length; i++) {
-              let obj = value[key][i];
-              obj.setType = key;
-              obj.setIndex = i;
-              arr.push(obj);
+        if (value) {
+          if (Object.keys(value).length > 0) {
+            let arr = []
+            for(let key in value) {
+              for (let i = 0; i < value[key].length; i++) {
+                let obj = value[key][i];
+                obj.setType = key;
+                obj.setIndex = i;
+                arr.push(obj);
+              }
             }
+            this.setData({
+              configList: arr
+            })
           }
-          this.setData({
-            configList: arr
-          })
+        } 
         }
-      }
     },
     setIndex: {
       value: null,

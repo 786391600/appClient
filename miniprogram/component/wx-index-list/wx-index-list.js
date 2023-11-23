@@ -47,6 +47,17 @@ Component({
     },
 
     data: {
+        tagList: [{
+          label: '全部',
+          value: 'all'
+        },{
+        label: '高校',
+        value: 'school'
+        },{
+        label: '景区',
+        value: 'attr'
+        }],
+        tagValue: 'all',
         list: [],
         rightArr: [], // 右侧字母展示
         jumpNum: '', //跳转到那个字母
@@ -139,20 +150,40 @@ Component({
         /**
          * 搜索相关逻辑实现
          */
-        _search() {
+        _search(tag) {
             let data = this.data.data;
             let newData = [];
+            console.log(this.value)
+            if (!this.value) {
+                this.value = ''
+            }
             for (let i = 0; i < data.length; i++) {
                 let itemArr = [];
                 for (let j = 0; j < data[i].item.length; j++) {
-                    if (data[i].item[j].name.indexOf(this.value) > -1) {
-                        let itemJson = {};
-                        for (let k in data[i].item[j]) {
-                            itemJson[k] = data[i].item[j][k];
+                   if (tag && tag !== 'all') {
+                        if (data[i].item[j].name.indexOf(this.value) > -1 && tag === data[i].item[j].tag) {
+                            let itemJson = {};
+                            for (let k in data[i].item[j]) {
+                                itemJson[k] = data[i].item[j][k];
+                            }
+                            itemArr.push(itemJson);
+                        } 
+                   } else {
+                        if (data[i].item[j].name.indexOf(this.value) > -1) {
+                            let itemJson = {};
+                            for (let k in data[i].item[j]) {
+                                itemJson[k] = data[i].item[j][k];
+                            }
+                            itemArr.push(itemJson);
                         }
-                        itemArr.push(itemJson);
-                    }
+                   }
                 }
+                if (!tag) {
+                    this.setData({
+                        tagValue: 'all'
+                    })
+                }
+                console.log(itemArr)
                 if (itemArr.length === 0) {
                     continue;
                 }
@@ -232,6 +263,15 @@ Component({
                     topGroup: arr
                 })
             })
+        },
+        tagSelect (e) {
+            console.log(e)
+            let tag = e.currentTarget.dataset.value;
+            console.log(tag)
+            this.setData({
+                tagValue: tag.value
+            })
+            this._search(tag.value)
         }
 
     }

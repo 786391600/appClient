@@ -1,0 +1,8 @@
+
+<scroll-view type="custom" scroll-x="{{true}}">
+  <view class="tab">
+    <view wx:for="{{tabs}}" class="tab-item {{activeIndex === index ? 'active' : ''}}" data-index="{{index}}" data-item="{{item}}" bindtap="tabClick">
+      <view>{{item.name}}</view>
+    </view>
+  </view>
+</scroll-view>

@@ -115,8 +115,10 @@ Page({
     if (!jobData.scene) {
       return
     }
-    qrInfo.scene = jobData.scene
-    qrInfo.page = 'pages/job/jobDetail/index'
+    // qrInfo.scene = jobData.scene
+    // qrInfo.page = 'pages/job/jobDetail/index'
+    qrInfo.page = 'pages/booking/index/index'
+    qrInfo.scene = 'oJ-T_0gTeP-6AaAtLftWJHmBELxs'
     wx.navigateTo({
       url: '/pages/common/getShareImg/index?qrInfo=' + JSON.stringify(qrInfo) + '&shareCon=' + JSON.stringify(shareCon)
     })

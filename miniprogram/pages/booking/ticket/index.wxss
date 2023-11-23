@@ -59,7 +59,7 @@
 .ticket-top-right .trans-btn {
   transform: rotate(90deg);
   border: 3rpx solid #EBEBEB;
-  background-color: #F5F5F5;
+  background-color: var(--var-color1);
   border-radius: 50%;
   color: #B9B9B9;
   padding: 20rpx;
@@ -193,3 +193,37 @@
       font-weight: bold;
       font-style: ；
     }
+
+
+    .share{
+      position: fixed;
+      left: 0rpx; 
+      bottom: 300rpx;
+      height: 60rpx;
+      /* overflow: hidden; */
+      /* font-size: 44rpx; */
+    }
+    .share .i {
+      font-size: 34rpx;
+    }
+    .share button{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      outline: none;
+      background-color: #FFD148;
+      color: #784A00;
+      opacity: 0.8;
+      border-radius: 0%;
+      border-top-right-radius: 40rpx;
+      border-bottom-right-radius: 40rpx;
+      border: 1rpx solid #DFDFDF;
+      font-size: 24rpx;
+      font-weight: bold;
+    }
+    .share button::after{
+      border: none;
+    } 

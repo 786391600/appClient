@@ -3,7 +3,7 @@
   <component_index searchData='{{component_index.searchData}}'/>
 </view>
 <view wx-if="{{currentTab == 1? true: false}}" class="component-box">
-  <component_orderList/>
+  <component_orderList bind:changeTab='changeTab'/>
 </view>
 
 <!-- 自定义 tabbar -->

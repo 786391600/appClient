@@ -1,0 +1,72 @@
+<wxs src="../OrderList/index.wxs" module="wxs"></wxs>
+<wxs module="filter" src="../../../until/filter.wxs"></wxs>
+
+<view class="Info-box">
+    <view id='time'>
+      <view class="time-info">发车时间：{{filter.getFormatTime(orderInfo.departureTime)}}</view>
+    </view>
+    <view id='Start'>
+    <view class='Start'>
+      <view class='end'>{{orderInfo.start}}</view>
+      <i class='iconfont icon-icon_jipiaodancheng'></i>
+      <view class='end'>{{orderInfo.end}}</view>
+    </view>
+  </view>
+</view>
+
+<view class="Boarding-point">
+    <view class="title">退款金额：<span class="fee">￥{{currentFee}}</span></view>
+    <view class="point-list refound-tip">
+      <span wx:if="{{currentPg <= 0}}" style="color: #5BC177">本次将全额退款</span>
+      <span wx:if="{{ currentPg > 0 && currentPg < 100 }}">据发车不足{{currentHours}}小时，将扣除票面{{currentPg}}%</span>
+      <span wx:if="{{currentPg >= 100}}">据发车不足{{currentHours}}小时，不予退票</span>
+    </view>
+</view>
+<view class="Boarding-point">
+    <view class="title">订单编号</view>
+    <view class="point-list">
+      {{orderInfo.out_trade_no}}
+    </view>
+</view>
+<view class="Boarding-point">
+    <view class="title">退票说明</view>
+    <view class="point-list">
+      <view class="refound-tabel first">
+         <view class="refound-title">退票时间</view>
+         <view class="refound-info">退票手续费收取规则</view>
+      </view>
+      <view class="refound-tabel" wx:for="{{ruleList}}">
+         <view class="refound-title">据发车不足{{item.hours}}小时</view>
+         <view class="refound-info"><span class="refound-tip" wx:if="{{item.pg >= 100}}">不予退票</span><span wx:else>扣除票面{{item.pg}}%</span></view>
+      </view>
+      <view class="refound-tabel">
+         <view class="refound-title">据发车大于{{ruleList[ruleList.length - 1].hours}}小时</view>
+         <view class="refound-info"><span style="color: #5BC177">全额退款</span></view>
+      </view>
+      <view class="refound-tabel">
+         <view class="refound-title">出票中</view>
+         <view class="refound-info"><span style="color: #5BC177">全额退款</span></view>
+      </view>
+      <view class="refound-tabel">
+         <view class="refound-title">候补中</view>
+         <view class="refound-info"><span style="color: #5BC177">全额退款</span></view>
+      </view>
+    </view>
+</view>
+
+<!-- <view class="select-rider">
+  <view id='Title'>乘客信息</view>
+  <view class='riderList' wx:for='{{orderInfo.riderList}}'>
+    <view class='riderList-left'>
+      <view class='riderList-name'>
+          乘车人：<span>{{item.name}}</span>
+      </view>
+      <view class='riderList-name'>
+          <span>身份证：{{item.idCard}}</span>
+      </view>
+    </view>
+  </view>
+  </view> -->
+  <view class="connect-box" wx:if="{{currentFee > 0 && canrefound}}">
+    <view catchtap='toContacts' class="connent-btn">{{refoundText}}</view>
+  </view>

@@ -28,7 +28,6 @@ module.exports = {
           action: 'app.crowd.getSchoolInfoById',
           data: query
         }).then(function (e) {
-           console.log(e, 'ooooooooooooooooo')
            if (e.data.success) {
              that.currentSchool = e.data.data.schoolInfo
              callback({success: true, data: e.data.data.schoolInfo})

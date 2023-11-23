@@ -32,18 +32,20 @@
      schoolId: '',
      shopId: '',
      surcharge: [],
-     surchargeConfig: {
-      section: 10, // 涨价区间
-      divide: 1, // 抽成费用
-      reward: 0.5 // 骑手费用
-     },
      titledomlist: [],
      pageMode: '', // 通过什么方式进来,
      className: '',
      addressInfo: {}, //商家地址 电话信息
      dvideId: '', // 分成id
      goodsType: 'delivery', // 配送类型  selflifting-自提  delivery-外卖
-     pickupTime: []
+     pickupTime: [],
+     // 除了按份设置外的平台费用规则
+     feeConfig: {
+       tApConfig: null, // 骑手费用
+       extracharge: null, // 附加费用
+       dfConfig: null // 抽成
+     },
+     severalConfig: null
    },
 
    /**
@@ -104,15 +106,10 @@
       }
     }).then(function (e) {
       if (e.data.success){
-        console.log(e.data)
+        console.log(e.data, '店铺信息')
+        let shopInfo = e.data.data;
         let shopData = e.data.data.shopData || [];
         let shopName = e.data.data.title || '校园商店';
-        let surcharge = e.data.data.surcharge || [{label: '基础配送', price: 0.5}];
-        let surchargeConfig = e.data.data.surchargeConfig || {
-          section: 9, // 涨价区间
-          divide: 1.3, // 抽成费用
-          reward: 1 // 骑手费用
-        }
         let dvideId = e.data.data.dvideId || ''
         let shop = {
           data: shopData,
@@ -124,9 +121,10 @@
           headImg: e.data.data.headImg
         }
         let addressInfo = e.data.data.addressInfo || {}
-
+        that.data.severalConfig = e.data.data.severalConfig || null
         //  配送方式
         let dtConfig =  e.data.data.dtConfig || ['delivery', 'selflifting']
+        // let dtConfig =  ['delivery', 'selflifting']
         let pickupTime = e.data.data.pickupTime || []
         let dtType = dtConfig[0]
         let filterShop = that.filterShopDataByGoodsType(dtType, shop)
@@ -136,13 +134,16 @@
           schoolId: options.schoolId,
           shopId: options.shopId,
           shopName: shopName,
-          surcharge: surcharge,
-          surchargeConfig: surchargeConfig,
           addressInfo: addressInfo,
           dvideId: dvideId,
           dtConfig: dtConfig,
           goodsType: dtType,
-          pickupTime: pickupTime
+          pickupTime: pickupTime,
+          feeConfig: {
+            tApConfig: shopInfo.tApConfig || null, // 骑手费用
+            extracharge: shopInfo.extracharge || null, // 附加费用
+            dfConfig: shopInfo.dfConfig || null // 抽成
+          }
         }, () => {
           var query = wx.createSelectorQuery();
           query.selectAll('.classifytitle').boundingClientRect((res) => {
@@ -247,7 +248,6 @@
 
    // 添加商品到购物车
    addCart(e) {
-     console.log(e);
      // 商品id
      var currentMenu = e.target.dataset.data;
      var id = e.target.dataset.id;
@@ -262,17 +262,20 @@
      var list = this.data.cartList;
      var sortedList = {};
 
-     // 抽成  selflifting-自提  delivery-外卖 arrival-核销 eatin-堂食
-     var dividePrice = currentMenu.divide ? currentMenu.divide.price : 0;
-     var reward = currentMenu.reward ? currentMenu.reward : 0;
-     var selfliftingDivide = currentMenu.divide && currentMenu.divide.selflifting ? currentMenu.divide.selflifting : 0;
-     var arrivalDivide = currentMenu.divide && currentMenu.divide.arrival ? currentMenu.divide.arrival : 0;
-     var eatinDivide = currentMenu.divide && currentMenu.divide.eatin? currentMenu.divide.eatin : 0;
+     // 费用处理
+     console.log(currentMenu, 'iiiiiiiiiiiiiiiiiiiii')
+     // 附加费
+     var extrachargeFee = currentMenu.extrachargeFee ? currentMenu.extrachargeFee : 0;
+     // 配送费
+     var rewardFee = currentMenu.rewardFee ? currentMenu.rewardFee : 0;
+     // 抽成
+     var dtFee = currentMenu.dtFee ? currentMenu.dtFee : 0;
      var index; // 购物车中相同id index
      if (index = this.checkOrderSameId(id)) { //相同商品id
-       sortedList = list[index];
        var num = list[index].num;
+       list[index].surcharge = surcharge
        list[index].num = np.plus(num, 1);
+       sortedList = list[index];
      } else { //不同商品id
        var order = {
          "id": id,
@@ -282,11 +285,10 @@
          "num": 1,
          "img": img,
          'surcharge': surcharge,
-         'dividePrice': dividePrice,
-         'reward': reward,
-         'selfliftingDivide': selfliftingDivide,
-         'arrivalDivide': arrivalDivide,
-         'eatinDivide': eatinDivide
+         'extrachargeFee': extrachargeFee,
+         'rewardFee': rewardFee, // 配送费
+         'dtFee': dtFee,
+         'settlement': currentMenu.settlement ? true : false
        }
        list.push(order);
        sortedList = order;
@@ -410,6 +412,7 @@
       })
      }
      let price = np.plus(list.price, surchargePrice);
+     console.log(price, 'add price')
      var total = np.plus(this.data.cart.total, price);
      this.saveCart(count, total);
    },
@@ -525,12 +528,12 @@
      }
      let selectList = JSON.stringify(this.data.localList);
      let cartData = JSON.stringify(this.data.cart);
-     let surcharge = JSON.stringify(this.data.surcharge);
-     let surchargeConfig = JSON.stringify(this.data.surchargeConfig)
      let shopAddressInfo = JSON.stringify(this.data.addressInfo)
-     console.log(this.data.pickupTime, 'jjjjjjjjjjjjjjjjjjjjj')
+     let feeConfig = JSON.stringify(this.data.feeConfig)
+     console.log(selectList, '结算商品列表')
+     let severalConfig = JSON.stringify(this.data.severalConfig)
      wx.navigateTo({
-       url: '../sureOrder/index?orderList=' + selectList + '&cart=' + cartData + '&schoolId=' + this.data.schoolId + '&shopId=' + this.data.shopId + '&shopName=' + this.data.shopName + '&surcharge=' + surcharge + '&surchargeConfig=' + surchargeConfig + '&shopAddressInfo=' + shopAddressInfo + '&dvideId=' + this.data.dvideId + '&type=' + this.data.goodsType + '&dtConfig=' + JSON.stringify(this.data.dtConfig) + '&pickupTime=' + JSON.stringify(this.data.pickupTime)
+       url: '../sureOrderNew/index?orderList=' + selectList + '&cart=' + cartData + '&schoolId=' + this.data.schoolId + '&shopId=' + this.data.shopId + '&shopName=' + this.data.shopName + '&feeConfig=' + feeConfig + '&shopAddressInfo=' + shopAddressInfo + '&dvideId=' + this.data.dvideId + '&type=' + this.data.goodsType + '&dtConfig=' + JSON.stringify(this.data.dtConfig) + '&pickupTime=' + JSON.stringify(this.data.pickupTime) + '&severalConfig=' + severalConfig
      })
    },
    // 核销商品结算
@@ -547,11 +550,13 @@
     var surcharge = menuData.surcharge || null
     var goodsType = menuData.goodsType || null
     console.log(id, name, price, spec, num, img)
+    let feeConfig = JSON.stringify(this.data.feeConfig)
     var list = [];
 
     // 抽成
     var dividePrice = menuData.divide ? menuData.divide.price : 0;
     var reward = menuData.reward ? menuData.reward : 0;
+    let severalConfig = JSON.stringify(this.data.severalConfig)
     
     var order = {
       "id": id,
@@ -573,10 +578,9 @@
        total: price
      });
      let tosurcharge = JSON.stringify([]);
-     let surchargeConfig = JSON.stringify(this.data.surchargeConfig)
      let shopAddressInfo = JSON.stringify(this.data.addressInfo)
      wx.navigateTo({
-       url: '../sureOrder/index?orderList=' + selectList + '&cart=' + cartData + '&schoolId=' + this.data.schoolId + '&shopId=' + this.data.shopId + '&shopName=' + this.data.shopName + '&surcharge=' + tosurcharge + '&surchargeConfig=' + surchargeConfig + '&type=arrival&detail=' + detail + '&shopAddressInfo=' + shopAddressInfo
+       url: '../sureOrderNew/index?orderList=' + selectList + '&cart=' + cartData + '&schoolId=' + this.data.schoolId + '&shopId=' + this.data.shopId + '&shopName=' + this.data.shopName + '&surcharge=' + tosurcharge  + '&type=arrival&detail=' + detail + '&shopAddressInfo=' + shopAddressInfo + '&severalConfig=' + severalConfig + '&feeConfig=' + feeConfig
      })
    },
    // 确认修改
@@ -701,41 +705,195 @@
       cart: filterTotal.cart
     })
   },
+  // 按份附加费
+  getExtracharge (fee, type) {
+    // sultType: [] 适用类型
+    let feeConfig = this.data.severalConfig
+    let extracharge = feeConfig.extracharge
+    // 用于展示
+    if (extracharge) {
+      let currentFee = Number(fee)
+      let setExtracharge = [];
+      extracharge.forEach((item) => {
+        if (item.trigger === 'bycost') {
+          item.rule.some((ruleItem) => {
+             let currentSection = ruleItem.section;
+             let section0 = Number(currentSection[0]);
+             let section1 = Number(currentSection[1]);
+             let ruleFee = Number(ruleItem.fee);
+             if (section1 > 0) {
+               if (currentFee >= section0 && currentFee < section1) {
+                 setExtracharge.push({
+                   title: item.label,
+                   price: ruleFee,
+                   hide: item.sultType.indexOf(type) < 0,
+                   // 用于localData 处理
+                   type: item.sultType
+                 })
+                 return true
+               }
+             } else {
+               if (currentFee > section0) {
+                 setExtracharge.push({
+                   title: item.label,
+                   price: ruleFee,
+                   hide: item.sultType.indexOf(type) < 0
+                 })
+                 return true
+               }
+             }  
+          })
+       }
+      })
+
+      let extrachargeFee = 0;
+      setExtracharge.forEach((item) => {
+       if (!item.hide) {
+        extrachargeFee = np.plus(extrachargeFee, item.price)
+       }
+      })
+      console.log('按份附加费用：', extrachargeFee)
+      return {
+       setExtracharge: setExtracharge,
+       extrachargeFee: extrachargeFee
+      }
+    }
+  },
+  // 按份配送费
+  getRewardInfo (fee, type) {
+    let feeConfig = this.data.severalConfig
+    let sultType = ['delivery']
+    let tApConfig = feeConfig.tApConfig
+    let returnFee = 0;
+    if (tApConfig && sultType.indexOf(type) > -1) {
+      let currentFee = Number(fee)
+      console.log(tApConfig, '配送费配置')
+      if (tApConfig.type === 'fixed') {
+        // 固定费用
+        returnFee = Number(tApConfig.value.value); 
+      } else if (tApConfig.type === 'ladder') {
+        let rule = tApConfig.value
+        if (rule && rule.length > 0) {
+           let isState = false
+           rule.some((item) => {
+             let section = item.section
+             let section0 = Number(section[0])
+             let section1 = Number(section[1])
+             if (currentFee >= section0 && currentFee < section1) {
+               // 结束
+               console.log('命中配置ooo', item)
+               isState = true
+               returnFee = Number(item.fee)
+               return true
+             }
+           })
+           if (!isState) {
+             returnFee = Number(rule[0].fee)
+           }
+        }
+      }
+    }
+    console.log('按份配送费用：', returnFee)
+    return {
+      rewardFee: returnFee
+    }
+  },
+  // 按份抽成
+  getDtFee (currentFee, type) {
+    let feeConfig = this.data.severalConfig
+    let dfConfig = feeConfig.dfConfig;
+    let fee = Number(currentFee)
+    let returnFee = 0;
+    if (dfConfig) {
+      let currentType = dfConfig.type;
+      if (currentType === 'fixed') {
+         let currentValue = dfConfig.value;
+         if (currentValue.type === 'bytype') {
+           returnFee = Number(currentValue.typeValue[type])
+         } else {
+           returnFee = Number(currentValue.value)
+         }
+      } else if (currentType === 'percentage') {
+        let currentValue = dfConfig.value
+        let pg = 0;
+        if (currentValue.type === 'bytype') {
+           pg = Number(currentValue.typeValue[type])
+        } else {
+           pg = Number(currentValue.value)
+        }
+        returnFee = np.times(np.divide(pg, 100), fee)
+      } else if (currentType === 'ladder') {
+        let currentValue = dfConfig.value;
+        let isState = false
+        currentValue.some((item) => {
+          let section = item.section
+          let section0 = Number(section[0])
+          let section1 = Number(section[1])
+          if (fee >= section0 && fee <section1) {
+            if (item.type === 'bytype') {
+              returnFee = Number(item.typefee[type])
+            } else {
+              returnFee = Number(item.fee)
+            }
+            isState = true
+            return true
+          }
+        })
+        if (!isState) {
+          let currentRule = currentValue[0]
+          if (currentRule.type === 'bytype') {
+            returnFee = Number(currentRule.typefee[type])
+          } else {
+            returnFee = Number(currentRule.fee)
+          }
+        }
+      }
+    }
+    console.log('按份抽成费用:', Number(returnFee.toFixed(2)))
+    return {
+      fee: Number(returnFee.toFixed(2))
+    }
+  },
   filterShopDataByGoodsType (type, shopdata) {
-    // 过滤 所有餐品打包费 餐盒费
+    var that = this;
+    var severalConfig = this.data.severalConfig || null
     var _shop = this.data.shop || shopdata;
      _shop.data.forEach((item1, index1) => { // 循环分类
        item1.menu.forEach((item2, index2) => { // 循环菜品
         let item2Total = 0
-        if (item2.surcharge && item2.surcharge.length > 0) {
-          item2.surcharge.forEach((sureitem) => {
-            // 配送类型  selflifting-自提  delivery-外卖
-            if (type === 'selflifting') {
-              if (sureitem.title.indexOf('跑') > -1 || sureitem.title.indexOf('送') > -1 || sureitem.title.indexOf('配') > -1) {
-                sureitem.hide = true
-              }
-            } else if (type === 'delivery') {
-              sureitem.hide = false
+        if (item2.settlement) {
+          // 是否按份配置
+          // 按份附加费处理
+          let getExtrachargeInfo = that.getExtracharge(item2.price, type)
+          item2.surcharge = getExtrachargeInfo.setExtracharge
+          item2.extrachargeFee = getExtrachargeInfo.extrachargeFee
+          // // 按份配送费
+          // let getRewardInfo = that.getRewardInfo(item2.price, type)
+          // item2.rewardFee = getRewardInfo.rewardFee
+          // // 按份抽成费用
+          // let getDtFeeInfo = that.getDtFee(item2.price, type)
+          // item2.dtFee = getDtFeeInfo.fee
+        } else {
+          item2.surcharge = null
+        }
+        if (item2.menu && item2.menu.length > 0) {
+          item2.menu && item2.menu.forEach((item3, index3) => { // 循环规格
+            // 每个规格费用
+            if (item2.settlement && item2.extrachargeFee) {
+              let item3surcharge = item2.extrachargeFee
+              item2Total = np.plus(item2Total, np.times(item3.num, np.plus(item3.price, item3surcharge)))
+            } else {
+              item2Total = np.plus(item2Total, np.times(item3.num, item3.price))
             }
           })
-        }
-        console.log('llllllllllllllllll')
-        item2.menu && item2.menu.forEach((item3, index3) => { // 循环规格
-          // 每个规格费用
-          if (item2.surcharge && item2.surcharge.length > 0) {
-            let item3surcharge = 0
-            item2.surcharge.forEach((sureitem) => {
-              if (!sureitem.hide) {
-                item3surcharge = np.plus(item3surcharge, sureitem.price)
-              }
-            })
-            console.log(item3, item2)
-            item2Total = np.plus(item2Total, np.times(item3.num, np.plus(item3.price, item3surcharge)))
+        } else {
+          if (item2.settlement && item2.extrachargeFee) {
+            let item3surcharge = item2.extrachargeFee
+            item2Total = np.plus(item2Total, np.times(item2.num, np.plus(item2.price, item3surcharge)))
           } else {
-            console.log(item2Total, 'llll')
-            item2Total = np.plus(item2Total, np.times(item3.num, item3.price))
+            item2Total = np.plus(item2Total, np.times(item2.num, item2.price))
           }
-        })
+        }
         item2.total = item2Total
        })
      })
@@ -748,20 +906,21 @@
     let total = 0;
     _localList.forEach((item) => {
       let menuTotal = item.price
-      if (item.surcharge && item.surcharge.length > 0) {
-        item.surcharge.forEach((sureitem) => {
-          // 配送类型  selflifting-自提  delivery-外卖
-          if (type === 'selflifting') {
-            if (sureitem.title.indexOf('跑') > -1 || sureitem.title.indexOf('送') > -1 || sureitem.title.indexOf('配') > -1) {
+      if (item.settlement) {
+        // 处理购物车 按份计算
+        if (item.surcharge && item.surcharge.length > 0) {
+          item.surcharge.forEach((sureitem) => {
+            // 配送类型  selflifting-自提  delivery-外卖
+            if (sureitem.type && sureitem.type.indexOf(type) > -1) {
+              sureitem.hide = false
+            } else {
               sureitem.hide = true
             }
-          } else if (type === 'delivery') {
-            sureitem.hide = false
-          }
-          if (!sureitem.hide) {
-            menuTotal = np.plus(menuTotal, Number(sureitem.price))
-          }
-        })
+            if (!sureitem.hide) {
+              menuTotal = np.plus(menuTotal, Number(sureitem.price))
+            }
+          })
+        }
       }
       menuTotal = np.times(menuTotal, item.num)
       total = np.plus(total, menuTotal)

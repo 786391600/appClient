@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "mp-half-screen-dialog": "weui-miniprogram/half-screen-dialog/half-screen-dialog",
+    "label-select": "/pages/common/label-select/index",
+    "take-time": "/pages/common/take-time/index"
+  },
+  "enablePullDownRefresh": false,
+  "navigationBarTitleText": "订单确认",
+  "navigationBarBackgroundColor": "#FCD844"
+}

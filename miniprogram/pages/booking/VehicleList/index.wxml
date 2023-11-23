@@ -1,17 +1,17 @@
 <!--miniprogram/pages/VehicleList/index.wxml-->
-<!-- <view id='PageTurning'>
-  <view>{{'<'}} 前一天</view>
-  <view>{{date}}</view>
-  <view>后一天 {{'>'}}</view>
-</view> -->
 <wxs module="filter" src="../../../until/filter.wxs"></wxs>
+<view id='PageTurning'>
+  <!-- <view>{{'<'}} 前一天</view> -->
+  <view class="time">{{filter.getFormatTime1(currentDate)}}</view>
+  <!-- <view>后一天 {{'>'}}</view> -->
+</view>
 <view id='ListBackground'>
-  <view class='TitleAddress'>{{lineInfo.start}} - {{lineInfo.end}}</view>
+  <!-- <view class='TitleAddress'>{{lineInfo.start}} - {{lineInfo.end}}</view> -->
   <view class='ContentAddress' wx:for="{{carList}}" bindtap='goTicketDetails' data-detail='{{item}}' data-num='{{filter.getNum(item, lineInfo)}}'>
     <view class='ContentBox'>
       <view class='BoxTitle'>
-        <view>{{item.departureTime
-}}</view>
+        <view class="title-time">{{filter.getFormatTime2(item.departureTimeTeml)
+}} 发车</view>
         <view>￥{{lineInfo.price}}元</view>
       </view>
       <view class='BoxContent'>
@@ -22,22 +22,25 @@
             <view>{{item.Throughout>0?'始发':'终点'}}</view>
           </view> -->
           <view class='cont-backg'>
-            <view style="background:#ffdc73">起</view>
-            <view>{{lineInfo.start}}</view>
-            <view>始发</view>
+            <view style="background:#ffdc73">上</view>
+            <view class="address-box">{{lineInfo.start}}</view>
+            <!-- <view>始发</view> -->
           </view>
           <view class='cont-backg'>
-            <view style="background:#03a9f4">终</view>
-            <view>{{lineInfo.end}}</view>
-            <view>终点</view>
+            <view style="background:#03a9f4">下</view>
+            <view class="address-box">{{lineInfo.end}}</view>
+            <!-- <view>终点</view> -->
           </view>
         </view>
         <view class='distance'>
-          <view><span wx:if='{{filter.getNum(item, lineInfo) > 10}}'>余票充足</span><span wx:elif='{{filter.getNum(item, lineInfo) > 0}}'>剩余{{filter.getNum(item, lineInfo)}}张票</span><span wx:else>票已售光</span></view>
+          <!-- <view><span wx:if='{{filter.getNum(item, lineInfo) > 10}}'>余票充足</span><span wx:elif='{{filter.getNum(item, lineInfo) > 0}}'>剩余{{filter.getNum(item, lineInfo)}}张票</span><span wx:else>点击购票</span></view> -->
+          <view><span wx:if='{{item.state}}'>点击购票</span><span style="color: #ccc; border-color: #ccc;" wx:else>已售罄</span></view>
         </view>
       </view>
-      <view class='provider' wx:if='{{item.provider}}'>服务提供商：{{item.provider}}</view>
-      <view class='provider'>上车地点：<span wx:if='{{item.departurePlace}}'>{{item.departurePlace}}</span><span wx:else>随后通知</span></view>
+      <view class='provider' wx:if='{{item.provider}}'>承运商：{{item.provider}}</view>
+      <!-- <view class='provider'>乘车地点：{{lineInfo.departurePlace ? lineInfo.departurePlace : '公众号通知'}}</view> -->
+      <!-- <view class='provider' catch:tap="toAddress" data-point="{{item.startPoint}}">上车点：{{item.startPoint.label ? item.startPoint.label : '公众号通知'}}</view>
+      <view class='provider' catch:tap="toAddress" data-point="{{item.endPoint}}">下车点：{{item.endPoint.label ? item.endPoint.label : '公众号通知'}}</view> -->
     </view>
   </view>
 </view>

@@ -1,0 +1,15 @@
+<map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: 60vh" include-points='{{include-points}}' enable-traffic='true' enable-zoom='{{true}}' enable-scroll='{{true}}' scale='{{16}}'></map>
+<view class='carInfo'>
+  <scroll-view scroll-y class='scrollContainer'>
+      <view bind:tap ="addressClick" wx:for='{{addressList}}'  data-Index='{{index}}' data-addressinfo="{{item}}" class = "scroll-item {{currentCarTab === index ? 'active' : ''}}">
+         <view class="address-info">
+           <view class="title">{{item.point.label}}</view>
+           <view class="info">{{item.point.label}}</view>
+         </view>
+         <view class="address-select"><i class="iconfont icon-xuanze"></i></view>
+      </view>
+  </scroll-view>
+  <view class="oprate-btn">
+    <view bind:tap ="saveAddress" class="btn">确认地点</view>
+  </view>
+</view>

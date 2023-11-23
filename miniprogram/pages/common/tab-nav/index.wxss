@@ -1,0 +1,27 @@
+.tab {
+  display: flex;
+  flex-direction: row;
+  padding: 16rpx 30rpx 16rpx;
+  box-sizing: border-box;
+}
+.tab-item {
+  display: flex;
+  margin-right: 17rpx;
+  height: 54rpx;
+  border-radius: 27rpx;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  color: #4A4A4A;
+  padding: 0 25rpx 0;
+  font-size: 26rpx;
+  flex-wrap: nowrap;
+}
+.tab-item view {
+  white-space: nowrap;
+}
+.active {
+  color: #251900;
+  font-weight: 800;
+  background-color: #FCD844;
+}

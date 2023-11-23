@@ -1,16 +1,34 @@
-<wxs module="filter" src="./index.wxs"></wxs>
-<form bindsubmit="formSubmit" report-submit='true'>
-  <view id='time'>
-    <view>发车时间 {{carInfo.departureTime}}</view>
-    <view>票价:￥{{lineInfo.price}}</view>
-  </view>
-  <view id='Start'>
+<wxs module="filter" src="../../../until/filter.wxs"></wxs>
+<form class="form" bindsubmit="formSubmit" report-submit='true'>
+  <view class="Info-box">
+    <view id='time'>
+      <view class="time-info">{{filter.getFormatTime(carInfo.departureTime)}} 发车</view>
+      <view>票价:￥{{lineInfo.price}}</view>
+    </view>
+    <view id='Start'>
     <view class='Start'>
       <view class='end'>{{lineInfo.start}}</view>
-      <i class='iconfont ticket4'></i>
+      <i class='iconfont icon-icon_jipiaodancheng'></i>
       <view class='end'>{{lineInfo.end}}</view>
     </view>
   </view>
+  </view>
+  <view class="carrier" wx:if="{{fleetInfo && fleetInfo.carrier}}">承运方：{{fleetInfo.carrier}}</view>
+  <view class="Boarding-point">
+    <view class="title">上下车点</view>
+    <view class="point-list">
+      <view class="point-item" bind:tap="mapSelect" data-type='start'><view class="icon" style="background:#ffdc73">上</view><view style="color: #969CA9;" wx:if="{{!(point.start && point.start.point)}}">{{point.start && point.start.point ? point.start.point.label : '选择上车点'}}</view><view wx:else class="point-item-item">{{point.start.point.label}}<view class="toAdress" data-point="{{point.start.point}}" catch:tap="toAddress">地图导航</view></view></view>
+      <view class="point-item" bind:tap="mapSelect" data-type="end"><view class="icon" style="background:#03a9f4">下</view><view  style="color: #969CA9;" wx:if="{{!(point.end && point.end.point)}}">{{point.end && point.end.point ? point.end.point.label : '选择下车点'}}</view><view wx:else class="point-item-item">{{point.end.point.label}}<view class="toAdress" catch:tap="toAddress" data-point="{{point.end.point}}">地图导航</view></view></view> 
+    </view>
+    <view class="point-time" wx:if="{{reachTime}}">
+      <i class="iconfont icon-shijian"></i>
+      <view class="point-time-info">
+        <view class="point-time-info-title">车辆约 {{filter.getFormatTime2(reachTime)}} 到达您的上车点</view>
+        <view class="point-time-info-info">请您提前到达乘车点位置，以免耽误行程</view>
+      </view>
+    </view>
+  </view>
+  <view class="select-rider">
   <view id='Title'>选择乘客</view>
   <view class='riderList' wx:for='{{riderList}}'>
     <view class='riderList-left'>
@@ -30,6 +48,8 @@
     <view class='AddTo'>+ 添加乘车人</view>
   </view>
   <view class='tip'>提示：个人信息涉及乘车险绑定，务必填写乘车人有效身份证一致的姓名和身份证号，如填写错误，一切后果个人承担！</view>
+</view>
+<view class="Contact">
   <view id='Title'>联系方式</view>
   <view class='submit'>
     <view class='Contacts'>
@@ -42,11 +62,19 @@
     </view>
     <p>务必填写正确的手机号码，接受出发通知！</p>
   </view>
+  <view class="isAgreement">
+    <checkbox-group bindchange="checkboxChange">
+      <checkbox value="{{isAgreement}}" checked="{{isAgreement}}"/>
+    </checkbox-group>
+    <view class="text">我已阅读并同意<span bind:tap="toXieyi">《用车协议》</span></view>
+  </view>
+</view>
   <view class='Submission'>
     <view class='payment'>
       <view>付款金额</view>
-      <view>￥{{filter.numberToFix(riderList.length * lineInfo.price)}}元</view>
+      <!-- <view>￥{{filter.numberToFix(riderList.length * lineInfo.price)}}元</view> -->
+      <view>￥{{showPrice}}元</view>
     </view>
-    <button form-type="submit">提交订单</button>
+    <button class="pay-submit" form-type="submit">{{beingSubmit ? '支付中...' : '提交订单'}}</button>
   </view>
 </form>

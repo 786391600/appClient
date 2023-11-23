@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "component_loading": "/pages/common/loading/loading"
+  }
+}

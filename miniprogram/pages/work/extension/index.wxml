@@ -1,0 +1,24 @@
+<view class="box-head">
+  <component_tab style="width: 100%" tabs='{{tabs}}' activeIndex='{{activeIndex}}' bind:change="tabChange"></component_tab>
+</view>
+<view class="box">
+<view wx:if="{{activeIndex === 0}}">
+  <view class="tip">
+    微信内直接分享小程序，好友可直接打开，体验更直观，流畅。
+  </view>
+  <view class="content"></view>
+  <view class="oprate">
+    <button class="share-btn" open-type="share">点击分享</button>
+  </view>
+</view>
+<view wx:if="{{activeIndex === 1}}">
+  <view class="tip">
+    支持更多场景分享，可将文案链接发送到朋友圈，或者其他社交平台
+  </view>
+</view>
+<view wx:if="{{activeIndex === 2}}">
+  <view class="tip">
+    获取小程序路径，适用于微信公众号流量用户，可在文章中插入，也可对接到服务窗口
+  </view>
+</view>
+</view>

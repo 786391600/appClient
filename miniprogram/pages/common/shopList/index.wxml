@@ -1,0 +1,28 @@
+<component_loading  wx:if="{{loading}}" text="加载中..."></component_loading>
+<view class="business-box" wx:if="{{shopList.length > 0}}">
+    <!-- <view class="business-title">校园商家</view> -->
+    <view class="business-item" wx:for="{{shopList}}" bindtap="toShop" data-schoolid="{{item.schoolId}}" data-shopid="{{item.id}}">
+      <view class="business-head" style="background-image: url({{item.headImg?item.headImg:''}});">
+        <view class="tip" wx:if="{{item.markLight}}">{{item.markLight}}</view>
+        <view class="close" wx:if="{{item.close}}">店铺休息中</view>
+        <view class="icon" wx:if="{{!item.headImg && item.icon}}" style="color: {{item.color? item.color: '#F8B528'}}">
+          <i class="iconfont {{item.icon? item.icon: 'icon-dianpu'}}"></i>
+        </view>
+      </view>
+      <view class="business-info">
+        <view class="title row">{{item.title}}</view>
+        <view class="condition row"><span>起送 ￥{{item.deliveryPrice?item.deliveryPrice:0}}</span><view class="major">校帮手专送</view></view>
+        <view class="recommend row" wx:if="item.labelList && item.labelList.length > 0">
+          <span wx:for="{{item.labelList}}" wx:for-item='label'>{{label}}</span>
+        </view>
+      </view>
+    </view>
+</view>
+<!-- <view class="loading" wx:if="{{loading}}">加载中...</view> -->
+<view class="loaded" wx:if="{{loaded}}">已经到底啦~</view>
+<view class="loading-box"  wx:if="{{loading}}">
+  <view class="loading">
+      
+  </view>
+  <span>加载中...</span>
+</view>

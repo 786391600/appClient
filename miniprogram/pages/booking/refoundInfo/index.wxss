@@ -1,0 +1,396 @@
+/* miniprogram/pages/OrderList/index.wxss */
+@import '../../../style/ticket/iconfont.wxss';
+@import '../../../style/common.wxss';
+page {
+  background: #eeeeee;
+  padding-bottom: 160rpx;
+} 
+
+.detail-status {
+  display: flex;
+  padding: 32rpx 38rpx 32rpx;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail-status-title {
+  display: flex;
+  align-items: center;
+  font-size: 44rpx;
+  font-weight: 500;
+}
+
+.success-back{
+  background-color: #E5FDF0;
+}
+.onstandby-back{
+  background-color: rgba(255,135,37, 0.2);
+}
+.inprogress-back{
+  background-color: rgba(255,135,37, 0.2);
+}
+
+.status-button {
+  height: 62rpx;
+  padding: 0 18rpx;
+  font-style: 26rpx;
+  border-radius: 31rpx;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3rpx solid white;
+}
+
+.success-back .status-button{
+  color: #5BC177;
+  border-color: #5BC177;
+}
+.onstandby-back .status-button{
+  color: rgba(255,135,37);
+  border-color: rgba(255,135,37);
+}
+.inprogress-back .status-button{
+  color: rgba(255,135,37);
+  border-color: rgba(255,135,37);
+}
+.status-loading {
+  width: 41rpx;
+  height: 41rpx;
+  border-width: 3rpx;
+  margin-right: 10rpx;
+}
+.icon-xuanze {
+  color: #5BC177;
+  display: inline-block;
+  width: 41rpx;
+  height: 41rpx;
+  border-radius: 50%;
+  border: 3rpx solid #5BC177;
+  line-height: 41rpx;
+  margin-right: 10rpx;
+  text-align: center;
+}
+.detail-status-info{
+  color: #79797B;
+  font-size: 24rpx;
+}
+.detail-box{
+  /* position: fixed;
+  width: 100%;
+  height: 100%; */
+  left: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #03a9f4;
+}
+.detail-card {
+  width: 90%;
+  background: white;
+  padding: 40rpx;
+  box-sizing: border-box;
+  text-align: center;
+  margin-bottom: 30rpx;
+  border-radius: 15rpx;
+}
+.rider {
+  margin-top: 40rpx;
+  border-bottom: 2rpx dashed #ccc;
+  padding-bottom: 40rpx;
+}
+.detail-card .adress{
+  font-size: 50rpx;
+  margin-bottom: 30rpx;
+  border-bottom: 2rpx dashed #ccc;
+  padding: 0 0 40rpx;
+}
+.detail-card span {
+  color: #4788EB;
+}
+.detail-card .info{
+  margin-bottom: 30rpx;
+  border-bottom: 2rpx dashed #ccc;
+  padding: 0 0 40rpx;
+  text-align: left;
+}
+.detail-card .adress i {
+  color: #AEBCC6;
+}
+
+.detail-card .phone{
+  margin-top: 50rpx;
+}
+.detail-card .phone button{
+  background: #FFD148;
+  color:#784A00;
+}
+
+
+
+.notify-box {
+  display: flex;
+  height: 94rpx;
+  font-size: 28rpx;
+  align-items: center;
+  padding: 0 40rpx 0;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.error {
+  background-color: #F7CEB2;
+  color: #794F37;
+}
+.error .iconfont {
+  color: #F64B5B;
+}
+.success .iconfont {
+
+}
+.error .btn {
+  background-color: #C1A08F;
+  border-radius: 10rpx;
+  padding: 5rpx 10rpx 5rpx;
+  color: white;
+  margin-left: 8rpx;
+}
+.notify-box .text {
+  display: flex;
+  align-items: center;
+}
+.ld {
+  transform-origin: center;
+  animation: yaolingdang 3s infinite ease;
+}
+@keyframes yaolingdang {
+  5%,25%,45% {
+    transform: rotate(8deg);
+  }
+  0%,10%,30%,50% {
+    transform: rotate(-8deg);
+  }
+  15%,35%,55% {
+    transform: rotate(4deg);
+  }
+  20%,40%,60% {
+    transform: rotate(-4deg);
+  }
+  65%,100% {
+    transform: rotate(0deg);
+  }
+}
+
+
+
+
+.Info-box {
+  width: 688rpx;
+  margin: 0 auto;
+  background-color: white;
+  padding: 32rpx;
+  border-radius: 15rpx;
+  box-sizing: border-box;
+  margin-top: 22rpx;
+}
+
+#time{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#time view:nth-child(1){
+  font-weight: 400;
+  color: #000;
+  font-size: 32rpx;
+}
+.tip{
+  color: #f4511e;
+  font-size: 26rpx;
+  padding: 15rpx;
+}
+.fee{
+  color: #F88240;
+  font-size: 40rpx;
+}
+#Start{
+  background: #ffffff;
+  margin-top: 24rpx;
+}
+.Start{
+  display: flex;
+  /* justify-content: space-between; */
+  align-items:center;
+  font-size: 34rpx;
+  font-weight: bold;
+}
+.Start .iconfont {
+  margin: 0 8rpx 0;
+}
+
+.select-rider {
+  width: 688rpx;
+  margin: 0 auto;
+  background-color: white;
+  padding: 32rpx;
+  border-radius: 15rpx;
+  box-sizing: border-box;
+  margin-top: 22rpx;
+}
+.select-rider #Title {
+  font-size: 30rpx;
+  font-weight: bold;
+}
+.riderList {
+  margin-top: 10rpx;
+  color: #79797B;
+  border-bottom: 2rpx dashed #ECECEC;
+  padding: 10rpx 0 10rpx;
+}
+.riderList-left {
+  font-size: 28rpx;
+}
+
+.Boarding-point {
+  width: 688rpx;
+  margin: 0 auto;
+  background-color: white;
+  padding: 32rpx;
+  border-radius: 15rpx;
+  box-sizing: border-box;
+  margin-top: 22rpx;
+}
+.Boarding-point .title {
+  font-size: 30rpx;
+  font-weight: bold;
+  padding-bottom: 30rpx;
+  border-bottom: 2rpx dashed #ECECEC;
+}
+.Boarding-point .point-item {
+  font-size: 30rpx;
+  color: #424242;
+  padding: 30rpx 0 30rpx;
+  border-bottom: 2rpx dashed #ECECEC;
+  display: flex;
+  align-items: center;
+}
+.Boarding-point .point-item-item {
+  font-size: 30rpx;
+  color: #424242;
+  display: flex;
+  align-items: center;
+}
+.Boarding-point .point-item .toAdress {
+  font-size: 24rpx;
+  padding: 8rpx;
+  border: 2rpx solid #668FC5;
+  margin-left: 16rpx;
+  color: #668FC5;
+  border-radius: 8rpx;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.Boarding-point .point-item .icon {
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50%;
+  font-size: 21rpx;
+  margin-right: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.Boarding-point .point-time {
+  display: flex;
+  padding-top: 30rpx;
+}
+.Boarding-point .point-time .icon-shijian {
+  font-size: 32rpx;
+  color: #57CCAF;
+  margin-right: 22rpx;
+}
+.Boarding-point .point-time .point-time-info-title{
+  font-size: 30rpx;
+  font-weight: 900;
+  color: #424242;
+}
+.Boarding-point .point-time .point-time-info-info{
+  font-size: 28rpx;
+  color: #787C97;
+}
+.car-id {
+  border: 2rpx solid #F3F5F4;
+  border-radius: 10rpx;
+  overflow: hidden;
+  margin-top: 30rpx;
+}
+.car-id-title {
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #5BC177;
+  background-color: #E5FDF0;
+  padding: 26rpx;
+}
+.car-id-info {
+  padding: 20rpx 0 20rpx;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.car-id-info .no-id {
+  font-size: 26rpx;
+  color: #424242;
+}
+.car-id-info .info {
+  font-size: 60rpx;
+  font-weight: 500;
+  color: #424242;
+}
+
+.connect-box {
+  height: 126rpx;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.connent-btn {
+  width: 708rpx;
+  height: 86rpx;
+  border-radius: 10rpx;
+  background: #FFD148;
+  color:#784A00;
+  font-size: 30rpx;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.refound-tabel {
+  display: flex;
+  padding: 15rpx 0 15rpx;
+  font-size: 26rpx;
+}
+.first {
+  background-color: #EDF1F4;
+}
+.refound-title {
+  padding: 20rpx;
+  width: 40%;
+}
+.refound-info {
+  padding: 20rpx;
+}
+.point-list {
+  padding: 10rpx 0 10rpx;
+}
+.refound-tip {
+  color: #f4511e;
+}

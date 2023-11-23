@@ -5,17 +5,21 @@
   <view class="time"><span>订单日期:{{filter.dateFormat(item.timestamp)}}</span></view>
   <view class="text" wx:for="{{item.goods}}" wx:for-item='goodsitem'>
     <view style="margin-bottom: 10rpx;">{{goodsitem.name}} <span class="num">数量：{{goodsitem.num}}</span> <span class="price">价格：{{goodsitem.price * goodsitem.num}}</span></view>
-    <view class="text-surcharge">
-      <span class="surcharge" wx:if="{{goodsitem.surcharge && goodsitem.surcharge.length > 0}}" wx:for="{{goodsitem.surcharge}}" wx:for-item='suritem'>
+    <view class="text-surcharge" wx:if="{{goodsitem.surcharge && goodsitem.surcharge.length > 0 && goodsitem.settlement}}">
+      <span class="surcharge" wx:if="{{!suritem.hide}}"  wx:for="{{goodsitem.surcharge}}" wx:for-item='suritem'>
         {{suritem.title}}:{{suritem.price}}元
       </span>
-      <span class="divide" wx:if="{{goodsitem.dividePrice}}">按份配送费：{{goodsitem.dividePrice || 0}}元</span>
+      <view>
+        <span class="divide" wx:if="{{goodsitem.rewardFee}}">按份配送费：{{goodsitem.rewardFee || 0}}元</span>
+        <span class="divide" wx:if="{{goodsitem.dtFee}}">按份抽成：{{goodsitem.dtFee || 0}}元</span>
+      </view>
     </view>
   </view>
 </view>
 <view class="total" wx:if="{{item.settlement}}">
   <span>订单总收入: {{item.settlement.total}}</span>
-  <span>配送支出：{{item.settlement.totalDivide}}</span>
+  <span wx:if="{{item.settlement.reward}}">配送支出：{{item.settlement.reward}}</span>
+  <span wx:if="{{item.settlement.dtFee}}">平台支出：{{item.settlement.dtFee}}</span>
   <span>提现手续费（腾讯收取）：{{item.settlement.settlementTotalSc}}</span>
   <span class="result">结算费用: {{item.settlement.settlementTotal}}</span>
 </view>

@@ -1,24 +1,43 @@
-<view id='ListBackground'>
-  <view class="TicketBackground"wx:for="{{order}}" catchtap='toOrderDetail' data-orderInfo='{{item}}' wx:if='{{item.line_info[0]}}'>
+<wxs src="./index.wxs" module="wxs"></wxs>
+<wxs module="filter" src="../../../until/filter.wxs"></wxs>
+<view class='ListBackground'>
+  <view class="TicketBackground"wx:for="{{order}}" catchtap='toOrderDetail' data-orderInfo='{{item}}'>
+    <view class="notify-box error" wx:if="{{showNotify}}" catchtap="setNotify">
+      <view class="text"><view class="ld"><i class="iconfont icon-lingdang"></i></view>请开启订阅消息，接收发车通知</view><view class="btn">去开启</view>
+    </view>
+    <view class="ticket-state">
+      <view class="ticket-state-title"><i class="iconfont icon-bashiche"></i>出行订单</view><view class="ticket-state-status {{item.status}}"><view class="status-loading" wx:if="{{item.status === 'onstandby' || item.status === 'inprogress'}}"></view><i wx:if="{{item.status === 'success'}}" class="iconfont icon-xuanze"></i><view>{{wxs.filterState(item.status)}}</view></view>
+    </view>
     <view class="distance">
-      <view>{{item.line_info[0].start}}</view>
+      <view>{{item.start}}</view>
       <i class='iconfont icon-icon_jipiaodancheng'></i>
-      <view>{{item.line_info[0].end}}</view>
+      <view>{{item.end}}</view>
     </view>
-    <view class='DepartureTime'><view>订票人:</view><view>{{item.name}}</view></view>
-    <view class="place"><view>发车时间:</view><view>{{item.car_info[0].departureTime}}</view></view>
-    <view class='place'><view>发车地点:</view><view wx:if='{{item.line_info[0].departurePlace}}'>{{item.line_info[0].departurePlace}}</view><view wx:else>随后通知</view></view>
-    <view class='provider'><view catchtap='toContacts' data-phone='{{item.car_info[0].contacts_phone}}'><view>联系人:</view><view class="call-btn">{{item.car_info[0].contacts_name}}<span><i class="iconfont icon-shoujihao"></i>联系我们</span></view></view>
-    <view class='Toticket' catchtap='GoPopup' wx:if = '{{!item.refound && !item.car_info[0].complete}}' data-info='{{item}}' data-index = '{{index}}'>退票</view>
-    <view class='Torefound' wx:if = '{{item.refound}}'>已退票</view>
-    <view class='Traveled' wx:if = '{{item.car_info[0].complete && !item.refound}}'>已出行</view>
+    <view class="ticket-info">
+      <view class="place"><view>发车时间:</view><view>{{item.car_info && item.car_info[0] && item.car_info && item.car_info[0].departureTime ? filter.getFormatTime1(item.car_info[0].departureTime) :filter.getFormatTime1(item.departureTime)}}</view></view>
+      <view wx:if="{{item.status === 'success'}}">
+        <view class='place' data-point="{{item.point.start}}"  wx:if="{{item.point && item.point.start && item.point.start.label}}"><view>上车点:</view><view wx:if='{{item.point.start.label}}'>{{item.point.start.label}}<i class="iconfont icon-zuobiao1"></i></view><view wx:else>随后通知</view></view>
+        <view class='place' data-point="{{item.point.end}}"  wx:if="{{item.point && item.point.start && item.point.end.label}}"><view>下车点:</view><view wx:if='{{item.point.end.label}}'>{{item.point.end.label}}<i class="iconfont icon-zuobiao1"></i></view><view wx:else>随后通知</view></view>
+      </view>
+      <!-- <view class='provider'><view catchtap='toContacts' data-phone='{{item.car_info[0].contacts_phone}}'><view>联系人:</view><view class="call-btn">{{item.car_info[0].contacts_name}}<span><i class="iconfont icon-shoujihao"></i>联系我们</span></view></view>
+      </view> -->
+      <view class='provider' wx:if='{{item.car_info && item.car_info[0] && item.car_info[0].remark}}'>
+        <view><view>备注信息:</view><view>{{item.car_info[0].remark}}</view></view>
+      </view>
     </view>
-    <view class='provider' wx:if='{{item.car_info[0].remark}}'>
-      <view><view>备注信息:</view><view>{{item.car_info[0].remark}}</view></view>
+    <view class="oprate">
+      <view class="oprate-box">
+        <view class='button connent' wx:if="{{(item.car_info && item.car_info[0] && item.car_info[0].contacts_phone) || (item.fleet_info && item.fleet_info[0] && item.fleet_info[0].contacts_phone)}}" catch:tap="toContacts" data-phone='{{item.car_info[0].contacts_phone ? item.car_info[0].contacts_phone : item.fleet_info[0].contacts_phone}}'>联系客服</view>
+        <view class='share-btn'>
+          <button data-info='{{item}}' class="mini-btn share" open-type="share">
+            邀请好友
+          </button>
+        </view>
+        <view class='button Toticket' catchtap='GoPopup' wx:if = '{{!item.refound && !item.car_info[0].complete}}' data-info='{{item}}' data-index = '{{index}}'>申请退票</view>
+        <view class='button Torefound' wx:if = '{{item.refound}}'>已退票</view>
+        <view class='button Traveled' wx:if = '{{item.car_info[0].complete && !item.refound}}'>已出行</view>
+      </view>
     </view>
-    <!-- <view class='provider'>
-      <view><view>备注信息:</view><view>{{item.car_info[0].remark}}</view></view>
-    </view> -->
   </view>
 </view>
 <view class='default-box' wx:if="{{order.length <= 0}}">

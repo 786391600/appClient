@@ -8,7 +8,7 @@
     <view class="time" bindtap="selectTackTime">
       <view class="time-title">取餐时间</view>
       <view class="time-content">
-        {{takeTimeObj.text}}<i style="color: #ccc;font-size: 26rpx" class="iconfont icon-you"></i>
+        {{takeTimeObj.text? takeTimeObj.text : '请选择时间'}}<i style="color: #ccc;font-size: 26rpx" class="iconfont icon-you"></i>
       </view>
     </view>
     <view class="time" style="padding-left: 28rpx" wx:if="{{shopAddressInfo.phone}}">

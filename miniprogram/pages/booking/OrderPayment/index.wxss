@@ -2,6 +2,7 @@
 @import '../../../style/ticket/iconfont.wxss';
 page{
   background: #eeeeee;
+  padding-bottom: 150rpx;
 }
 .icon{
   text-align: center;
@@ -11,14 +12,23 @@ page{
   color: #ffcc3c;
   line-height: 100%;
 }
+.Info-box {
+  width: 688rpx;
+  margin: 0 auto;
+  background-color: white;
+  padding: 32rpx;
+  border-radius: 15rpx;
+  box-sizing: border-box;
+  margin-top: 22rpx;
+}
 #time{
   display: flex;
   justify-content: space-between;
-  padding: 28rpx 20rpx;
 }
 #time view:nth-child(1){
-  color: #76777c;
-  font-size: 30rpx;
+  font-weight: bold;
+  color: #000;
+  font-size: 28rpx;
 }
 .tip{
   color: #f4511e;
@@ -31,21 +41,84 @@ page{
 }
 #Start{
   background: #ffffff;
-  padding: 24rpx 20rpx;
+  margin-top: 24rpx;
 }
 .Start{
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items:center;
+  font-size: 34rpx;
+  font-weight: bold;
 }
-.end{
-    width: 35%;
-    text-align: center;
+.Start .iconfont {
+  margin: 0 8rpx 0;
 }
-#Title{
-  padding: 22rpx;
-  color: #77787d;
+
+.Boarding-point {
+  width: 688rpx;
+  margin: 0 auto;
+  background-color: white;
+  padding: 32rpx;
+  border-radius: 15rpx;
+  box-sizing: border-box;
+  margin-top: 22rpx;
+}
+.Boarding-point .title {
   font-size: 30rpx;
+  font-weight: bold;
+  padding-bottom: 30rpx;
+  border-bottom: 2rpx solid #ECECEC;
+}
+.Boarding-point .point-item {
+  font-size: 30rpx;
+  color: #424242;
+  padding: 30rpx 0 30rpx;
+  border-bottom: 2rpx solid #ECECEC;
+  display: flex;
+  align-items: center;
+}
+.Boarding-point .point-item-item {
+  font-size: 30rpx;
+  color: #424242;
+  display: flex;
+  align-items: center;
+}
+.Boarding-point .point-item .toAdress {
+  font-size: 18rpx;
+  padding: 8rpx;
+  border: 2rpx solid #668FC5;
+  margin-left: 16rpx;
+  color: #668FC5;
+  border-radius: 8rpx;
+}
+.Boarding-point .point-item .icon {
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50%;
+  font-size: 21rpx;
+  margin-right: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.Boarding-point .point-time {
+  display: flex;
+  padding-top: 30rpx;
+}
+.Boarding-point .point-time .icon-shijian {
+  font-size: 32rpx;
+  color: #57CCAF;
+  margin-right: 22rpx;
+}
+.Boarding-point .point-time .point-time-info-title{
+  font-size: 30rpx;
+  font-weight: 900;
+  color: #424242;
+}
+.Boarding-point .point-time .point-time-info-info{
+  font-size: 28rpx;
+  color: #787C97;
 }
 .AddTo{
   text-align: center;
@@ -57,41 +130,51 @@ page{
 .Contacts{
   display: flex;
   justify-content: space-between;
-  padding: 22rpx 32rpx;
+  padding: 22rpx 0rpx;
   background: #ffffff;
   border-bottom: 1rpx solid #ededed;
   font-size: 30rpx;
+  color: #424242;
 }
 .submit p{
   font-size: 26rpx;
   color: #f4511e;
-  padding: 15rpx;
+  padding: 15rpx 0 15rpx;
 }
 .PhoneNumber{
   display: flex;
   justify-content: space-between;
-  padding: 22rpx 32rpx;
+  padding: 22rpx 0rpx;
   background: #ffffff;
   font-size: 30rpx;
+  color: #424242;
 }
 .Submission{
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 94rpx;
+  height: 120rpx;
   background: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 25rpx 0;
+  box-sizing: border-box;
+  z-index: 1000;
 }
-.Submission button{
+/* .Submission button{
   width: 248rpx;
   padding: 0;
   margin: 0;
   border-radius:0rpx;
   background: #ffcd40;
   color: #6f3e08;
-}
+} */
+/* .Submission button{
+  width: 248rpx;
+  padding: 0;
+  margin: 0;
+} */
 .payment{
   width: 50%;
   display: flex;
@@ -110,7 +193,7 @@ page{
 .riderList{
   display: flex;
   flex-direction: row;
-  padding: 26rpx;
+  padding: 26rpx 0 26rpx;
    align-items:center;
    background: white;
    border-bottom: 2rpx solid #EEEEEE;
@@ -129,4 +212,114 @@ page{
 }
 .riderList-right-price{
   color: #F34710;
+}
+
+.pay-submit{
+  height: 88rpx;
+  border-radius: 44rpx;
+  background-color: #FFCE00;
+  line-height: 88rpx;
+  padding: 0 30rpx 0;
+  color: #41262B;
+  font-size: 34rpx;
+  font-weight: 600;
+  margin: 0;
+}
+.pay-submit:active{
+  background: #ecca41e3;
+}
+
+.select-rider {
+  width: 688rpx;
+  margin: 0 auto;
+  background-color: white;
+  padding: 32rpx;
+  border-radius: 15rpx;
+  box-sizing: border-box;
+  margin-top: 22rpx;
+}
+.select-rider #Title {
+  font-size: 30rpx;
+  font-weight: bold;
+  padding-bottom: 30rpx;
+  border-bottom: 2rpx solid #ECECEC;
+}
+.Contact {
+  width: 688rpx;
+  margin: 0 auto;
+  background-color: white;
+  padding: 32rpx;
+  border-radius: 15rpx;
+  box-sizing: border-box;
+  margin-top: 22rpx;
+}
+.Contact #Title {
+  font-size: 30rpx;
+  font-weight: bold;
+  padding-bottom: 30rpx;
+  border-bottom: 2rpx solid #ECECEC;
+} 
+
+.carrier{
+  color: #707A9B;
+  font-size: 24rpx;
+  padding: 20rpx 34rpx 0rpx;
+}
+
+
+
+checkbox .wx-checkbox-input {
+  width: 20rpx;
+  height: 22rpx;
+  border-radius: 5rpx;
+  min-width: 20rpx;
+  min-height: 22rpx;
+}
+
+
+.isAgreement {
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+}
+.isAgreement .text{
+  color: #9B9B9B;
+  margin-top: 4rpx;
+}
+.isAgreement .text span{
+  color: #03a9f4;
+}
+/* 选中后的 背景样式 （蓝色背景 无边框 可根据UI需求自己修改） */
+
+checkbox .wx-checkbox-input {
+  /* 圆角 */
+  width: 35rpx;
+  /* 背景的宽 */
+  height: 35rpx;
+  margin: 0;
+  padding: 0;
+  margin-right: 8rpx;
+  /* 背景的高 */
+}
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  background-color: #03a9f4;
+  border: 0;
+  width: 35rpx;
+  height: 35rpx;
+  font-size: 18rpx;
+}
+
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  border-radius: 50%; /* 圆角 */
+  width: 30rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+  height: 30rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+  line-height: 30rpx;
+  text-align: center;
+  font-size: 26rpx; /* 对勾大小 30rpx */
+  color: #fff; /* 对勾颜色 白色 */
+  background: transparent;
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
 }

@@ -34,7 +34,8 @@
     "minifyWXML": true,
     "showES6CompileOption": false,
     "useCompilerPlugins": false,
-    "useStaticServer": true
+    "useStaticServer": true,
+    "condition": false
   },
   "appid": "wx14b3135d0f6f5212",
   "projectname": "%E4%B9%A1%E5%AE%81%E6%96%B0%E9%9B%B6%E5%94%AE",

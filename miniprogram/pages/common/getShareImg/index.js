@@ -32,6 +32,7 @@ Page({
       this.data.shareCon = JSON.parse(options.shareCon)
     }
     this.setData({ canvasW: that.getSize(375), canvasH: that.getSize(660), navHeight: appData.navHeight, windowHeight: appData.windowHeight});
+    console.log(options, 'bbbbbbbbbbbbbbbbbb')
     that.getPosterImage(options)
   },
   getPosterImage(options){

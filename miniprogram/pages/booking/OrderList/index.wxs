@@ -1,0 +1,23 @@
+var filterState = function (state) {
+   if (state === 'success') {
+     return '出票成功'
+   } else if (state === 'onstandby') {
+     return '车票候补中'
+   } else if (state === 'inprogress') {
+     return '出票中'
+   }
+}
+
+var filterStateTip = function (state) {
+  if (state === 'success') {
+    return '请关注出发时间，祝您一路平安~'
+  } else if (state === 'onstandby') {
+    return '车票候补中，申请退票将重新排队~'
+  } else if (state === 'inprogress') {
+    return '出票中，请耐心等待~'
+  }
+}
+module.exports ={
+    filterState:filterState,
+    filterStateTip: filterStateTip
+}

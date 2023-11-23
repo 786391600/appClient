@@ -1,0 +1,76 @@
+
+.cu-form-solid {
+	border-top: 1rpx solid #eee;
+}
+.cu-progress {
+  overflow: hidden;
+  height: 55rpx;
+  background-color: #ebeef5;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+}
+.margin-top{
+	margin-top: 70px
+}
+
+
+/* 文件预览 */
+page {
+  background-color: #F6F6F6;
+}
+.print-info {
+  width: 692rpx;
+  background: white;
+  margin: 0 auto;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-sizing: border-box;
+  margin-top: 45rpx;
+}
+.print-info .info {
+  border-bottom: 1rpx solid #F1F1F1;
+  padding-bottom: 30rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.print-info .info .close {
+  position: absolute;
+  right: -10rpx;
+  top: -30rpx;
+  font-size: 52rpx;
+  color: #A7A7A7;
+  font-weight: 500;
+}
+.print-info .info .title {
+  display: block;
+  align-items: center;
+  font-size: 40rpx;
+  overflow:hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: calc(100% - 65rpx);
+}
+.print-info .oprate {
+  display: flex;
+  align-items: center;
+  font-size: 40rpx;
+  padding-top: 30rpx;
+  justify-content: flex-end;
+}
+.print-info  .oprate .info-btn {
+  border: 2rpx solid #FECB2E;
+  display: inline;
+  font-size: 36rpx;
+  padding: 5rpx 20rpx 5rpx;
+  box-sizing: border-box;
+  border-radius: 18rpx;
+  color: #FECB2E;
+  margin-left: 10rpx;
+}
+.print-info .info image {
+  width: 55rpx;
+  height: 55rpx;
+  margin-right: 8rpx;
+}

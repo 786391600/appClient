@@ -337,3 +337,50 @@ exports.accMul = function (arg1, arg2) {
   try { m += s2.split(".")[1].length } catch (e) { }
   return Number(s1.replace(".", "")) * Number(s2.replace(".", "")) / Math.pow(10, m)
 }
+
+
+exports.printUpload = function(query){
+  var data = query;
+  var filePath = data.previewPath
+  return new Promise(function (resolve, reject) {
+  exports.getSessionId().then((sessionId)=>{
+      data.sessionId = sessionId;
+      wx.uploadFile({
+        url: config.printUrl, //仅为示例，非真实的接口地址
+        filePath: filePath,
+        name: 'file',
+        formData: data,
+        success: function (e) {
+          if (e.data.sessionExpire){
+            console.log('session到期 重新请求');
+            exports.getSessionId('force').then((sessionId) =>{
+              data.sessionId = sessionId;
+              console.log(data, 'bbbbbbbbbbbbbbbbbbbbbbbbb')
+              wx.uploadFile({
+                url: config.printUrl, //仅为示例，非真实的接口地址
+                filePath: filePath,
+                name: 'file',
+                formData: data,
+                success (res){
+                  const data = res.data
+                  //do something
+                }
+              })
+            })
+          }else{
+            console.log(e)
+            if (!e.data.success && e.data.err) {
+              exports.showToast('服务异常', 'error')
+            } else {
+              resolve(e)
+            }
+          }
+        },
+        fail: function (e) {
+          console.log(e, '请求报错')
+          reject(e)
+        }
+      })
+    })
+  }) 
+}

@@ -1,0 +1,3 @@
+page {
+  --var-color1: #F0F0F0;
+}

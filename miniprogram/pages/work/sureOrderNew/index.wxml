@@ -1,0 +1,140 @@
+<wxs module="np">
+  var toFixed = function (value) {
+  return value.toFixed(2);
+}
+module.exports = {
+   toFixed :toFixed
+}
+</wxs>
+<view class="goodsType-select" wx:if="{{goodsType !== 'arrival'}}">
+  <view wx:for="{{goodsTypeList}}" class="goodsType-select-item {{goodsType === item.type?'active': ''}}" bindtap="changeGoodsType" data-type="{{item.type}}">{{item.title}}</view>
+</view>
+<view class="goodsType-select-box" wx:if="{{goodsType === 'selflifting'}}">
+  <view>地址：{{shopAddressInfo.address || shopName}}</view>
+  <view class="phone-box">
+    <view class="time" bindtap="selectTackTime">
+      <view class="time-title">取餐时间</view>
+      <view class="time-content">
+        {{takeTimeObj.text? takeTimeObj.text : '请选择时间'}}<i style="color: #ccc;font-size: 26rpx" class="iconfont icon-you"></i>
+      </view>
+    </view>
+    <view class="time" style="padding-left: 28rpx" wx:if="{{shopAddressInfo.phone}}">
+      <view class="time-title">商家号码</view>
+      <view class="time-content">{{shopAddressInfo.phone}}</view>
+    </view>
+  </view>
+</view>
+
+<mp-half-screen-dialog
+  class='building-dialog'
+  bindbuttontap="buttontap"
+  show="{{showTakeTime}}"
+  maskClosable="{{true}}" 
+  title="自取时间"
+  subTitle="按餐厅营业时间分段"
+>
+<view slot='desc'>
+  <take-time timeConfig="{{pickupTime}}" wx:if="{{goodsType === 'selflifting'}}" bind:setTime='getTakeTime'></take-time>
+</view>
+</mp-half-screen-dialog>
+
+<view class="order-list">
+  <view class="title">订单列表</view>
+  <view class="list">
+    <view class="order-box" wx:for="{{orderList}}">
+      <view class="order-left">
+        <image src="{{item.img}}"></image>
+      </view>
+      <view class="order-right">
+        <view class="right-top">
+          <view class="top-title">{{item.name}}<span wx:if="{{item.spec}}">({{item.spec}})</span></view>
+          <view class="top-price">
+            ￥{{item.price}}
+          </view>
+        </view>
+        <view class="right-bottom">
+          <view class="bottom-num">
+            <span>数量：{{item.num}}</span>
+            <span wx:if="{{item.surcharge && item.surcharge.length > 0}}" class="surcharge">
+              <span wx:for="{{item.surcharge}}" wx:for-item="menusureitem" style='{{menusureitem.hide ? "display: none" : ""}}'>{{menusureitem.title}}:￥{{np.toFixed(menusureitem.price * item.num)}}</span>
+            </span>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="surcharge">
+    <view class="surcharge-item {{!item.price ? 'reduction' : ''}}" wx:for="{{surcharge}}">
+      <span><span class="reduction-text"  wx:if="{{!item.price}}">免</span>{{item.label}}</span><span>￥{{item.price ?item.price: 0}}</span>
+    </view>
+  </view>
+  <view class="bottom">小计：￥{{feeTotal}}</view>
+</view>
+
+<view class="adress" bindtap="toAdressList" wx:if="{{goodsType === 'delivery'}}">
+  <view class="adress-box">
+    <view class="adress-left">
+      <i class="iconfont icon-zuobiao1"></i>
+      <view class="adress-text">
+        <view class="adress-tit">配送地址</view>
+        <view class="adress-con">{{form.address ? form.address.schoolName + '-' + form.address.address:'请填写详细地址'}}
+        </view>
+      </view>
+    </view>
+    <i class="iconfont icon-you"></i>
+  </view>
+  <view class="used">
+    <view class="used-text">常用</view>
+  </view>
+</view>
+<view class="adress" bindtap="bindPhone" wx:if="{{goodsType === 'arrival' || goodsType === 'selflifting'}}">
+  <view class="adress-box">
+    <view class="adress-left">
+      <i class="iconfont icon-dianhua"></i>
+      <view class="adress-text">
+        <view class="adress-tit">手机号</view>
+        <view class="adress-con">{{(form.address && form.address.phone) ? form.address.phone : '请输入核销号码'}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="used">
+    <view class="used-text">{{form.address && form.address.phone ? '修改' : '添加'}}</view>
+  </view>
+</view>
+<view class="user-oprate" wx:if="{{goodsType !== 'arrival'}}">
+  <view class="oprate-box" bindtap="toRemarks">
+    <span class="title">备注</span>
+    <span class="content"><span class="content-remarks" wx:if="{{remarks}}">{{remarks}}</span><span wx:else class="placehold" >如有特殊要求，请备注<i class="iconfont icon-you"></i></span></span>
+  </view>
+</view>
+
+<view class="user-oprate" wx:if="{{goodsType === 'delivery' && buildingConfig.length > 0}}">
+  <view class="oprate-box" bindtap="selectBuilding">
+    <span class="title">所在楼栋</span>
+    <span class="content"><span class="content-remarks" wx:if="{{building}}">{{building}}</span><span wx:else class="placehold" >选择楼栋，增加配送效率<i class="iconfont icon-you"></i></span></span>
+  </view>
+</view>
+<mp-half-screen-dialog
+  class='building-dialog'
+  bindbuttontap="buttontap"
+  show="{{showBuildingDialog}}"
+  maskClosable="{{true}}" 
+  title="选择楼栋"
+  subTitle="可提升配送效率（没有的楼栋选其他即可）"
+>
+<view slot='desc'>
+  <label-select labels="{{buildingConfig}}" bind:change='buildingChange'></label-select>
+</view>
+</mp-half-screen-dialog>
+
+<view class="good-info" wx:if="{{goodsDetail}}">
+  <rich-text class="good-content" nodes="{{goodsDetail}}"></rich-text>
+</view>
+
+<view class="pay-box">
+  <view class="price">￥<span>{{feeTotal}}</span></view>
+  <view class="btn" bindtap="payForm">
+    <span wx:if="{{payStatus}}">支付中...</span><span wx:else>下单支付</span>
+  </view>
+</view>

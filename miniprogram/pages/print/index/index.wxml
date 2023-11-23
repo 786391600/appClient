@@ -1,0 +1,3 @@
+<!--pages/print/index/index.wxml-->
+<text catchtap="getWxFile">微信文件</text>
+<view bindtap="see" style="background-image: url({{imageSrc}});width: 200px; height: 200px"></view>

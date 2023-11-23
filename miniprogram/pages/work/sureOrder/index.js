@@ -261,7 +261,6 @@
        goodsType: options.type || 'delivery', // 配送类型
        pickupTime: options.pickupTime ? JSON.parse(options.pickupTime) : []
      })
-     console.log(this.data.settlement, 'jjjjjjjjjjjjjjjjjjj')
    },
    payForm () {
      // 配送员配送必填
@@ -304,10 +303,13 @@
     if (this.data.payStatus) {
       return
     }
-    this.setPayLoading(true);
     let that = this;
     let custom = {}
     if (that.data.goodsType === 'selflifting') {
+      if (!that.data.takeTimeObj.key) {
+        this.setData({showTakeTime: true})
+        return
+      }
       // 自提
       custom = {
         takefoodTime: that.data.takeTimeObj.key,
@@ -321,6 +323,8 @@
         building: that.data.building || '' // 配送楼栋
       }
     }
+
+    this.setPayLoading(true);
 
 
     until.shopPay({

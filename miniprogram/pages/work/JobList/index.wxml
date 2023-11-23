@@ -1,14 +1,18 @@
 
-<component_nav v-title="{{schoolData.name}}" showTrans="{{true}}" bind:titleClick='toSchoolSelect'></component_nav>
+<component_loading  wx:if="{{loading}}" text="数据获取中..."></component_loading>
+<component_nav v-title="校帮手" bind:titleClick='toSchoolSelect'></component_nav>
+<view class="school-name-box" bindtap='toSchoolSelect'><i class="iconfont icon-zuobiao1"></i>{{schoolData.name}}<i class="iconfont icon-you"></i></view>
+<!-- <component_shop_tab wx:if="{{scrollTop >= fixTop}}" root-portal='true' class="fix-new" id="shoptab" tabs='{{schoolData.tagList}}' bind:change='shopBindChange'></component_shop_tab> -->
 <scroll-view scroll-y='true' 
   refresher-enabled='{{true}}'
   refresher-triggered="{{triggered}}"
   bindrefresherrefresh="onRefresh"
-  bindscrolltolower='getShopList'
-  style="height: calc(100% - 141rpx);"
+  bindscrolltolower='getSchoolShopList'
+  style="height: calc(100% - 239rpx);position: relative;"
+  type="custom"
+  bindscroll="bindscroll"
   >
 <!-- <view class="school-name" catchtap='toSchoolSelect'><i class="iconfont icon-xiaoyuan"></i>{{schoolData.name? schoolData.name : '请选择学校'}}<i class="iconfont icon-xiala"></i></view> -->
-
 <view class="page-box">
   <component_swiper msgList = '{{schoolData.swiperConfig}}'></component_swiper>
   <component_notify msgList = '{{schoolData.noticeConfig}}'></component_notify>
@@ -49,7 +53,7 @@
   <!-- <view class="share" style="width: 80%; margin: 35rpx auto 0;">
         <button class="mini-btn" bindtap="partTimeJobClick" open-type="share">分享给同学</button>
   </view> -->
-  <view class="business-box" wx:if="{{shopList.length > 0}}">
+  <!-- <view class="business-box" wx:if="{{shopList.length > 0}}">
     <view class="business-title">校园商家</view>
     <view class="business-item" wx:for="{{shopList}}" bindtap="toShop" data-shopid="{{item.id}}">
       <view class="business-head" style="background-image: url({{item.headImg?item.headImg:''}});">
@@ -67,11 +71,12 @@
         </view>
       </view>
     </view>
-  </view>
+  </view> -->
   <!-- <view>
     <official-account style="width: 40%" class="official" binderror='officialBinderror'></official-account>
   </view> -->
-  
+  <component_shop_tab root-portal='true' class="xiding" id="shoptab" tabs='{{schoolData.tagList}}' bind:change='shopBindChange'></component_shop_tab>
+  <component_shoplist id="shopList" schoolId='{{schoolId}}'></component_shoplist>
 </view>
 
 
@@ -84,5 +89,3 @@
     <i class="iconfont icon-weixin1" style="color: #F5CD32"></i>
   </button>
 </view>
-
-

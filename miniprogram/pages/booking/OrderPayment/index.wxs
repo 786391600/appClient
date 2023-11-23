@@ -5,8 +5,32 @@ var filter = {
     } else {
       return value.toFixed(1)
     }
+  },
+  getFormatTime: function(time) {
+    var date = getDate(time);
+    // 获取月份、日期、星期、小时、分钟和秒
+    var year = date.getFullYear();
+    var month = date.getMonth() + 1; // 月份是从0开始的，需要加1
+    var day = date.getDate();
+    var weekday = date.getDay(); // 星期是从0开始的，需要加1
+    var weekArr = ['日', '一', '二', '三', '四', '五', '六']
+    var hour = date.getHours();
+    var minute = date.getMinutes();
+    var second = date.getSeconds();
+
+    // 格式化日期和时间
+    var formattedDate = "";
+    formattedDate += (month < 10 ? "0" + month : month) + "月" + (day < 10 ? "0" + day : day) + '日';
+    formattedDate += " 周" + weekArr[weekday];
+    formattedDate += " " + (hour < 10 ? "0" + hour : hour) + ":" + (minute < 10 ? "0" + minute : minute);
+    // formattedDate += ":" + (second < 10 ? "0" + second : second);
+
+    // 输出格式化后的日期和时间
+    console.log(formattedDate, ';;;;;;;;;;;;;;;;;;;;;;;;;;;;;;');
+    return formattedDate
   }
 }
 module.exports = {
-  numberToFix: filter.numberToFix
+  numberToFix: filter.numberToFix,
+  getFormatTime: filter.getFormatTime
 }

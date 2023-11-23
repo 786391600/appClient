@@ -38,8 +38,6 @@ Page({
     }
   },
   onLoad: function (option) {
-    console.log(option)
-    console.log('onload==================================')
     if (option.channelId) {
       workGlobelData.channelId = option.channelId;
     }
@@ -50,10 +48,8 @@ Page({
     this.setCurrentTab(currentTab)
     this.setSchoolId(option);
   },
-  onShow: function(options) {
-    console.log(options, '------------------')
-    console.log('onshow=======================')
-    // this.setCurrentSchool()
+  onShow: function (option) {
+    console.log(option, 'ssssssssssssssssssssss')
   },
   setCurrentTab: function(tab){
     let that = this;

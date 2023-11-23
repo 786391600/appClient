@@ -4,7 +4,9 @@
     "component_notify": "/pages/common/notify/index",
     "component_label": "/pages/common/business-label/index",
     "component_nav": "/component/nav/common",
-    "cell": "plugin://materialPlugin/cell"
+    "component_shop_tab": "/pages/common/tab-nav",
+    "cell": "plugin://materialPlugin/cell",
+    "component_shoplist": "/pages/common/shopList/index"
   },
   "backgroundColor": "#ffffff",
   "navigationBarTitleText": "线路查询"

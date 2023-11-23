@@ -2,5 +2,8 @@
   "navigationBarTextStyle": "black",
   "backgroundTextStyle": "light",
   "navigationBarTitleText": "选择高校",
-  "navigationBarBackgroundColor": "#FFFFFF"
+  "navigationBarBackgroundColor": "#FFFFFF",
+  "usingComponents": {
+    "mp-searchbar": "weui-miniprogram/searchbar/searchbar"
+  }
 }

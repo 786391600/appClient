@@ -1,0 +1,7 @@
+<!--components/loading/loading.wxml-->
+<view class="loading-container">
+  <view class="content">
+    <view class="loader loader-4"></view>
+    <view class="text">{{text}}</view>
+  </view>
+</view>

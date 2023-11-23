@@ -18,7 +18,10 @@ Page({
         ], distance: 90, Surplus: '充足', provider: '意点科技'
       }
       ],
-      lineList: []
+      lineList: [],
+      startPoint: {label: ''},
+      endPoint: {label: ''},
+      currentDate: ''
   },
 
   /**
@@ -26,13 +29,15 @@ Page({
    */
   onLoad: function (options) {
     let lineInfo = JSON.parse(options.lineInfo)
-    this.getCarList({departureTime: { $regex: options.date }, fleetId: lineInfo.fleet, start: lineInfo.start, end: lineInfo.end}).then((e) => {
-      let getdata = e.data.data
-      this.setData({
-        carList: getdata,
-        lineInfo: lineInfo
-      })
-    })
+    let fleetInfo = JSON.parse(options.fleetInfo)
+    // this.getCarList({departureTime: { $regex: options.date }, fleetId: lineInfo.fleet, start: lineInfo.start, end: lineInfo.end}).then((e) => {
+    //   let getdata = e.data.data
+    //   this.setData({
+    //     carList: getdata,
+    //     lineInfo: lineInfo
+    //   })
+    // })
+    this.getDataList(options.date, lineInfo, fleetInfo)
   },
 
   /**
@@ -85,18 +90,22 @@ Page({
   },
   // 跳转车次详情
   goTicketDetails:function (e) {
-    let carInfo = JSON.stringify(e.currentTarget.dataset.detail)
-    let lineInfo = JSON.stringify(this.data.lineInfo)
-    console.log(e, '000000000000')
-    if (e.currentTarget.dataset.num <= 0) {
-      wx.showToast({
-        title: '票已售光',
-        icon: 'none'
-      })
+    let currentCarInfo = e.currentTarget.dataset.detail;
+    if (!currentCarInfo.state) {
       return
     }
+    let carInfo = JSON.stringify(e.currentTarget.dataset.detail)
+    let lineInfo = JSON.stringify(this.data.lineInfo)
+    let fleetInfo = JSON.stringify(this.data.fleetInfo)
+    // if (e.currentTarget.dataset.num <= 0) {
+    //   wx.showToast({
+    //     title: '票已售光',
+    //     icon: 'none'
+    //   })
+    //   return
+    // }
     wx.navigateTo({
-      url: '../OrderPayment/index?carInfo=' + carInfo + '&lineInfo=' + lineInfo
+      url: '../OrderPayment/index?carInfo=' + carInfo + '&lineInfo=' + lineInfo + '&fleetInfo=' + fleetInfo
     })
   },
   // 获取数据
@@ -118,5 +127,40 @@ Page({
         wx.hideLoading()
       })
     })
+  },
+  getDataList: function(date, lineInfo, fleetInfo) {
+    let fleetTask = fleetInfo.fleetTask || [];
+    let setList = []
+    fleetTask.forEach((item) => {
+      if (item.taskType === 'time') {
+        let timeValue = item.timeValue || []
+        timeValue.forEach((timeItem) => {
+          if (date.indexOf(timeItem.split(' ')[0]) > -1){
+            setList.push({
+              departureTime: timeItem,
+              departureTimeTeml: new Date(timeItem).getTime(),
+              state: item.state
+            })
+          }
+        }) 
+      }
+    })
+    this.setData({
+      carList: setList,
+      lineInfo: lineInfo,
+      fleetInfo: fleetInfo,
+      currentDate: new Date(date).getTime()
+    })
+  },
+  toAddress (e) {
+    let data = e.currentTarget.dataset.point;
+    let coordinate = data.location;
+    const that = this;
+    wx.openLocation({
+      name: data.label,  // 位置名
+      latitude: new Number(coordinate[1]),
+      longitude: new Number(coordinate[0]),
+      address: data.label,  // 要去的地址详情说明
+    });
   }
 })

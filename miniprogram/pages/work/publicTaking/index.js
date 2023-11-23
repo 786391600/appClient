@@ -298,30 +298,34 @@ Page({
   },
   getUserAuth () {
     let that = this;
-    wx.showLoading({
-      title: '任务获取中...',
-    })
-    until.request({
-      action: 'app.crowd.getUserAuth',
-      data: {}
-    }).then(function (e) {
-      let res = e.data;
-      if (res.success) {
-        let resData = e.data.data;
-        if (resData && resData.account) {
-          that.data.schoolId = resData.account;
-          that.getWorkList()
-        } else {
-          that.setData({
-            noAuth: true
-          })
-        }
-      } else {
-        that.setData({
-          noAuth: true
-        })
-      }
-      wx.hideLoading()
-    })
-  }
+    that.getWorkList()
+  },
+  // getUserAuth () {
+  //   let that = this;
+  //   wx.showLoading({
+  //     title: '任务获取中...',
+  //   })
+  //   until.request({
+  //     action: 'app.crowd.getUserAuth',
+  //     data: {}
+  //   }).then(function (e) {
+  //     let res = e.data;
+  //     if (res.success) {
+  //       let resData = e.data.data;
+  //       if (resData && resData.account) {
+  //         that.data.schoolId = resData.account;
+  //         that.getWorkList()
+  //       } else {
+  //         that.setData({
+  //           noAuth: true
+  //         })
+  //       }
+  //     } else {
+  //       that.setData({
+  //         noAuth: true
+  //       })
+  //     }
+  //     wx.hideLoading()
+  //   })
+  // }
 })

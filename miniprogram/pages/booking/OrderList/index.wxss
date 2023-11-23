@@ -6,11 +6,12 @@ page {
 .ticket4{
   font-size: 50rpx;
 }
-#ListBackground{
-  padding: 0 0 90rpx;
+.ListBackground{
+  padding: 0 0 180rpx;
   display: flex;
   justify-content:center;
   flex-wrap:wrap;
+  padding-bottom: 30rpx;
 }
 .TicketBackground{
   width: 95%;
@@ -21,13 +22,14 @@ page {
 }
 .distance{
   display: flex;
-  justify-content:center;
-  margin:30rpx 0; 
-  font-size: 40rpx;
+  justify-content:flex-start;
+  font-size: 32rpx;
+  font-weight: 500;
+  align-items: center;
+  padding: 0 76rpx 0;
+  margin-bottom: 32rpx;
 }
 .DepartureTime{
-  padding-left: 60rpx;
-  font-size: 30rpx;
   display: flex;
   flex-direction: row;
 }
@@ -39,8 +41,6 @@ page {
 }
 .provider{
   margin: 30rpx 0;
-  padding-left:60rpx; 
-  font-size: 30rpx;
   border-top: 1rpx #eeeeee solid;
   padding-top: 20rpx;
   display: flex;
@@ -49,22 +49,29 @@ page {
   box-sizing: border-box;
 }
 .provider view:nth-child(1){
-  width: 70%;
   display: flex;
   flex-direction: row;
 }
-.provider view:nth-child(1) view:nth-child(1){
+/* .provider view:nth-child(1) view:nth-child(1){
   width: 32%;
 }
 .provider view:nth-child(1) view:nth-child(2){
   width: 68%;
+} */
+
+.ticket-info {
+  padding: 0 76rpx 0;
+  font-size: 32rpx;
+  color: #79797B;
+  margin-bottom: 32rpx;
 }
 .place{
-  padding: 0 30rpx 0 60rpx; 
-  font-size: 30rpx;
-  margin-top: 20rpx;
   display: flex;
   flex-direction: row;
+  align-items: center;
+}
+.place .iconfont{
+  color: #FFD148;
 }
 .place view:nth-child(1){
   width: 25%;
@@ -72,48 +79,10 @@ page {
 .place view:nth-child(2){
   width: 75%;
 }
-.TrainNumber{
-    margin: 30rpx 0;
-    padding-left:10rpx; 
-}
-.toticket-box {
-  width: 160rpx;
-  height: 58rpx;
-  text-align: center;
-}
-.Toticket{
-  width: 160rpx;
-  height: 58rpx;
-  font-size: 30rpx;
-  background: #FFD148;
-  color:#784A00;
-  border-radius: 10rpx;
-  line-height: 58rpx;
-  text-align: center;
-  margin-right: 30rpx;
-}
-.Torefound{
-  width: 160rpx;
-  height: 58rpx;
-  font-size: 30rpx;
-  color: #ffffff;
-  background: #ccc;
-  border-radius: 10rpx;
-  line-height: 58rpx;
-  text-align: center;
-  margin-right: 30rpx;
-}
-.Traveled {
-  width: 160rpx;
-  height: 58rpx;
-  font-size: 30rpx;
-  color: #ffffff;
-  background: #00aaf5;
-  border-radius: 10rpx;
-  line-height: 58rpx;
-  text-align: center;
-  margin-right: 30rpx;
-}
+
+
+
+
 .default-box {
   position: fixed;
   width: 100%;
@@ -161,4 +130,179 @@ page {
   padding: 0 3rpx 0;
   box-sizing: border-box;
   border: 1rpx solid #784A00;
+}
+
+
+.notify-box {
+  display: flex;
+  height: 94rpx;
+  font-size: 28rpx;
+  align-items: center;
+  padding: 0 40rpx 0;
+  justify-content: center;
+  box-sizing: border-box;
+}
+.error {
+  background-color: #F7CEB2;
+  color: #794F37;
+}
+.error .iconfont {
+  color: #F64B5B;
+}
+.success .iconfont {
+
+}
+.error .btn {
+  background-color: #C1A08F;
+  border-radius: 10rpx;
+  padding: 5rpx 10rpx 5rpx;
+  color: white;
+  margin-left: 8rpx;
+}
+.notify-box .text {
+  display: flex;
+  align-items: center;
+}
+.ld {
+  transform-origin: center;
+  animation: yaolingdang 3s infinite ease;
+}
+@keyframes yaolingdang {
+  5%,25%,45% {
+    transform: rotate(8deg);
+  }
+  0%,10%,30%,50% {
+    transform: rotate(-8deg);
+  }
+  15%,35%,55% {
+    transform: rotate(4deg);
+  }
+  20%,40%,60% {
+    transform: rotate(-4deg);
+  }
+  65%,100% {
+    transform: rotate(0deg);
+  }
+}
+
+.ticket-state {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 32rpx;
+  /* font-weight:300; */
+  font-size: 32rpx;
+  align-items: center;
+}
+.ticket-state-title {
+  display: flex;
+  align-items: center;
+  color: black;
+}
+.ticket-state-title .iconfont {
+  color: #03a9f4;
+  font-size: 32rpx;
+  border: 2rpx solid #03a9f4;
+  display: inline-block;
+  border-radius: 50%;
+  width: 32rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  margin-right: 12rpx;
+}
+.success {
+  color: #5BC177;
+}
+
+.onstandby {
+  color: #FF8725;
+}
+
+.ticket-state-status{
+  display: flex;
+  align-items: center;
+}
+.ticket-state-status .status-loading {
+  margin-right: 5rpx;
+}
+.oprate {
+  padding: 0rpx 32rpx 0rpx;
+}
+
+.oprate-box {
+  border-top: 2rpx dashed #eee;
+  display: flex;
+  justify-content: flex-end;
+  padding: 30rpx 0 30rpx;
+  flex-wrap: wrap;
+}
+
+.oprate-box .button {
+  font-size: 30rpx;
+  border: 2rpx solid #E2E2E2;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0rpx 26rpx 0rpx;
+  border-radius: 10rpx;
+  margin-left: 30rpx;
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+}
+.share-btn {
+  margin-left: 30rpx;
+}
+button::after{
+
+  border-radius: 0;
+  
+  border: 0;
+  
+  }
+.share-btn button {
+  font-size: 30rpx;
+  border: 2rpx solid #E2E2E2;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  padding: 8rpx 26rpx 8rpx;
+  border-radius: 10rpx;
+  outline: none;
+  height: 56rpx;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+}
+
+.oprate-box  .Torefound {
+  color: #E2E2E2;
+}
+
+.oprate-box .Traveled {
+  color: #5BC177;
+  border-color: #5BC177;
+}
+
+.oprate-box .connent {
+  color: #03a9f4;
+  border-color: #03a9f4;
+}
+.oprate-box .share {
+  color: #FFD148;
+  border-color: #FFD148;
+}
+
+.status-loading {
+  width: 26rpx;
+  height: 26rpx;
+  border: 3rpx solid #FF8725;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: rotate 0.75s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
 }

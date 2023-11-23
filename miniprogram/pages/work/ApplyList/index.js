@@ -29,11 +29,12 @@ Page({
     conactPhone: '',
     tabs: ['待接单', '执行中', '已完成'],
     activeIndex: 0,
-    homeTabs: ['抢单中心', '车票任务', '招工任务', '我的钱包'],
+    homeTabs: ['抢单中心', '推广赚钱', '我的钱包'],
     homeIndex: '0',
     noAuth: false,
     navHeight: 0,
-    tabstest: []
+    tabstest: [],
+    building: ''
   },
   // lifetimes: {
   //   // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
@@ -72,9 +73,14 @@ Page({
   getWorkList () {
     let taskType = this.data.currentTab;
     let schoolId = this.data.schoolId;
+    let customQuery = {}
+    if (this.data.building) {
+      customQuery.building = this.data.building
+    }
     let query = {
       taskType: taskType,
-      schoolId: schoolId
+      schoolId: schoolId,
+      ...customQuery
     }
     let that = this
     wx.showLoading({
@@ -285,7 +291,7 @@ Page({
   },
   homeTabChange (e) {
     let activeIndex = e.detail.activeIndex;
-    if (activeIndex === '3') {
+    if (activeIndex === '2') {
       wx.navigateTo({
         url: '/pages/work/money/index'
       })
@@ -383,7 +389,13 @@ Page({
     })
   },
   mptabchange (e) {
-    console.log(e, 'ooooo')
+    let tabData = e.detail.row;
+    if (tabData.id && tabData.id === 'all') {
+      this.data.building = ''
+    } else {
+      this.data.building = tabData.title
+    }
+    this.getWorkList()
   },
   getBuildingList () {
     let schoolId = this.data.schoolId;
@@ -403,7 +415,7 @@ Page({
         let schoolInfo = getdata.schoolInfo || null
         if (schoolInfo && schoolInfo.buildingConfig) {
           schoolInfo.buildingConfig.unshift({
-            title: '全部楼栋',
+            title: '全部',
             id: 'all'
           })
           that.setData({
@@ -414,6 +426,21 @@ Page({
         until.showToast(e.data.message, 'error');
       }
       wx.hideLoading()
+    })
+  },
+  getPhoneNumber (e) {
+    let that = this;
+    console.log(e, 'hhhhhhhhhhhhhhhh')
+    until.request({
+      action: 'app.crowd.getUserPhone',
+      data: {
+        iv: e.detail.iv,
+        encryptedData: e.detail.encryptedData
+      }
+    }).then(function (e) {
+      if (e.data.success) {
+        console.log(e)
+      }
     })
   }
 })

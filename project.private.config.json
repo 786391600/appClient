@@ -1,10 +1,54 @@
 {
   "setting": {
-    "bigPackageSizeSupport": true
+    "bigPackageSizeSupport": true,
+    "urlCheck": false,
+    "compileHotReLoad": false
   },
   "condition": {
     "miniprogram": {
       "list": [
+        {
+          "name": "退票须知",
+          "pathName": "pages/booking/refoundInfo/index",
+          "query": "orderId=20231107194124566",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "车票订单详情",
+          "pathName": "pages/booking/OrderDetail/index",
+          "query": "orderId=20231107194124566",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "地图",
+          "pathName": "pages/booking/maphandle/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "订单确认页面",
+          "pathName": "pages/booking/OrderPayment/index",
+          "query": "orderList=%5B%7B%22id%22%3A%22C2-0-0%22%2C%22name%22%3A%22%E5%B0%8F%E7%9B%98%E9%B8%A1%22%2C%22price%22%3A0.01%2C%22spec%22%3A%22%E5%A4%A7%22%2C%22num%22%3A1%2C%22img%22%3A%22http%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_jpg%2F5XHic5LQPCDhG2udom8XY73A0878DqACIHFkmv45By1vhkHWg5Xh5KibunicPHvAhibup1icyE8DpVaiaLiaakmJKLBKg%2F0%22%2C%22surcharge%22%3A%5B%7B%22title%22%3A%22%E8%B7%91%E8%85%BF%E8%B4%B9%22%2C%22price%22%3A%220.5%22%7D%2C%7B%22title%22%3A%22%E6%89%93%E5%8C%85%E8%B4%B9%22%2C%22price%22%3A%220.5%22%7D%5D%2C%22dividePrice%22%3A1%2C%22reward%22%3A1%7D%5D&cart=%7B%22count%22%3A1%2C%22total%22%3A1.01%7D&schoolId=d1c9d070-30b9-11ec-be9b-6778d92f04d1&shopId=f8429414-7738-455d-8a43-e443ccbe7dbf1&shopName=%E4%B9%88%E4%B9%88%E9%AB%98%E6%A0%A1&surcharge=%5B%7B%22label%22%3A%22%E5%9F%BA%E7%A1%80%E9%85%8D%E9%80%81%22%2C%22price%22%3A0%7D%2C%7B%22label%22%3A%22%E6%89%93%E5%8C%85%E8%B4%B9%22%2C%22price%22%3A1%7D%5D&surchargeConfig=%7B%22section%22%3A9%2C%22divide%22%3A1.3%2C%22reward%22%3A1%7D&shopAddressInfo=%7B%22address%22%3A%22%E5%8C%97%E4%BA%AC%E5%B8%82%E6%98%8C%E5%B9%B3%E5%8C%BA%22%2C%22phone%22%3A%2213934691550%22%2C%22coordinate%22%3A%2237.790992%2C%20112.587957%22%7D&dvideId=9d81e90e-4b40-48da-9573-2c3006225e14&type=delivery",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "订票模块",
+          "pathName": "pages/booking/index/index",
+          "query": "data=吕梁学院&data2=大同市&relation=index",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/work/index/index",
+          "query": "schoolId=8d022980-e940-11eb-aaca-b94c4e43f6b7",
+          "launchMode": "default",
+          "scene": 1011
+        },
         {
           "name": "db guide",
           "pathName": "pages/databaseGuide/databaseGuide",
@@ -48,27 +92,16 @@
           "scene": null
         },
         {
-          "name": "",
-          "pathName": "pages/work/index/index",
-          "query": "",
-          "scene": 1011
-        },
-        {
           "name": "测试业务",
           "pathName": "pages/work/index/index",
           "query": "schoolId=5b0e69c0-2e2d-11ec-a4b5-0dd655785245&bs=0-1",
           "scene": null
         },
         {
-          "name": "订票模块",
-          "pathName": "pages/booking/index/index",
-          "query": "",
-          "scene": null
-        },
-        {
           "name": "大同大学",
           "pathName": "pages/work/index/index",
           "query": "schoolId=8d022980-e940-11eb-aaca-b94c4e43f6b7",
+          "launchMode": "default",
           "scene": null
         },
         {
@@ -129,9 +162,16 @@
           "scene": null
         },
         {
-          "name": "订单确认页面",
-          "pathName": "pages/work/sureOrder/index",
-          "query": "orderList=%5B%7B%22id%22%3A%22C2-0-0%22%2C%22name%22%3A%22%E5%B0%8F%E7%9B%98%E9%B8%A1%22%2C%22price%22%3A0.01%2C%22spec%22%3A%22%E5%A4%A7%22%2C%22num%22%3A1%2C%22img%22%3A%22http%3A%2F%2Fmmbiz.qpic.cn%2Fmmbiz_jpg%2F5XHic5LQPCDhG2udom8XY73A0878DqACIHFkmv45By1vhkHWg5Xh5KibunicPHvAhibup1icyE8DpVaiaLiaakmJKLBKg%2F0%22%2C%22surcharge%22%3A%5B%7B%22title%22%3A%22%E8%B7%91%E8%85%BF%E8%B4%B9%22%2C%22price%22%3A%220.5%22%7D%2C%7B%22title%22%3A%22%E6%89%93%E5%8C%85%E8%B4%B9%22%2C%22price%22%3A%220.5%22%7D%5D%2C%22dividePrice%22%3A1%2C%22reward%22%3A1%7D%5D&cart=%7B%22count%22%3A1%2C%22total%22%3A1.01%7D&schoolId=d1c9d070-30b9-11ec-be9b-6778d92f04d1&shopId=f8429414-7738-455d-8a43-e443ccbe7dbf1&shopName=%E4%B9%88%E4%B9%88%E9%AB%98%E6%A0%A1&surcharge=%5B%7B%22label%22%3A%22%E5%9F%BA%E7%A1%80%E9%85%8D%E9%80%81%22%2C%22price%22%3A0%7D%2C%7B%22label%22%3A%22%E6%89%93%E5%8C%85%E8%B4%B9%22%2C%22price%22%3A1%7D%5D&surchargeConfig=%7B%22section%22%3A9%2C%22divide%22%3A1.3%2C%22reward%22%3A1%7D&shopAddressInfo=%7B%22address%22%3A%22%E5%8C%97%E4%BA%AC%E5%B8%82%E6%98%8C%E5%B9%B3%E5%8C%BA%22%2C%22phone%22%3A%2213934691550%22%2C%22coordinate%22%3A%2237.790992%2C%20112.587957%22%7D&dvideId=9d81e90e-4b40-48da-9573-2c3006225e14&type=delivery",
+          "name": "云打印",
+          "pathName": "pages/print/index/index",
+          "query": "schoolId=d1c9d070-30b9-11ec-be9b-6778d92f04d1",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "推广中心",
+          "pathName": "pages/work/extension/index",
+          "query": "schoolId=d1c9d070-30b9-11ec-be9b-6778d92f04d1",
           "launchMode": "default",
           "scene": null
         }

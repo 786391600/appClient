@@ -49,3 +49,13 @@
   </view>
   <view class='Edition' wx:if='{{type === "middleSchool"}}'>么么校园-中学版</view>
   </view>
+
+  <view class="share">
+  <button class="mini-btn" data-info="{{item}}" bindtap="partTimeJobClick" open-type="share">
+    转给小伙伴<i class="iconfont icon-tiaoguofenxiang"></i>
+  </button>
+  <!-- <button class="mini-btn" bindtap="concatClick">
+    <i class="iconfont icon-weixin1" style="color: #F5CD32"></i>
+  </button> -->
+  <!-- <button bindtap="concatClick">测试</button> -->
+</view>

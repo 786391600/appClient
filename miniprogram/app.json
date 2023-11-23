@@ -13,9 +13,8 @@
     "pages/work/myorder/index",
     "pages/work/money/index",
     "pages/work/shop/index",
-    "pages/work/sureOrder/index",
+    "pages/work/sureOrderNew/index",
     "pages/work/paySuccess/index",
-    "pages/common/getShareImg/index",
     "pages/common/getWebView/index",
     "pages/work/business/settlement/index",
     "pages/work/business/withdrawal/index",
@@ -41,8 +40,8 @@
   },
   "plugins": {
     "materialPlugin": {
-        "version": "1.0.5",
-        "provider": "wx4d2deeab3aed6e5a"
+      "version": "1.0.5",
+      "provider": "wx4d2deeab3aed6e5a"
     }
   },
   "subpackages": [
@@ -54,12 +53,17 @@
         "selectCity/index",
         "OrderPayment/index",
         "OrderDetail/index",
+        "refoundInfo/index",
         "rider/index",
         "TicketDetails/index",
         "calendar/index",
         "VehicleList/index",
-        "paySuccess/index"
+        "paySuccess/index",
+        "maphandle/index"
       ]
     }
+  ],
+  "requiredPrivateInfos": [
+    "getLocation"
   ]
 }

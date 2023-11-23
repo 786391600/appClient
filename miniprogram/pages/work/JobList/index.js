@@ -30,9 +30,17 @@ Component({
       labelConfig: {}
     },
     shopList: [],
+    shopQuery: {
+      loading: false,
+      page: 1,
+      tag: ''
+    },
     triggered: false,
     _freshing: true,
-    currentSchoolId: ''
+    currentSchoolId: '',
+    loading: false,
+    scrollTop: 0,
+    fixTop: 0
   },
   pageLifetimes: {
     // 组件所在页面的生命周期函数
@@ -50,13 +58,27 @@ Component({
         }
       }
       // this.setCurrentSchool();
+      this.getFixTop()
     },
     hide: function () { },
     resize: function () { },
   },
   methods: {
-    getShopList () {
-      console.log('hhhhhhhhhhhhhhhhhhhhhhhhhhhh')
+    getFixTop () {
+      let query = this.createSelectorQuery();
+      query.select('.xiding').boundingClientRect(rect=>{
+        console.log(rect, 'rrrrrrrrrrrrrrrrrrr')
+        this.setData({
+          fixTop:rect.top,
+        })
+      }).exec();
+    },
+    bindscroll (e) {
+      let self = this;
+      let top = e.detail.scrollTop;
+      self.setData({
+        scrollTop: top
+      });
     },
     toSchoolSelect () {
       wx.navigateTo({
@@ -95,13 +117,6 @@ Component({
         url: '/pages/work/workForm/index?type=' + taskType
       })
     },
-    toShop (e) {
-      let shopId = e.currentTarget.dataset.shopid;
-      let schoolId = this.data.schoolData.id;
-      wx.navigateTo({
-        url: '/pages/work/shop/index?schoolId=' + schoolId + '&shopId=' + shopId
-      })
-    },
     getSchoolInfo (schoolId) {
       wx.showLoading({
         title: '加载中~',
@@ -117,10 +132,17 @@ Component({
       }).then(function (e) {
         let res = e.data;
         if (res.success && res.data) {
+          let tagList = res.data.schoolInfo.tagList || [];
+          tagList.unshift({
+            id: '',
+            name: '全部'
+          })
+          res.data.schoolInfo.tagList = tagList;
           wx.setStorageSync('schoolData', res.data.schoolInfo);
           workGlobelData.currentSchool = res.data.schoolInfo;
           that.data.schoolId = res.data.schoolInfo.id;
-          that.setData({schoolData: res.data.schoolInfo, shopList: res.data.shopList, triggered: false, currentSchoolId: res.data.schoolInfo.id});
+          that.setData({schoolData: res.data.schoolInfo, triggered: false, currentSchoolId: res.data.schoolInfo.id});
+          that.getShopList(null, true)
           if (that.data.bs) {
             let bsArr = that.data.bs.split('-');
             that.data.bs = '';
@@ -137,6 +159,7 @@ Component({
       if (this.data._freshing) return
       this.data._freshing = true
       this.setCurrentSchool();
+      this.shoptabrefresh()
     },
     concatClick () {
       let schoolInfo = workGlobelData.currentSchool;
@@ -161,7 +184,28 @@ Component({
       }
     },
     officialBinderror (detail) {
-      console.log(detail, '00000000000000000000000');
+      
+    },
+    getShopList (tagId, refresh) {
+      let shopListBox = this.selectComponent('#shopList')
+      shopListBox.getShopList(this.data.schoolId, tagId, refresh)
+    },
+    getSchoolShopList () {
+      let id = this.data.tapId || null
+      this.getShopList(id, false)
+    },
+    shopBindChange (e) {
+      let id = e.detail.id;
+      this.data.tapId = id
+      if (id) {
+        this.getShopList(id, true)
+      } else {
+        this.getShopList(null, true)
+      }
+    },
+    shoptabrefresh () {
+      let shopTab = this.selectComponent('#shoptab')
+      shopTab.refresh()
     }
   },
   ready () {

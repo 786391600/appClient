@@ -1,3 +1,4 @@
+<mp-searchbar bindselectresult="selectSearchSchool" placeholder='请输入学校名称' search="{{search}}"></mp-searchbar>
 <view class="current-school">
    <view class="school-name"><view class="current-school-name">{{schoolData.name}}</view><view class="name-text">-当前高校</view></view><view><i class="iconfont icon-zuobiao"></i></view>
 </view>

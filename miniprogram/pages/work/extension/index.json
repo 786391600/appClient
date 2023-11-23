@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "component_tab": "/pages/common/tab/index"
+  },
+  "navigationBarTitleText": "推广中心",
+  "navigationBarBackgroundColor": "#EE9143",
+  "navigationBarTextStyle": "white"
+}

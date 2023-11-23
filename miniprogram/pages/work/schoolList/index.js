@@ -5,10 +5,36 @@ Page({
   data: {
     schoolList: [],
     schoolData: {},
-    isShowAuthBtn: false
+    isShowAuthBtn: false,
+    searchList: [],
+    search: (value) => {
+      if(!value) {
+        return
+      }
+      return new Promise((resolve, reject) => {
+        until.request({
+          action: 'app.crowd.getSchoolList',
+          data: {
+            name: value
+          }
+        }).then(function (e) {
+          if (e.data.success) {
+            let getdata = e.data.data || [];
+            let returndata = getdata.map((item) => {
+              item.value = item.id;
+              item.text = item.name;
+              return item
+            })
+            resolve(returndata)
+          } else {
+            until.showToast(e.data.message, 'error');
+          }
+          wx.hideLoading()
+        })
+      })
+    }
   },
   onLoad: function (option) {
-    console.log(app.globalData, '99999999999999');
     this.getSchoolList()
   },
   getSchoolList () {
@@ -45,16 +71,16 @@ Page({
   },
   getLocation() {
     return new Promise((resolve, reject)=>{
-      // wx.getLocation({
-      //   success: (res) => {
-      //     resolve([res.longitude, res.latitude])
-      //   },
-      //   fail(res){
-      //     console.log(res, '999999999999999999')
-      //     resolve(false);
-      //   }
-      // })
-      resolve(['100', '120'])
+      wx.getLocation({
+        success: (res) => {
+          resolve([res.longitude, res.latitude])
+        },
+        fail(res){
+          console.log(res, '999999999999999999')
+          resolve(false);
+        }
+      })
+      // resolve(['100', '120'])
     })
   },
   selectSchool (item) {
@@ -86,12 +112,22 @@ Page({
     wx.openSetting({
       withSubscriptions: true,
       success(res){
-        console.log(res)
+        console.log(res, 'lllll')
         if (res.authSetting['scope.userLocation']) {
           that.setData({
             isShowAuthBtn: false
           });
           that.getSchoolList();
+        }
+      }
+    })
+  },
+  selectSearchSchool (item) {
+    let current = item.detail.item;
+    this.selectSchool({
+      target: {
+        dataset: {
+          current: current
         }
       }
     })

@@ -199,13 +199,13 @@ Component({
         this.getSelectTime(item.date)
         if (this.data.timeList.length > 0) {
           this.data.currentDateText = item.title
-          this.triggerEvent('setTime', {text: item.title + ' ' + this.data.timeList[0].text, key: this.data.timeList[0].time})
+          // this.triggerEvent('setTime', {text: item.title + ' ' + this.data.timeList[0].text, key: this.data.timeList[0].time})
           return true
         }
       })
     },
     selectTime (e) {
-      console.log(e, 'oooooooooooooooooooo')
+      // console.log(e, 'oooooooooooooooooooo')
       let title = this.data.currentDateText
       let text = e.currentTarget.dataset.text
       let time = e.currentTarget.dataset.time

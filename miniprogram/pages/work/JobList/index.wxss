@@ -1,6 +1,6 @@
 @import '../../../style/ticket/iconfont.wxss';
 page{
-  background: #F5F5F5;
+  background: var(--var-color1);
 }
 .page-box{
   padding-bottom: 80rpx;
@@ -279,4 +279,29 @@ page{
 }
 .share button::after{
   border: none;
+}
+.school-name-box {
+  display: flex;
+  align-items: center;
+  font-size: 34rpx;
+  background-color: white;
+  padding: 15rpx 20rpx 15rpx;
+  color: #2E2E2E;
+}
+.school-name-box .icon-zuobiao1 {
+  color: #FCD844;
+  margin-right: 8rpx;
+  font-size: 40rpx;
+}
+
+.school-name-box .icon-you {
+  font-size: 24rpx;
+  color: #707070
+}
+
+.fix-new {
+  position: fixed;
+  top:230rpx;
+  left: 0;
+  z-index: 99;
 }

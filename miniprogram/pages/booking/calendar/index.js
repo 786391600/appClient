@@ -7,7 +7,9 @@ Page({
     itemIndex: 10,   //当前年份的数组下标    这个值和年份的前后一致的值相等，要注意就是年份访问时一当前年为切割点，前后年份范围的数值相等比较好计算，当然看需求而定啦。
     MonthlyTicket:[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
     star:'',
-    end:''
+    end:'',
+    isLoad: false,
+    fleetInfo: {}
   },
   /**
    * 生命周期函数--监听页面加载
@@ -152,14 +154,13 @@ Page({
         idx = index - 1;
         newMonth = 11;
       }
-      this.getLineManage({ start: this.data.star, end: this.data.end,departureTime: { $regex: newYear + "-" + (newMonth + 1 > 9 ? newMonth + 1 : '0' + (newMonth + 1)) } })
       this.calendar(newYear, newMonth);
       this.setData({
         cur_year: newYear,
         cur_month: newMonth,
         itemIndex: idx
       });
-
+      this.getLineManage({ start: this.data.star, end: this.data.end,departureTime: { $regex: newYear + "-" + (newMonth + 1 > 9 ? newMonth + 1 : '0' + (newMonth + 1)) } })
     } else {
       let newMonth = cur_month + 1;
       let newYear = cur_year;
@@ -169,13 +170,13 @@ Page({
         idx = index + 1;
         newMonth = 0;
       }
-      this.getLineManage({ start: this.data.star, end: this.data.end, departureTime: { $regex: newYear + "-" + (newMonth + 1 > 9 ? newMonth + 1 : '0' + (newMonth + 1)) } })
       this.calendar(newYear, newMonth);
       this.setData({
         cur_year: newYear,
         cur_month: newMonth,
         itemIndex: idx
       });
+      this.getLineManage({ start: this.data.star, end: this.data.end, departureTime: { $regex: newYear + "-" + (newMonth + 1 > 9 ? newMonth + 1 : '0' + (newMonth + 1)) } })
     }
   },
   //选择日期
@@ -193,32 +194,98 @@ Page({
     }
 
     wx.navigateTo({
-      url: '../VehicleList/index?star=' + this.data.star + '&end=' + this.data.end + '&date=' + date + '&lineInfo=' + JSON.stringify(this.data.lineInfo)
+      url: '../VehicleList/index?star=' + this.data.star + '&end=' + this.data.end + '&date=' + date + '&lineInfo=' + JSON.stringify(this.data.lineInfo) + '&fleetInfo=' + JSON.stringify(this.data.fleetInfo)
     })
   },
   //请求接口
+  // getLineManage: function (query) {
+  //   let that = this
+  //   wx.showLoading({
+  //     title: '车票加载中...'
+  //   })
+  //   return new Promise((resolve, reject) => {
+  //     until.request({
+  //       action: 'app.line.getLineManage',
+  //       data: query
+  //     }).then(function (e) {
+  //       if (e.data.success) {
+  //         resolve(e)
+  //         let getdata = that.ticketStatistics(e.data.data.carList)
+  //         console.log(getdata, 'getdataaaaaaaaaaaaaaaaaaaaaaaaaaa')
+  //         that.setData({
+  //           MonthlyTicket: getdata,
+  //           lineInfo: e.data.data.lineInfo
+  //         })
+  //       } else {
+  //         until.showToast(e.data.message, 'error');
+  //       }
+  //       wx.hideLoading()
+  //     })
+  //   })
+  // },
   getLineManage: function (query) {
     let that = this
-    wx.showLoading({
-      title: '车票加载中...'
-    })
-    return new Promise((resolve, reject) => {
+    if (that.data.isLoad) {
+      console.log('已加载.......')
+      that.getCarListByFleetInfo()
+    } else {
+      wx.showLoading({
+        title: '车票加载中...'
+      })
+      return new Promise((resolve, reject) => {
       until.request({
         action: 'app.line.getLineManage',
         data: query
       }).then(function (e) {
         if (e.data.success) {
           resolve(e)
-          let getdata = that.ticketStatistics(e.data.data.carList)
+          let fleetInfo = e.data.data.fleetInfo
           that.setData({
-            MonthlyTicket: getdata,
+            fleetInfo: fleetInfo,
             lineInfo: e.data.data.lineInfo
           })
+          that.getCarListByFleetInfo()
+          that.data.isLoad = true
         } else {
           until.showToast(e.data.message, 'error');
         }
         wx.hideLoading()
       })
+    })
+    }
+    console.log(query)
+  },
+  getCarListByFleetInfo () {
+    let that = this;
+    let cur_year = this.data.cur_year;
+    let cur_month = this.data.cur_month + 1;
+    let departureTimeList = []
+    if (!this.data || !this.data.fleetInfo || !this.data.fleetInfo.fleetTask) {
+      return
+    }
+    let fleetTask = this.data.fleetInfo.fleetTask || [];
+    fleetTask.forEach((item) => {
+      // if (item.state) {
+        if (item.taskType === 'time') {
+          item.timeValue.forEach((timeItem) => {
+            console.log(timeItem.split('-')[0], 'mmmmm')
+            let currentYM = timeItem.split(' ')[0].split('-')
+            console.log(currentYM, cur_year, cur_month, 'lll')
+            let sM = cur_month  < 10 ? '0' + cur_month : cur_month;
+            if (currentYM[0] + '-' + currentYM[1] === cur_year+'-' + sM) {
+              console.log('pushitem', timeItem)
+              departureTimeList.push({
+                departureTime: timeItem
+              })
+            }
+          })
+        }
+      // }  
+    })
+    console.log(departureTimeList, 'ooooo')
+    let getdata = that.ticketStatistics(departureTimeList)
+    this.setData({
+      MonthlyTicket: getdata
     })
   },
   //处理每日车票及数量
